@@ -1,0 +1,35 @@
+server:
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    #    database-platform: mysql
+  datasource:
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://158.247.209.159:3306/pjhoon?serverTimezone=UTC&characterEncoding=UTF-8
+      username: pjhoon
+      password: pjhoon
+
+  flyway:
+    user: pjhoon
+    password: pjhoon
+    schemas: pjhoon
+    url: jdbc:mariadb://158.247.209.159:3306/pjhoon?serverTimezone=UTC&characterEncoding=UTF-8
+    enabled: true
+    baseline-on-migrate: true
+
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+
+logging:
+  config: classpath:logback-local.xml

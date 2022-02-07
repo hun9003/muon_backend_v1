@@ -1,12 +1,16 @@
 package com.muesli.music.domain.album;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
+import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.track.Track;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -25,9 +29,16 @@ public class Album extends AbstractEntity {
     private String artist_id;
     private String description;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
+    private List<Track> trackList = Lists.newArrayList();
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Like like;
+
     @Builder
     public Album(Long id, String album_code, String name, String release_date, String original_name, String image, String artist_id, String description) {
-        if (id == null) throw new InvalidParamException("Album.id");
+        if (id == null) throw new InvalidParamException("Albums.id");
 
         this.id = id;
         this.album_code = album_code;

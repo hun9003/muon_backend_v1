@@ -15,8 +15,8 @@ import java.time.ZonedDateTime;
 public class AbstractEntity {
 
     @CreationTimestamp
-    private ZonedDateTime createdAt;
+    private ZonedDateTime created_at;
 
     @UpdateTimestamp
-    private ZonedDateTime updatedAt;
+    private ZonedDateTime updated_at;
 }

@@ -17,6 +17,11 @@ public class AlbumApiController {
     private final AlbumFacade albumFacade;
     private final AlbumDtoMapper albumDtoMapper;
 
+    /**
+     *
+     * @param albumId
+     * @return
+     */
     @GetMapping("/{id}")
     public CommonResponse findAlbum(@PathVariable("id") Long albumId) {
         var albumInfo = albumFacade.findAlbumInfo(albumId);

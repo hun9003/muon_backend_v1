@@ -1,13 +1,11 @@
 package com.muesli.music.interfaces.like;
 
 
-import com.muesli.music.interfaces.album.AlbumDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
 import java.time.ZonedDateTime;
-import java.util.List;
 
 public class LikeDto {
 

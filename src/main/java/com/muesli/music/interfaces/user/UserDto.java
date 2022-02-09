@@ -46,7 +46,7 @@ public class UserDto {
         private final String email;
         private final String phone_number;
 
-        public RegisterResponse(UserInfo userInfo) {
+        public RegisterResponse(UserInfo.Main userInfo) {
             this.username = userInfo.getUsername();
             this.email = userInfo.getEmail();
             this.phone_number = userInfo.getPhone_number();

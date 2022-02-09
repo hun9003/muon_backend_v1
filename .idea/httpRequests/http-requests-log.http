@@ -1,8 +1,3 @@
-###  Album 조회
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-### 회원가입
 POST http://localhost:8080/api/v1/user
 Content-Type: application/json
 
@@ -12,3 +7,8 @@ Content-Type: application/json
   "username": "실험체232",
   "phone_number": "010-4003-3892"
 }
+
+<> 2022-02-09T222210.200.json
+
+###
+

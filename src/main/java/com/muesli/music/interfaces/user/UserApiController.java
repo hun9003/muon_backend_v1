@@ -19,6 +19,11 @@ public class UserApiController {
     private final UserDtoMapper userDtoMapper;
     private final UserFacade userFacade;
 
+    /**
+     * 회원가입 POST
+     * @param request 회원 정보
+     * @return 회원 정보
+     */
     @PostMapping
     public CommonResponse registerUser(@RequestBody @Valid UserDto.RegisterUser request) {
         var command = userDtoMapper.of(request);

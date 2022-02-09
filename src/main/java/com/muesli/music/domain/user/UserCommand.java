@@ -15,6 +15,7 @@ public class UserCommand {
     private final String phone_number;
 
     public User toEntity() {
+        System.out.println("UserCommand :: toEntity");
         return User.builder()
                 .username(username)
                 .email(email)

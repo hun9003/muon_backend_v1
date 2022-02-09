@@ -14,13 +14,15 @@ public class UserReaderImpl implements UserReader {
     private final UserRepository userRepository;
     @Override
     public User getUser(Long userId) {
+        System.out.println("UserReaderImpl :: getUser");
         return userRepository.findById(userId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public User getUser(String email) {
+        System.out.println("UserReaderImpl :: getUser");
         return userRepository.findByEmail(email)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElse(new User());
     }
 }

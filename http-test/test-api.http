@@ -7,8 +7,8 @@ POST http://localhost:8080/api/v1/user
 Content-Type: application/json
 
 {
-  "email": "moe@moe.work",
-  "password": "dasdasd21312",
+  "email": "test123@test.com",
+  "password": "12345678",
   "username": "실험체232",
-  "phone_number": "010-4003-3892"
+  "phone_number": "010-0000-0000"
 }

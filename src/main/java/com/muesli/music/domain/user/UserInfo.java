@@ -16,8 +16,9 @@ public class UserInfo {
         private final Long alarm;
         private final Long alarm_midnight;
         private final String auth_type;
-    
+
         public Main(User user) {
+            System.out.println("UserInfo.Main :: Main");
             this.id = user.getId();
             this.username = user.getUsername();
             this.email = user.getEmail();

@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo.Main registerUser(UserCommand command) {
+        System.out.println("UserServiceImpl :: registerUser");
         var initUser = command.toEntity();
         var user = userStore.store(initUser);
         return new UserInfo.Main(user);
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo.Main findUserInfo(String email) {
+        System.out.println("UserServiceImpl :: findUserInfo");
         var user = userReader.getUser(email);
         return new UserInfo.Main(user);
     }

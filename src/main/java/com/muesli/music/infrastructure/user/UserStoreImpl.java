@@ -16,6 +16,7 @@ public class UserStoreImpl implements UserStore {
 
     @Override
     public User store(User user) {
+        System.out.println("UserStoreImpl :: store");
         if (StringUtils.isEmpty(user.getUsername())) throw new InvalidParamException("User.username");
         if (StringUtils.isEmpty(user.getEmail())) throw new InvalidParamException("User.email");
         if (StringUtils.isEmpty(user.getPassword())) throw new InvalidParamException("User.password");

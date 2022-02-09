@@ -5,6 +5,7 @@ import com.muesli.music.domain.user.UserInfo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -23,6 +24,7 @@ public class UserDto {
         @NotEmpty(message = "이메일(email)은 필수값입니다.")
         private String email;
 
+        @Length(min = 8, max = 30)
         @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
         private String password;
 

@@ -3,6 +3,7 @@ package com.muesli.music.interfaces.user;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.Email;
@@ -10,6 +11,9 @@ import javax.validation.constraints.NotEmpty;
 
 public class UserDto {
 
+    @Getter
+    @Setter
+    @ToString
     public static class RegisterUser {
 
         @NotEmpty(message = "닉네임(username)은 필수값입니다.")

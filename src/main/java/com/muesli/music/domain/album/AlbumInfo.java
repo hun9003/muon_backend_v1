@@ -22,9 +22,8 @@ public class AlbumInfo {
         private final String artist_id;
         private final String description;
         private final List<TrackInfo> trackList;
-        private final LikeInfo like;
 
-        public Main(Album album, List<TrackInfo> trackInfoList, LikeInfo likeInfo) {
+        public Main(Album album, List<TrackInfo> trackInfoList) {
             this.id = album.getId();
             this.album_code = album.getAlbum_code();
             this.name = album.getName();
@@ -34,7 +33,6 @@ public class AlbumInfo {
             this.artist_id = album.getArtist_id();
             this.description = album.getDescription();
             this.trackList = trackInfoList;
-            this.like = likeInfo;
         }
     }
 
@@ -84,9 +82,9 @@ public class AlbumInfo {
 
         public LikeInfo(Like like) {
             this.id = like.getId();
-            this.likeable_id = like.getLikeable_id();
-            this.user_id = like.getUser_id();
-            this.likeable_type = like.getLikeable_type();
+            this.likeable_id = like.getLikeableId();
+            this.user_id = like.getUserId();
+            this.likeable_type = like.getLikeableType();
             this.created_at = like.getCreated_at();
         }
     }

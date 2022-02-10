@@ -14,17 +14,18 @@ spring:
   datasource:
     hikari:
       driver-class-name: org.mariadb.jdbc.Driver
-      jdbc-url: jdbc:mariadb://158.247.209.159:3306/pjhoon?serverTimezone=UTC&characterEncoding=UTF-8
-      username: pjhoon
-      password: pjhoon
+      jdbc-url: jdbc:mariadb://115.22.91.219:3377/muesli_music_test?serverTimezone=UTC&characterEncoding=UTF-8
+      username: muesli_music_test
+      password: muesli_music_test
 
   flyway:
-    user: pjhoon
-    password: pjhoon
-    schemas: pjhoon
-    url: jdbc:mariadb://158.247.209.159:3306/pjhoon?serverTimezone=UTC&characterEncoding=UTF-8
+    user: muesli_music_test
+    password: muesli_music_test
+    schemas: muesli_music_test
+    url: jdbc:mariadb://115.22.91.219:3377/muesli_music_test?serverTimezone=UTC&characterEncoding=UTF-8
     enabled: true
     baseline-on-migrate: true
+
 
 #  h2:
 #    console:
@@ -33,3 +34,4 @@ spring:
 
 logging:
   config: classpath:logback-local.xml
+

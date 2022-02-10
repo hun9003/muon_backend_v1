@@ -1,6 +1,7 @@
 package com.muesli.music.interfaces.user;
 
 import com.muesli.music.domain.user.UserCommand;
+import com.muesli.music.domain.user.UserInfo;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -12,4 +13,5 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface UserDtoMapper {
     UserCommand of(UserDto.RegisterUser request);
+    UsertokenCommand of(UserInfo.UsertokenInfo usertokenInfo);
 }

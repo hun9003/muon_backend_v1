@@ -1,7 +1,13 @@
 package com.muesli.music.domain.user;
 
+import com.muesli.music.domain.user.token.Usertoken;
 import lombok.Getter;
 import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.sql.Timestamp;
 
 @Getter
 public class UserInfo {
@@ -12,10 +18,11 @@ public class UserInfo {
         private final String username;
         private final String email;
         private final String password;
-        private final String phone_number;
+        private final String phoneNumber;
         private final Long alarm;
-        private final Long alarm_midnight;
-        private final String auth_type;
+        private final int confirmd;
+//        private final Long alarmMidnight;
+//        private final String authType;
 
         public Main(User user) {
             System.out.println("UserInfo.Main :: Main");
@@ -23,10 +30,25 @@ public class UserInfo {
             this.username = user.getUsername();
             this.email = user.getEmail();
             this.password = user.getPassword();
-            this.phone_number = user.getPhone_number();
+            this.phoneNumber = user.getPhoneNumber();
             this.alarm = user.getAlarm();
-            this.alarm_midnight = user.getAlarm_midnight();
-            this.auth_type = user.getAuth_type();
+            this.confirmd = user.getConfirmd();
+//            this.alarmMidnight = user.alarmMidnight();
+//            this.auth_type = user.getAuth_type();
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class UsertokenInfo {
+        private final String token;
+        private final Long exp;
+        private final User user;
+
+        public UsertokenInfo(Usertoken usertoken, User user) {
+            this.user = user;
+            this.token = usertoken.getToken();
+            this.exp = usertoken.getExp();
         }
     }
 }

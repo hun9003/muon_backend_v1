@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import java.security.NoSuchAlgorithmException;
+import java.time.ZonedDateTime;
 
 @Slf4j
 @Getter
@@ -25,33 +26,33 @@ public class User extends AbstractEntity {
     private String username;
     private String email;
     private String password;
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     private Long alarm;
-    private Long alarm_midnight;
-    private String auth_type;
+//    @Column(name = "alarm_midnight")
+//    private Long alarmMidnight;
+//    @Column(name = "auth_type")
+//    private String authType;
+    private int confirmd;
+    @Column(name="confirmed_at")
+    private ZonedDateTime confirmedAt;
 
     @Builder
-    public User(String username, String email, String password, String phone_number) {
+    public User(String username, String email, String password, String phoneNumber) {
         if (StringUtils.isEmpty(username)) throw new InvalidParamException("empty username");
         if (StringUtils.isEmpty(email)) throw new InvalidParamException("empty email");
         if (StringUtils.isEmpty(password)) throw new InvalidParamException("empty password");
-        if (StringUtils.isEmpty(phone_number)) throw new InvalidParamException("empty phone_number");
+        if (StringUtils.isEmpty(phoneNumber)) throw new InvalidParamException("empty phone_number");
 
-        // 비밀번호 암호화 작업
-        String salt = HashGenerator.getSalt();
-        String hashPassword;
-        try {
-            String digst = salt+password.trim()+salt+email.trim()+salt+HashGenerator.sha1(email+password)+salt;
-            hashPassword = HashGenerator.sha1(salt+password+salt)
-                    +HashGenerator.sha256(digst);
-        } catch (NoSuchAlgorithmException e) {
-            throw new InvalidParamException("fail password security");
-        }
 
 
         this.username = username;
         this.email = email;
-        this.password = hashPassword;
-        this.phone_number = phone_number;
+        this.password = HashGenerator.hashPassword(email, password);
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void changeConfirmd() {
+        this.confirmd = 1;
     }
 }

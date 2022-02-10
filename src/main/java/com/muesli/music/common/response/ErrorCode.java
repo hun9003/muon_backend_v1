@@ -12,7 +12,8 @@ public enum ErrorCode {
     COMMON_ILLEGAL_STATUS("잘못된 상태값입니다."),
 
     // 유저 관련 에러
-    COMMON_DUPLICATION_EMAIL("이미 가입된 이메일 입니다.");
+    COMMON_DUPLICATION_EMAIL("이미 가입된 이메일 입니다."),
+    COMMON_LOGIN_FALE("아이디 또는 비밀번호가 일치하지 않습니다.");
 
     private final String errorMsg;
 

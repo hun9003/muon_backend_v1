@@ -25,4 +25,11 @@ public class UserServiceImpl implements UserService {
         var user = userReader.getUser(email);
         return new UserInfo.Main(user);
     }
+
+    @Override
+    public UserInfo.Main loginUser(String email, String password) {
+        System.out.println("UserServiceImpl :: loginUser");
+        var user = userReader.getUser(email, password);
+        return new UserInfo.Main(user);
+    }
 }

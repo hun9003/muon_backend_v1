@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.user;
 
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -28,15 +29,35 @@ public class UserDto {
         @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
         private String password;
 
-        @NotEmpty(message = "전화번호(phone_number)은 필수값입니다.")
-        private String phone_number;
+        @NotEmpty(message = "전화번호(phoneNumber)은 필수값입니다.")
+        private String phoneNumber;
 
         public UserCommand toCommand() {
             return UserCommand.builder()
                     .username(username)
                     .email(email)
                     .password(password)
-                    .phone_number(phone_number)
+                    .phoneNumber(phoneNumber)
+                    .build();
+        }
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    public static class LoginUser {
+        @Email(message = "email 형식에 맞아야 합니다")
+        @NotEmpty(message = "이메일(email)은 필수값입니다.")
+        private String email;
+
+        @Length(min = 8, max = 30)
+        @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
+        private String password;
+
+        public UserCommand toCommand() {
+            return UserCommand.builder()
+                    .email(email)
+                    .password(password)
                     .build();
         }
     }
@@ -46,12 +67,24 @@ public class UserDto {
     public static class RegisterResponse {
         private final String username;
         private final String email;
-        private final String phone_number;
+        private final String phoneNumber;
 
         public RegisterResponse(UserInfo.Main userInfo) {
             this.username = userInfo.getUsername();
             this.email = userInfo.getEmail();
-            this.phone_number = userInfo.getPhone_number();
+            this.phoneNumber = userInfo.getPhoneNumber();
         }
     }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class LoginResponse {
+        private final String token;
+        private final Long exp;
+        private final UserInfo user;
+    }
+
+
+
 }

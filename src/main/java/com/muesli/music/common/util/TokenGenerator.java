@@ -3,7 +3,7 @@ package com.muesli.music.common.util;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class TokenGenerator {
-    private static final int TOKEN_LENGTH = 20;
+    private static final int TOKEN_LENGTH = 32;
 
     public static String randomCharacter(int length) {
         return RandomStringUtils.randomAlphanumeric(length);

@@ -4,10 +4,7 @@ import com.muesli.music.application.user.UserFacade;
 import com.muesli.music.common.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -30,6 +27,24 @@ public class UserApiController {
         var userInfo = userFacade.registerUser(command);
         var response = new UserDto.RegisterResponse(userInfo);
         return CommonResponse.success(response);
+    }
+
+    @PostMapping("/login")
+    public CommonResponse loginUser(@RequestBody @Valid UserDto.LoginUser request) {
+        var usertokenInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
+        var response = userDtoMapper.of(usertokenInfo);
+        return CommonResponse.success(response);
+    }
+
+    /**
+     * 이메일 인증 POST
+     * @param
+     * @return 회원 정보
+     */
+    @GetMapping("/verification")
+    public CommonResponse registerUser(@RequestParam("key")String key) {
+
+        return null;
     }
 
 }

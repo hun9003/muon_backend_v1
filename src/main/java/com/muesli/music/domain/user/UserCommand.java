@@ -12,7 +12,7 @@ public class UserCommand {
     private final String username;
     private final String email;
     private final String password;
-    private final String phone_number;
+    private final String phoneNumber;
 
     public User toEntity() {
         System.out.println("UserCommand :: toEntity");
@@ -20,7 +20,7 @@ public class UserCommand {
                 .username(username)
                 .email(email)
                 .password(password)
-                .phone_number(phone_number)
+                .phoneNumber(phoneNumber)
                 .build();
     }
 }

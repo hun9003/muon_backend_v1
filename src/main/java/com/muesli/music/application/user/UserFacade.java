@@ -42,12 +42,14 @@ public class UserFacade {
         var user = userService.registerUser(command);
 
         // 4. 이메일 인증 메일 보내기
-        try {
-            var registerTemplate = new MailController.RegisterTemplate(user.getEmail(), user.getUsername());
-            MailController.sendMail(registerTemplate.getTitle(), registerTemplate.getContent(), registerTemplate.getEmail());
-        } catch (Exception e) {
-            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
-        }
+        // 가입 축하 메일 보내기
+//        try {
+//            var registerTemplate = new MailController.RegisterTemplate(user.getEmail(), user.getUsername());
+//            MailController.sendMail(registerTemplate.getTitle(), registerTemplate.getContent(), registerTemplate.getEmail());
+//        } catch (Exception e) {
+//            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
+//        }
+        
 
         return user;
 

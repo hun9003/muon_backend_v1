@@ -10,23 +10,24 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UsertokenServiceImpl implements UsertokenService{
-    private UsertokenReader usertokenReader;
-    private UserReader userReader;
-    private UsertokenStore usertokenStore;
+    private final UsertokenReader usertokenReader;
+    private final UserReader userReader;
+    private final UsertokenStore usertokenStore;
 
     @Override
     public UserInfo.UsertokenInfo findUsertokenInfo(String token) {
         System.out.println("UsertokenServiceImpl :: findUsertokenInfo");
         var usertoken = usertokenReader.getUsertoken(token);
-        var user = userReader.getUser(usertoken.getUser().getId());
+        var user = new UserInfo.Main(userReader.getUser(usertoken.getUserId()));
         return new UserInfo.UsertokenInfo(usertoken, user);
     }
 
     @Override
-    public UserInfo.UsertokenInfo registerUsertoken(Usertoken usertoken) {
+    public UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command) {
         System.out.println("UsertokenServiceImpl :: registerUsertoken");
-        var userToken = usertokenStore.store(usertoken);
-        var user = userReader.getUser(userToken.getId());
+        var initUsertoken = command.toEntity(command.getUserId());
+        var userToken = usertokenStore.store(initUsertoken);
+        var user = new UserInfo.Main(userReader.getUser(command.getUserId()));
         return new UserInfo.UsertokenInfo(userToken, user);
     }
 }

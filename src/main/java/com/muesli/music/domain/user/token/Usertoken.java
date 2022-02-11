@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -24,10 +25,6 @@ public class Usertoken extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @Column(name = "user_id")
     private Long userId;
 
@@ -38,22 +35,14 @@ public class Usertoken extends AbstractEntity {
     private Timestamp uploadAt;
 
     @Builder
-    public Usertoken(Long userId) {
-        if (userId == null) throw new InvalidParamException("Usertoken.userId");
-
+    public Usertoken(Long userId, String token, Long exp, Timestamp uploadAt) {
+        if (userId == null) throw new InvalidParamException("empty username");
+        if (StringUtils.isEmpty(token)) throw new InvalidParamException("empty token");
+        if (exp == null) throw new InvalidParamException("empty exp");
+        if (uploadAt == null) throw new InvalidParamException("empty uploadAt");
         this.userId = userId;
-        this.token = TokenGenerator.randomCharacter(32);
-
-        this.uploadAt = new Timestamp(System.currentTimeMillis());
-
-        // 현재시간으로 부터 +3개월
-        Timestamp time = new Timestamp(System.currentTimeMillis());
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(time);
-        cal.add(Calendar.MONTH, 3);
-        time.setTime(cal.getTime().getTime());
-
-        this.exp = time.getTime();
+        this.token = token;
+        this.exp = exp;
+        this.uploadAt = uploadAt;
     }
-
 }

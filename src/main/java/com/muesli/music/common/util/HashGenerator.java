@@ -7,6 +7,8 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.security.*;
 import java.sql.Timestamp;
 
@@ -136,16 +138,10 @@ public class HashGenerator {
 
         return hashPassword;
     }
-//    public static void main(String[] args) {
-//        try {
-//            String encStr = encAES("[\"jinhun3892@gmail.com\",1644461181]");
-//            System.out.println(encStr);
-//            String decStr = decAES(encStr);
-//            System.out.println(decStr);
-//        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException | InvalidKeyException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+    // 암호화된 코드 이메일 가져오기
+    public static String getEmailByKey(String key) throws Exception {
+        String keyDecAES = decAES(key);
+        return keyDecAES.substring(keyDecAES.indexOf("\"")+1, keyDecAES.indexOf("\"",2));
+    }
 }

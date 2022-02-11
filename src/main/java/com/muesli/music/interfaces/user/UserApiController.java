@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.user;
 
 import com.muesli.music.application.user.UserFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.util.HashGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,11 @@ public class UserApiController {
 
     @PostMapping("/login")
     public CommonResponse loginUser(@RequestBody @Valid UserDto.LoginUser request) {
-        var usertokenInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
-        var response = userDtoMapper.of(usertokenInfo);
+        var userInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
+        var usertokenRequest = new UserTokenDto.RegisterUserToken(userInfo.getId());
+        var usertokenCommand = userDtoMapper.of(usertokenRequest);
+        var usertokenInfo = userFacade.registerUsertoken(usertokenCommand);
+        var response = new UserDto.LoginResponse(usertokenInfo);
         return CommonResponse.success(response);
     }
 
@@ -42,9 +46,10 @@ public class UserApiController {
      * @return 회원 정보
      */
     @GetMapping("/verification")
-    public CommonResponse registerUser(@RequestParam("key")String key) {
-
-        return null;
+    public CommonResponse changeUserConfimed(@RequestParam("key")String key) throws Exception {
+        String email = HashGenerator.getEmailByKey(key);
+        userFacade.changeUserConfirmed(email);
+        return CommonResponse.success("OK");
     }
 
 }

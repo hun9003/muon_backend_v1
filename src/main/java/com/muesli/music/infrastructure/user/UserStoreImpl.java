@@ -20,7 +20,7 @@ public class UserStoreImpl implements UserStore {
         if (StringUtils.isEmpty(user.getUsername())) throw new InvalidParamException("User.username");
         if (StringUtils.isEmpty(user.getEmail())) throw new InvalidParamException("User.email");
         if (StringUtils.isEmpty(user.getPassword())) throw new InvalidParamException("User.password");
-        if (StringUtils.isEmpty(user.getPhoneNumber())) throw new InvalidParamException("User.phone_number");
+        if (StringUtils.isEmpty(user.getPhoneNumber())) throw new InvalidParamException("User.phoneNumber");
 
         return userRepository.save(user);
     }

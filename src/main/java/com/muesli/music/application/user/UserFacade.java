@@ -5,6 +5,7 @@ import com.muesli.music.common.exception.IllegalStatusException;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.HashGenerator;
+import com.muesli.music.common.util.MailController;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserService;
@@ -36,8 +37,20 @@ public class UserFacade {
         if (userinfo.getId() != null) throw new BaseException(ErrorCode.COMMON_DUPLICATION_EMAIL);
 
         // 3. 가입 처리
-        return userService.registerUser(command);
+        var user = userService.registerUser(command);
+
+        // 4. 이메일 인증 메일 보내기
+        try {
+            var registerTemplate = new MailController.RegisterTemplate(user.getEmail(), user.getUsername());
+            MailController.sendMail(registerTemplate.getTitle(), registerTemplate.getContent(), registerTemplate.getEmail());
+        } catch (Exception e) {
+            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
+        }
+
+        return user;
+
     }
+
 
     /**
      * 유저 로그인
@@ -45,17 +58,30 @@ public class UserFacade {
      * @param password 패스워드
      * @return
      */
-    public UserInfo loginUser(String email, String password) {
+    public UserInfo.Main loginUser(String email, String password) {
         System.out.println("UserFacade :: loginUser");
         // 1. 아이디, 비밀번호가 일치하는지 확인
         var userinfo = userService.loginUser(email, HashGenerator.hashPassword(email, password));
 
         // 2. 이메일 인증이 되어있지 않다면 오류 던지기
-        if (userinfo.getConfirmd() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
-
-        var userTokenInfo = usertokenService.registerUsertoken(UsertokenCommand.R);
+        if (userinfo.getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
 
         return userinfo;
+    }
+
+    /**
+     * 유저 토큰 생성
+     * @param command
+     * @return
+     */
+    public UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command) {
+        System.out.println("UserFacade :: registerUsertoken");
+        return usertokenService.registerUsertoken(command);
+    }
+
+    public void changeUserConfirmed(String email) {
+        System.out.println("UserFacade :: changeUserConrimed");
+        userService.changeConfirmed(email);
     }
 
 }

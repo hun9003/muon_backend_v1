@@ -7,7 +7,7 @@ POST http://localhost:8080/api/v1/user
 Content-Type: application/json
 
 {
-  "email": "test123@test.com",
+  "email": "jinhun3892@gmail.com",
   "password": "12345678",
   "username": "실험체232",
   "phoneNumber": "010-0000-0000"
@@ -18,6 +18,6 @@ POST http://localhost:8080/api/v1/user/login
 Content-Type: application/json
 
 {
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
 }

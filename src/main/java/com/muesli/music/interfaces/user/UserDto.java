@@ -45,6 +45,13 @@ public class UserDto {
     @Getter
     @Setter
     @ToString
+    public static class ChangeConfirmedRequest {
+        private String email;
+    }
+
+    @Getter
+    @Setter
+    @ToString
     public static class LoginUser {
         @Email(message = "email 형식에 맞아야 합니다")
         @NotEmpty(message = "이메일(email)은 필수값입니다.")
@@ -77,12 +84,17 @@ public class UserDto {
     }
 
     @Getter
-    @Builder
     @ToString
     public static class LoginResponse {
         private final String token;
         private final Long exp;
-        private final UserInfo user;
+        private final UserInfo.Main user;
+
+        public LoginResponse(UserInfo.UsertokenInfo usertokenInfo) {
+            this.token = usertokenInfo.getToken();
+            this.exp = usertokenInfo.getExp();
+            this.user = usertokenInfo.getUserInfo();
+        }
     }
 
 

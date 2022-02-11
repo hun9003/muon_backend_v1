@@ -5,8 +5,8 @@ import com.muesli.music.domain.user.token.Usertoken;
 import com.muesli.music.domain.user.token.UsertokenStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Component
@@ -15,10 +15,10 @@ public class UsertokenStoreImpl implements UsertokenStore {
     private final UsertokenRepository usertokenRepository;
 
     @Override
-    public Usertoken store(Usertoken initUsertoken) {
+    @Transactional
+    public Usertoken store(Usertoken usertoken) {
         System.out.println("UsertokenStoreImpl :: store");
-        if (StringUtils.isEmpty(initUsertoken.getToken())) throw new InvalidParamException("Usertoken.token");
-        if (initUsertoken.getUser().getId() == null) throw new InvalidParamException("User.id");
-        return usertokenRepository.save(initUsertoken);
+        if (usertoken.getUserId() == null) throw new InvalidParamException("Usertoken.UserId");
+        return usertokenRepository.save(usertoken);
     }
 }

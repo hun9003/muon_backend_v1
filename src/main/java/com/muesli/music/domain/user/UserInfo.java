@@ -17,10 +17,9 @@ public class UserInfo {
         private final Long id;
         private final String username;
         private final String email;
-        private final String password;
         private final String phoneNumber;
         private final Long alarm;
-        private final int confirmd;
+        private final int confirmed;
 //        private final Long alarmMidnight;
 //        private final String authType;
 
@@ -29,10 +28,9 @@ public class UserInfo {
             this.id = user.getId();
             this.username = user.getUsername();
             this.email = user.getEmail();
-            this.password = user.getPassword();
             this.phoneNumber = user.getPhoneNumber();
             this.alarm = user.getAlarm();
-            this.confirmd = user.getConfirmd();
+            this.confirmed = user.getConfirmed();
 //            this.alarmMidnight = user.alarmMidnight();
 //            this.auth_type = user.getAuth_type();
         }
@@ -43,10 +41,10 @@ public class UserInfo {
     public static class UsertokenInfo {
         private final String token;
         private final Long exp;
-        private final User user;
+        private final UserInfo.Main userInfo;
 
-        public UsertokenInfo(Usertoken usertoken, User user) {
-            this.user = user;
+        public UsertokenInfo(Usertoken usertoken, UserInfo.Main userInfo) {
+            this.userInfo = userInfo;
             this.token = usertoken.getToken();
             this.exp = usertoken.getExp();
         }

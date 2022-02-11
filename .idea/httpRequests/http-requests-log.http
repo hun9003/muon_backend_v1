@@ -6,6 +6,110 @@ Content-Type: application/json
   "password": "12345678"
 }
 
+<> 2022-02-11T162211.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-11T161458.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678321321"
+}
+
+<> 2022-02-11T160132.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-11T155959.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-11T155518.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892@gmail.com",
+  "password": "12345678",
+  "username": " ",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-11T154205.400.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892@gmail.com",
+  "password": "12345678",
+  "username": " ",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-11T154122.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892@gmail.com",
+  "password": "12345678",
+  "username": "",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-11T154110.400.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
 <> 2022-02-11T151912.200.json
 
 ###

@@ -36,6 +36,7 @@ public class User extends AbstractEntity {
     @Column(name="confirmed_at")
     private Timestamp confirmedAt;
 
+
     @Builder
     public User(String username, String email, String password, String phoneNumber) {
         if (StringUtils.isEmpty(username)) throw new InvalidParamException("empty username");

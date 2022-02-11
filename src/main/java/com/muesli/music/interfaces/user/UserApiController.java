@@ -30,6 +30,11 @@ public class UserApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 로그인 POST
+     * @param request
+     * @return
+     */
     @PostMapping("/login")
     public CommonResponse loginUser(@RequestBody @Valid UserDto.LoginUser request) {
         var userInfo = userFacade.loginUser(request.getEmail(), request.getPassword());

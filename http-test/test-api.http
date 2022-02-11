@@ -9,7 +9,7 @@ Content-Type: application/json
 {
   "email": "jinhun3892@gmail.com",
   "password": "12345678",
-  "username": "실험체232",
+  "username": "테스트아이디",
   "phoneNumber": "010-0000-0000"
 }
 

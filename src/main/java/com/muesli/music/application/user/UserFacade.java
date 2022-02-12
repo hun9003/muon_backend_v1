@@ -44,7 +44,7 @@ public class UserFacade {
         // 4. 이메일 인증 메일 보내기
         // 가입 축하 메일 보내기
 //        try {
-//            var registerTemplate = new MailController.RegisterTemplate(user.getEmail(), user.getUsername());
+//            var registerTemplate = new MailController.MailTemplate(user.getEmail(), user.getUsername());
 //            MailController.sendMail(registerTemplate.getTitle(), registerTemplate.getContent(), registerTemplate.getEmail());
 //        } catch (Exception e) {
 //            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);

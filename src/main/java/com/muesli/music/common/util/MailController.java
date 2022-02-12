@@ -12,12 +12,25 @@ import java.util.Map;
 
 
 public class MailController {
-//    public static void main(String[] args) throws Exception {
-//        RegisterTemplate registerTemplate = new RegisterTemplate("hun9003@naver.com", "진훈의 실험체");
-//        sendMail(registerTemplate.title, registerTemplate.content, registerTemplate.email);
-//    }
 
-    public static void sendMail(String title, String content, String email) throws IOException {
+    public static void main(String[] args) throws Exception {
+        sendMail("hun9003@naver.com", "찌눈", REGISTER);
+    }
+
+    public static final String REGISTER = "회원가입";
+
+    public static void sendMail(String email, String username, String type) throws Exception {
+        MailTemplate template = new MailTemplate();
+
+        if (type.equals(REGISTER)) {
+            template.registerTemplate(email, username);
+        } else {
+            return;
+        }
+
+        String title = template.title;
+        String content = template.content;
+
         URL url;
         HttpURLConnection conn;
         String jsonData;
@@ -74,13 +87,13 @@ public class MailController {
     }
 
     @Getter
-    public static class RegisterTemplate {
+    public static class MailTemplate {
 
-        private final String title;
-        private final String content;
-        private final String email;
+        private String title;
+        private String content;
+        private String email;
 
-        public RegisterTemplate(String email, String username) throws Exception {
+        private String makeApiUrl(String api, String email) throws Exception {
             // 현재 시간 호출
             String now = System.currentTimeMillis()+"";
             now = now.substring(0,now.length()-3);
@@ -90,13 +103,23 @@ public class MailController {
 
             // url , api, key 세팅
             String url = "https://music.moe.work";
-            String api = "/api/v1/user/verification";
             String key = URLEncoder.encode(HashGenerator.encAES(makeKey), "UTF-8").replace("*", "%2A").replace("+", "%20").replace("%7E", "~");
-            String apiurl = url+api+"?key="+key;
+
+            return url+api+"?key="+key;
+        }
+
+        public void registerTemplate(String email, String username) throws Exception {
+            String api = "/api/v1/user/verification";
+            String apiurl = makeApiUrl(api, email);
+            String type = "회원가입";
 
             this.email = email;
             this.title = "MuOn 회원가입 인증 메일입니다.";
-            this.content = "<meta charset=\"utf-8\">\n" +
+            this.content = baseTemplate(type, apiurl, username);
+        }
+
+        private String baseTemplate(String type, String apiurl,String username) {
+            return "<meta charset=\"utf-8\">\n" +
                     "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" bgcolor=\"#333\" style=\"font-family:'나눔고딕', 'Nanum Gothic', 'NanumGothic', '맑은고딕', 'MalgunGothic', 'Apple SD Gothic Neo', sans-serif;\">\n" +
                     "    <tbody>\n" +
                     "        <!-- icon -->\n" +
@@ -113,7 +136,7 @@ public class MailController {
                     "                    <tbody>\n" +
                     "                        <tr>\n" +
                     "                            <td bgcolor=\"#ffffff\" align=\"center\" valign=\"top\" style=\"border-radius:3px 3px 0px 0px; padding-top:10px; padding-bottom:10px;\">\n" +
-                    "                                <h1 style=\"color:#333\">MuOn 회원가입</h1>\n" +
+                    "                                <h1 style=\"color:#333\">MuOn "+type+"</h1>\n" +
                     "                            </td>\n" +
                     "                        </tr>\n" +
                     "                    </tbody>\n" +
@@ -129,8 +152,8 @@ public class MailController {
                     "                        <tr>\n" +
                     "                            <td bgcolor=\"#ffffff\" align=\"center\" valign=\"top\" style=\"border-radius:0px 0px 3px 3px; padding-top:10px; padding-left:20px; padding-right:20px; padding-bottom:10px; text-align:left; letter-spacing:-0.01em; line-height:1.5; color:#333; font-size:0.95em;\">\n" +
                     "                                <p>안녕하세요, "+username+"님.</p>\n" +
-                    "                                <p>서브컬쳐 음원 스트리밍 서비스 MuOn 입니다. 고객님께서 <b>MuOn</b> 서비스에 가입을 요쳥해주신 부분을 확인하여 이메일 인증 링크를 발송해드립니다.</p>\n" +
-                    "                                <p>만약 고객님께서 MuOn 서비스에 가입을 요청하신게 아니라면, 본 메일을 삭제하여 주시거나 무시하여 주시기 바랍니다.</p>\n" +
+                    "                                <p>서브컬쳐 음원 스트리밍 서비스 MuOn 입니다. 고객님께서 <b>MuOn</b> 서비스에 "+type+"을 요쳥해주신 부분을 확인하여 이메일 인증 링크를 발송해드립니다.</p>\n" +
+                    "                                <p>만약 고객님께서 MuOn 서비스에 "+type+"을 요청하신게 아니라면, 본 메일을 삭제하여 주시거나 무시하여 주시기 바랍니다.</p>\n" +
                     "                                <p style=\"padding-top:20px; padding-bottom:20px;\">\n" +
                     "                                    <a href=\""+apiurl+"\" style=\"display:block; width:234px; height:47px; background:#aea1e9; color:#fff; text-align:center; text-decoration:none; line-height:47px; margin-left:auto; margin-right:auto;\">이메일 인증</a>\n" +
                     "                                </p>\n" +

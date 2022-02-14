@@ -54,6 +54,7 @@ public class AlbumInfo {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private LikeInfo likeInfo;
 
 
         public TrackInfo(Track track) {
@@ -70,6 +71,10 @@ public class AlbumInfo {
             this.lyricser = track.getLyricser();
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
+        }
+
+        public void setLikeInfo(LikeInfo likeInfo) {
+            this.likeInfo = likeInfo;
         }
     }
 

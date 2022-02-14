@@ -46,6 +46,7 @@ public class AlbumDto {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final AlbumInfo.LikeInfo likeInfo;
     }
 
     @Getter

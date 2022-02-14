@@ -21,32 +21,35 @@ public class Album extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String album_code;
+    @Column(name = "album_code")
+    private String albumCode;
+    @Column(name = "name")
     private String name;
-    private String release_date;
-    private String original_name;
+    @Column(name = "release_date")
+    private String releaseDate;
+    @Column(name = "original_name")
+    private String originalName;
+    @Column(name = "image")
     private String image;
-    private String artist_id;
+    @Column(name = "artist_id")
+    private String artistId;
+    @Column(name = "description")
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Track> trackList = Lists.newArrayList();
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Like like;
-
     @Builder
-    public Album(Long id, String album_code, String name, String release_date, String original_name, String image, String artist_id, String description) {
+    public Album(Long id, String albumCode, String name, String releaseDate, String originalName, String image, String artistId, String description) {
         if (id == null) throw new InvalidParamException("Albums.id");
 
         this.id = id;
-        this.album_code = album_code;
+        this.albumCode = albumCode;
         this.name = name;
-        this.release_date = release_date;
-        this.original_name = original_name;
+        this.releaseDate = releaseDate;
+        this.originalName = originalName;
         this.image = image;
-        this.artist_id = artist_id;
+        this.artistId = artistId;
         this.description = description;
     }
 }

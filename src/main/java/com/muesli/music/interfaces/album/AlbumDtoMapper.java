@@ -15,5 +15,8 @@ public interface AlbumDtoMapper {
     // find
     AlbumDto.Main of(AlbumInfo.Main main);
 
+    AlbumDto.LikeInfo of(AlbumInfo.LikeInfo like);
+
     AlbumDto.TrackInfo of(AlbumInfo.TrackInfo track);
+
 }

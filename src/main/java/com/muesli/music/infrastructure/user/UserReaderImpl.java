@@ -18,7 +18,7 @@ public class UserReaderImpl implements UserReader {
     public User getUser(Long userId) {
         System.out.println("UserReaderImpl :: getUser");
         return userRepository.findById(userId)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElse(new User());
     }
 
     @Override

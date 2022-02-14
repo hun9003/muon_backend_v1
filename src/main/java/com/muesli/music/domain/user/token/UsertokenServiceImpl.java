@@ -18,7 +18,7 @@ public class UsertokenServiceImpl implements UsertokenService{
     public UserInfo.UsertokenInfo findUsertokenInfo(String token) {
         System.out.println("UsertokenServiceImpl :: findUsertokenInfo");
         var usertoken = usertokenReader.getUsertoken(token);
-        var user = new UserInfo.Main(userReader.getUser(usertoken.getUserId()));
+        var user = new UserInfo.Main(userReader.getUser(usertoken.getUserId() != null ? usertoken.getUserId() : 0));
         return new UserInfo.UsertokenInfo(usertoken, user);
     }
 

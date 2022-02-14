@@ -1,3 +1,148 @@
+GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T145147.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T145138.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T145006.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T144837.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T144750.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T144746.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377
+Content-Type: application/json
+
+<> 2022-02-14T144549.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T144525.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T144420.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T144045.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T143913.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T143802.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370?usertoken=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T143729.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T143656.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T143649.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T143629.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T143454.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T143447.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T131945.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1370
+Content-Type: application/json
+
+<> 2022-02-14T131818.200.json
+
+###
+
 POST http://localhost:8080/api/v1/user/login
 Content-Type: application/json
 
@@ -363,294 +508,6 @@ Content-Type: application/json
 }
 
 <> 2022-02-11T134415.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T134053.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12!@"
-}
-
-<> 2022-02-10T170851.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-10T170843.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-10T114821.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-10T110518.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phone_number": "010-0000-0000"
-}
-
-<> 2022-02-10T110346.400.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phone_number": "010-0000-0000"
-}
-
-<> 2022-02-09T233859.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "1234",
-  "username": "실험체232",
-  "phone_number": "010-0000-0000"
-}
-
-<> 2022-02-09T233546.400.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "test123@test.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phone_number": "010-0000-0000"
-}
-
-<> 2022-02-09T233126.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T232053.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T231805.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T231530.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T231309.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230812.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230703.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230557.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230524.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230412.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230318.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "hun9003@naver.com",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T230210.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "moe@moe.work",
-  "password": "dasdasd21312",
-  "username": "실험체232",
-  "phone_number": "010-4003-3892"
-}
-
-<> 2022-02-09T222210.200.json
 
 ###
 

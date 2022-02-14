@@ -14,25 +14,27 @@ public class AlbumInfo {
     @ToString
     public static class Main {
         private final Long id;
-        private final String album_code;
+        private final String albumCode;
         private final String name;
-        private final String release_date;
-        private final String original_name;
+        private final String releaseDate;
+        private final String originalName;
         private final String image;
-        private final String artist_id;
+        private final String artistId;
         private final String description;
         private final List<TrackInfo> trackList;
+        private final LikeInfo likeInfo;
 
-        public Main(Album album, List<TrackInfo> trackInfoList) {
+        public Main(Album album, List<TrackInfo> trackInfoList, LikeInfo likeInfo) {
             this.id = album.getId();
-            this.album_code = album.getAlbum_code();
+            this.albumCode = album.getAlbumCode();
             this.name = album.getName();
-            this.release_date = album.getRelease_date();
-            this.original_name = album.getOriginal_name();
+            this.releaseDate = album.getReleaseDate();
+            this.originalName = album.getOriginalName();
             this.image = album.getImage();
-            this.artist_id = album.getArtist_id();
+            this.artistId = album.getArtistId();
             this.description = album.getDescription();
             this.trackList = trackInfoList;
+            this.likeInfo = likeInfo;
         }
     }
 
@@ -44,7 +46,7 @@ public class AlbumInfo {
         private final String original;
         private final Long number;
         private final Long duration;
-        private final String artists_legacy;
+        private final String artistsLegacy;
         private final String url;
         private final String description;
         private final String image;
@@ -60,7 +62,7 @@ public class AlbumInfo {
             this.original = track.getOriginal();
             this.number = track.getNumber();
             this.duration = track.getDuration();
-            this.artists_legacy = track.getArtists_legacy();
+            this.artistsLegacy = track.getArtistsLegacy();
             this.url = track.getUrl();
             this.description = track.getDescription();
             this.image = track.getImage();
@@ -75,17 +77,17 @@ public class AlbumInfo {
     @ToString
     public static class LikeInfo {
         private final Long id;
-        private final Long likeable_id;
-        private final Long user_id;
-        private final String likeable_type;
-        private final ZonedDateTime created_at;
+//        private final Long likeable_id;
+//        private final Long user_id;
+//        private final String likeable_type;
+        private final ZonedDateTime createdAt;
 
         public LikeInfo(Like like) {
             this.id = like.getId();
-            this.likeable_id = like.getLikeableId();
-            this.user_id = like.getUserId();
-            this.likeable_type = like.getLikeableType();
-            this.created_at = like.getCreated_at();
+//            this.likeable_id = like.getLikeableId();
+//            this.user_id = like.getUserId();
+//            this.likeable_type = like.getLikeableType();
+            this.createdAt = like.getCreated_at();
         }
     }
 }

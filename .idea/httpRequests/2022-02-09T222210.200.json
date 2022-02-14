@@ -1,6 +1,0 @@
-{
-  "result": "FAIL",
-  "data": null,
-  "message": "이미 가입된 이메일 입니다.",
-  "errorCode": "COMMON_DUPLICATION_EMAIL"
-}

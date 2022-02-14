@@ -21,25 +21,32 @@ public class Track {
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
-
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Like like;
-
+    @Column(name = "name")
     private String name;
+    @Column(name = "original")
     private String original;
+    @Column(name = "number")
     private Long number;
+    @Column(name = "duration")
     private Long duration;
-    private String artists_legacy;
+    @Column(name = "artists_legacy")
+    private String artistsLegacy;
+    @Column(name = "url")
     private String url;
+    @Column(name = "description")
     private String description;
+    @Column(name = "image")
     private String image;
+    @Column(name = "composer")
     private String composer;
+    @Column(name = "lyricser")
     private String lyricser;
+    @Column(name = "arranger")
     private String arranger;
+    @Column(name = "adult")
     private Long adult;
 
-    public Track(Long id, String name, String original, Long number, Long duration, String artists_legacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
+    public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");
 
         this.id = id;
@@ -47,7 +54,7 @@ public class Track {
         this.original = original;
         this.number = number;
         this.duration = duration;
-        this.artists_legacy = artists_legacy;
+        this.artistsLegacy = artistsLegacy;
         this.url = url;
         this.description = description;
         this.image = image;

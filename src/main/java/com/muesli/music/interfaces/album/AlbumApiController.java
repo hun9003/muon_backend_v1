@@ -4,10 +4,7 @@ import com.muesli.music.application.album.AlbumFacade;
 import com.muesli.music.common.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -23,8 +20,8 @@ public class AlbumApiController {
      * @return
      */
     @GetMapping("/{id}")
-    public CommonResponse findAlbum(@PathVariable("id") Long albumId) {
-        var albumInfo = albumFacade.findAlbumInfo(albumId);
+    public CommonResponse findAlbum(@PathVariable("id") Long albumId, @RequestParam(value = "token", defaultValue = "") String usertoken) {
+        var albumInfo = albumFacade.findAlbumInfo(albumId, usertoken);
         var response = albumDtoMapper.of(albumInfo);
         return CommonResponse.success(response);
     }

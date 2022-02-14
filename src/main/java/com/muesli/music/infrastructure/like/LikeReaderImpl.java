@@ -15,7 +15,8 @@ public class LikeReaderImpl implements LikeReader {
 
     @Override
     public Like getLikeBy(Long userId, Long likeableId, String likeableType) {
+        System.out.println("LikeReaderImpl :: getLikeBy");
         return likeRepository.findByUserIdAndLikeableIdAndLikeableType(userId, likeableId, likeableType)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElse(new Like());
     }
 }

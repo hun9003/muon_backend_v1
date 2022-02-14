@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 
 @Getter
@@ -25,14 +26,13 @@ public class Like extends AbstractEntity {
     private Long userId;
     @Column(name = "likeable_type")
     private String likeableType;
-    private ZonedDateTime created_at;
 
     @Builder
     public Like(Long id, Long likeableId, Long userId, String likeableType) {
         if (id == null) throw new InvalidParamException("Like.id");
-        if (likeableId == null) throw new InvalidParamException("Like.likeable_id");
-        if (userId == null) throw new InvalidParamException("Like.user_id");
-        if (StringUtils.isBlank(likeableType)) throw new InvalidParamException("Like.likeable_type");
+        if (likeableId == null) throw new InvalidParamException("Like.likeableId");
+        if (userId == null) throw new InvalidParamException("Like.userId");
+        if (StringUtils.isBlank(likeableType)) throw new InvalidParamException("Like.likeableType");
 
         this.id = id;
         this.likeableId = likeableId;

@@ -21,8 +21,8 @@ public class UserInfo {
         private final String phoneNumber;
         private final Long alarm;
         private final int confirmed;
-//        private final Long alarmMidnight;
-//        private final String authType;
+        private final Long alarmMidnight;
+        private final String authType;
 
         public Main(User user) {
             System.out.println("UserInfo.Main :: Main");
@@ -33,8 +33,8 @@ public class UserInfo {
             this.phoneNumber = user.getPhoneNumber();
             this.alarm = user.getAlarm();
             this.confirmed = user.getConfirmed();
-//            this.alarmMidnight = user.alarmMidnight();
-//            this.auth_type = user.getAuth_type();
+            this.alarmMidnight = user.getAlarmMidnight();
+            this.authType = user.getAuthType();
         }
     }
 

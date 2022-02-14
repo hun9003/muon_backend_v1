@@ -44,4 +44,12 @@ public class UserServiceImpl implements UserService {
         var user = userReader.getUser(email);
         user.changeConfirmed();
     }
+
+    @Override
+    @Transactional
+    public void registerUserUuid(String email) {
+        System.out.println("UserServiceImpl :: registerUserUuid");
+        var user = userReader.getUser(email);
+        user.setUuid();
+    }
 }

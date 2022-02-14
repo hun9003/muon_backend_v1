@@ -15,6 +15,7 @@ public class UserInfo {
     @ToString
     public static class Main {
         private final Long id;
+        private final String uuid;
         private final String username;
         private final String email;
         private final String phoneNumber;
@@ -26,6 +27,7 @@ public class UserInfo {
         public Main(User user) {
             System.out.println("UserInfo.Main :: Main");
             this.id = user.getId();
+            this.uuid = user.getUuid();
             this.username = user.getUsername();
             this.email = user.getEmail();
             this.phoneNumber = user.getPhoneNumber();

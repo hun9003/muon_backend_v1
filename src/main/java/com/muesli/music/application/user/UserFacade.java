@@ -70,6 +70,9 @@ public class UserFacade {
         // 2. 이메일 인증이 되어있지 않다면 오류 던지기
 //        if (userinfo.getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
 
+        // 3. uuid 세팅이 되어있지 않다면 세팅하기
+        if (userinfo.getUuid() == null) userService.registerUserUuid(userinfo.getEmail());
+
         return userinfo;
     }
 

@@ -8,4 +8,6 @@ public interface UserService {
     UserInfo.Main loginUser(String email, String password);
 
     void changeConfirmed(String email);
+
+    void registerUserUuid(String email);
 }

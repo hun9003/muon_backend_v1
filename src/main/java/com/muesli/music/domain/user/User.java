@@ -2,6 +2,7 @@ package com.muesli.music.domain.user;
 
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.common.util.HashGenerator;
+import com.muesli.music.common.util.UUIDGenerator;
 import com.muesli.music.domain.AbstractEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,16 +22,21 @@ public class User extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "uuid")
+    private String uuid;
+    @Column(name = "username")
     private String username;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
     private Long alarm;
-//    @Column(name = "alarm_midnight")
-//    private Long alarmMidnight;
-//    @Column(name = "auth_type")
-//    private String authType;
+    @Column(name = "alarm_midnight")
+    private Long alarmMidnight;
+    @Column(name = "auth_type")
+    private String authType;
     @Column(name="confirmed")
     private int confirmed;
     @Column(name="confirmed_at")
@@ -53,5 +59,9 @@ public class User extends AbstractEntity {
     public void changeConfirmed() {
         this.confirmed = 1;
         this.confirmedAt = new Timestamp(System.currentTimeMillis());
+    }
+
+    public void setUuid() {
+        this.uuid = UUIDGenerator.makeUUID();
     }
 }

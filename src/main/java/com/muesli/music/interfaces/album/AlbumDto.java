@@ -1,14 +1,10 @@
 package com.muesli.music.interfaces.album;
 
-import com.muesli.music.domain.album.Album;
-import com.muesli.music.domain.album.AlbumInfo;
-import com.muesli.music.domain.like.Like;
+import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.sql.Timestamp;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public class AlbumDto {
@@ -23,9 +19,8 @@ public class AlbumDto {
         private final String releaseDate;
         private final String originalName;
         private final String image;
-        private final String artistId;
         private final String description;
-        private final AlbumInfo.LikeInfo likeInfo;
+        private final LikeDto.LikeInfo likeInfo;
         private final List<TrackInfo> trackList;
     }
 
@@ -46,14 +41,6 @@ public class AlbumDto {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
-        private final AlbumInfo.LikeInfo likeInfo;
-    }
-
-    @Getter
-    @Builder
-    @ToString
-    public static class LikeInfo {
-        private final Long id;
-        private final ZonedDateTime createdAt;
+        private final LikeDto.LikeInfo likeInfo;
     }
 }

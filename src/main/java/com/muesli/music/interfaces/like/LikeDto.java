@@ -12,11 +12,8 @@ public class LikeDto {
     @Getter
     @Builder
     @ToString
-    public static class Main {
+    public static class LikeInfo {
         private final Long id;
-        private final Long likeable_id;
-        private final Long user_id;
-        private final String likeable_type;
-        private final ZonedDateTime created_at;
+        private final ZonedDateTime createdAt;
     }
 }

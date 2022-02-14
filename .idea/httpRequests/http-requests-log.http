@@ -1,3 +1,55 @@
+GET http://localhost:8080/api/v1/artists/2125?token=d4243743538e9b86c862aee116f5dd411fbd300d
+Content-Type: application/json
+
+<> 2022-02-14T173937.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/2125?token=d4243743538e9b86c862aee116f5dd411fbd300d
+Content-Type: application/json
+
+<> 2022-02-14T173839.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1250?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-14T173715.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1250
+Content-Type: application/json
+
+<> 2022-02-14T173646.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+
+<> 2022-02-14T165546.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+
+<> 2022-02-14T152417.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+
+###
+
 GET http://localhost:8080/api/v1/albums/1809?token=268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
@@ -402,102 +454,6 @@ Content-Type: application/json
 }
 
 <> 2022-02-11T141508.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T140734.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T140346.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T140128.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T135909.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T135551.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T135448.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T135301.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T135043.500.json
 
 ###
 

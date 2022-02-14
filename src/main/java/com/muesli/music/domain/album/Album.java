@@ -3,6 +3,7 @@ package com.muesli.music.domain.album;
 import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
+import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.track.Track;
 import lombok.Builder;
@@ -21,6 +22,11 @@ public class Album extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "artist_id")
+    private Artist artist;
+
     @Column(name = "album_code")
     private String albumCode;
     @Column(name = "name")
@@ -31,8 +37,6 @@ public class Album extends AbstractEntity {
     private String originalName;
     @Column(name = "image")
     private String image;
-    @Column(name = "artist_id")
-    private String artistId;
     @Column(name = "description")
     private String description;
 
@@ -49,7 +53,6 @@ public class Album extends AbstractEntity {
         this.releaseDate = releaseDate;
         this.originalName = originalName;
         this.image = image;
-        this.artistId = artistId;
         this.description = description;
     }
 }

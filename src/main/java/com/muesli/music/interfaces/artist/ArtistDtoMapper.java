@@ -1,7 +1,7 @@
-package com.muesli.music.interfaces.like;
+package com.muesli.music.interfaces.artist;
 
-
-import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.interfaces.like.LikeDto;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -11,8 +11,10 @@ import org.mapstruct.ReportingPolicy;
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
-public interface LikeDtoMapper {
+public interface ArtistDtoMapper {
 
     // find
-    LikeDto.LikeInfo of(LikeInfo likeInfo);
+    ArtistDto.Main of(ArtistInfo.Main main);
+
+    LikeDto.LikeInfo of(LikeDto.LikeInfo like);
 }

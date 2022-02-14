@@ -1,6 +1,7 @@
 package com.muesli.music.domain.album;
 
 import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.Track;
 import lombok.Getter;
 import lombok.ToString;
@@ -19,7 +20,6 @@ public class AlbumInfo {
         private final String releaseDate;
         private final String originalName;
         private final String image;
-        private final String artistId;
         private final String description;
         private final List<TrackInfo> trackList;
         private final LikeInfo likeInfo;
@@ -31,11 +31,41 @@ public class AlbumInfo {
             this.releaseDate = album.getReleaseDate();
             this.originalName = album.getOriginalName();
             this.image = album.getImage();
-            this.artistId = album.getArtistId();
             this.description = album.getDescription();
             this.trackList = trackInfoList;
             this.likeInfo = likeInfo;
         }
+    }
+
+    /*
+        아티스트 내 앨범 리스트 조회를 위한 클래스 입니다.
+     */
+    @Getter
+    @ToString
+    public static class AlbumBasicInfo {
+        private final Long id;
+        private final String albumCode;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+        private final String description;
+        private LikeInfo likeInfo;
+
+        public AlbumBasicInfo(Album album) {
+            this.id = album.getId();
+            this.albumCode = album.getAlbumCode();
+            this.name = album.getName();
+            this.releaseDate = album.getReleaseDate();
+            this.originalName = album.getOriginalName();
+            this.image = album.getImage();
+            this.description = album.getDescription();
+        }
+
+        public void setLikeInfo(LikeInfo likeInfo) {
+            this.likeInfo = likeInfo;
+        }
+
     }
 
     @Getter
@@ -75,24 +105,6 @@ public class AlbumInfo {
 
         public void setLikeInfo(LikeInfo likeInfo) {
             this.likeInfo = likeInfo;
-        }
-    }
-
-    @Getter
-    @ToString
-    public static class LikeInfo {
-        private final Long id;
-//        private final Long likeable_id;
-//        private final Long user_id;
-//        private final String likeable_type;
-        private final ZonedDateTime createdAt;
-
-        public LikeInfo(Like like) {
-            this.id = like.getId();
-//            this.likeable_id = like.getLikeableId();
-//            this.user_id = like.getUserId();
-//            this.likeable_type = like.getLikeableType();
-            this.createdAt = like.getCreated_at();
         }
     }
 }

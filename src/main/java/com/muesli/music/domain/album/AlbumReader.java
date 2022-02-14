@@ -6,4 +6,5 @@ public interface AlbumReader {
     Album getAlbumBy(Long albumId);
 
     List<AlbumInfo.TrackInfo> getTrackList(Album album);
+
 }

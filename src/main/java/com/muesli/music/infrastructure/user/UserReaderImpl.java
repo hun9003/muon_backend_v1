@@ -34,4 +34,5 @@ public class UserReaderImpl implements UserReader {
         return userRepository.findByEmailAndPassword(email, password)
                 .orElseThrow(EntityNotFoundException::new);
     }
+
 }

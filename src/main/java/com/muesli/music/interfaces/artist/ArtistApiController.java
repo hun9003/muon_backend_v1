@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.artist;
 
 import com.muesli.music.application.artist.ArtistFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ public class ArtistApiController {
     private final ArtistDtoMapper artistDtoMapper;
 
     @GetMapping("/{id}")
-    public CommonResponse findArtist(@PathVariable("id") Long artistId, @RequestParam(value = "token", defaultValue = "") String usertoken) {
+    public CommonResponse retrieveArtist(@PathVariable("id") Long artistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
         var albumInfo = artistFacade.findArtistInfo(artistId, usertoken);
         var response = artistDtoMapper.of(albumInfo);
         return CommonResponse.success(response);

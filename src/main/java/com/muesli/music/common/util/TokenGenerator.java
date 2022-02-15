@@ -12,4 +12,8 @@ public class TokenGenerator {
     public static String randomCharacterWithPrefix(String prefix) {
         return prefix + randomCharacter(TOKEN_LENGTH - prefix.length());
     }
+
+    public static String getHeaderToken(String authorization) {
+        return authorization.replace("Bearer ", "");
+    }
 }

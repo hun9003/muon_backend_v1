@@ -1,15 +1,11 @@
 package com.muesli.music.application.user;
 
 import com.muesli.music.common.exception.BaseException;
-import com.muesli.music.common.exception.IllegalStatusException;
-import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.HashGenerator;
-import com.muesli.music.common.util.MailController;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserService;
-import com.muesli.music.domain.user.token.Usertoken;
 import com.muesli.music.domain.user.token.UsertokenCommand;
 import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
@@ -94,5 +90,6 @@ public class UserFacade {
         System.out.println("UserFacade :: changeUserConrimed");
         userService.changeConfirmed(email);
     }
+
 
 }

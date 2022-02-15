@@ -1,459 +1,522 @@
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T180212.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-15T180200.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf098520
+Content-Type: application/json
+
+<> 2022-02-15T180154.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-15T180053.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-15T180015.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf098520
+Content-Type: application/json
+
+<> 2022-02-15T180012.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T180001.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T175850.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/688
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-15T175523.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/1371
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-15T175439.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174757.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174436.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174345.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174303.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174154.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T174021.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173924.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173852.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: text/html; charset=utf-8
+
+likeableId=1371&likeableType=App%5C%5CAlbum
+
+<> 2022-02-15T173805.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+likeableId=1371&likeableType=App%5C%5CAlbum
+
+<> 2022-02-15T173733.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173609.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173515.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173432.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-15T173358.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T173319.400.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T173301.400.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T173112.400.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T172925.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T172906.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T172701.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : 1371,
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T172644.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : "1371",
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T172541.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : "1371",
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T171550.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : "1371",
+  "likeabelType" : "App\\Album"
+}
+
+<> 2022-02-15T171542.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+{
+  "likeableId" : "1371",
+  "likeabelType" : "App\\Album"
+}
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T160121.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T120807.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T120731.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/2125
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-02-15T120242.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T120119.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T115908.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T115857.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T115601.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T115531.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T115046.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T114959.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809?token=268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-15T114954.200.json
+
+###
+
 GET http://localhost:8080/api/v1/artists/2125?token=d4243743538e9b86c862aee116f5dd411fbd300d
 Content-Type: application/json
 
-<> 2022-02-14T173937.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/2125?token=d4243743538e9b86c862aee116f5dd411fbd300d
-Content-Type: application/json
-
-<> 2022-02-14T173839.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/1250?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T173715.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/1250
-Content-Type: application/json
-
-<> 2022-02-14T173646.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-
-<> 2022-02-14T165546.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-
-<> 2022-02-14T152417.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
+<> 2022-02-15T113337.200.json
 
 ###
 
 GET http://localhost:8080/api/v1/albums/1809?token=268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
-<> 2022-02-14T152159.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T151946.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T145147.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T145138.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T145006.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T144837.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T144750.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T144746.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377
-Content-Type: application/json
-
-<> 2022-02-14T144549.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T144525.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/3377?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T144420.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T144045.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T143913.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T143802.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370?usertoken=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-14T143729.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T143656.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T143649.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T143629.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T143454.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T143447.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T131945.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1370
-Content-Type: application/json
-
-<> 2022-02-14T131818.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-11T162211.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-11T161458.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678321321"
-}
-
-<> 2022-02-11T160132.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-11T155959.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T155518.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": " ",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T154205.400.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": " ",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T154122.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T154110.400.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-11T151912.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T151852.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T151724.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T151602.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T151527.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T151106.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892@gmail.com",
-  "password": "12345678",
-  "username": "실험체232",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-11T150852.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T142110.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T141941.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T141724.500.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-02-11T141508.500.json
+<> 2022-02-15T113108.200.json
 
 ###
 

@@ -5,7 +5,7 @@ public interface UserService {
 
     UserInfo.Main findUserInfo(String email);
 
-    UserInfo.Main loginUser(String email, String password);
+    UserInfo.UsertokenInfo loginUser(String email, String password);
 
     void changeConfirmed(String email);
 

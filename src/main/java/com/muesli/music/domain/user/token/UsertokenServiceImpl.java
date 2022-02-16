@@ -18,16 +18,16 @@ public class UsertokenServiceImpl implements UsertokenService{
     public UserInfo.UsertokenInfo findUsertokenInfo(String token) {
         System.out.println("UsertokenServiceImpl :: findUsertokenInfo");
         var usertoken = usertokenReader.getUsertoken(token);
-        var user = new UserInfo.Main(userReader.getUser(usertoken.getUserId() != null ? usertoken.getUserId() : 0));
+        var user = new UserInfo.Main(userReader.getUser(usertoken.getUser()));
         return new UserInfo.UsertokenInfo(usertoken, user);
     }
 
     @Override
     public UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command) {
         System.out.println("UsertokenServiceImpl :: registerUsertoken");
-        var initUsertoken = command.toEntity(command.getUserId());
+        var initUsertoken = command.toEntity(command.getUser());
         var userToken = usertokenStore.store(initUsertoken);
-        var user = new UserInfo.Main(userReader.getUser(command.getUserId()));
+        var user = new UserInfo.Main(userReader.getUser(command.getUser()));
         return new UserInfo.UsertokenInfo(userToken, user);
     }
 }

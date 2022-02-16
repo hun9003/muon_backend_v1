@@ -1,0 +1,6 @@
+{
+  "result": "FAIL",
+  "data": null,
+  "message": "요청한 값이 올바르지 않습니다.",
+  "errorCode": "COMMON_INVALID_PARAMETER"
+}

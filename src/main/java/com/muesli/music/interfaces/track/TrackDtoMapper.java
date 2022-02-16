@@ -1,25 +1,23 @@
-package com.muesli.music.interfaces.album;
+package com.muesli.music.interfaces.track;
 
-import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.interfaces.like.LikeDto;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import com.muesli.music.domain.track.TrackInfo;
 
 @Mapper(
         componentModel = "spring",
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
-public interface AlbumDtoMapper {
+public interface TrackDtoMapper {
 
     // find
-    AlbumDto.Main of(AlbumInfo.Main main);
+    TrackDto.Main of(TrackInfo.Main main);
 
     LikeDto.LikeInfo of(LikeInfo like);
 
-    AlbumDto.TrackInfo of(TrackInfo.Main track);
-
+    TrackDto.LyricsInfo of(TrackInfo.LyricsInfo lyrics);
 }

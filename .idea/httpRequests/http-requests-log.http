@@ -1,3 +1,199 @@
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345674128"
+}
+
+<> 2022-02-16T143313.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-16T143259.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-16T142504.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-16T142329.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디2",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-16T142323.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디2",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-16T142128.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디2",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-16T142103.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-16T135250.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디2",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-02-16T135242.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921@gmail.com",
+  "password": "12345678",
+  "username": "테스트아이디",
+  "phoneNumber": "010-0000-0000"
+}
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T132840.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/5621
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T132821.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/5621
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T132721.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T132644.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T115854.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-02-16T114536.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/2125
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-02-16T114532.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-02-16T113323.200.json
+
+###
+
 POST http://localhost:8080/api/v1/likes/like
 authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
 Content-Type: application/json
@@ -364,159 +560,6 @@ Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 }
 
 <> 2022-02-15T172541.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-{
-  "likeableId" : "1371",
-  "likeabelType" : "App\\Album"
-}
-
-<> 2022-02-15T171550.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-{
-  "likeableId" : "1371",
-  "likeabelType" : "App\\Album"
-}
-
-<> 2022-02-15T171542.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-{
-  "likeableId" : "1371",
-  "likeabelType" : "App\\Album"
-}
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T160121.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T120807.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T120731.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/2125
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-02-15T120242.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T120119.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T115908.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T115857.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T115601.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T115531.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T115046.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T114959.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-Access-Control-Request-Headers: Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-15T114954.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/2125?token=d4243743538e9b86c862aee116f5dd411fbd300d
-Content-Type: application/json
-
-<> 2022-02-15T113337.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809?token=268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-15T113108.200.json
 
 ###
 

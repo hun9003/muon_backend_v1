@@ -25,8 +25,9 @@ public class Usertoken extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String token;
     private Long exp;
@@ -35,12 +36,12 @@ public class Usertoken extends AbstractEntity {
     private Timestamp uploadAt;
 
     @Builder
-    public Usertoken(Long userId, String token, Long exp, Timestamp uploadAt) {
-        if (userId == null) throw new InvalidParamException("empty username");
+    public Usertoken(User user, String token, Long exp, Timestamp uploadAt) {
+        if (user == null) throw new InvalidParamException("empty user");
         if (StringUtils.isEmpty(token)) throw new InvalidParamException("empty token");
         if (exp == null) throw new InvalidParamException("empty exp");
         if (uploadAt == null) throw new InvalidParamException("empty uploadAt");
-        this.userId = userId;
+        this.user = user;
         this.token = token;
         this.exp = exp;
         this.uploadAt = uploadAt;

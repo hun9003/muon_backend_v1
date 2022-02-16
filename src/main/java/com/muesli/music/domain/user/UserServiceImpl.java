@@ -1,5 +1,7 @@
 package com.muesli.music.domain.user;
 
+import com.muesli.music.domain.user.token.UsertokenCommand;
+import com.muesli.music.domain.user.token.UsertokenStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     private final UserStore userStore;
     private final UserReader userReader;
+    private final UsertokenStore usertokenStore;
 
     @Override
     @Transactional
@@ -30,11 +33,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public UserInfo.Main loginUser(String email, String password) {
+    @Transactional
+    public UserInfo.UsertokenInfo loginUser(String email, String password) {
         System.out.println("UserServiceImpl :: loginUser");
         var user = userReader.getUser(email, password);
-        return new UserInfo.Main(user);
+        var initUsertoken = UsertokenCommand.makeToken(user);
+        var usertoken = usertokenStore.store(initUsertoken);
+        return new UserInfo.UsertokenInfo(usertoken, new UserInfo.Main(user));
     }
 
     @Override

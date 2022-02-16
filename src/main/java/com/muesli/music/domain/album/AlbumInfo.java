@@ -1,13 +1,12 @@
 package com.muesli.music.domain.album;
 
-import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
-import com.muesli.music.domain.track.Track;
 import lombok.Getter;
 import lombok.ToString;
+import com.muesli.music.domain.track.TrackInfo;
 
-import java.time.ZonedDateTime;
 import java.util.List;
+
 
 public class AlbumInfo {
 
@@ -21,10 +20,10 @@ public class AlbumInfo {
         private final String originalName;
         private final String image;
         private final String description;
-        private final List<TrackInfo> trackList;
+        private final List<TrackInfo.Main> trackList;
         private final LikeInfo likeInfo;
 
-        public Main(Album album, List<TrackInfo> trackInfoList, LikeInfo likeInfo) {
+        public Main(Album album, List<TrackInfo.Main> trackInfoList, LikeInfo likeInfo) {
             this.id = album.getId();
             this.albumCode = album.getAlbumCode();
             this.name = album.getName();
@@ -68,43 +67,4 @@ public class AlbumInfo {
 
     }
 
-    @Getter
-    @ToString
-    public static class TrackInfo {
-        private final Long id;
-        private final String name;
-        private final String original;
-        private final Long number;
-        private final Long duration;
-        private final String artistsLegacy;
-        private final String url;
-        private final String description;
-        private final String image;
-        private final String composer;
-        private final String lyricser;
-        private final String arranger;
-        private final Long adult;
-        private LikeInfo likeInfo;
-
-
-        public TrackInfo(Track track) {
-            this.id = track.getId();
-            this.name = track.getName();
-            this.original = track.getOriginal();
-            this.number = track.getNumber();
-            this.duration = track.getDuration();
-            this.artistsLegacy = track.getArtistsLegacy();
-            this.url = track.getUrl();
-            this.description = track.getDescription();
-            this.image = track.getImage();
-            this.composer = track.getComposer();
-            this.lyricser = track.getLyricser();
-            this.arranger = track.getArranger();
-            this.adult = track.getAdult();
-        }
-
-        public void setLikeInfo(LikeInfo likeInfo) {
-            this.likeInfo = likeInfo;
-        }
-    }
 }

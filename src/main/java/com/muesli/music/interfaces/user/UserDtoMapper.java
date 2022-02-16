@@ -1,7 +1,6 @@
 package com.muesli.music.interfaces.user;
 
 import com.muesli.music.domain.user.UserCommand;
-import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenCommand;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;

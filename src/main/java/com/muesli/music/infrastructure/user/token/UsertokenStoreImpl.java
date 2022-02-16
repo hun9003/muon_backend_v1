@@ -18,7 +18,7 @@ public class UsertokenStoreImpl implements UsertokenStore {
     @Transactional
     public Usertoken store(Usertoken usertoken) {
         System.out.println("UsertokenStoreImpl :: store");
-        if (usertoken.getUserId() == null) throw new InvalidParamException("Usertoken.UserId");
+        if (usertoken.getUser() == null) throw new InvalidParamException("Usertoken.User");
         return usertokenRepository.save(usertoken);
     }
 }

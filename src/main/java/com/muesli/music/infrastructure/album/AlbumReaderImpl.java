@@ -2,12 +2,11 @@ package com.muesli.music.infrastructure.album;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.domain.album.Album;
-import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
+import com.muesli.music.domain.track.TrackInfo;
 import java.util.stream.Collectors;
 
 import java.util.List;
@@ -25,9 +24,9 @@ public class AlbumReaderImpl implements AlbumReader {
     }
 
     @Override
-    public List<AlbumInfo.TrackInfo> getTrackList(Album album) {
+    public List<TrackInfo.Main> getTrackList(Album album) {
         var trackList = album.getTrackList();
-        return trackList.stream().map(AlbumInfo.TrackInfo::new).collect(Collectors.toList());
+        return trackList.stream().map(TrackInfo.Main::new).collect(Collectors.toList());
     }
 
 }

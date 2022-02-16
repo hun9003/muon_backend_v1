@@ -25,6 +25,7 @@ public class UserApiController {
     @PostMapping
     public CommonResponse registerUser(@RequestBody @Valid UserDto.RegisterUser request) {
         var command = userDtoMapper.of(request);
+        System.out.println(command.toString());
         var userInfo = userFacade.registerUser(command);
         var response = new UserDto.RegisterResponse(userInfo);
         return CommonResponse.success(response);
@@ -37,10 +38,7 @@ public class UserApiController {
      */
     @PostMapping("/login")
     public CommonResponse loginUser(@RequestBody @Valid UserDto.LoginUser request) {
-        var userInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
-        var usertokenRequest = new UserTokenDto.RegisterUserToken(userInfo.getId());
-        var usertokenCommand = userDtoMapper.of(usertokenRequest);
-        var usertokenInfo = userFacade.registerUsertoken(usertokenCommand);
+        var usertokenInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
         var response = new UserDto.LoginResponse(usertokenInfo);
         return CommonResponse.success(response);
     }

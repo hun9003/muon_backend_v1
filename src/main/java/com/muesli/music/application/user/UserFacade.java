@@ -58,18 +58,18 @@ public class UserFacade {
      * @param password 패스워드
      * @return
      */
-    public UserInfo.Main loginUser(String email, String password) {
+    public UserInfo.UsertokenInfo loginUser(String email, String password) {
         System.out.println("UserFacade :: loginUser");
-        // 1. 아이디, 비밀번호가 일치하는지 확인
-        var userinfo = userService.loginUser(email, HashGenerator.hashPassword(email, password));
+        // 1. 아이디, 비밀번호가 일치하는지 확인 후 일치하면 토큰 생성
+        var usertokenInfo = userService.loginUser(email, HashGenerator.hashPassword(email, password));
 
         // 2. 이메일 인증이 되어있지 않다면 오류 던지기
 //        if (userinfo.getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
 
         // 3. uuid 세팅이 되어있지 않다면 세팅하기
-        if (userinfo.getUuid() == null) userService.registerUserUuid(userinfo.getEmail());
+        if (usertokenInfo.getUserInfo().getUuid() == null) userService.registerUserUuid(usertokenInfo.getUserInfo().getEmail());
 
-        return userinfo;
+        return usertokenInfo;
     }
 
     /**

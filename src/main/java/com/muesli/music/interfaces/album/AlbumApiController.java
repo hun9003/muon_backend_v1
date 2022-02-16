@@ -22,6 +22,7 @@ public class AlbumApiController {
      */
     @GetMapping("/{id}")
     public CommonResponse retrieveAlbum(@PathVariable("id") Long albumId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("AlbumApiController :: retrieveAlbum");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var albumInfo = albumFacade.findAlbumInfo(albumId, usertoken);
         var response = albumDtoMapper.of(albumInfo);

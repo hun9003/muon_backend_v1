@@ -17,6 +17,7 @@ public class AlbumFacade {
     private final UsertokenService usertokenService;
 
     public AlbumInfo.Main findAlbumInfo(Long albumId, String usertoken) {
+        System.out.println("AlbumFacade :: findAlbumInfo");
         var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
         return albumService.findAlbumInfo(albumId, usertokenInfo.getUserInfo());
     }

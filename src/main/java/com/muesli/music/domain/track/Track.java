@@ -3,6 +3,7 @@ package com.muesli.music.domain.track;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -45,6 +46,9 @@ public class Track {
     private String arranger;
     @Column(name = "adult")
     private Long adult;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
+    private Lyrics lyrics;
 
     public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");

@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 public class UserReaderImpl implements UserReader {
     private final UserRepository userRepository;
     @Override
-    public User getUser(Long userId) {
+    public User getUser(User user) {
         System.out.println("UserReaderImpl :: getUser");
-        return userRepository.findById(userId)
+        return userRepository.findById(user.getId())
                 .orElse(new User());
     }
 

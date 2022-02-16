@@ -4,11 +4,6 @@ import com.muesli.music.domain.user.token.Usertoken;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.sql.Timestamp;
-
 @Getter
 public class UserInfo {
     @Getter

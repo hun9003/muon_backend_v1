@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public class LikeDto {
 
@@ -20,6 +21,23 @@ public class LikeDto {
         private final Long id;
         private final int isLike;
         private final ZonedDateTime createdAt;
+        private final Long likeCount;
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class LikeItemInfo {
+        private final Long id;
+        private final Long likeableId;
+        private final ZonedDateTime createdAt;
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class LikeInfoList {
+        private final List<LikeItemInfo> likeInfoList;
     }
 
     @Getter

@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
     private final UserReader userReader;
     private final UsertokenStore usertokenStore;
 
+    /**
+     * 유저 정보 저장
+     * @param command
+     * @return
+     */
     @Override
     @Transactional
     public UserInfo.Main registerUser(UserCommand command) {
@@ -24,6 +29,11 @@ public class UserServiceImpl implements UserService {
         return new UserInfo.Main(user);
     }
 
+    /**
+     * 유저 정보 조회
+     * @param email
+     * @return
+     */
     @Override
     @Transactional(readOnly = true)
     public UserInfo.Main findUserInfo(String email) {
@@ -32,6 +42,12 @@ public class UserServiceImpl implements UserService {
         return new UserInfo.Main(user);
     }
 
+    /**
+     * 유저 로그인
+     * @param email
+     * @param password
+     * @return
+     */
     @Override
     @Transactional
     public UserInfo.UsertokenInfo loginUser(String email, String password) {
@@ -42,6 +58,10 @@ public class UserServiceImpl implements UserService {
         return new UserInfo.UsertokenInfo(usertoken, new UserInfo.Main(user));
     }
 
+    /**
+     * 유저 이메일 인증 처리
+     * @param email
+     */
     @Override
     @Transactional
     public void changeConfirmed(String email) {

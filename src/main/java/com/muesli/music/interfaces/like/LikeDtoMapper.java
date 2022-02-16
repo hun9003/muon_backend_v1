@@ -7,6 +7,8 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(
         componentModel = "spring",
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
@@ -18,5 +20,8 @@ public interface LikeDtoMapper {
 
     // find
     LikeDto.LikeInfo of(LikeInfo likeInfo);
+
+    LikeDto.LikeItemInfo ofItem(LikeInfo likeInfo);
+
 
 }

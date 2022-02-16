@@ -15,6 +15,8 @@ public class LikeInfo {
     private final ZonedDateTime createdAt;
     private final int isLike;
 
+    private Long likeCount;
+
     public LikeInfo(Like like) {
         this.id = like.getId();
         this.likeableId = like.getLikeableId();
@@ -22,5 +24,15 @@ public class LikeInfo {
         this.likeableType = like.getLikeableType();
         this.isLike = like.getIsLike();
         this.createdAt = like.getCreated_at();
+    }
+
+    public LikeInfo(Like like, Long likeCount) {
+        this.id = like.getId();
+        this.likeableId = like.getLikeableId();
+        this.userId = like.getUserId();
+        this.likeableType = like.getLikeableType();
+        this.isLike = like.getIsLike();
+        this.createdAt = like.getCreated_at();
+        this.likeCount = likeCount;
     }
 }

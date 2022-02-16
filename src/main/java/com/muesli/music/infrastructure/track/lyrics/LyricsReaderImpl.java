@@ -15,7 +15,7 @@ public class LyricsReaderImpl implements LyricsReader {
     private final LyricsRepository lyricsRepository;
 
     @Override
-    public Lyrics findLyricsByTrack(Track track) {
+    public Lyrics getLyricsByTrack(Track track) {
         System.out.println("LyricsReaderImpl :: findLyricsByTrack");
         return lyricsRepository.findLyricsByTrack(track)
                 .orElse(new Lyrics());

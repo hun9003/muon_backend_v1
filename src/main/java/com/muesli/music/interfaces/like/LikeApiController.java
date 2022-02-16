@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -17,6 +18,17 @@ public class LikeApiController {
     private final LikeDtoMapper likeDtoMapper;
     private final LikeFacade likeFacade;
 
+
+    @GetMapping("/likeables/track")
+    public CommonResponse retrieveLikeListInfo(@RequestParam("likeableType") String likeableType,
+                                               @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("LikeApiController :: retrieveLikeListInfo");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var likeInfoList = likeFacade.retrieveLikeInfoList(likeableType, usertoken);
+        var likeInfoDtoList = likeInfoList.stream().map(likeDtoMapper::ofItem).collect(Collectors.toList());
+        var response = new LikeDto.LikeInfoList(likeInfoDtoList);
+        return CommonResponse.success(response);
+    }
     /**
      * 좋아요 POST
      * @param request

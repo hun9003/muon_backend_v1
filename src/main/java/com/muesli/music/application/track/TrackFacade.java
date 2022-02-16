@@ -16,7 +16,9 @@ public class TrackFacade {
 
     public TrackInfo.Main findTrackInfo(Long trackId, String usertoken) {
         System.out.println("TrackFacade :: findTrackInfo");
+        // 유저 토큰 조회
         var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
+        // 트랙 조회
         return trackService.findTrackInfo(trackId, usertokenInfo.getUserInfo());
     }
 }

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -27,7 +28,8 @@ public class LikeServiceImpl implements LikeService {
     public LikeInfo findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken) {
         System.out.println("LikeServiceImpl :: findLikeBy");
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
-        return new LikeInfo(likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType()));
+        var likeCount = likeReader.getLikeCount(command.getLikeableId(), command.getLikeableType());
+        return new LikeInfo(likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
     }
 
     /**
@@ -68,11 +70,24 @@ public class LikeServiceImpl implements LikeService {
     public void changeDisLike(Long likeId, String usertoken) {
         System.out.println("LikeServiceImpl :: changeDisLike");
         var user = usertokenReader.getUsertoken(usertoken);
-        var like = likeReader.getLikyBy(likeId);
+        var like = likeReader.getLikeBy(likeId);
         if(Objects.equals(user.getUser().getId(), like.getUserId())) {
             like.doDisLike();
         } else {
             throw new InvalidParamException("토큰이 유효하지 않습니다.");
         }
+    }
+
+    /**
+     * 좋아요 리스트 조회
+     * @param likeableType
+     * @param usertoken
+     * @return
+     */
+    @Override
+    public List<LikeInfo> getLikeList(String likeableType, String usertoken) {
+        System.out.println("LikeServiceImpl :: getLikeList");
+        var user = usertokenReader.getUsertoken(usertoken);
+        return likeReader.getLikeList(likeableType, user.getId());
     }
 }

@@ -35,7 +35,8 @@ public class ArtistServiceImpl implements ArtistService{
                 }
         );
 
-        var artistLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), artistId, "App\\Artist"));
+        var artistLikecount = likeReader.getLikeCount(artist.getId(), "App\\Artist");
+        var artistLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
         return new ArtistInfo.Main(artist, albumList, artistLikeInfo);
     }
 

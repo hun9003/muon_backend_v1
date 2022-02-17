@@ -88,6 +88,6 @@ public class LikeServiceImpl implements LikeService {
     public List<LikeInfo> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeList");
         var user = usertokenReader.getUsertoken(usertoken);
-        return likeReader.getLikeList(likeableType, user.getId());
+        return likeReader.getLikeList(likeableType, user.getUser().getId());
     }
 }

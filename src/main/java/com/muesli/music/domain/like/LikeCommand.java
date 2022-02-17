@@ -16,21 +16,14 @@ public class LikeCommand {
         private final Long userId;
         private final String likeableType;
         private final Long likeableId;
-        private final Track track;
-        private final Album album;
-        private final Artist artist;
 
         public Like toEntity(Long userId) {
             System.out.println("LikeCommand :: toEntity");
             var like = Like.builder()
                     .userId(userId)
+                    .likeableId(likeableId)
                     .likeableType(likeableType);
 
-            switch (likeableType) {
-                case "App\\Track": like.item(track);break;
-                case "App\\Album": like.item(album);break;
-                case "App\\Artist": like.item(artist);break;
-            }
             return like.build();
         }
     }

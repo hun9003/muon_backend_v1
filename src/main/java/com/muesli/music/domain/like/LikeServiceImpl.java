@@ -25,11 +25,11 @@ public class LikeServiceImpl implements LikeService {
      * @return 좋아요 정보
      */
     @Override
-    public LikeInfo findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken) {
+    public LikeInfo.Main findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken) {
         System.out.println("LikeServiceImpl :: findLikeBy");
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
         var likeCount = likeReader.getLikeCount(command.getLikeableId(), command.getLikeableType());
-        return new LikeInfo(likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
+        return new LikeInfo.Main(likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
     }
 
     /**
@@ -85,7 +85,7 @@ public class LikeServiceImpl implements LikeService {
      * @return
      */
     @Override
-    public List<LikeInfo> getLikeList(String likeableType, String usertoken) {
+    public List<LikeInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeList");
         var user = usertokenReader.getUsertoken(usertoken);
         return likeReader.getLikeList(likeableType, user.getUser().getId());

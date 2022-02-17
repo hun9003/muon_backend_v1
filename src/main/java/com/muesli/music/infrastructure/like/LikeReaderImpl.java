@@ -24,21 +24,7 @@ public class LikeReaderImpl implements LikeReader {
     public Like getLikeBy(Long userId, Long likeableId, String likeableType) {
         System.out.println("LikeReaderImpl :: getLikeBy");
         Like like = null;
-        System.out.println(likeableType);
-        switch (likeableType) {
-            case "App\\Track":
-                var track = new Track(likeableId);
-                like = likeRepository.findByUserIdAndTrackAndLikeableType(userId, track, likeableType).orElse(new Like());
-                break;
-            case "App\\Album":
-                var album = new Album(likeableId);
-                like = likeRepository.findByUserIdAndAlbumAndLikeableType(userId, album, likeableType).orElse(new Like());
-                break;
-            case "App\\Artist": ;
-                var artist = new Artist(likeableId);
-                like = likeRepository.findByUserIdAndArtistAndLikeableType(userId, artist, likeableType).orElse(new Like());
-                break;
-        }
+
 //        return likeRepository.findByUserIdAndLikeableIdAndLikeableType(userId, likeableId, likeableType).orElse(new Like());
 
         return like;

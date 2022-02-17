@@ -31,12 +31,12 @@ public class AlbumServiceImpl implements AlbumService {
         trackList.forEach(
                 trackInfo -> {
                     var trackLikeCount = likeReader.getLikeCount(trackInfo.getId(), "App\\Track");
-                    var trackLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), trackInfo.getId(), "App\\Track"), trackLikeCount);
+                    var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), trackInfo.getId(), "App\\Track"), trackLikeCount);
                     trackInfo.setLikeInfo(trackLikeInfo);
                 }
         );
         var albumLikeCount = likeReader.getLikeCount(album.getId(), "App\\Album");
-        var albumLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), album.getId(), "App\\Album"), albumLikeCount);
+        var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), album.getId(), "App\\Album"), albumLikeCount);
         return new AlbumInfo.Main(album, trackList, albumLikeInfo);
     }
 
@@ -47,8 +47,8 @@ public class AlbumServiceImpl implements AlbumService {
      * @return
      */
     @Override
-    public LikeInfo findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo) {
+    public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo) {
         System.out.println("AlbumServiceImpl :: findLikeBy");
-        return new LikeInfo(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"));
+        return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"));
     }
 }

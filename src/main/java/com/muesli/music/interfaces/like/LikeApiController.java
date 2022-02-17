@@ -20,14 +20,10 @@ public class LikeApiController {
 
 
     @GetMapping("/likeables/track")
-    public CommonResponse retrieveLikeListInfo(@RequestParam("likeableType") String likeableType,
-                                               @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+    public CommonResponse retrieveLikeListInfo(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("LikeApiController :: retrieveLikeListInfo");
-        usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var likeInfoList = likeFacade.retrieveLikeInfoList(likeableType, usertoken);
-        var likeInfoDtoList = likeInfoList.stream().map(likeDtoMapper::ofItem).collect(Collectors.toList());
-        var response = new LikeDto.LikeInfoList(likeInfoDtoList);
-        return CommonResponse.success(response);
+
+        return CommonResponse.success("OK");
     }
     /**
      * 좋아요 POST
@@ -38,8 +34,8 @@ public class LikeApiController {
     @PostMapping("/like")
     public CommonResponse doLike(@RequestBody @Valid LikeDto.RegisterLike request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("LikeApiController :: doLike");
-        var likeCommand = likeDtoMapper.of(request);
         usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var likeCommand = request.toCommand();
         likeFacade.doLike(likeCommand, usertoken);
         return CommonResponse.success("OK");
     }

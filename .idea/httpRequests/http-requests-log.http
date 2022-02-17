@@ -1,3 +1,422 @@
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T164431.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T162706.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T162549.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T162114.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T162016.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T162010.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T161805.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 2742,
+  "likeableType" : "App\\Artist"
+}
+
+<> 2022-02-17T161751.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 2741,
+  "likeableType" : "App\\Artist"
+}
+
+<> 2022-02-17T161743.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/692
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-02-17T161624.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/692
+authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
+Content-Type: application/json
+
+<> 2022-02-17T161618.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 2742,
+  "likeableType" : "App\\Artist"
+}
+
+<> 2022-02-17T161602.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T161544.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-02-17T161519.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T161449.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T160805.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1371,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T160634.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T155746.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T155648.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T155220.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154829.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154725.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154647.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154301.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154232.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T154009.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T153744.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T153646.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T153538.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T153343.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T153209.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T135549.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 1372,
+  "likeableType" : "App\\Album"
+}
+
+<> 2022-02-17T135308.500.json
+
+###
+
 GET http://localhost:8080/api/v1/tracks/42860
 Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
@@ -131,342 +550,6 @@ authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 <> 2022-02-16T171706.200.json
-
-###
-
-GET http://localhost:8080/api/v1/likes/likeables?likeableType=App\Album
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-16T171646.200.json
-
-###
-
-GET http://localhost:8080/api/v1/likes/likeables?likeableType=App\Track
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-16T171552.200.json
-
-###
-
-GET http://localhost:8080/api/v1/likes/likeables?likeableType=App\Track
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-16T171156.200.json
-
-###
-
-GET http://localhost:8080/api/v1/likes/likeables?likeableType=App\Track
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-16T171139.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345674128"
-}
-
-<> 2022-02-16T143313.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-16T143259.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-16T142504.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-16T142329.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디2",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-16T142323.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디2",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-16T142128.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디2",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-16T142103.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-16T135250.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디2",
-  "phoneNumber": "010-0000-0000"
-}
-
-<> 2022-02-16T135242.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921@gmail.com",
-  "password": "12345678",
-  "username": "테스트아이디",
-  "phoneNumber": "010-0000-0000"
-}
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T132840.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/5621
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T132821.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/5621
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T132721.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T132644.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T115854.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-16T114536.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/2125
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-02-16T114532.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "jinhun3892@gmail.com",
-  "password": "12345678"
-}
-
-<> 2022-02-16T113323.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-{
-  "likeableId" : 1371,
-  "likeableType" : "App\\Album"
-}
-
-<> 2022-02-15T180212.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-15T180200.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf098520
-Content-Type: application/json
-
-<> 2022-02-15T180154.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-15T180053.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-15T180015.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf098520
-Content-Type: application/json
-
-<> 2022-02-15T180012.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-{
-  "likeableId" : 1371,
-  "likeableType" : "App\\Album"
-}
-
-<> 2022-02-15T180001.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-{
-  "likeableId" : 1371,
-  "likeableType" : "App\\Album"
-}
-
-<> 2022-02-15T175850.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/688
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-15T175523.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/1371
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-<> 2022-02-15T175439.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer fe54cc327c8440f7dcdab4ca0868c0dbf0985207
-Content-Type: application/json
-
-{
-  "likeableId" : 1371,
-  "likeableType" : "App\\Album"
-}
-
-<> 2022-02-15T174757.200.json
 
 ###
 

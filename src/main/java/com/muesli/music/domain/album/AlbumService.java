@@ -6,5 +6,5 @@ import com.muesli.music.domain.user.UserInfo;
 public interface AlbumService {
     AlbumInfo.Main findAlbumInfo(Long albumId, UserInfo.Main userInfo);
 
-    LikeInfo findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo);
+    LikeInfo.Main findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo);
 }

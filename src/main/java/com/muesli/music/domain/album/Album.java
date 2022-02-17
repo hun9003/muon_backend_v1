@@ -43,6 +43,9 @@ public class Album extends AbstractEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Track> trackList = Lists.newArrayList();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
+    private List<Like> likeList = Lists.newArrayList();
+
     @Builder
     public Album(Long id, String albumCode, String name, String releaseDate, String originalName, String image, String artistId, String description) {
         if (id == null) throw new InvalidParamException("Albums.id");
@@ -54,5 +57,12 @@ public class Album extends AbstractEntity {
         this.originalName = originalName;
         this.image = image;
         this.description = description;
+    }
+
+    @Builder
+    public Album(Long id) {
+        if (id == null) throw new InvalidParamException("Albums.id");
+
+        this.id = id;
     }
 }

@@ -3,6 +3,7 @@ package com.muesli.music.domain.artist;
 import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
+import com.muesli.music.domain.like.Like;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,6 +46,9 @@ public class Artist {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     private List<Album> albumList = Lists.newArrayList();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
+    private List<Like> likeList = Lists.newArrayList();
+
     @Builder
     public Artist(Long id, String name, String originalName, String englishName, String image, String birthday, String country, Long debut, String agency, String label, int views, String imageSmall) {
         if (id == null) throw new InvalidParamException("Artist.id");
@@ -61,5 +65,12 @@ public class Artist {
         this.label = label;
         this.views = views;
         this.imageSmall = imageSmall;
+    }
+
+    @Builder
+    public Artist(Long id) {
+        if (id == null) throw new InvalidParamException("Artist.id");
+
+        this.id = id;
     }
 }

@@ -25,7 +25,7 @@ public class TrackInfo {
         private final String arranger;
         private final Long adult;
         private final LyricsInfo lyricsInfo;
-        private LikeInfo likeInfo;
+        private LikeInfo.Main likeInfo;
 
         public Main(Track track) {
             this.id = track.getId();
@@ -44,7 +44,7 @@ public class TrackInfo {
             this.lyricsInfo = null;
         }
 
-        public Main(Track track, LyricsInfo lyricsInfo, LikeInfo likeInfo) {
+        public Main(Track track, LyricsInfo lyricsInfo, LikeInfo.Main likeInfo) {
             this.id = track.getId();
             this.original = track.getOriginal();
             this.name = track.getName();
@@ -62,7 +62,7 @@ public class TrackInfo {
             this.lyricsInfo = lyricsInfo;
         }
 
-        public void setLikeInfo(LikeInfo likeInfo) {
+        public void setLikeInfo(LikeInfo.Main likeInfo) {
             this.likeInfo = likeInfo;
         }
     }

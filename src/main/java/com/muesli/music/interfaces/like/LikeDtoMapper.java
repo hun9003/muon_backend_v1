@@ -19,9 +19,9 @@ public interface LikeDtoMapper {
     LikeCommand.RegisterLikeRequest of(LikeDto.RegisterLike request);
 
     // find
-    LikeDto.LikeInfo of(LikeInfo likeInfo);
+    LikeDto.LikeInfo of(LikeInfo.Main likeInfo);
 
-    LikeDto.LikeItemInfo ofItem(LikeInfo likeInfo);
+    LikeDto.LikeItemInfo ofItem(LikeInfo.Main likeInfo);
 
 
 }

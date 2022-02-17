@@ -21,9 +21,9 @@ public class AlbumInfo {
         private final String image;
         private final String description;
         private final List<TrackInfo.Main> trackList;
-        private final LikeInfo likeInfo;
+        private final LikeInfo.Main likeInfo;
 
-        public Main(Album album, List<TrackInfo.Main> trackInfoList, LikeInfo likeInfo) {
+        public Main(Album album, List<TrackInfo.Main> trackInfoList, LikeInfo.Main likeInfo) {
             this.id = album.getId();
             this.albumCode = album.getAlbumCode();
             this.name = album.getName();
@@ -49,7 +49,7 @@ public class AlbumInfo {
         private final String originalName;
         private final String image;
         private final String description;
-        private LikeInfo likeInfo;
+        private LikeInfo.Main likeInfo;
 
         public AlbumBasicInfo(Album album) {
             this.id = album.getId();
@@ -61,7 +61,7 @@ public class AlbumInfo {
             this.description = album.getDescription();
         }
 
-        public void setLikeInfo(LikeInfo likeInfo) {
+        public void setLikeInfo(LikeInfo.Main likeInfo) {
             this.likeInfo = likeInfo;
         }
 

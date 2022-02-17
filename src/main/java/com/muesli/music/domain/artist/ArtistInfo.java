@@ -28,9 +28,9 @@ public class ArtistInfo {
         private final int views;
         private final String imageSmall;
         private final List<AlbumInfo.AlbumBasicInfo> albumList;
-        private final LikeInfo likeInfo;
+        private final LikeInfo.Main likeInfo;
 
-        public Main(Artist artist, List<AlbumInfo.AlbumBasicInfo> albumList, LikeInfo likeInfo) {
+        public Main(Artist artist, List<AlbumInfo.AlbumBasicInfo> albumList, LikeInfo.Main likeInfo) {
             this.id = artist.getId();
             this.name = artist.getName();
             this.originalName = artist.getOriginalName();

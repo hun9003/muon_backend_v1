@@ -30,13 +30,13 @@ public class ArtistServiceImpl implements ArtistService{
 
         albumList.forEach(
                 albumBasicInfo -> {
-                    var albumLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"));
+                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"));
                     albumBasicInfo.setLikeInfo(albumLikeInfo);
                 }
         );
 
         var artistLikecount = likeReader.getLikeCount(artist.getId(), "App\\Artist");
-        var artistLikeInfo = new LikeInfo(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
+        var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
         return new ArtistInfo.Main(artist, albumList, artistLikeInfo);
     }
 
@@ -47,8 +47,8 @@ public class ArtistServiceImpl implements ArtistService{
      * @return
      */
     @Override
-    public LikeInfo findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo) {
+    public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo) {
         System.out.println("ArtistServiceImpl :: findLikeBy");
-        return new LikeInfo(likeReader.getLikeBy(userInfo.getId(), artistInfo.getId(), "App\\Artist"));
+        return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artistInfo.getId(), "App\\Artist"));
     }
 }

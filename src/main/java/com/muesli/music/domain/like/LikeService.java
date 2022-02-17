@@ -3,9 +3,9 @@ package com.muesli.music.domain.like;
 import java.util.List;
 
 public interface LikeService {
-    LikeInfo findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken);
+    LikeInfo.Main findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken);
 
-    List<LikeInfo> getLikeList(String likeableType, String usertoken);
+    List<LikeInfo.Main> getLikeList(String likeableType, String usertoken);
 
     void registerLike(LikeCommand.RegisterLikeRequest command, String usertoken);
 

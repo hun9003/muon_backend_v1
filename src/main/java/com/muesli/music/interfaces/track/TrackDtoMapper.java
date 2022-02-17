@@ -17,7 +17,7 @@ public interface TrackDtoMapper {
     // find
     TrackDto.Main of(TrackInfo.Main main);
 
-    LikeDto.LikeInfo of(LikeInfo like);
+    LikeDto.LikeInfo of(LikeInfo.Main like);
 
     TrackDto.LyricsInfo of(TrackInfo.LyricsInfo lyrics);
 }

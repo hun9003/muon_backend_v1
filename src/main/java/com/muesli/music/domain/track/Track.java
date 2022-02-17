@@ -1,5 +1,6 @@
 package com.muesli.music.domain.track;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.like.Like;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -47,6 +49,9 @@ public class Track {
     @Column(name = "adult")
     private Long adult;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
+    private List<Like> likeList = Lists.newArrayList();
+
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
     private Lyrics lyrics;
 
@@ -66,5 +71,11 @@ public class Track {
         this.lyricser = lyricser;
         this.arranger = arranger;
         this.adult = adult;
+    }
+
+    public Track(Long id) {
+        if (id == null) throw new InvalidParamException("Tracks.id");
+
+        this.id = id;
     }
 }

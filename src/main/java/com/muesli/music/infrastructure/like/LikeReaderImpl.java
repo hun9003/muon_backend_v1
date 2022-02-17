@@ -51,20 +51,7 @@ public class LikeReaderImpl implements LikeReader {
     public Long getLikeCount(Long likeableId, String likeableType) {
         System.out.println("LikeReaderImpl :: getLikeCount");
         Long likecount = 0L;
-        switch (likeableType) {
-            case "App\\Track":
-                var track = new Track(likeableId);
-                likecount = likeRepository.countByTrackAndLikeableType(track, likeableType).orElse(0L);
-                break;
-            case "App\\Album":
-                var album = new Album(likeableId);
-                likecount = likeRepository.countByAlbumAndLikeableType(album, likeableType).orElse(0L);
-                break;
-            case "App\\Artist": ;
-                var artist = new Artist(likeableId);
-                likecount = likeRepository.countByArtistAndLikeableType(artist, likeableType).orElse(0L);
-                break;
-        }
-        return likecount;
+
+        return null;
     }
 }

@@ -1,10 +1,7 @@
 package com.muesli.music.interfaces.like;
 
 
-import com.muesli.music.domain.album.Album;
-import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.like.LikeCommand;
-import com.muesli.music.domain.track.Track;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -55,22 +52,11 @@ public class LikeDto {
 
         private final Long userId;
 
-        private final Track track;
-        private final Album album;
-        private final Artist artist;
-
         public LikeCommand.RegisterLikeRequest toCommand() {
-
-            var likeCommand = LikeCommand.RegisterLikeRequest.builder()
+            return LikeCommand.RegisterLikeRequest.builder()
                     .likeableType(likeableType)
-                    .likeableId(likeableId);
-            switch (likeableType) {
-                case "App\\Track": likeCommand.track(new Track(likeableId));break;
-                case "App\\Album": likeCommand.album(new Album(likeableId));break;
-                case "App\\Artist": likeCommand.artist(new Artist(likeableId));break;
-            }
-
-            return likeCommand.build();
+                    .likeableId(likeableId)
+                    .build();
         }
     }
 }

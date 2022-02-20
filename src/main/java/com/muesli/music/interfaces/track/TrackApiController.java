@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Collectors;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -23,4 +25,15 @@ public class TrackApiController {
         var response = trackDtoMapper.of(trackInfo);
         return CommonResponse.success(response);
     }
+
+    @GetMapping("/likeables")
+    public CommonResponse retrieveLikeTrackList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("LikeApiController :: retrieveLikeTrackList");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var trackInfoList = trackFacade.retrieveLikeTrackList(usertoken);
+        var trackInfoDtoList = trackInfoList.stream().map(trackDtoMapper::ofItem).collect(Collectors.toList());
+        var response = new TrackDto.TrackList(trackInfoDtoList);
+        return CommonResponse.success(response);
+    }
+
 }

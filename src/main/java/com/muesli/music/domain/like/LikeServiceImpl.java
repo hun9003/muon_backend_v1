@@ -1,6 +1,8 @@
 package com.muesli.music.domain.like;
 
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ public class LikeServiceImpl implements LikeService {
     private final LikeReader likeReader;
     private final LikeStore likeStore;
     private final UsertokenReader usertokenReader;
+    private final TrackReader trackReader;
 
     /**
      * 해당 아이템을 좋아요 했는지 확인
@@ -85,9 +88,9 @@ public class LikeServiceImpl implements LikeService {
      * @return
      */
     @Override
-    public List<LikeInfo.Main> getLikeList(String likeableType, String usertoken) {
-        System.out.println("LikeServiceImpl :: getLikeList");
+    public List<TrackInfo.Main> getLikeTrackList(String likeableType, String usertoken) {
+        System.out.println("LikeServiceImpl :: getLikeTrackList");
         var user = usertokenReader.getUsertoken(usertoken);
-        return likeReader.getLikeList(likeableType, user.getUser().getId());
+        return trackReader.getTrackLikeList(likeableType, user.getUser().getId());
     }
 }

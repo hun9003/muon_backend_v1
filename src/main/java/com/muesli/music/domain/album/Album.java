@@ -43,8 +43,8 @@ public class Album extends AbstractEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Track> trackList = Lists.newArrayList();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
-    private List<Like> likeList = Lists.newArrayList();
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
+    private Like like;
 
     @Builder
     public Album(Long id, String albumCode, String name, String releaseDate, String originalName, String image, String artistId, String description) {

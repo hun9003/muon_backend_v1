@@ -38,20 +38,9 @@ public class LikeReaderImpl implements LikeReader {
     }
 
     @Override
-    public List<LikeInfo.Main> getLikeList(String likeableType, Long userId) {
-        System.out.println("LikeReaderImpl :: getLikeList");
-//        var likeList = likeRepository.findLikeByLikeableTypeAndUserId(likeableType, userId)
-//                .orElseThrow(EntityNotFoundException::new);
-//        return likeList.stream()
-//                .map(LikeInfo.Main::new).collect(Collectors.toList());
-        return null;
-    }
-
-    @Override
     public Long getLikeCount(Long likeableId, String likeableType) {
         System.out.println("LikeReaderImpl :: getLikeCount");
-        Long likecount = 0L;
-
-        return null;
+        return likeRepository.countByLikeableIdAndLikeableType(likeableId, likeableType)
+                .orElse(0L);
     }
 }

@@ -36,11 +36,11 @@ public class Like extends AbstractEntity {
     @JoinColumn(name = "likeable_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Track track;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "likeable_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Album album;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "likeable_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Artist artist;
 

@@ -7,6 +7,8 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(
         componentModel = "spring",
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
@@ -16,6 +18,8 @@ public interface TrackDtoMapper {
 
     // find
     TrackDto.Main of(TrackInfo.Main main);
+
+    TrackDto.TrackInfo ofItem(TrackInfo.Main main);
 
     LikeDto.LikeInfo of(LikeInfo.Main like);
 

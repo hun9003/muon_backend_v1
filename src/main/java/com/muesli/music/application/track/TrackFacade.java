@@ -1,5 +1,6 @@
 package com.muesli.music.application.track;
 
+import com.muesli.music.domain.like.LikeService;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
 import com.muesli.music.domain.user.token.UsertokenService;
@@ -7,11 +8,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class TrackFacade {
     private final TrackService trackService;
+    private final LikeService likeService;
     private final UsertokenService usertokenService;
 
     public TrackInfo.Main findTrackInfo(Long trackId, String usertoken) {
@@ -20,5 +24,16 @@ public class TrackFacade {
         var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
         // 트랙 조회
         return trackService.findTrackInfo(trackId, usertokenInfo.getUserInfo());
+    }
+
+
+    /**
+     * 좋아요 트랙 리스트 조회
+     * @param usertoken
+     * @return
+     */
+    public List<TrackInfo.Main> retrieveLikeTrackList(String usertoken) {
+        System.out.println("LikeFacade :: retrieveLikeTrackList");
+        return likeService.getLikeTrackList("App\\Track", usertoken);
     }
 }

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Collectors;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +22,16 @@ public class ArtistApiController {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var albumInfo = artistFacade.findArtistInfo(artistId, usertoken);
         var response = artistDtoMapper.of(albumInfo);
+        return CommonResponse.success(response);
+    }
+
+    @GetMapping("/likeables")
+    public CommonResponse retrieveLikeAlbumList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("LikeApiController :: retrieveLikeTrackList");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var artistInfoList = artistFacade.retrieveLikeList(usertoken);
+        var artistInfoDtoList = artistInfoList.stream().map(artistDtoMapper::ofItem).collect(Collectors.toList());
+        var response = new ArtistDto.ArtistList(artistInfoDtoList);
         return CommonResponse.success(response);
     }
 }

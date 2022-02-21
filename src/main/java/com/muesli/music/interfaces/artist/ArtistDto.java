@@ -8,6 +8,9 @@ import java.util.List;
 
 public class ArtistDto {
 
+    /**
+     * 아티스트 상세 페이지 정보
+     */
     @Getter
     @Builder
     @ToString
@@ -28,6 +31,31 @@ public class ArtistDto {
         private final List<AlbumInfo> albumList;
     }
 
+    /**
+     * 아티스트 리스트 정보
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class ArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+        private final String image;
+        private final String birthday;
+        private final String country;
+        private final Long debut;
+        private final String agency;
+        private final String label;
+        private final int views;
+        private final String imageSmall;
+        private final LikeDto.LikeInfo likeInfo;
+    }
+
+    /**
+     * 앨범 정보
+     */
     @Getter
     @Builder
     @ToString
@@ -40,6 +68,16 @@ public class ArtistDto {
         private final String image;
         private final String description;
         private final LikeDto.LikeInfo likeInfo;
+    }
+
+    /**
+     * 아티스트 리스트
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class ArtistList {
+        private final List<ArtistInfo> artistList;
     }
 
 }

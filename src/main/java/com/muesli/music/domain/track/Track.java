@@ -49,7 +49,7 @@ public class Track {
     @Column(name = "adult")
     private Long adult;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "track", cascade = CascadeType.PERSIST)
     private List<Like> likeList = Lists.newArrayList();
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)

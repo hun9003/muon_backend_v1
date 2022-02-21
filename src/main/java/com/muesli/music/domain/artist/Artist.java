@@ -46,8 +46,8 @@ public class Artist {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     private List<Album> albumList = Lists.newArrayList();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
-    private Like like;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", cascade = CascadeType.PERSIST)
+    private List<Like> likeList = Lists.newArrayList();
 
     @Builder
     public Artist(Long id, String name, String originalName, String englishName, String image, String birthday, String country, Long debut, String agency, String label, int views, String imageSmall) {

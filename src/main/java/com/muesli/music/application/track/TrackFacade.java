@@ -32,8 +32,8 @@ public class TrackFacade {
      * @param usertoken
      * @return
      */
-    public List<TrackInfo.Main> retrieveLikeTrackList(String usertoken) {
-        System.out.println("LikeFacade :: retrieveLikeTrackList");
-        return likeService.getLikeTrackList("App\\Track", usertoken);
+    public List<TrackInfo.Main> retrieveLikeList(String usertoken) {
+        System.out.println("TrackFacade :: retrieveLikeList");
+        return trackService.getLikeList("App\\Track", usertoken);
     }
 }

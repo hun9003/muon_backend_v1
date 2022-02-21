@@ -46,6 +46,23 @@ public class ArtistInfo {
             this.albumList = albumList;
             this.likeInfo = likeInfo;
         }
+
+        public Main(Artist artist, LikeInfo.Main likeInfo) {
+            this.id = artist.getId();
+            this.name = artist.getName();
+            this.originalName = artist.getOriginalName();
+            this.englishName = artist.getEnglishName();
+            this.image = artist.getImage();
+            this.birthday = artist.getBirthday();
+            this.country = artist.getCountry();
+            this.debut = artist.getDebut();
+            this.agency = artist.getAgency();
+            this.label = artist.getLabel();
+            this.views = artist.getViews();
+            this.imageSmall = artist.getImageSmall();
+            this.albumList = null;
+            this.likeInfo = likeInfo;
+        }
     }
 
 }

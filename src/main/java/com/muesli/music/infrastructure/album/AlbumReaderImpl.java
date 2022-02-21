@@ -2,7 +2,9 @@ package com.muesli.music.infrastructure.album;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.domain.album.Album;
+import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
+import com.muesli.music.domain.like.LikeInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -29,4 +31,13 @@ public class AlbumReaderImpl implements AlbumReader {
         return trackList.stream().map(TrackInfo.Main::new).collect(Collectors.toList());
     }
 
+    @Override
+    public List<AlbumInfo.Main> getAlbumLikeList(String likeableType, Long userId) {
+        System.out.println("AlbumReaderImpl :: getAlbumLikeList");
+        var albumList = albumRepository.findLikeByLikeableTypeAndUserId(likeableType, userId)
+                .orElseThrow(EntityNotFoundException::new);
+        return albumList.stream().map(
+                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().get(0)))
+        ).collect(Collectors.toList());
+    }
 }

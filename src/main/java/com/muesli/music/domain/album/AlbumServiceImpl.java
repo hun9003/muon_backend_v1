@@ -3,10 +3,13 @@ package com.muesli.music.domain.album;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
+import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AlbumServiceImpl implements AlbumService {
     private final AlbumReader albumReader;
     private final LikeReader likeReader;
+    private final UsertokenReader usertokenReader;
 
     /**
      * 앨범 정보 가져오기
@@ -50,5 +54,18 @@ public class AlbumServiceImpl implements AlbumService {
     public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo) {
         System.out.println("AlbumServiceImpl :: findLikeBy");
         return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"));
+    }
+
+    /**
+     * 좋아요 리스트 조회
+     * @param likeableType
+     * @param usertoken
+     * @return
+     */
+    @Override
+    public List<AlbumInfo.Main> getLikeList(String likeableType, String usertoken) {
+        System.out.println("LikeServiceImpl :: getLikeAlbumList");
+        var user = usertokenReader.getUsertoken(usertoken);
+        return albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
     }
 }

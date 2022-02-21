@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Collectors;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -16,8 +18,9 @@ public class AlbumApiController {
     private final AlbumDtoMapper albumDtoMapper;
 
     /**
-     *
+     * 앨범 정보
      * @param albumId
+     * @param usertoken
      * @return
      */
     @GetMapping("/{id}")
@@ -28,4 +31,16 @@ public class AlbumApiController {
         var response = albumDtoMapper.of(albumInfo);
         return CommonResponse.success(response);
     }
+
+    @GetMapping("/likeables")
+    public CommonResponse retrieveLikeAlbumList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("LikeApiController :: retrieveLikeTrackList");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var albumInfoList = albumFacade.retrieveLikeList(usertoken);
+        var albumInfoDtoList = albumInfoList.stream().map(albumDtoMapper::ofItem).collect(Collectors.toList());
+        var response = new AlbumDto.AlbumList(albumInfoDtoList);
+        return CommonResponse.success(response);
+    }
+
+
 }

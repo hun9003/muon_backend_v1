@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface TrackRepository  extends JpaRepository<Track, Long> {
 
-    @Query(value = "SELECT l, t FROM Track t JOIN Like l ON l.likeableId = t.id WHERE l.likeableType = :likeableType AND l.userId = :userId")
+    @Query(value = "SELECT t FROM Track t JOIN Like l ON l.likeableId = t.id WHERE l.likeableType = :likeableType AND l.userId = :userId")
     Optional<List<Track>> findLikeByLikeableTypeAndUserId(String likeableType, Long userId);
 }

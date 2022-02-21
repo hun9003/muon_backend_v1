@@ -17,6 +17,12 @@ public class TrackApiController {
     private final TrackFacade trackFacade;
     private final TrackDtoMapper trackDtoMapper;
 
+    /**
+     * 트랙 정보
+     * @param trackId
+     * @param usertoken
+     * @return
+     */
     @GetMapping("/{id}")
     public CommonResponse retrieveTrack(@PathVariable("id") Long trackId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken){
         System.out.println("TrackApiController :: retrieveTrack");
@@ -26,11 +32,16 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 좋아하는 트랙 리스트
+     * @param usertoken
+     * @return
+     */
     @GetMapping("/likeables")
     public CommonResponse retrieveLikeTrackList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("LikeApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var trackInfoList = trackFacade.retrieveLikeTrackList(usertoken);
+        var trackInfoList = trackFacade.retrieveLikeList(usertoken);
         var trackInfoDtoList = trackInfoList.stream().map(trackDtoMapper::ofItem).collect(Collectors.toList());
         var response = new TrackDto.TrackList(trackInfoDtoList);
         return CommonResponse.success(response);

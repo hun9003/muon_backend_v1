@@ -9,6 +9,9 @@ import java.util.List;
 
 public class AlbumDto {
 
+    /**
+     * 앨범 상세페이지 내용
+     */
     @Getter
     @Builder
     @ToString
@@ -24,6 +27,26 @@ public class AlbumDto {
         private final List<TrackInfo> trackList;
     }
 
+    /**
+     * 앨범 리스트 개별 정보
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class AlbumInfo {
+        private final Long id;
+        private final String albumCode;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+        private final String description;
+        private final LikeDto.LikeInfo likeInfo;
+    }
+
+    /**
+     * 트랙 정보
+     */
     @Getter
     @Builder
     @ToString
@@ -42,5 +65,15 @@ public class AlbumDto {
         private final String arranger;
         private final Long adult;
         private final LikeDto.LikeInfo likeInfo;
+    }
+
+    /**
+     * 앨범 리스트
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class AlbumList {
+        private final List<AlbumInfo> albumList;
     }
 }

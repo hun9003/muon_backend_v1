@@ -10,6 +10,9 @@ import java.util.List;
 
 public class TrackDto {
 
+    /**
+     * 트랙 상세페이지 내용
+     */
     @Getter
     @Builder
     @ToString
@@ -31,6 +34,9 @@ public class TrackDto {
         private final LikeDto.LikeInfo likeInfo;
     }
 
+    /**
+     * 트랙 리스트 개별 정보
+     */
     @Getter
     @Builder
     @ToString
@@ -51,6 +57,9 @@ public class TrackDto {
         private final LikeDto.LikeInfo likeInfo;
     }
 
+    /**
+     * 가사 정보
+     */
     @Getter
     @Builder
     @ToString
@@ -59,6 +68,9 @@ public class TrackDto {
         private final String text;
     }
 
+    /**
+     * 트랙 리스트
+     */
     @Getter
     @Builder
     @ToString

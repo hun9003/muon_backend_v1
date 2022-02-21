@@ -34,6 +34,18 @@ public class AlbumInfo {
             this.trackList = trackInfoList;
             this.likeInfo = likeInfo;
         }
+
+        public Main(Album album, LikeInfo.Main likeInfo) {
+            this.id = album.getId();
+            this.albumCode = album.getAlbumCode();
+            this.name = album.getName();
+            this.releaseDate = album.getReleaseDate();
+            this.originalName = album.getOriginalName();
+            this.image = album.getImage();
+            this.description = album.getDescription();
+            this.trackList = null;
+            this.likeInfo = likeInfo;
+        }
     }
 
     /*

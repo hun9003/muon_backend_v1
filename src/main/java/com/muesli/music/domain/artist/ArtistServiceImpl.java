@@ -3,10 +3,13 @@ package com.muesli.music.domain.artist;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
+import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ArtistServiceImpl implements ArtistService{
     private final ArtistReader artistReader;
     private final LikeReader likeReader;
+    private final UsertokenReader usertokenReader;
 
     /**
      * 아티스트 정보 가져오기
@@ -50,5 +54,18 @@ public class ArtistServiceImpl implements ArtistService{
     public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo) {
         System.out.println("ArtistServiceImpl :: findLikeBy");
         return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artistInfo.getId(), "App\\Artist"));
+    }
+
+    /**
+     * 좋아요 리스트 조회
+     * @param likeableType
+     * @param usertoken
+     * @return
+     */
+    @Override
+    public List<ArtistInfo.Main> getLikeList(String likeableType, String usertoken) {
+        System.out.println("LikeServiceImpl :: getLikeArtistList");
+        var user = usertokenReader.getUsertoken(usertoken);
+        return artistReader.getArtistLikeList(likeableType, user.getUser().getId());
     }
 }

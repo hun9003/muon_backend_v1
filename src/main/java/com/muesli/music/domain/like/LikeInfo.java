@@ -35,6 +35,10 @@ public class LikeInfo {
             this.createdAt = like.getCreated_at();
             this.likeCount = likeCount;
         }
+
+        public void setLikeCount(Long likeCount) {
+            this.likeCount = likeCount;
+        }
     }
     }
 

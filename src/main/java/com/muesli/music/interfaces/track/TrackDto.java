@@ -75,6 +75,7 @@ public class TrackDto {
     @Builder
     @ToString
     public static class TrackList {
-        private final List<TrackInfo> trackList;
+        private final String type = "track";
+        private final List<TrackInfo> list;
     }
 }

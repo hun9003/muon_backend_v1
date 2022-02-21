@@ -74,6 +74,7 @@ public class AlbumDto {
     @Builder
     @ToString
     public static class AlbumList {
-        private final List<AlbumInfo> albumList;
+        private final String type = "Album";
+        private final List<AlbumInfo> list;
     }
 }

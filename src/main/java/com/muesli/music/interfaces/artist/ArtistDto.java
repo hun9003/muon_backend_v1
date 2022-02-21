@@ -77,7 +77,8 @@ public class ArtistDto {
     @Builder
     @ToString
     public static class ArtistList {
-        private final List<ArtistInfo> artistList;
+        private final String type = "Artist";
+        private final List<ArtistInfo> list;
     }
 
 }

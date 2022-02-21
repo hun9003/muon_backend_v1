@@ -31,6 +31,7 @@ public class TrackReaderImpl implements TrackReader {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
         var trackList = trackRepository.findLikeByLikeableTypeAndUserId(likeableType, userId)
                 .orElseThrow(EntityNotFoundException::new);
+        // 좋아요 갯수 리턴 로직 추가
         return trackList.stream().map(
                 track -> {
                     var trackInfo = new TrackInfo.Main(track);

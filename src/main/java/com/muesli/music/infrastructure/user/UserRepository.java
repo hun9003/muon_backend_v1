@@ -3,6 +3,7 @@ package com.muesli.music.infrastructure.user;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 

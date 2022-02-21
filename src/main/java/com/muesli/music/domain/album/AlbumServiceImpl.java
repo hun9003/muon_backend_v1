@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -66,6 +67,9 @@ public class AlbumServiceImpl implements AlbumService {
     public List<AlbumInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeAlbumList");
         var user = usertokenReader.getUsertoken(usertoken);
-        return albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
+        var albumList = albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
+        return albumList.stream().peek(
+                main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
+        ).collect(Collectors.toList());
     }
 }

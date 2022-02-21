@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -47,7 +48,10 @@ public class TrackServiceImpl implements TrackService{
     public List<TrackInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var user = usertokenReader.getUsertoken(usertoken);
-        return trackReader.getTrackLikeList(likeableType, user.getUser().getId());
+        var trackList = trackReader.getTrackLikeList(likeableType, user.getUser().getId());
+        return trackList.stream().peek(
+                main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
+        ).collect(Collectors.toList());
     }
 
 }

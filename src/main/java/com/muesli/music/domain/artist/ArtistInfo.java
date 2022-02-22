@@ -1,13 +1,12 @@
 package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
+import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public class ArtistInfo {
@@ -29,8 +28,9 @@ public class ArtistInfo {
         private final String imageSmall;
         private final List<AlbumInfo.AlbumBasicInfo> albumList;
         private final LikeInfo.Main likeInfo;
+        private final BiosInfo biosInfo;
 
-        public Main(Artist artist, List<AlbumInfo.AlbumBasicInfo> albumList, LikeInfo.Main likeInfo) {
+        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumBasicInfo> albumList, LikeInfo.Main likeInfo) {
             this.id = artist.getId();
             this.name = artist.getName();
             this.originalName = artist.getOriginalName();
@@ -45,6 +45,7 @@ public class ArtistInfo {
             this.imageSmall = artist.getImageSmall();
             this.albumList = albumList;
             this.likeInfo = likeInfo;
+            this.biosInfo = biosInfo;
         }
 
         public Main(Artist artist, LikeInfo.Main likeInfo) {
@@ -61,7 +62,20 @@ public class ArtistInfo {
             this.views = artist.getViews();
             this.imageSmall = artist.getImageSmall();
             this.albumList = null;
+            this.biosInfo = null;
             this.likeInfo = likeInfo;
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class BiosInfo {
+        private final Long id;
+        private final String content;
+
+        public BiosInfo(Bios bios) {
+            this.id = bios.getId();
+            this.content = bios.getContent();
         }
     }
 

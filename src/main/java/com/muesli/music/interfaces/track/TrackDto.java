@@ -72,10 +72,16 @@ public class TrackDto {
      * 트랙 리스트
      */
     @Getter
-    @Builder
     @ToString
     public static class TrackList {
-        private final String type = "track";
+        private final String type;
+        private final int listSize;
         private final List<TrackInfo> list;
+
+        public TrackList(List<TrackInfo> list) {
+            this.type = "Track";
+            this.list = list;
+            this.listSize = list.size();
+        }
     }
 }

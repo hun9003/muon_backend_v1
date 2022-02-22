@@ -1,5 +1,6 @@
 package com.muesli.music.domain.artist;
 
+import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
@@ -32,7 +33,8 @@ public class ArtistServiceImpl implements ArtistService{
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);
-
+        var bios = artist.getBios() != null ? artist.getBios() : new Bios();
+        var biosInfo = new ArtistInfo.BiosInfo(bios);
         albumList.forEach(
                 albumBasicInfo -> {
                     var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"));
@@ -42,7 +44,7 @@ public class ArtistServiceImpl implements ArtistService{
 
         var artistLikecount = likeReader.getLikeCount(artist.getId(), "App\\Artist");
         var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
-        return new ArtistInfo.Main(artist, albumList, artistLikeInfo);
+        return new ArtistInfo.Main(artist, biosInfo, albumList, artistLikeInfo);
     }
 
     /**

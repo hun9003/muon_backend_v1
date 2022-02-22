@@ -46,9 +46,9 @@ public class Like extends AbstractEntity {
 
     @Builder
     public Like(Long userId, String likeableType, Long likeableId) {
-        if (userId == null) throw new InvalidParamException("Like.userId");
-        if (likeableId == null) throw new InvalidParamException("Like.likeable_id");
-        if (StringUtils.isBlank(likeableType)) throw new InvalidParamException("Like.likeableType");
+        if (userId == null) throw new InvalidParamException("empty userId");
+        if (likeableId == null) throw new InvalidParamException("empty likeable_id");
+        if (StringUtils.isBlank(likeableType)) throw new InvalidParamException("empty likeableType");
 
         this.userId = userId;
         this.likeableType = likeableType;

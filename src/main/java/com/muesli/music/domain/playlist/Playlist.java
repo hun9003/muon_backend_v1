@@ -14,6 +14,8 @@ import javax.persistence.*;
 @Table(name = "playlists")
 public class Playlist {
 
+    private final int VIEW_COUNT = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,16 +33,14 @@ public class Playlist {
     private Long userId;
 
     @Builder
-    public Playlist(Long id, String name, Long isPublic, String image, String description, Long userId) {
+    public Playlist(Long id, String name, Long isPublic, String description, Long userId) {
         if(StringUtils.isEmpty(name)) throw new InvalidParamException("empty name");
         if(StringUtils.isEmpty(description)) throw new InvalidParamException("empty description");
-        if(StringUtils.isEmpty(image)) image = "";
         if(userId == null) throw new InvalidParamException("empty userId");
         if(isPublic == null) isPublic = 0L;
 
         this.name = name;
         this.isPublic = isPublic;
-        this.image = image;
         this.description = description;
         this.userId = userId;
     }
@@ -50,6 +50,6 @@ public class Playlist {
     }
 
     public void setViews(int views) {
-        this.views = views + 1;
+        this.views = views + VIEW_COUNT;
     }
 }

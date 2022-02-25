@@ -37,8 +37,8 @@ public class UserDto {
         @NotEmpty(message = "전화번호(phoneNumber)은 필수값입니다.")
         private String phoneNumber;
 
-        public UserCommand toCommand() {
-            return UserCommand.builder()
+        public UserCommand.RegisterUserRequest toCommand() {
+            return UserCommand.RegisterUserRequest.builder()
                     .username(username)
                     .email(email)
                     .password(password)
@@ -66,8 +66,8 @@ public class UserDto {
         @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
         private String password;
 
-        public UserCommand toCommand() {
-            return UserCommand.builder()
+        public UserCommand.LoginUserRequest toCommand() {
+            return UserCommand.LoginUserRequest.builder()
                     .email(email)
                     .password(password)
                     .build();

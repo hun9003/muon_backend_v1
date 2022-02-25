@@ -12,6 +12,6 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface UserDtoMapper {
-    UserCommand of(UserDto.RegisterUser request);
+    UserCommand.RegisterUserRequest of(UserDto.RegisterUser request);
     UsertokenCommand of(UserTokenDto.RegisterUserToken request);
 }

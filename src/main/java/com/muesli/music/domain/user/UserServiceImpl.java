@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional
-    public UserInfo.Main registerUser(UserCommand command) {
+    public UserInfo.Main registerUser(UserCommand.RegisterUserRequest command) {
         System.out.println("UserServiceImpl :: registerUser");
         var initUser = command.toEntity();
         var user = userStore.store(initUser);

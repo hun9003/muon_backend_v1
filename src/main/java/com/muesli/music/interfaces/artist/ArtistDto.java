@@ -1,5 +1,6 @@
 package com.muesli.music.interfaces.artist;
 
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class ArtistDto {
         private final String label;
         private final int views;
         private final String imageSmall;
+        private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
         private final LikeDto.LikeInfo likeInfo;
         private final List<AlbumInfo> albumList;
     }
@@ -74,11 +76,17 @@ public class ArtistDto {
      * 아티스트 리스트
      */
     @Getter
-    @Builder
     @ToString
     public static class ArtistList {
-        private final String type = "Artist";
+        private final String type;
+        private final int listSize;
         private final List<ArtistInfo> list;
+
+        public ArtistList(List<ArtistInfo> list) {
+            this.type = "Artist";
+            this.list = list;
+            this.listSize = list.size();
+        }
     }
 
 }

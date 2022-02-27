@@ -26,7 +26,7 @@ public class UserFacade {
      * @param command
      * @return
      */
-    public UserInfo.Main registerUser(UserCommand command) {
+    public UserInfo.Main registerUser(UserCommand.RegisterUserRequest command) {
         System.out.println("UserFacade :: registerUser");
         // 1. 이메일로 가입한 유저 검색
         var userinfo = userService.findUserInfo(command.getEmail());

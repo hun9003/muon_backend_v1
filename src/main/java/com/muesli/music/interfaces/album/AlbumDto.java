@@ -71,10 +71,16 @@ public class AlbumDto {
      * 앨범 리스트
      */
     @Getter
-    @Builder
     @ToString
     public static class AlbumList {
-        private final String type = "Album";
+        private final String type;
+        private final int listSize;
         private final List<AlbumInfo> list;
+
+        public AlbumList(List<AlbumInfo> list) {
+            this.type = "Album";
+            this.list = list;
+            this.listSize = list.size();
+        }
     }
 }

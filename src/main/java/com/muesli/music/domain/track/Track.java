@@ -24,9 +24,6 @@ public class Track {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "album_id")
-    private Album album;
     @Column(name = "name")
     private String name;
     @Column(name = "original")
@@ -52,14 +49,18 @@ public class Track {
     @Column(name = "adult")
     private Long adult;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "album_id")
+    private Album album;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
     private List<Like> likeList = Lists.newArrayList();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST, optional = false)
     @NotFound(action = NotFoundAction.IGNORE)
     private Lyrics lyrics;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST, optional = false)
     @NotFound(action = NotFoundAction.IGNORE)
     private TrackArtist trackArtist;
 

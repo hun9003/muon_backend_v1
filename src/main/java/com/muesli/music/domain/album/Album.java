@@ -23,10 +23,6 @@ public class Album extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "artist_id")
-    private Artist artist;
-
     @Column(name = "album_code")
     private String albumCode;
     @Column(name = "name")
@@ -40,10 +36,14 @@ public class Album extends AbstractEntity {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "artist_id")
+    private Artist artist;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Track> trackList = Lists.newArrayList();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Like> likeList = Lists.newArrayList();
 
     @Builder

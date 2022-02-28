@@ -30,7 +30,7 @@ public class TrackReaderImpl implements TrackReader {
     @Override
     public List<TrackInfo.Main> getTrackLikeList(String likeableType, Long userId) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        var trackList = trackRepository.findLikeByLikeableTypeAndUserId(likeableType, userId)
+        var trackList = trackRepository.findAllJoinFetch(likeableType, userId)
                 .orElseThrow(EntityNotFoundException::new);
         // 좋아요 갯수 리턴 로직 추가
         return trackList.stream().map(

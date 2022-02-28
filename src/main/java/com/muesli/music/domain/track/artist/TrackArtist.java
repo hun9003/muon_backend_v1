@@ -24,7 +24,7 @@ public class TrackArtist {
     private com.muesli.music.domain.artist.Artist artist;
 
     @NotFound(action = NotFoundAction.IGNORE)
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "track_id")
     private Track track;
 

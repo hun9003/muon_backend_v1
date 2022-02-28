@@ -5,6 +5,7 @@ import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class AlbumReaderImpl implements AlbumReader {
 
     @Override
     public Album getAlbumBy(Long albumId) {
-        return albumRepository.findById(albumId)
+        return albumRepository.findAlbumById(albumId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
@@ -31,17 +32,21 @@ public class AlbumReaderImpl implements AlbumReader {
         var trackList = album.getTrackList();
         return trackList.stream().map(track -> {
             var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
-            return new TrackInfo.Main(track, artistInfo);
+            var likeInfo = new LikeInfo.Main(new Like());
+            likeInfo.setLikeCount((long) track.getLikeList().size());
+            var trackInfo = new TrackInfo.Main(track, artistInfo);
+            trackInfo.setLikeInfo(likeInfo);
+            return trackInfo;
         }).collect(Collectors.toList());
     }
 
     @Override
     public List<AlbumInfo.Main> getAlbumLikeList(String likeableType, Long userId) {
         System.out.println("AlbumReaderImpl :: getAlbumLikeList");
-        var albumList = albumRepository.findAllJoinFetch(likeableType, userId)
+        var albumList = albumRepository.findAllJoinFetch(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return albumList.stream().map(
-                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().get(0)))
+                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().iterator().next()))
         ).collect(Collectors.toList());
     }
 }

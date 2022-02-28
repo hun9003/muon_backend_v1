@@ -1,6 +1,7 @@
 package com.muesli.music.domain.track;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.like.Like;
@@ -10,9 +11,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -53,8 +56,9 @@ public class Track {
     @JoinColumn(name = "album_id")
     private Album album;
 
+    @Where(clause = "likeable_type LIKE '%Track'")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
-    private List<Like> likeList = Lists.newArrayList();
+    private Set<Like> likeList = Sets.newHashSet();
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST, optional = false)
     @NotFound(action = NotFoundAction.IGNORE)

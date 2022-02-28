@@ -9,6 +9,17 @@ import java.util.Optional;
 
 public interface AlbumRepository extends JpaRepository<Album, Long> {
 
-    @Query(value = "SELECT a FROM Album a JOIN FETCH a.likeList l WHERE l.likeableType = :likeableType AND l.userId = :userId")
-    Optional<List<Album>> findAllJoinFetch(String likeableType, Long userId);
+    @Query(value = "SELECT a FROM Album a " +
+            "LEFT JOIN FETCH a.likeList " +
+            "LEFT JOIN FETCH a.trackList t " +
+            "LEFT JOIN FETCH t.lyrics " +
+            "LEFT JOIN FETCH t.trackArtist ta " +
+            "LEFT JOIN FETCH t.likeList " +
+            "LEFT JOIN FETCH ta.artist ar " +
+            "LEFT JOIN FETCH ar.bios " +
+            "WHERE a.id = :albumId")
+    Optional<Album> findAlbumById(Long albumId);
+
+    @Query(value = "SELECT a FROM Album a JOIN FETCH a.likeList l WHERE l.userId = :userId")
+    Optional<List<Album>> findAllJoinFetch(Long userId);
 }

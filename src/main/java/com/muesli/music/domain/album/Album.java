@@ -1,6 +1,7 @@
 package com.muesli.music.domain.album;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
 import com.muesli.music.domain.artist.Artist;
@@ -9,9 +10,11 @@ import com.muesli.music.domain.track.Track;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -43,8 +46,9 @@ public class Album extends AbstractEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Track> trackList = Lists.newArrayList();
 
+    @Where(clause = "likeable_type LIKE '%Album'")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
-    private List<Like> likeList = Lists.newArrayList();
+    private Set<Like> likeList = Sets.newHashSet();
 
     @Builder
     public Album(Long id, String albumCode, String name, String releaseDate, String originalName, String image, String artistId, String description) {

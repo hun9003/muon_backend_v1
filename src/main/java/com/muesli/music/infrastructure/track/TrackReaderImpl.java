@@ -37,7 +37,7 @@ public class TrackReaderImpl implements TrackReader {
                 track -> {
                     var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
                     var trackInfo = new TrackInfo.Main(track, artistInfo);
-                    trackInfo.setLikeInfo(new LikeInfo.Main(track.getLikeList().get(0)));
+                    trackInfo.setLikeInfo(new LikeInfo.Main(track.getLikeList().iterator().next()));
                     return trackInfo;
                 }
         ).collect(Collectors.toList());

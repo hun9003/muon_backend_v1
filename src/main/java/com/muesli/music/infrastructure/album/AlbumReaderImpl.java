@@ -4,6 +4,7 @@ import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,10 @@ public class AlbumReaderImpl implements AlbumReader {
     @Override
     public List<TrackInfo.Main> getTrackList(Album album) {
         var trackList = album.getTrackList();
-        return trackList.stream().map(TrackInfo.Main::new).collect(Collectors.toList());
+        return trackList.stream().map(track -> {
+            var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+            return new TrackInfo.Main(track, artistInfo);
+        }).collect(Collectors.toList());
     }
 
     @Override

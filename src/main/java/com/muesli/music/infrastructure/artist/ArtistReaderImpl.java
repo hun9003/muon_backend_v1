@@ -36,7 +36,7 @@ public class ArtistReaderImpl implements ArtistReader {
     @Override
     public List<ArtistInfo.Main> getArtistLikeList(String likeableType, Long userId) {
         System.out.println("ArtistReaderImpl :: getArtistLikeList");
-        var artistList = artistRepository.findLikeByLikeableTypeAndUserId(likeableType, userId)
+        var artistList = artistRepository.findAllJoinFetch(likeableType, userId)
                 .orElseThrow(EntityNotFoundException::new);
         return artistList.stream().map(
                 artist -> new ArtistInfo.Main(artist, new LikeInfo.Main(artist.getLikeList().get(0)))

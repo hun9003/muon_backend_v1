@@ -4,9 +4,12 @@ import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.track.artist.TrackArtist;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -53,7 +56,12 @@ public class Track {
     private List<Like> likeList = Lists.newArrayList();
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Lyrics lyrics;
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "track", cascade = CascadeType.PERSIST)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private TrackArtist trackArtist;
 
     public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");

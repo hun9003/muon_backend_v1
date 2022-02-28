@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ArtistRepository  extends JpaRepository<Artist, Long> {
 
-    @Query(value = "SELECT a FROM Artist a JOIN Like l ON l.likeableId = a.id WHERE l.likeableType = :likeableType AND l.userId = :userId")
-    Optional<List<Artist>> findLikeByLikeableTypeAndUserId(String likeableType, Long userId);
+    @Query(value = "SELECT a FROM Artist a JOIN FETCH a.likeList l LEFT JOIN FETCH a.bios b WHERE l.likeableType = :likeableType AND l.userId = :userId")
+    Optional<List<Artist>> findAllJoinFetch(String likeableType, Long userId);
 
 }

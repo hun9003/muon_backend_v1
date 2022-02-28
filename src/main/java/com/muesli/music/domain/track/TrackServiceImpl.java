@@ -1,5 +1,6 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.lyrics.LyricsReader;
@@ -35,7 +36,7 @@ public class TrackServiceImpl implements TrackService{
         var trackLikeCount = likeReader.getLikeCount(track.getId(), "App\\Track");
         var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
 
-        return new TrackInfo.Main(track, new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
+        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtist().getArtist()), new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
     }
 
     /**

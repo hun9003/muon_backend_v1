@@ -5,9 +5,12 @@ import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.track.artist.TrackArtist;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -47,11 +50,16 @@ public class Artist {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     private List<Album> albumList = Lists.newArrayList();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artist", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     private List<Like> likeList = Lists.newArrayList();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST, optional = false)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Bios bios;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<TrackArtist> trackArtists = Lists.newArrayList();
 
     @Builder
     public Artist(Long id, String name, String originalName, String englishName, String image, String birthday, String country, Long debut, String agency, String label, int views, String imageSmall) {

@@ -65,6 +65,7 @@ public class AlbumDto {
         private final String arranger;
         private final Long adult;
         private final LikeDto.LikeInfo likeInfo;
+        private final ArtistInfo artistInfo;
     }
 
     /**
@@ -82,5 +83,18 @@ public class AlbumDto {
             this.list = list;
             this.listSize = list.size();
         }
+    }
+
+    /**
+     * 트랙의 아티스트 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class ArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
     }
 }

@@ -46,7 +46,6 @@ public class Album extends AbstractEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.PERSIST)
     private List<Like> likeList = Lists.newArrayList();
 
-
     @Builder
     public Album(Long id, String albumCode, String name, String releaseDate, String originalName, String image, String artistId, String description) {
         if (id == null) throw new InvalidParamException("Albums.id");

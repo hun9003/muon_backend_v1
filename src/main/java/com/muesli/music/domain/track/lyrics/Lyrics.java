@@ -18,7 +18,7 @@ public class Lyrics {
     @Column(name = "text")
     private String text;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "track_id")
     private Track track;
 

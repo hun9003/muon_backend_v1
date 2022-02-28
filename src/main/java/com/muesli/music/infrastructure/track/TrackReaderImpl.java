@@ -2,6 +2,7 @@ package com.muesli.music.infrastructure.track;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.TrackInfo;
@@ -34,7 +35,8 @@ public class TrackReaderImpl implements TrackReader {
         // 좋아요 갯수 리턴 로직 추가
         return trackList.stream().map(
                 track -> {
-                    var trackInfo = new TrackInfo.Main(track);
+                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+                    var trackInfo = new TrackInfo.Main(track, artistInfo);
                     trackInfo.setLikeInfo(new LikeInfo.Main(track.getLikeList().get(0)));
                     return trackInfo;
                 }

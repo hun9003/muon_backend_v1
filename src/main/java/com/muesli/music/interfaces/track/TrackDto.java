@@ -1,6 +1,5 @@
 package com.muesli.music.interfaces.track;
 
-import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,6 +31,7 @@ public class TrackDto {
         private final Long adult;
         private final LyricsInfo lyricsInfo;
         private final LikeDto.LikeInfo likeInfo;
+        private final ArtistInfo artistInfo;
     }
 
     /**
@@ -55,6 +55,7 @@ public class TrackDto {
         private final String arranger;
         private final Long adult;
         private final LikeDto.LikeInfo likeInfo;
+        private final ArtistInfo artistInfo;
     }
 
     /**
@@ -84,4 +85,19 @@ public class TrackDto {
             this.listSize = list.size();
         }
     }
+
+
+    /**
+     * 트랙의 아티스트 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class ArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+    }
+
 }

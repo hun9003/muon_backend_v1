@@ -1,7 +1,9 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.lyrics.Lyrics;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -26,8 +28,9 @@ public class TrackInfo {
         private final Long adult;
         private final LyricsInfo lyricsInfo;
         private LikeInfo.Main likeInfo;
+        private final ArtistInfo.Main artistInfo;
 
-        public Main(Track track) {
+        public Main(Track track, ArtistInfo.Main artistInfo) {
             this.id = track.getId();
             this.original = track.getOriginal();
             this.name = track.getName();
@@ -42,9 +45,10 @@ public class TrackInfo {
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
             this.lyricsInfo = null;
+            this.artistInfo = artistInfo;
         }
 
-        public Main(Track track, LyricsInfo lyricsInfo, LikeInfo.Main likeInfo) {
+        public Main(Track track, ArtistInfo.Main artistInfo, LyricsInfo lyricsInfo, LikeInfo.Main likeInfo) {
             this.id = track.getId();
             this.original = track.getOriginal();
             this.name = track.getName();
@@ -60,12 +64,14 @@ public class TrackInfo {
             this.adult = track.getAdult();
             this.likeInfo = likeInfo;
             this.lyricsInfo = lyricsInfo;
+            this.artistInfo = artistInfo;
         }
 
         public void setLikeInfo(LikeInfo.Main likeInfo) {
             this.likeInfo = likeInfo;
         }
     }
+
 
     @Getter
     @ToString
@@ -78,6 +84,5 @@ public class TrackInfo {
             this.text = lyrics.getText();
         }
     }
-
 
 }

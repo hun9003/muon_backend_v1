@@ -5,6 +5,7 @@ import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.artist.ArtistReader;
+import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class ArtistReaderImpl implements ArtistReader {
     @Override
     public Artist getArtistBy(Long artistId) {
         System.out.println("ArtistReaderImpl :: getArtistBy");
-        return artistRepository.findById(artistId)
+        return artistRepository.findArtistById(artistId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
@@ -30,16 +31,22 @@ public class ArtistReaderImpl implements ArtistReader {
     public List<AlbumInfo.AlbumBasicInfo> getAlbumList(Artist artist) {
         System.out.println("ArtistReaderImpl :: getAlbumList");
         var albumList = artist.getAlbumList();
-        return albumList.stream().map(AlbumInfo.AlbumBasicInfo::new).collect(Collectors.toList());
+        return albumList.stream().map(album -> {
+            var likeInfo = new LikeInfo.Main(new Like());
+            likeInfo.setLikeCount((long) album.getLikeList().size());
+            var albumInfo = new AlbumInfo.AlbumBasicInfo(album);
+            albumInfo.setLikeInfo(likeInfo);
+            return albumInfo;
+        }).collect(Collectors.toList());
     }
 
     @Override
-    public List<ArtistInfo.Main> getArtistLikeList(String likeableType, Long userId) {
+    public List<ArtistInfo.Main> getArtistLikeList(Long userId) {
         System.out.println("ArtistReaderImpl :: getArtistLikeList");
-        var artistList = artistRepository.findAllJoinFetch(likeableType, userId)
+        var artistList = artistRepository.findLikeArtist(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return artistList.stream().map(
-                artist -> new ArtistInfo.Main(artist, new LikeInfo.Main(artist.getLikeList().get(0)))
+                artist -> new ArtistInfo.Main(artist, new LikeInfo.Main(artist.getLikeList().iterator().next()))
         ).collect(Collectors.toList());
     }
 }

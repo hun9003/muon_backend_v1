@@ -23,7 +23,7 @@ public class TrackReaderImpl implements TrackReader {
     @Override
     public Track getTrackBy(Long trackId) {
         System.out.println("TrackReaderImpl :: getTrackBy");
-        return trackRepository.findById(trackId)
+        return trackRepository.findTrackById(trackId)
                 .orElseThrow(InvalidParamException::new);
     }
 

@@ -1,6 +1,7 @@
 package com.muesli.music.domain.artist;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.artist.bios.Bios;
@@ -15,6 +16,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -53,7 +55,7 @@ public class Artist {
 
     @Where(clause = "likeable_type LIKE '%Artist'")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
-    private List<Like> likeList = Lists.newArrayList();
+    private Set<Like> likeList = Sets.newHashSet();
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST, optional = false)
     @NotFound(action = NotFoundAction.IGNORE)

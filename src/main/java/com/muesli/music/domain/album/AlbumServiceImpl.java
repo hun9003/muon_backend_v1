@@ -39,7 +39,8 @@ public class AlbumServiceImpl implements AlbumService {
                     trackInfo.setLikeInfo(trackLikeInfo);
                 }
         );
-        var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), album.getId(), "App\\Album"));
+        var albumLikeCount = (long) album.getLikeList().size();
+        var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), album.getId(), "App\\Album"), albumLikeCount);
         return new AlbumInfo.Main(album, trackList, albumLikeInfo);
     }
 
@@ -50,6 +51,7 @@ public class AlbumServiceImpl implements AlbumService {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo) {
         System.out.println("AlbumServiceImpl :: findLikeBy");
         return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"));

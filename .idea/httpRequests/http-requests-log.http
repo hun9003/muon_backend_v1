@@ -1,3 +1,163 @@
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T184943.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T184836.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T184541.500.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T184255.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T183757.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T183752.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-03T183728.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-03T183714.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T183428.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T183351.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T183217.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T182751.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T182134.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T182049.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T181205.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T180250.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T174041.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T170928.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-03T170915.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-03T165908.200.json
+
+###
+
 GET http://localhost:8080/api/v1/artists/1113
 Content-Type: application/json
 authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
@@ -235,166 +395,6 @@ authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 <> 2022-02-28T162539.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162256.500.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162253.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162010.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T161928.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T161712.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T161609.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T161222.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T161039.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T160855.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T160650.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T160412.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T155319.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T154941.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T154608.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T154129.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T154113.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T153749.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T153738.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T153732.500.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T153537.200.json
 
 ###
 

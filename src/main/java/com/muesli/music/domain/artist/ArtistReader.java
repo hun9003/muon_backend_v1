@@ -10,5 +10,5 @@ public interface ArtistReader {
 
     List<AlbumInfo.AlbumBasicInfo> getAlbumList(Artist artist);
 
-    List<ArtistInfo.Main> getArtistLikeList(String likeableType, Long userId);
+    List<ArtistInfo.Main> getArtistLikeList(Long userId);
 }

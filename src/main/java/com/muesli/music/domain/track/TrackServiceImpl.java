@@ -9,6 +9,7 @@ import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +19,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TrackServiceImpl implements TrackService{
     private final TrackReader trackReader;
-    private final LyricsReader lyricsReader;
     private final LikeReader likeReader;
     private final UsertokenReader usertokenReader;
 
@@ -29,11 +29,12 @@ public class TrackServiceImpl implements TrackService{
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo) {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
-        var lyrics = lyricsReader.getLyricsByTrack(track);
-        var trackLikeCount = likeReader.getLikeCount(track.getId(), "App\\Track");
+        var lyrics = track.getLyrics();
+        var trackLikeCount = (long) track.getLikeList().size();
         var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
 
         return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtist().getArtist()), new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
@@ -46,6 +47,7 @@ public class TrackServiceImpl implements TrackService{
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public List<TrackInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var user = usertokenReader.getUsertoken(usertoken);

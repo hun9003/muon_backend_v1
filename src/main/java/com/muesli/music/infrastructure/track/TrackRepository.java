@@ -10,6 +10,15 @@ import java.util.Optional;
 
 public interface TrackRepository  extends JpaRepository<Track, Long> {
 
+    @Query(value = "SELECT t FROM Track t " +
+            "LEFT JOIN FETCH t.likeList l " +
+            "LEFT JOIN FETCH t.lyrics " +
+            "LEFT JOIN FETCH t.trackArtist ta " +
+            "LEFT JOIN FETCH ta.artist a " +
+            "LEFT JOIN FETCH a.bios " +
+            "WHERE t.id = :trackId")
+    Optional<Track> findTrackById(Long trackId);
+
     @Query(value = "SELECT t FROM Track t JOIN FETCH t.likeList l " +
             "JOIN FETCH t.trackArtist ta " +
             "LEFT JOIN FETCH ta.artist a " +

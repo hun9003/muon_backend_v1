@@ -37,12 +37,12 @@ public class ArtistServiceImpl implements ArtistService{
         var biosInfo = new ArtistInfo.BiosInfo(bios);
         albumList.forEach(
                 albumBasicInfo -> {
-                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"));
+                    var albumLikeCount = albumBasicInfo.getLikeInfo().getLikeCount();
+                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"), albumLikeCount);
                     albumBasicInfo.setLikeInfo(albumLikeInfo);
                 }
         );
-
-        var artistLikecount = likeReader.getLikeCount(artist.getId(), "App\\Artist");
+        var artistLikecount = (long) artist.getLikeList().size();
         var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
         return new ArtistInfo.Main(artist, biosInfo, albumList, artistLikeInfo);
     }
@@ -54,6 +54,7 @@ public class ArtistServiceImpl implements ArtistService{
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo) {
         System.out.println("ArtistServiceImpl :: findLikeBy");
         return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artistInfo.getId(), "App\\Artist"));
@@ -66,10 +67,11 @@ public class ArtistServiceImpl implements ArtistService{
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public List<ArtistInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeArtistList");
         var user = usertokenReader.getUsertoken(usertoken);
-        var artistList = artistReader.getArtistLikeList(likeableType, user.getUser().getId());
+        var artistList = artistReader.getArtistLikeList(user.getUser().getId());
         return artistList.stream().peek(
                 main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
         ).collect(Collectors.toList());

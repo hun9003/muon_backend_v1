@@ -1,7 +1,9 @@
 package com.muesli.music.domain.album;
 
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
+import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AlbumServiceImpl implements AlbumService {
     private final AlbumReader albumReader;
+    private final TrackReader trackReader;
     private final LikeReader likeReader;
     private final UsertokenReader usertokenReader;
 
@@ -64,9 +67,18 @@ public class AlbumServiceImpl implements AlbumService {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public List<AlbumInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeAlbumList");
         var user = usertokenReader.getUsertoken(usertoken);
-        return albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
+        var albumInfoList = albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
+        return albumInfoList.stream().peek(
+                main -> {
+                    var track = trackReader.getTrackArtist(main.getId());
+                    if (track != null) {
+                        main.setArtistInfo(new ArtistInfo.Main(track.getTrackArtist().getArtist()));
+                    }
+                }
+        ).collect(Collectors.toList());
     }
 }

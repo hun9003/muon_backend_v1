@@ -26,4 +26,13 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "LEFT JOIN FETCH t.lyrics " +
             "WHERE l.likeableType = :likeableType AND l.userId = :userId")
     Optional<List<Track>> findAllJoinFetch(String likeableType, Long userId);
+
+    @Query(value = "SELECT t FROM Track t " +
+            "LEFT JOIN FETCH t.trackArtist ta " +
+            "LEFT JOIN FETCH ta.artist a " +
+            "LEFT JOIN FETCH t.lyrics l " +
+            "LEFT JOIN FETCH t.likeList " +
+            "LEFT JOIN FETCH a.bios " +
+            "WHERE t.album.id = :albumId")
+    Optional<List<Track>> findTrackByAlbumId(Long albumId);
 }

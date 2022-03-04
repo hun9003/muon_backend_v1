@@ -3,7 +3,6 @@ package com.muesli.music.infrastructure.track;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.TrackInfo;
@@ -26,6 +25,14 @@ public class TrackReaderImpl implements TrackReader {
         System.out.println("TrackReaderImpl :: getTrackBy");
         return trackRepository.findTrackById(trackId)
                 .orElseThrow(InvalidParamException::new);
+    }
+
+    @Override
+    public Track getTrackArtist(Long albumId) {
+        System.out.println("TrackReaderImpl :: getTrackArtist");
+        var trackList = trackRepository.findTrackByAlbumId(albumId)
+                .orElse(null);
+        return trackList != null ? trackList.get(0) : null;
     }
 
     @Override

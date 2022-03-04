@@ -41,6 +41,7 @@ public class AlbumDto {
         private final String originalName;
         private final String image;
         private final String description;
+        private final ArtistInfo artistInfo;
         private final LikeDto.LikeInfo likeInfo;
     }
 

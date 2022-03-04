@@ -1,6 +1,7 @@
 package com.muesli.music.interfaces.album;
 
 import com.muesli.music.domain.album.AlbumInfo;
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.interfaces.like.LikeDto;
 import org.mapstruct.InjectionStrategy;
@@ -24,4 +25,5 @@ public interface AlbumDtoMapper {
 
     AlbumDto.TrackInfo of(TrackInfo.Main track);
 
+    AlbumDto.ArtistInfo of(ArtistInfo.Main artist);
 }

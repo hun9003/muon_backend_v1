@@ -1,5 +1,6 @@
 package com.muesli.music.domain.album;
 
+import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.Getter;
 import lombok.ToString;
@@ -22,6 +23,7 @@ public class AlbumInfo {
         private final String description;
         private final List<TrackInfo.Main> trackList;
         private final LikeInfo.Main likeInfo;
+        private ArtistInfo.Main artistInfo;
 
         public Main(Album album, List<TrackInfo.Main> trackInfoList, LikeInfo.Main likeInfo) {
             this.id = album.getId();
@@ -45,6 +47,10 @@ public class AlbumInfo {
             this.description = album.getDescription();
             this.trackList = null;
             this.likeInfo = likeInfo;
+        }
+
+        public void setArtistInfo(ArtistInfo.Main artistInfo) {
+            this.artistInfo = artistInfo;
         }
     }
 

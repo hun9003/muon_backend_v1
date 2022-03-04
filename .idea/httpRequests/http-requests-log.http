@@ -1,3 +1,98 @@
+GET http://localhost:8080/api/v1/albums/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145644.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145629.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145443.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145436.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145421.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T145048.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/692
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-04T144751.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-04T144737.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-03-04T144727.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000"
+}
+
+<> 2022-03-04T144710.200.json
+
+###
+
 GET http://localhost:8080/api/v1/tracks/42860
 Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
@@ -315,86 +410,6 @@ Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 
 <> 2022-02-28T170223.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-28T165939.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-28T165822.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-28T165453.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-28T164350.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-02-28T164345.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T163248.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T163152.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162815.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162724.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-02-28T162539.200.json
 
 ###
 

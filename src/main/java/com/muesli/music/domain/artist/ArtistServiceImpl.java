@@ -71,9 +71,6 @@ public class ArtistServiceImpl implements ArtistService{
     public List<ArtistInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeArtistList");
         var user = usertokenReader.getUsertoken(usertoken);
-        var artistList = artistReader.getArtistLikeList(user.getUser().getId());
-        return artistList.stream().peek(
-                main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
-        ).collect(Collectors.toList());
+        return artistReader.getArtistLikeList(user.getUser().getId());
     }
 }

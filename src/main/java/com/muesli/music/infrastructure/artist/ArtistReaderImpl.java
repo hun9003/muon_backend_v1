@@ -46,7 +46,7 @@ public class ArtistReaderImpl implements ArtistReader {
         var artistList = artistRepository.findLikeArtist(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return artistList.stream().map(
-                artist -> new ArtistInfo.Main(artist, new LikeInfo.Main(artist.getLikeList().iterator().next()))
+                artist -> new ArtistInfo.Main(artist, new LikeInfo.Main(artist.getLikeList().iterator().next(), (long) artist.getLikeList().size()))
         ).collect(Collectors.toList());
     }
 }

@@ -67,9 +67,6 @@ public class AlbumServiceImpl implements AlbumService {
     public List<AlbumInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeAlbumList");
         var user = usertokenReader.getUsertoken(usertoken);
-        var albumList = albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
-        return albumList.stream().peek(
-                main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
-        ).collect(Collectors.toList());
+        return albumReader.getAlbumLikeList(likeableType, user.getUser().getId());
     }
 }

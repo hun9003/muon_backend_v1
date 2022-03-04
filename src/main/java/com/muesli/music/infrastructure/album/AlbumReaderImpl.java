@@ -46,7 +46,7 @@ public class AlbumReaderImpl implements AlbumReader {
         var albumList = albumRepository.findLikeAlbum(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return albumList.stream().map(
-                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().iterator().next()))
+                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().iterator().next(), (long) album.getLikeList().size()))
         ).collect(Collectors.toList());
     }
 }

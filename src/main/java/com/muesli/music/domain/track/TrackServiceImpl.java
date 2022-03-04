@@ -51,10 +51,7 @@ public class TrackServiceImpl implements TrackService{
     public List<TrackInfo.Main> getLikeList(String likeableType, String usertoken) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var user = usertokenReader.getUsertoken(usertoken);
-        var trackList = trackReader.getTrackLikeList(likeableType, user.getUser().getId());
-        return trackList.stream().peek(
-                main -> main.getLikeInfo().setLikeCount(likeReader.getLikeCount(main.getId(), likeableType))
-        ).collect(Collectors.toList());
+        return trackReader.getTrackLikeList(likeableType, user.getUser().getId());
     }
 
 }

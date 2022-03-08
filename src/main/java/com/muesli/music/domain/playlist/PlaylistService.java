@@ -18,12 +18,14 @@ public interface PlaylistService {
     PlaylistInfo.Main updatePlaylist(PlaylistCommand.RegisterPlaylistRequest command);
 
     // 플레이리스트 삭제
-    void deletePlaylist(Long playlistId, String usertoken);
+    void removePlaylist(Long playlistId, String usertoken);
 
     // 플레이리스트 좋아요 목록
     List<PlaylistInfo.Main> getLikeList(String likeableType, String usertoken);
 
     // 플레이리스트에 트랙 추가
+    void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command);
 
     // 플레이리스트에 트랙 삭제
+    void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command);
 }

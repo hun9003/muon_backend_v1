@@ -3,6 +3,7 @@ package com.muesli.music.domain.playlist.track;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.playlist.Playlist;
 import com.muesli.music.domain.track.Track;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +30,7 @@ public class PlaylistTrack {
     @Column(name = "position")
     private int position;
 
+    @Builder
     public PlaylistTrack(Long id, Playlist playlist, Track track, int position) {
         if (playlist == null) throw new InvalidParamException("empty playlist");
         if (track == null) throw new InvalidParamException("empty track");

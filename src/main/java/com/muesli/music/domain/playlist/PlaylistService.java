@@ -12,10 +12,10 @@ public interface PlaylistService {
     List<PlaylistInfo.Main> findPlaylistInfoMyList(String usertoken);
 
     // 플레이리스트 추가
-    PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command);
+    PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken);
 
     // 플레이리스트 수정
-    PlaylistInfo.Main updatePlaylist(PlaylistCommand.RegisterPlaylistRequest command);
+    PlaylistInfo.Main updatePlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken);
 
     // 플레이리스트 삭제
     void removePlaylist(Long playlistId, String usertoken);
@@ -24,8 +24,8 @@ public interface PlaylistService {
     List<PlaylistInfo.Main> getLikeList(String likeableType, String usertoken);
 
     // 플레이리스트에 트랙 추가
-    void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command);
+    void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String usertoken);
 
     // 플레이리스트에 트랙 삭제
-    void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command);
+    void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String usertoken);
 }

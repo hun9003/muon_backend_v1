@@ -23,9 +23,6 @@ public class LikeServiceImpl implements LikeService {
     private final LikeReader likeReader;
     private final LikeStore likeStore;
     private final UsertokenReader usertokenReader;
-    private final TrackReader trackReader;
-    private final AlbumReader albumReader;
-    private final ArtistReader artistReader;
 
     /**
      * 해당 아이템을 좋아요 했는지 확인

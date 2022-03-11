@@ -17,8 +17,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/likes")
 public class LikeApiController {
-    private final LikeDtoMapper likeDtoMapper;
-    private final TrackDtoMapper trackDtoMapper;
     private final LikeFacade likeFacade;
 
     /**

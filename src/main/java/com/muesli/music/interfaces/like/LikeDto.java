@@ -43,7 +43,7 @@ public class LikeDto {
     @Builder
     @ToString
     public static class RegisterLike {
-        @NotNull(message = "대상 id값은(likeableId)은 필수값입니다.")
+        @NotNull(message = "대상 id(likeableId)은 필수값입니다.")
         private final Long likeableId;
 
         @NotBlank

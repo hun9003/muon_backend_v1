@@ -53,7 +53,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
         var initPlaylist = command.toEntity(usertokenInfo.getUser().getId());
         var playlist = playlistStore.store(initPlaylist);
-        return new PlaylistInfo.Main(playlist, null, null);
+        return new PlaylistInfo.Main(playlist, new PlaylistInfo., null);
     }
 
     /**

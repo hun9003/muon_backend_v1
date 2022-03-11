@@ -1,6 +1,7 @@
 package com.muesli.music.domain.playlist;
 
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.domain.AbstractEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Table(name = "playlists")
-public class Playlist {
-
-    private final int VIEW_COUNT = 1;
+public class Playlist extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +49,6 @@ public class Playlist {
     }
 
     public void setViews(int views) {
-        this.views = views + VIEW_COUNT;
+        this.views = views + 1;
     }
 }

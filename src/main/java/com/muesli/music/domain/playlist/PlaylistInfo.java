@@ -34,4 +34,5 @@ public class PlaylistInfo {
             this.likeInfo = likeInfo;
         }
     }
+
 }

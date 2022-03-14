@@ -69,6 +69,6 @@ authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 {
-  "name": "실험용플레이리스트!!",
+  "name": "실험용플레이리스트2!!",
   "description": "테스트 설명글"
 }

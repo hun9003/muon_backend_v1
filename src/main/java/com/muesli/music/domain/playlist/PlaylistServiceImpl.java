@@ -1,5 +1,9 @@
 package com.muesli.music.domain.playlist;
 
+import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -53,7 +58,18 @@ public class PlaylistServiceImpl implements PlaylistService{
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
         var initPlaylist = command.toEntity(usertokenInfo.getUser().getId());
         var playlist = playlistStore.store(initPlaylist);
-        return new PlaylistInfo.Main(playlist, new PlaylistInfo., null);
+//        var trackInfoList = playlist.playlistTrackList.stream().map(
+//                playlistTrack -> {
+//                    var track = playlistTrack.getTrack();
+//                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+//                    var likeInfo = new LikeInfo.Main(new Like());
+//                    likeInfo.setLikeCount((long) track.getLikeList().size());
+//                    var trackInfo = new TrackInfo.Main(track, artistInfo);
+//                    trackInfo.setLikeInfo(likeInfo);
+//                    return trackInfo;
+//                }
+//        ).collect(Collectors.toList());
+        return new PlaylistInfo.Main(playlist);
     }
 
     /**

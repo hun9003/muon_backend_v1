@@ -1,13 +1,20 @@
 package com.muesli.music.domain.playlist;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
+import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.playlist.track.PlaylistTrack;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -30,6 +37,13 @@ public class Playlist extends AbstractEntity {
     private String description;
     @Column(name = "user_id")
     private Long userId;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "playlist", cascade = CascadeType.PERSIST)
+    List<PlaylistTrack> playlistTrackList = Lists.newArrayList();
+
+    @Where(clause = "likeable_type LIKE '%Playlist%'")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "playlist", cascade = CascadeType.PERSIST)
+    private Set<Like> likeList = Sets.newHashSet();
 
     @Builder
     public Playlist(Long id, String name, Long isPublic, String description, Long userId) {

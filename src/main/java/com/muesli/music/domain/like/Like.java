@@ -4,6 +4,7 @@ import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.artist.Artist;
+import com.muesli.music.domain.playlist.Playlist;
 import com.muesli.music.domain.track.Track;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +45,10 @@ public class Like extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "likeable_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Artist artist;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "likeable_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Playlist playlist;
 
     @Builder
     public Like(Long userId, String likeableType, Long likeableId) {

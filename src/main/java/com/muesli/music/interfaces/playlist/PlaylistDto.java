@@ -65,4 +65,32 @@ public class PlaylistDto {
                     .build();
         }
     }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class UpdatePlaylist {
+
+        @NotNull(message = "대상 id(id)은 필수값입니다.")
+        private final Long id;
+
+        @NotBlank
+        @NotEmpty(message = "대상 name(name)은 필수값입니다.")
+        private final String name;
+
+        private final Long isPublic;
+
+        private final String description;
+
+        private final Long userId;
+
+        public PlaylistCommand.UpdatePlaylistRequest toCommand() {
+            return PlaylistCommand.UpdatePlaylistRequest.builder()
+                    .id(id)
+                    .name(name)
+                    .isPublic(isPublic)
+                    .description(description)
+                    .build();
+        }
+    }
 }

@@ -26,4 +26,13 @@ public class PlaylistApiController {
         var response = playlistDtoMapper.of(playlistInfo);
         return CommonResponse.success(response);
     }
+
+    @PostMapping("/update")
+    public CommonResponse updatePlaylist(@RequestBody @Valid PlaylistDto.UpdatePlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("PlaylistApiController :: updatePlaylist");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var playlistCommand = request.toCommand();
+        playlistFacade.updatePlaylist(playlistCommand, usertoken);
+        return CommonResponse.success("OK");
+    }
 }

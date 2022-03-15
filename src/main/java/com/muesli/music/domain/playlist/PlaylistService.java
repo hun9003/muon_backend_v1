@@ -1,7 +1,5 @@
 package com.muesli.music.domain.playlist;
 
-import com.muesli.music.domain.user.UserInfo;
-
 import java.util.List;
 
 public interface PlaylistService {
@@ -15,7 +13,7 @@ public interface PlaylistService {
     PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken);
 
     // 플레이리스트 수정
-    PlaylistInfo.Main updatePlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken);
+    void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String usertoken);
 
     // 플레이리스트 삭제
     void removePlaylist(Long playlistId, String usertoken);

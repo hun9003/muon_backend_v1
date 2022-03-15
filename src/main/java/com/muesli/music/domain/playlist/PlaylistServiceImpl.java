@@ -1,9 +1,7 @@
 package com.muesli.music.domain.playlist;
 
-import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.Like;
-import com.muesli.music.domain.like.LikeInfo;
-import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -75,13 +73,19 @@ public class PlaylistServiceImpl implements PlaylistService{
     /**
      * 플레이 리스트 수정
      * @param command
-     * @return
      */
     @Override
     @Transactional
-    public PlaylistInfo.Main updatePlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken) {
+    public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String usertoken) {
         System.out.println("PlaylistServiceImpl :: updatePlaylist");
-        return null;
+        var usertokenInfo = usertokenReader.getUsertoken(usertoken);
+        var initPlaylist = command.toEntity(usertokenInfo.getUser().getId());
+        var playlist = playlistReader.getPlaylistBy(initPlaylist.getId());
+        if (Objects.equals(usertokenInfo.getUser().getId(), playlist.getUserId())) {
+            playlist.setPlaylist(initPlaylist);
+        } else {
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.muesli.music.domain.user.token;
 
+import com.muesli.music.domain.user.User;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserReader;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,13 @@ public class UsertokenServiceImpl implements UsertokenService{
     public UserInfo.UsertokenInfo findUsertokenInfo(String token) {
         System.out.println("UsertokenServiceImpl :: findUsertokenInfo");
         var usertoken = usertokenReader.getUsertoken(token);
-        var user = new UserInfo.Main(userReader.getUser(usertoken.getUser()));
-        return new UserInfo.UsertokenInfo(usertoken, user);
+        UserInfo.Main userInfo;
+        try {
+            userInfo = new UserInfo.Main(userReader.getUser(usertoken.getUser()));
+        } catch (Exception e){
+            userInfo = new UserInfo.Main(new User());
+        }
+        return new UserInfo.UsertokenInfo(usertoken, userInfo);
     }
 
     @Override

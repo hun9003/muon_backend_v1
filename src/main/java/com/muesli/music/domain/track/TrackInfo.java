@@ -1,5 +1,7 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.domain.album.Album;
+import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.lyrics.Lyrics;
@@ -26,6 +28,7 @@ public class TrackInfo {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final AlbumInfo.Main albumInfo;
         private final LyricsInfo lyricsInfo;
         private LikeInfo.Main likeInfo;
         private final ArtistInfo.Main artistInfo;
@@ -46,6 +49,7 @@ public class TrackInfo {
             this.adult = track.getAdult();
             this.lyricsInfo = null;
             this.artistInfo = artistInfo;
+            this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
         }
 
         public Main(Track track, ArtistInfo.Main artistInfo, LyricsInfo lyricsInfo, LikeInfo.Main likeInfo) {
@@ -65,6 +69,7 @@ public class TrackInfo {
             this.likeInfo = likeInfo;
             this.lyricsInfo = lyricsInfo;
             this.artistInfo = artistInfo;
+            this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
         }
 
         public void setLikeInfo(LikeInfo.Main likeInfo) {

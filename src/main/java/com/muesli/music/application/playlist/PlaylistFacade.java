@@ -13,8 +13,25 @@ import org.springframework.stereotype.Service;
 public class PlaylistFacade {
     private final PlaylistService playlistService;
 
+    /**
+     * 플레이 리스트 생성
+     * @param command
+     * @param usertoken
+     * @return
+     */
     public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken) {
         System.out.println("PlaylistFacade :: registerPlaylist");
         return playlistService.registerPlaylist(command, usertoken);
+    }
+
+    /**
+     * 플레이 리스트 수정
+     * @param command
+     * @param usertoken
+     * @return
+     */
+    public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String usertoken) {
+        System.out.println("PlaylistFacade :: updatePlaylist");
+        playlistService.updatePlaylist(command, usertoken);
     }
 }

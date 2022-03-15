@@ -24,7 +24,6 @@ public class TrackDto {
         private final String artistsLegacy;
         private final String url;
         private final String description;
-        private final String image;
         private final String composer;
         private final String lyricser;
         private final String arranger;
@@ -32,6 +31,7 @@ public class TrackDto {
         private final LyricsInfo lyricsInfo;
         private final LikeDto.LikeInfo likeInfo;
         private final ArtistInfo artistInfo;
+        private final AlbumInfo albumInfo;
     }
 
     /**
@@ -49,13 +49,13 @@ public class TrackDto {
         private final String artistsLegacy;
         private final String url;
         private final String description;
-        private final String image;
         private final String composer;
         private final String lyricser;
         private final String arranger;
         private final Long adult;
         private final LikeDto.LikeInfo likeInfo;
         private final ArtistInfo artistInfo;
+        private final AlbumInfo albumInfo;
     }
 
     /**
@@ -100,4 +100,15 @@ public class TrackDto {
         private final String englishName;
     }
 
+    /**
+     * 트랙의 앨범 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class AlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String image;
+    }
 }

@@ -52,10 +52,20 @@ public class Playlist extends AbstractEntity {
         if(userId == null) throw new InvalidParamException("empty userId");
         if(isPublic == null) isPublic = 0L;
 
+        this.id = id;
         this.name = name;
         this.isPublic = isPublic;
         this.description = description;
         this.userId = userId;
+    }
+
+    public void setPlaylist(Playlist playlist) {
+        if(StringUtils.isEmpty(name)) throw new InvalidParamException("empty name");
+        if(StringUtils.isEmpty(description)) throw new InvalidParamException("empty description");
+
+        this.name = playlist.name;
+        this.isPublic = playlist.isPublic;
+        this.description = playlist.description;
     }
 
     public void setIsPublic(Long isPublic) {

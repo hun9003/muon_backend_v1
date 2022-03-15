@@ -32,6 +32,27 @@ public class PlaylistCommand {
     @Getter
     @Builder
     @ToString
+    public static class UpdatePlaylistRequest {
+        private final Long id;
+        private final String name;
+        private final String description;
+        private final Long isPublic;
+
+        public Playlist toEntity(Long userId) {
+            System.out.println("PlaylistCommand :: toEntity");
+            return Playlist.builder()
+                    .id(id)
+                    .userId(userId)
+                    .name(name)
+                    .description(description)
+                    .isPublic(isPublic)
+                    .build();
+        }
+    }
+
+    @Getter
+    @Builder
+    @ToString
     public static class TrackToPlaylistRequest {
         private final Playlist playlist;
         private final Track track;

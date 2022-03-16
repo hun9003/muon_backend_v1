@@ -21,23 +21,23 @@ public class AlbumFacade {
     /**
      * 앨범 정보 조회
      * @param albumId
-     * @param usertoken
+     * @param token
      * @return
      */
-    public AlbumInfo.Main findAlbumInfo(Long albumId, String usertoken) {
+    public AlbumInfo.Main findAlbumInfo(Long albumId, String token) {
         System.out.println("AlbumFacade :: findAlbumInfo");
-        var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return albumService.findAlbumInfo(albumId, usertokenInfo.getUserInfo());
     }
 
     /**
      * 좋아요 앨범 리스트 조회
-     * @param usertoken
+     * @param token
      * @return
      */
-    public List<AlbumInfo.Main> retrieveLikeList(String usertoken) {
+    public List<AlbumInfo.Main> retrieveLikeList(String token) {
         System.out.println("TrackFacade :: retrieveLikeList");
-        return albumService.getLikeList("App\\Album", usertoken);
+        return albumService.getLikeList("App\\Album", token);
     }
 
 }

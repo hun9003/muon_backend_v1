@@ -1,3 +1,114 @@
+GET http://localhost:8080/api/v1/playlists/delete/77
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T111435.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/delete/79
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T111359.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "id": 79,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T111352.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/create
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트4!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-03-16T111347.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "id": 79,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T111326.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/create
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트4!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-03-16T111118.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/delete/79
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-16T111108.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "id": 79,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T111053.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/create
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트4!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-03-16T111041.200.json
+
+###
+
 GET http://localhost:8080/api/v1/playlists/delete/78
 authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
@@ -441,78 +552,6 @@ Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 
 <> 2022-03-15T160155.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-15T151058.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-15T140914.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-15T140539.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/1113
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-03-15T140513.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-15T140236.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-15T140220.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-15T135705.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T135128.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-15T132014.200.json
 
 ###
 

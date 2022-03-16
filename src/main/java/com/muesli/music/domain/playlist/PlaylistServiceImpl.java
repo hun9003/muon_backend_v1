@@ -2,6 +2,12 @@ package com.muesli.music.domain.playlist;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.like.LikeReader;
+import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -18,28 +25,43 @@ public class PlaylistServiceImpl implements PlaylistService{
     private final UsertokenReader usertokenReader;
     private final PlaylistReader playlistReader;
     private final PlaylistStore playlistStore;
+    private final LikeReader likeReader;
 
     /**
      * 플레이리스트 조회
      * @param playlistId
-     * @param token
+     * @param userInfo
      * @return
      */
     @Override
     @Transactional
-    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, String token) {
+    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfo");
-        return null;
+        var playlist = playlistReader.getPlaylistBy(playlistId);
+        var trackInfoList = playlist.playlistTrackList.stream().map(
+                playlistTrack -> {
+                    var track = playlistTrack.getTrack();
+                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+                    var likeInfo = new LikeInfo.Main(new Like());
+                    likeInfo.setLikeCount((long) track.getLikeList().size());
+                    var trackInfo = new TrackInfo.Main(track, artistInfo);
+                    trackInfo.setLikeInfo(likeInfo);
+                    return trackInfo;
+                }
+        ).collect(Collectors.toList());
+        var playlistLikeCount = (long) playlist.getLikeList().size();
+        var playlistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), playlist.getId(), "App\\Playlist"), playlistLikeCount);
+        return new PlaylistInfo.Main(playlist, trackInfoList, playlistLikeInfo);
     }
 
     /**
      * 내 플레이리스트 조회
-     * @param token
+     * @param userInfo
      * @return
      */
     @Override
     @Transactional
-    public List<PlaylistInfo.Main> findPlaylistInfoMyList(String token) {
+    public List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfoMyList");
         return null;
     }
@@ -47,15 +69,14 @@ public class PlaylistServiceImpl implements PlaylistService{
     /**
      * 플레이 리스트 등록
      * @param command
+     * @param userInfo
      * @return
      */
     @Override
     @Transactional
-    public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String token) {
+    public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: registerPlaylist");
-        var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
-        var initPlaylist = command.toEntity(usertoken.getUser().getId());
+        var initPlaylist = command.toEntity(userInfo.getId());
         var playlist = playlistStore.store(initPlaylist);
 //        var trackInfoList = playlist.playlistTrackList.stream().map(
 //                playlistTrack -> {
@@ -77,13 +98,11 @@ public class PlaylistServiceImpl implements PlaylistService{
      */
     @Override
     @Transactional
-    public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String token) {
+    public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: updatePlaylist");
-        var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
-        var initPlaylist = command.toEntity(usertoken.getUser().getId());
+        var initPlaylist = command.toEntity(userInfo.getId());
         var playlist = playlistReader.getPlaylistBy(initPlaylist.getId());
-        if (Objects.equals(usertoken.getUser().getId(), playlist.getUserId())) {
+        if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
             playlist.setPlaylist(initPlaylist);
         } else {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
@@ -93,16 +112,14 @@ public class PlaylistServiceImpl implements PlaylistService{
     /**
      * 플레이 리스트 삭제
      * @param playlistId
-     * @param token
+     * @param userInfo
      */
     @Override
     @Transactional
-    public void removePlaylist(Long playlistId, String token) {
+    public void removePlaylist(Long playlistId, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: removePlaylist");
-        var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var playlist = playlistReader.getPlaylistBy(playlistId);
-        if (Objects.equals(usertoken.getUser().getId(), playlist.getUserId())) {
+        if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
             playlistStore.delete(playlist);
         } else {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
@@ -112,12 +129,12 @@ public class PlaylistServiceImpl implements PlaylistService{
     /**
      * 좋아하는 플레이리스트
      * @param likeableType
-     * @param token
+     * @param userInfo
      * @return
      */
     @Override
     @Transactional
-    public List<PlaylistInfo.Main> getLikeList(String likeableType, String token) {
+    public List<PlaylistInfo.Main> getLikeList(String likeableType, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: getLikeList");
         return null;
     }
@@ -128,18 +145,18 @@ public class PlaylistServiceImpl implements PlaylistService{
      */
     @Override
     @Transactional
-    public void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String token) {
+    public void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: addTrackToPlaylist");
     }
 
     /**
      * 플레이리스트에 트랙 삭제
      * @param command
-     * @param token
+     * @param userInfo
      */
     @Override
     @Transactional
-    public void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String token) {
+    public void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: removeTrackToPlaylist");
     }
 }

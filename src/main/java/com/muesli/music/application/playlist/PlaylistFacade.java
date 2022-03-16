@@ -3,6 +3,7 @@ package com.muesli.music.application.playlist;
 import com.muesli.music.domain.playlist.PlaylistCommand;
 import com.muesli.music.domain.playlist.PlaylistInfo;
 import com.muesli.music.domain.playlist.PlaylistService;
+import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PlaylistFacade {
     private final PlaylistService playlistService;
+    private final UsertokenService usertokenService;
 
     /**
      * 플레이 리스트 생성
@@ -22,7 +24,8 @@ public class PlaylistFacade {
      */
     public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: registerPlaylist");
-        return playlistService.registerPlaylist(command, token);
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return playlistService.registerPlaylist(command, usertokenInfo.getUserInfo());
     }
 
     /**
@@ -34,7 +37,8 @@ public class PlaylistFacade {
      */
     public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: updatePlaylist");
-        playlistService.updatePlaylist(command, token);
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        playlistService.updatePlaylist(command, usertokenInfo.getUserInfo());
     }
 
     /**
@@ -44,6 +48,7 @@ public class PlaylistFacade {
      */
     public void removePlaylist(Long playlistId, String token) {
         System.out.println("PlaylistFacade :: removePlaylist");
-        playlistService.removePlaylist(playlistId, token);
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        playlistService.removePlaylist(playlistId, usertokenInfo.getUserInfo());
     }
 }

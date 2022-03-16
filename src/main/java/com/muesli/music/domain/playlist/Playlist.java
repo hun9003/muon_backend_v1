@@ -2,7 +2,9 @@ package com.muesli.music.domain.playlist;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.AbstractEntity;
 import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.playlist.track.PlaylistTrack;
@@ -49,7 +51,7 @@ public class Playlist extends AbstractEntity {
     public Playlist(Long id, String name, Long isPublic, String description, Long userId) {
         if(StringUtils.isEmpty(name)) throw new InvalidParamException("empty name");
         if(StringUtils.isEmpty(description)) throw new InvalidParamException("empty description");
-        if(userId == null) throw new InvalidParamException("empty userId");
+        if(userId == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
         if(isPublic == null) isPublic = 0L;
 
         this.id = id;

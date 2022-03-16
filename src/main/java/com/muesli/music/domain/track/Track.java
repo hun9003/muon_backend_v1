@@ -9,11 +9,12 @@ import com.muesli.music.domain.track.artist.TrackArtist;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 import java.util.Set;
 
@@ -52,6 +53,7 @@ public class Track {
     @Column(name = "adult")
     private Long adult;
 
+    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "album_id")
     private Album album;
@@ -60,13 +62,13 @@ public class Track {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
     private Set<Like> likeList = Sets.newHashSet();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST, optional = false)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
     @NotFound(action = NotFoundAction.IGNORE)
-    private Lyrics lyrics;
+    private Set<Lyrics> lyrics = Sets.newHashSet();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST, optional = false)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "track", cascade = CascadeType.PERSIST)
     @NotFound(action = NotFoundAction.IGNORE)
-    private TrackArtist trackArtist;
+    private Set<TrackArtist> trackArtists = Sets.newHashSet();
 
     public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");

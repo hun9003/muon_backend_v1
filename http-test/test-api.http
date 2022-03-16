@@ -39,7 +39,7 @@ authorization:Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
 Content-Type: application/json
 
 {
-  "likeableId" : 42775,
+  "likeableId" : 1545,
   "likeableType" : "App\\Track"
 }
 
@@ -76,11 +76,11 @@ Content-Type: application/json
 
 ### 플레이 리스트 수정
 POST http://localhost:8080/api/v1/playlists/update
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 {
-  "id": 79,
+  "id": 80,
   "name": "실험용플레이리스트3!!!!!!",
   "description": "테스트 설명글!!",
   "isPublic": 0
@@ -92,6 +92,6 @@ authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
 Content-Type: application/json
 
 ### 플레이 리스트 조회
-GET http://localhost:8080/api/v1/playlists/80
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+GET http://localhost:8080/api/v1/playlists/6?page=2&size=10
+authorization:Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
 Content-Type: application/json

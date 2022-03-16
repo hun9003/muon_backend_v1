@@ -1,5 +1,6 @@
 package com.muesli.music.domain.track.artist;
 
+import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.track.Track;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,13 +19,11 @@ public class TrackArtist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
-    private com.muesli.music.domain.artist.Artist artist;
+    private Artist artist;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "track_id")
     private Track track;
 

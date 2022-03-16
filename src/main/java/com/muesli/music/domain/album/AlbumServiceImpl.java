@@ -79,7 +79,7 @@ public class AlbumServiceImpl implements AlbumService {
                 main -> {
                     var track = trackReader.getTrackArtist(main.getId());
                     if (track != null) {
-                        main.setArtistInfo(new ArtistInfo.Main(track.getTrackArtist().getArtist()));
+                        main.setArtistInfo(new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()));
                     }
                 }
         ).collect(Collectors.toList());

@@ -35,7 +35,7 @@ public class ArtistServiceImpl implements ArtistService{
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);
-        var bios = artist.getBios() != null ? artist.getBios() : new Bios();
+        var bios = artist.getBios().iterator().next() != null ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
         albumList.forEach(
                 albumBasicInfo -> {

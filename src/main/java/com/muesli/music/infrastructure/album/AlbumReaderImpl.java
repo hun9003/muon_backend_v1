@@ -31,7 +31,7 @@ public class AlbumReaderImpl implements AlbumReader {
     public List<TrackInfo.Main> getTrackList(Album album) {
         var trackList = album.getTrackList();
         return trackList.stream().map(track -> {
-            var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+            var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
             var likeInfo = new LikeInfo.Main(new Like());
             likeInfo.setLikeCount((long) track.getLikeList().size());
             var trackInfo = new TrackInfo.Main(track, artistInfo);

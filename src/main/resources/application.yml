@@ -10,7 +10,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    #    database-platform: mysql
   datasource:
     hikari:
       driver-class-name: org.mariadb.jdbc.Driver

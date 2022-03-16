@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,7 +44,7 @@ public class TrackReaderImpl implements TrackReader {
         // 좋아요 갯수 리턴 로직 추가
         return trackList.stream().map(
                 track -> {
-                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
+                    var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
                     var trackInfo = new TrackInfo.Main(track, artistInfo);
                     var likeCount = (long) track.getLikeList().size();
                     trackInfo.setLikeInfo(new LikeInfo.Main(track.getLikeList().iterator().next(), likeCount));
@@ -51,4 +52,5 @@ public class TrackReaderImpl implements TrackReader {
                 }
         ).collect(Collectors.toList());
     }
+
 }

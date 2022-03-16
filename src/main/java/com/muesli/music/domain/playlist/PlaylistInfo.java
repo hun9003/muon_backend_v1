@@ -21,7 +21,7 @@ public class PlaylistInfo {
         private final int views;
         private final String description;
         private final ZonedDateTime createAt;
-        private final int trackCount;
+        private int trackCount;
         private final UserInfo.Main userInfo;
         private final LikeInfo.Main likeInfo;
         private final List<TrackInfo.Main> trackInfoList;
@@ -37,7 +37,6 @@ public class PlaylistInfo {
             this.createAt = playlist.getCreatedAt();
             this.trackInfoList = trackInfoList;
             this.likeInfo = likeInfo;
-            this.trackCount = trackInfoList.size();
         }
 
         public Main(Playlist playlist, UserInfo.Main userInfo) {
@@ -51,7 +50,10 @@ public class PlaylistInfo {
             this.createAt = playlist.getCreatedAt();
             this.trackInfoList = null;
             this.likeInfo = null;
-            this.trackCount = 0;
+        }
+
+        public void setTrackCount(int trackCount) {
+            this.trackCount = trackCount;
         }
     }
 

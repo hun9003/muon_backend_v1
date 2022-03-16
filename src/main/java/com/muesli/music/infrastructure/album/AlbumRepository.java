@@ -13,7 +13,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "LEFT JOIN FETCH a.likeList " +
             "LEFT JOIN FETCH a.trackList t " +
             "LEFT JOIN FETCH t.lyrics " +
-            "LEFT JOIN FETCH t.trackArtist ta " +
+            "LEFT JOIN FETCH t.trackArtists ta " +
             "LEFT JOIN FETCH t.likeList " +
             "LEFT JOIN FETCH ta.artist ar " +
             "LEFT JOIN FETCH ar.bios " +

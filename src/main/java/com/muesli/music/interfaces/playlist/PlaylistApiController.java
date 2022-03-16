@@ -5,6 +5,7 @@ import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,10 +19,10 @@ public class PlaylistApiController {
     private final PlaylistDtoMapper playlistDtoMapper;
 
     @GetMapping("/{id}")
-    public CommonResponse retrievePlaylist(@PathVariable("id") Long playlistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+    public CommonResponse retrievePlaylist(@PathVariable("id") Long playlistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken);
+        var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken, pageable);
         var response = playlistDtoMapper.of(playlistInfo);
         return CommonResponse.success(response);
     }

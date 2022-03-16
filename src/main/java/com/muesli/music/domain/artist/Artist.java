@@ -57,13 +57,13 @@ public class Artist {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     private Set<Like> likeList = Sets.newHashSet();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST, optional = false)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     @NotFound(action = NotFoundAction.IGNORE)
-    private Bios bios;
+    private Set<Bios> bios = Sets.newHashSet();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "artist", cascade = CascadeType.PERSIST)
     @NotFound(action = NotFoundAction.IGNORE)
-    private List<TrackArtist> trackArtists = Lists.newArrayList();
+    private Set<TrackArtist> trackArtists = Sets.newHashSet();
 
     @Builder
     public Artist(Long id, String name, String originalName, String englishName, String image, String birthday, String country, Long debut, String agency, String label, int views, String imageSmall) {

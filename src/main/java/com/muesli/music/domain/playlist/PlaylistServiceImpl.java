@@ -3,15 +3,15 @@ package com.muesli.music.domain.playlist;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserReader;
-import com.muesli.music.domain.user.token.UsertokenReader;
+import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -36,25 +36,34 @@ public class PlaylistServiceImpl implements PlaylistService{
      */
     @Override
     @Transactional
-    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo) {
+    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo, Pageable pageable) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfo");
         var playlist = playlistReader.getPlaylistBy(playlistId);
         playlist.setViews(playlist.getViews());
         var trackInfoList = playlist.playlistTrackList.stream().map(
                 playlistTrack -> {
                     var track = playlistTrack.getTrack();
-                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
-                    var likeInfo = new LikeInfo.Main(new Like());
+                    if (track.getTrackArtists().iterator().next().getArtist() == null) return null;
+                    var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
+                    var likeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"));
                     likeInfo.setLikeCount((long) track.getLikeList().size());
                     var trackInfo = new TrackInfo.Main(track, artistInfo);
                     trackInfo.setLikeInfo(likeInfo);
                     return trackInfo;
                 }
-        ).collect(Collectors.toList());
+        ).filter(Objects::nonNull).collect(Collectors.toList());
         var playlistLikeCount = (long) playlist.getLikeList().size();
         var playlistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), playlist.getId(), "App\\Playlist"), playlistLikeCount);
         var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
-        return new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList, playlistLikeInfo);
+
+        // 페이징
+        var trackCount = trackInfoList.size();
+        var pageInfo = new PageInfo(pageable, trackCount);
+
+        trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+        var playlistInfo = new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList, playlistLikeInfo);
+        playlistInfo.setTrackCount(trackCount);
+        return playlistInfo;
     }
 
     /**
@@ -139,6 +148,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     @Transactional
     public void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: addTrackToPlaylist");
+
     }
 
     /**

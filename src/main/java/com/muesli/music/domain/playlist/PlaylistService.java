@@ -1,12 +1,13 @@
 package com.muesli.music.domain.playlist;
 
 import com.muesli.music.domain.user.UserInfo;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface PlaylistService {
     // 플레이리스트 조회
-    PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo);
+    PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo, Pageable pageable);
 
     // 플레이리스트 목록
     List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo);

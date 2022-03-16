@@ -35,11 +35,11 @@ public class TrackServiceImpl implements TrackService{
     public TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo) {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
-        var lyrics = track.getLyrics();
+        var lyrics = track.getLyrics().iterator().next();
         var trackLikeCount = (long) track.getLikeList().size();
         var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
 
-        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtist().getArtist()), new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
+        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
     }
 
     /**

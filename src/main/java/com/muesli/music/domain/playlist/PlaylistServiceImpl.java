@@ -54,6 +54,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String usertoken) {
         System.out.println("PlaylistServiceImpl :: registerPlaylist");
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
+        if(usertokenInfo.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var initPlaylist = command.toEntity(usertokenInfo.getUser().getId());
         var playlist = playlistStore.store(initPlaylist);
 //        var trackInfoList = playlist.playlistTrackList.stream().map(
@@ -79,6 +80,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String usertoken) {
         System.out.println("PlaylistServiceImpl :: updatePlaylist");
         var usertokenInfo = usertokenReader.getUsertoken(usertoken);
+        if(usertokenInfo.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var initPlaylist = command.toEntity(usertokenInfo.getUser().getId());
         var playlist = playlistReader.getPlaylistBy(initPlaylist.getId());
         if (Objects.equals(usertokenInfo.getUser().getId(), playlist.getUserId())) {

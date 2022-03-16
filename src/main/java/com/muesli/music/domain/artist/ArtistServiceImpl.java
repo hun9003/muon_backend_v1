@@ -1,5 +1,7 @@
 package com.muesli.music.domain.artist;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
@@ -63,14 +65,15 @@ public class ArtistServiceImpl implements ArtistService{
     /**
      * 좋아요 리스트 조회
      * @param likeableType
-     * @param usertoken
+     * @param token
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public List<ArtistInfo.Main> getLikeList(String likeableType, String usertoken) {
+    public List<ArtistInfo.Main> getLikeList(String likeableType, String token) {
         System.out.println("LikeServiceImpl :: getLikeArtistList");
-        var user = usertokenReader.getUsertoken(usertoken);
-        return artistReader.getArtistLikeList(user.getUser().getId());
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+        return artistReader.getArtistLikeList(usertoken.getUser().getId());
     }
 }

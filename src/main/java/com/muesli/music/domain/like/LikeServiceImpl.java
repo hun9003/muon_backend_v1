@@ -1,6 +1,8 @@
 package com.muesli.music.domain.like;
 
+import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
 import com.muesli.music.domain.artist.ArtistInfo;
@@ -27,60 +29,64 @@ public class LikeServiceImpl implements LikeService {
     /**
      * 해당 아이템을 좋아요 했는지 확인
      * @param command
-     * @param usertoken
+     * @param token
      * @return 좋아요 정보
      */
     @Override
-    public LikeInfo.Main findLikeBy(LikeCommand.RegisterLikeRequest command, String usertoken) {
+    public LikeInfo.Main findLikeBy(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: findLikeBy");
-        var usertokenInfo = usertokenReader.getUsertoken(usertoken);
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var likeCount = likeReader.getLikeCount(command.getLikeableId(), command.getLikeableType());
-        return new LikeInfo.Main(likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
+        return new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
     }
 
     /**
      * 새로 좋아요를 했을때 DB에 저장
      * @param command
-     * @param usertoken
+     * @param token
      */
     @Override
     @Transactional
-    public void registerLike(LikeCommand.RegisterLikeRequest command, String usertoken) {
+    public void registerLike(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: registerLike");
-        var usertokenInfo = usertokenReader.getUsertoken(usertoken);
-        var initLike = command.toEntity(usertokenInfo.getUser().getId());
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        var initLike = command.toEntity(usertoken.getUser().getId());
         likeStore.store(initLike);
     }
 
     /**
      * 이미 좋아요를 했던 아이템 상태변경 (좋아요)
      * @param command
-     * @param usertoken
+     * @param token
      */
     @Override
     @Transactional
-    public void changeDoLike(LikeCommand.RegisterLikeRequest command, String usertoken) {
+    public void changeDoLike(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: changeDoLike");
-        var usertokenInfo = usertokenReader.getUsertoken(usertoken);
-        var like = likeReader.getLikeBy(usertokenInfo.getUser().getId(), command.getLikeableId(), command.getLikeableType());
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        var like = likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType());
         like.doLike();
     }
 
     /**
      * 이미 좋아요를 했던 아이템 상태변경 (좋아요 취소)
      * @param likeId
-     * @param usertoken
+     * @param token
      */
     @Override
     @Transactional
-    public void changeDisLike(Long likeId, String usertoken) {
+    public void changeDisLike(Long likeId, String token) {
         System.out.println("LikeServiceImpl :: changeDisLike");
-        var user = usertokenReader.getUsertoken(usertoken);
+        var usertoken = usertokenReader.getUsertoken(token);
         var like = likeReader.getLikeBy(likeId);
-        if(Objects.equals(user.getUser().getId(), like.getUserId())) {
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(Objects.equals(usertoken.getUser().getId(), like.getUserId())) {
             like.doDisLike();
         } else {
-            throw new InvalidParamException("토큰이 유효하지 않습니다.");
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         }
     }
 

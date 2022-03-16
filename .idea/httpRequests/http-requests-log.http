@@ -1,3 +1,172 @@
+GET http://localhost:8080/api/v1/albums/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T103046.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T103036.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T103032.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T102523.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/697
+authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
+Content-Type: application/json
+
+<> 2022-03-16T102511.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/697
+authorization: Bearer afa0a93dfb7edec9ad7ea9c775cdd1d76d8f9ed7
+Content-Type: application/json
+
+<> 2022-03-16T102505.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-16T102451.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/696
+authorization: Bearer afa0a93dfb7edec9ad7ea9c775cdd1d76d8f9ed7
+Content-Type: application/json
+
+<> 2022-03-16T102402.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/696
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-16T102352.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer afa0a93dfb7edec9ad7ea9c775cdd1d76d8f9ed7
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-16T102315.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/disLike/692
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T102224.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-16T102220.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "likeableId" : 42775,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-16T101951.500.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a
+Content-Type: application/json
+
+{
+  "id": 78,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T101920.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a
+Content-Type: application/json
+
+{
+  "id": 78,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T101834.500.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/update
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a
+Content-Type: application/json
+
+{
+  "id": 78,
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0
+}
+
+<> 2022-03-16T101636.500.json
+
+###
+
 POST http://localhost:8080/api/v1/playlists/update
 authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4
 Content-Type: application/json
@@ -138,7 +307,7 @@ authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 {
-  "id": 78
+  "id": 78,
   "name": "실험용플레이리스트3!!!!!!",
   "description": "테스트 설명글!!",
   "isPublic": 0
@@ -360,162 +529,6 @@ Content-Type: application/json
 }
 
 <> 2022-03-14T173805.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-14T173503.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-14T151501.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-11T173532.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-11T173422.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-11T172922.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/create
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트!!",
-  "description": "테스트 설명글"
-}
-
-<> 2022-03-11T171043.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T161107.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-04T161056.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T160602.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T154414.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T154037.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T151857.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-04T151553.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T150150.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/likeables
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-<> 2022-03-04T145644.200.json
 
 ###
 

@@ -1,5 +1,7 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
@@ -43,15 +45,16 @@ public class TrackServiceImpl implements TrackService{
     /**
      * 좋아요 리스트 조회
      * @param likeableType
-     * @param usertoken
+     * @param token
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public List<TrackInfo.Main> getLikeList(String likeableType, String usertoken) {
+    public List<TrackInfo.Main> getLikeList(String likeableType, String token) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
-        var user = usertokenReader.getUsertoken(usertoken);
-        return trackReader.getTrackLikeList(likeableType, user.getUser().getId());
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+        return trackReader.getTrackLikeList(likeableType, usertoken.getUser().getId());
     }
 
 }

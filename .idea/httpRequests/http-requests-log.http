@@ -322,7 +322,7 @@ authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
 
 {
-  "id": 78
+  "id": 78,
   "name": "실험용플레이리스트3!!!!!!",
   "description": "테스트 설명글!!",
   "isPublic": 0

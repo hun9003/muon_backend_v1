@@ -1,6 +1,7 @@
 package com.muesli.music.interfaces.artist;
 
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,7 +31,7 @@ public class ArtistDto {
         private final String imageSmall;
         private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
         private final LikeDto.LikeInfo likeInfo;
-        private final List<AlbumInfo> albumList;
+        private final List<AlbumDto.ArtistAlbumInfo> albumList;
     }
 
     /**
@@ -56,23 +57,6 @@ public class ArtistDto {
     }
 
     /**
-     * 앨범 정보
-     */
-    @Getter
-    @Builder
-    @ToString
-    public static class AlbumInfo {
-        private final Long id;
-        private final String albumCode;
-        private final String name;
-        private final String releaseDate;
-        private final String originalName;
-        private final String image;
-        private final String description;
-        private final LikeDto.LikeInfo likeInfo;
-    }
-
-    /**
      * 아티스트 리스트
      */
     @Getter
@@ -89,4 +73,16 @@ public class ArtistDto {
         }
     }
 
+    /**
+     * 트랙에게 제공하는 아티스트 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class TrackArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+    }
 }

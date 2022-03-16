@@ -17,6 +17,15 @@ public class PlaylistApiController {
     private final PlaylistFacade playlistFacade;
     private final PlaylistDtoMapper playlistDtoMapper;
 
+    @GetMapping("/{id}")
+    public CommonResponse retrievePlaylist(@PathVariable("id") Long playlistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+        System.out.println("PlaylistApiController :: registerPlaylist");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken);
+        var response = playlistDtoMapper.of(playlistInfo);
+        return CommonResponse.success(response);
+    }
+
     @PostMapping("/create")
     public CommonResponse registerPlaylist(@RequestBody @Valid PlaylistDto.RegisterPlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("PlaylistApiController :: registerPlaylist");

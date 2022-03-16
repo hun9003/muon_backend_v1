@@ -1,3 +1,167 @@
+GET http://localhost:8080/api/v1/tracks/42860
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-16T124838.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-16T124837.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-16T124829.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-03-16T122726.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/80
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T122304.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/80
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T121829.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/80
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T121605.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/81
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T121546.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/79
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T121540.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T121508.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T120714.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/create
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트5!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-03-16T120424.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlists/create
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트5!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-03-16T120414.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T115234.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T114733.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T114022.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T114014.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/delete/6
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T114007.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/delete/24
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
+Content-Type: application/json
+
+<> 2022-03-16T113828.500.json
+
+###
+
 GET http://localhost:8080/api/v1/playlists/delete/77
 authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
 Content-Type: application/json
@@ -330,228 +494,6 @@ Content-Type: application/json
 }
 
 <> 2022-03-15T163647.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T163442.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T163418.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T163214.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T163003.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162931.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162827.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162648.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162522.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162457.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 78,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-03-15T162421.404.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4
-
-<> 2022-03-15T161606.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artists/1113
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd30
-
-<> 2022-03-15T161601.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T161554.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T161354.200.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T161042.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T160932.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T160719.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f
-
-<> 2022-03-15T160251.500.json
-
-###
-
-GET http://localhost:8080/api/v1/albums/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-03-15T160155.200.json
 
 ###
 

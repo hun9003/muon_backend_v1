@@ -102,6 +102,12 @@ public class UserDto {
         }
     }
 
-
+    @Getter
+    @Builder
+    @ToString
+    public static class PlaylistUserInfo {
+        private final Long id;
+        private final String username;
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.muesli.music.interfaces.track;
 
+import com.muesli.music.interfaces.album.AlbumDto;
+import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,8 +32,8 @@ public class TrackDto {
         private final Long adult;
         private final LyricsInfo lyricsInfo;
         private final LikeDto.LikeInfo likeInfo;
-        private final ArtistInfo artistInfo;
-        private final AlbumInfo albumInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
+        private final AlbumDto.TrackAlbumInfo albumInfo;
     }
 
     /**
@@ -54,8 +56,8 @@ public class TrackDto {
         private final String arranger;
         private final Long adult;
         private final LikeDto.LikeInfo likeInfo;
-        private final ArtistInfo artistInfo;
-        private final AlbumInfo albumInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
+        private final AlbumDto.TrackAlbumInfo albumInfo;
     }
 
     /**
@@ -86,29 +88,63 @@ public class TrackDto {
         }
     }
 
-
     /**
-     * 트랙의 아티스트 정보
+     * 앨범에게 제공하는 트랙 정보
      */
     @Getter
     @ToString
     @Builder
-    public static class ArtistInfo {
+    public static class AlbumTrackInfo {
         private final Long id;
         private final String name;
-        private final String originalName;
-        private final String englishName;
+        private final String original;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String url;
+        private final String description;
+        private final String image;
+        private final Long adult;
+        private final LikeDto.LikeInfo likeInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
     }
 
     /**
-     * 트랙의 앨범 정보
+     * 아티스트에게 제공하는 트랙 정보
      */
     @Getter
     @ToString
     @Builder
-    public static class AlbumInfo {
+    public static class ArtistTrackInfo {
         private final Long id;
         private final String name;
+        private final String original;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String url;
+        private final String description;
         private final String image;
+        private final Long adult;
+        private final LikeDto.LikeInfo likeInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
+    }
+
+    /**
+     * 플레이리스트에게 제공하는 트랙 정보
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class PlaylistTrackInfo {
+        private final Long id;
+        private final String name;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String image;
+        private final Long adult;
+        private final LikeDto.LikeInfo likeInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
+        private final AlbumDto.TrackAlbumInfo albumInfo;
     }
 }

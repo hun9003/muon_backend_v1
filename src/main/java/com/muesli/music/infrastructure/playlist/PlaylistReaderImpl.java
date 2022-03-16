@@ -19,7 +19,7 @@ public class PlaylistReaderImpl implements PlaylistReader {
     @Override
     public Playlist getPlaylistBy(Long playlistId) {
         System.out.println("PlaylistReaderImpl :: getPlaylistBy");
-        return playlistRepository.findById(playlistId)
+        return playlistRepository.findPlaylistById(playlistId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 

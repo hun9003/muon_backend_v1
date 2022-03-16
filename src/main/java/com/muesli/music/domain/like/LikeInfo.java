@@ -24,7 +24,7 @@ public class LikeInfo {
             this.userId = like.getUserId();
             this.likeableType = like.getLikeableType();
             this.isLike = like.getIsLike();
-            this.createdAt = like.getCreated_at();
+            this.createdAt = like.getCreatedAt();
         }
 
         public Main(Like like, Long likeCount) {
@@ -32,7 +32,7 @@ public class LikeInfo {
             this.userId = like.getUserId();
             this.likeableType = like.getLikeableType();
             this.isLike = like.getIsLike();
-            this.createdAt = like.getCreated_at();
+            this.createdAt = like.getCreatedAt();
             this.likeCount = likeCount;
         }
 

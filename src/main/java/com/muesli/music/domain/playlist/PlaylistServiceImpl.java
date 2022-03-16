@@ -8,6 +8,7 @@ import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
+import com.muesli.music.domain.user.UserReader;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,10 +23,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class PlaylistServiceImpl implements PlaylistService{
-    private final UsertokenReader usertokenReader;
     private final PlaylistReader playlistReader;
     private final PlaylistStore playlistStore;
     private final LikeReader likeReader;
+    private final UserReader userReader;
 
     /**
      * 플레이리스트 조회
@@ -38,6 +39,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     public PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfo");
         var playlist = playlistReader.getPlaylistBy(playlistId);
+        playlist.setViews(playlist.getViews());
         var trackInfoList = playlist.playlistTrackList.stream().map(
                 playlistTrack -> {
                     var track = playlistTrack.getTrack();
@@ -51,7 +53,8 @@ public class PlaylistServiceImpl implements PlaylistService{
         ).collect(Collectors.toList());
         var playlistLikeCount = (long) playlist.getLikeList().size();
         var playlistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), playlist.getId(), "App\\Playlist"), playlistLikeCount);
-        return new PlaylistInfo.Main(playlist, trackInfoList, playlistLikeInfo);
+        var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
+        return new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList, playlistLikeInfo);
     }
 
     /**
@@ -78,18 +81,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         System.out.println("PlaylistServiceImpl :: registerPlaylist");
         var initPlaylist = command.toEntity(userInfo.getId());
         var playlist = playlistStore.store(initPlaylist);
-//        var trackInfoList = playlist.playlistTrackList.stream().map(
-//                playlistTrack -> {
-//                    var track = playlistTrack.getTrack();
-//                    var artistInfo = new ArtistInfo.Main(track.getTrackArtist().getArtist());
-//                    var likeInfo = new LikeInfo.Main(new Like());
-//                    likeInfo.setLikeCount((long) track.getLikeList().size());
-//                    var trackInfo = new TrackInfo.Main(track, artistInfo);
-//                    trackInfo.setLikeInfo(likeInfo);
-//                    return trackInfo;
-//                }
-//        ).collect(Collectors.toList());
-        return new PlaylistInfo.Main(playlist);
+        return new PlaylistInfo.Main(playlist, userInfo);
     }
 
     /**

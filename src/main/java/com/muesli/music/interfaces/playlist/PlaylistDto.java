@@ -1,8 +1,11 @@
 package com.muesli.music.interfaces.playlist;
 
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.playlist.PlaylistCommand;
-import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.interfaces.album.AlbumDto;
+import com.muesli.music.interfaces.artist.ArtistDto;
+import com.muesli.music.interfaces.like.LikeDto;
+import com.muesli.music.interfaces.track.TrackDto;
+import com.muesli.music.interfaces.user.UserDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -10,6 +13,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class PlaylistDto {
@@ -24,22 +28,11 @@ public class PlaylistDto {
         private final String image;
         private final int views;
         private final String description;
-        private final LikeInfo.Main likeInfo;
-        private final List<TrackInfo.Main> trackInfoList;
-    }
-
-    @Getter
-    @Builder
-    @ToString
-    public static class PlaylistTrackInfo {
-
-    }
-
-    @Getter
-    @Builder
-    @ToString
-    public static class PlaylistTrackList {
-
+        private final ZonedDateTime createAt;
+        private final int trackCount;
+        private final UserDto.PlaylistUserInfo userInfo;
+        private final LikeDto.LikeInfo likeInfo;
+        private final List<TrackDto.PlaylistTrackInfo> trackInfoList;
     }
 
     @Getter
@@ -93,4 +86,5 @@ public class PlaylistDto {
                     .build();
         }
     }
+
 }

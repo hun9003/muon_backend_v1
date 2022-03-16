@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.ZonedDateTime;
@@ -15,8 +16,10 @@ import java.time.ZonedDateTime;
 public class AbstractEntity {
 
     @CreationTimestamp
-    private ZonedDateTime created_at;
+    @Column(name = "created_at")
+    private ZonedDateTime createdAt;
 
     @UpdateTimestamp
-    private ZonedDateTime updated_at;
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
 }

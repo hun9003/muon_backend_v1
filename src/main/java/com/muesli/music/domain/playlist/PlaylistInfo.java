@@ -2,9 +2,11 @@ package com.muesli.music.domain.playlist;
 
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.user.UserInfo;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class PlaylistInfo {
@@ -18,32 +20,38 @@ public class PlaylistInfo {
         private final String image;
         private final int views;
         private final String description;
-        private final Long userId;
+        private final ZonedDateTime createAt;
+        private final int trackCount;
+        private final UserInfo.Main userInfo;
         private final LikeInfo.Main likeInfo;
         private final List<TrackInfo.Main> trackInfoList;
 
-        public Main(Playlist playlist, List<TrackInfo.Main> trackInfoList, LikeInfo.Main likeInfo) {
+        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.Main> trackInfoList, LikeInfo.Main likeInfo) {
             this.id = playlist.getId();
             this.name = playlist.getName();
             this.isPublic = playlist.getIsPublic();
             this.image = playlist.getImage();
             this.views = playlist.getViews();
             this.description = playlist.getDescription();
-            this.userId = playlist.getUserId();
+            this.userInfo = userInfo;
+            this.createAt = playlist.getCreatedAt();
             this.trackInfoList = trackInfoList;
             this.likeInfo = likeInfo;
+            this.trackCount = trackInfoList.size();
         }
 
-        public Main(Playlist playlist) {
+        public Main(Playlist playlist, UserInfo.Main userInfo) {
             this.id = playlist.getId();
             this.name = playlist.getName();
             this.isPublic = playlist.getIsPublic();
             this.image = playlist.getImage();
             this.views = playlist.getViews();
             this.description = playlist.getDescription();
-            this.userId = playlist.getUserId();
+            this.userInfo = userInfo;
+            this.createAt = playlist.getCreatedAt();
             this.trackInfoList = null;
             this.likeInfo = null;
+            this.trackCount = 0;
         }
     }
 

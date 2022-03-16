@@ -15,6 +15,12 @@ public class PlaylistFacade {
     private final PlaylistService playlistService;
     private final UsertokenService usertokenService;
 
+    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, String token) {
+        System.out.println("PlaylistFacade :: registerPlaylist");
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return playlistService.findPlaylistInfo(playlistId, usertokenInfo.getUserInfo());
+    }
+
     /**
      * 플레이 리스트 생성
      *

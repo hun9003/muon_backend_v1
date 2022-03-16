@@ -19,4 +19,11 @@ public class PlaylistStoreImpl implements PlaylistStore {
         if (initPlaylist.getUserId() == null) throw new InvalidParamException("Playlist.UserId");
         return playlistRepository.save(initPlaylist);
     }
+
+    @Override
+    public void delete(Playlist playlist) {
+        System.out.println("PlaylistStoreImpl :: delete");
+        if (playlist.getId() == null) throw new InvalidParamException("Playlist.id");
+        playlistRepository.delete(playlist);
+    }
 }

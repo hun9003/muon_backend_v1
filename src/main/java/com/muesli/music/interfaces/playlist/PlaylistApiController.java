@@ -35,4 +35,12 @@ public class PlaylistApiController {
         playlistFacade.updatePlaylist(playlistCommand, usertoken);
         return CommonResponse.success("OK");
     }
+
+    @GetMapping("/delete/{id}")
+    public CommonResponse removePlaylist(@RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "id") Long playlistId) {
+        System.out.println("PlaylistApiController :: removePlaylist");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        playlistFacade.removePlaylist(playlistId, usertoken);
+        return CommonResponse.success("OK");
+    }
 }

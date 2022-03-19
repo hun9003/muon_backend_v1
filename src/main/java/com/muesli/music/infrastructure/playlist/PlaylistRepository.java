@@ -1,10 +1,8 @@
 package com.muesli.music.infrastructure.playlist;
 
 import com.muesli.music.domain.playlist.Playlist;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.web.PageableDefault;
 
 import java.util.Optional;
 

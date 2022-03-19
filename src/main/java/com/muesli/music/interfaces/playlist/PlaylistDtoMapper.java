@@ -15,6 +15,8 @@ public interface PlaylistDtoMapper {
     // register
     PlaylistCommand.RegisterPlaylistRequest of(PlaylistDto.RegisterPlaylist request);
 
+    PlaylistCommand.TrackToPlaylistRequest of(PlaylistDto.PlaylistTracksRequest request);
+
     // find
     PlaylistDto.PlaylistInfo of(PlaylistInfo.Main playlist);
 }

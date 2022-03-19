@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 public class PlaylistCommand {
 
     @Getter
@@ -54,14 +56,15 @@ public class PlaylistCommand {
     @Builder
     @ToString
     public static class TrackToPlaylistRequest {
-        private final Playlist playlist;
-        private final Track track;
+        private final Long playlistId;
+        private final List<Long> trackList;
 
-        public PlaylistTrack toEntity() {
+        public PlaylistTrack toEntity(Playlist playlist, Track track, int position) {
             System.out.println("PlaylistCommand :: toEntity");
             return PlaylistTrack.builder()
                     .playlist(playlist)
                     .track(track)
+                    .position(position)
                     .build();
         }
     }

@@ -1,13 +1,12 @@
 package com.muesli.music.interfaces.playlist;
 
 import com.muesli.music.domain.playlist.PlaylistCommand;
-import com.muesli.music.interfaces.album.AlbumDto;
-import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.like.LikeDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import com.muesli.music.interfaces.user.UserDto;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
@@ -87,4 +86,12 @@ public class PlaylistDto {
         }
     }
 
+    @Getter
+    @Setter
+    @ToString
+    public static class PlaylistTracksRequest {
+        @NotNull(message = "플레이리스트 ID(playlistId)은 필수값입니다.")
+        private Long playlistId;
+        private List<Long> trackList;
+    }
 }

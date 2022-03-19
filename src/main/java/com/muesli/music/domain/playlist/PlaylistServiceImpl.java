@@ -6,6 +6,7 @@ import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -27,6 +28,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     private final PlaylistStore playlistStore;
     private final LikeReader likeReader;
     private final UserReader userReader;
+    private final TrackReader trackReader;
 
     /**
      * 플레이리스트 조회
@@ -148,6 +150,31 @@ public class PlaylistServiceImpl implements PlaylistService{
     @Transactional
     public void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: addTrackToPlaylist");
+        var playlist = playlistReader.getPlaylistBy(command.getPlaylistId());
+
+        // 사용자 유효성 체크
+        if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        }
+
+        var trackList = playlist.getPlaylistTrackList();
+        var lastPosition = trackList.size();
+        var initTrackList = command.getTrackList();
+
+        // 트랙 중복 제거
+        for (var i = 0; i < initTrackList.size(); i++) {
+            for (com.muesli.music.domain.playlist.track.PlaylistTrack playlistTrack : trackList) {
+                if (Objects.equals(initTrackList.get(i), playlistTrack.getTrack().getId())) {
+                    initTrackList.remove(i);
+                }
+            }
+        }
+
+        for (var i = 0; i < initTrackList.size(); i++) {
+            var track = trackReader.getTrackBy(initTrackList.get(i));
+            var initPlayTrack = command.toEntity(playlist, track, lastPosition+i+1);
+            playlistStore.store(initPlayTrack);
+        }
 
     }
 
@@ -160,5 +187,20 @@ public class PlaylistServiceImpl implements PlaylistService{
     @Transactional
     public void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: removeTrackToPlaylist");
+        var playlist = playlistReader.getPlaylistBy(command.getPlaylistId());
+
+        // 사용자 유효성 체크
+        if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
+            playlistStore.delete(playlist);
+        } else {
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        }
+
+        var initTrackList = command.getTrackList();
+//        for (var i = 0; i < initTrackList.size(); i++) {
+//            var track = trackReader.getTrackBy(initTrackList.get(i));
+//            var initPlayTrack = command.toEntity(playlist, track, lastPosition+i+1);
+//            playlistStore.store(initPlayTrack);
+//        }
     }
 }

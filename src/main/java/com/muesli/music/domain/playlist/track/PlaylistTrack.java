@@ -23,11 +23,11 @@ public class PlaylistTrack {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "playlist_id")
+    @JoinColumn(name = "playlist_id", nullable=false, referencedColumnName = "id")
     private Playlist playlist;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "track_id")
+    @JoinColumn(name = "track_id", nullable=false, referencedColumnName = "id")
     private Track track;
 
     @Column(name = "position")

@@ -36,4 +36,17 @@ public class PlaylistStoreImpl implements PlaylistStore {
         if (initPlaylistTrack.getTrack() == null) throw new InvalidParamException("PlaylistTrack.Track");
         return playlistTrackRepository.save(initPlaylistTrack);
     }
+
+    @Override
+    public void delete(PlaylistTrack playlistTrack) {
+        System.out.println("PlaylistStoreImpl :: delete");
+        if (playlistTrack.getId() == null) throw new InvalidParamException("playlistTrack.id");
+        playlistTrackRepository.delete(playlistTrack);
+    }
+
+    @Override
+    public void updatePosition(PlaylistTrack playlistTrack) {
+        System.out.println("PlaylistStoreImpl :: updatePosition");
+        playlistTrackRepository.changePosition(playlistTrack.getPlaylist().getId(), playlistTrack.getPosition());
+    }
 }

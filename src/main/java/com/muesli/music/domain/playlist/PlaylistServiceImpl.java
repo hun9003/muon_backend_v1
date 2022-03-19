@@ -190,17 +190,16 @@ public class PlaylistServiceImpl implements PlaylistService{
         var playlist = playlistReader.getPlaylistBy(command.getPlaylistId());
 
         // 사용자 유효성 체크
-        if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
-            playlistStore.delete(playlist);
-        } else {
+        if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         }
 
         var initTrackList = command.getTrackList();
-//        for (var i = 0; i < initTrackList.size(); i++) {
-//            var track = trackReader.getTrackBy(initTrackList.get(i));
-//            var initPlayTrack = command.toEntity(playlist, track, lastPosition+i+1);
-//            playlistStore.store(initPlayTrack);
-//        }
+        for (Long trackId : initTrackList) {
+            var track = trackReader.getTrackBy(trackId);
+            var playlistTrack = playlistReader.getPlaylistTrack(playlist.getId(), track.getId());
+            playlistStore.delete(playlistTrack);
+            playlistStore.updatePosition(playlistTrack);
+        }
     }
 }

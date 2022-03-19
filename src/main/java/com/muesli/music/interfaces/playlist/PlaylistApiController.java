@@ -61,4 +61,12 @@ public class PlaylistApiController {
         playlistFacade.addTrackToPlaylist(command, usertoken);
         return CommonResponse.success("OK");
     }
+
+    @PostMapping("/removeTrack")
+    public CommonResponse removePlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken) {
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var command = playlistDtoMapper.of(request);
+        playlistFacade.removeTrackToPlaylist(command, usertoken);
+        return CommonResponse.success("OK");
+    }
 }

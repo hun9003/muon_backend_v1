@@ -43,7 +43,7 @@ public class Playlist extends AbstractEntity {
     @Column(name = "user_id")
     private Long userId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "playlist", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "playlist")
     List<PlaylistTrack> playlistTrackList = Lists.newArrayList();
 
     @Where(clause = "likeable_type LIKE '%Playlist%'")

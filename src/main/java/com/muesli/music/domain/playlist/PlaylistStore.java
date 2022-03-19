@@ -8,4 +8,8 @@ public interface PlaylistStore {
     PlaylistTrack store(PlaylistTrack initPlaylistTrack);
 
     void delete(Playlist playlist);
+
+    void delete(PlaylistTrack playlistTrack);
+
+    void updatePosition(PlaylistTrack playlistTrack);
 }

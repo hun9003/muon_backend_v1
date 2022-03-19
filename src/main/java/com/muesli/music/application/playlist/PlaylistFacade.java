@@ -72,4 +72,15 @@ public class PlaylistFacade {
         playlistService.addTrackToPlaylist(command, usertokenInfo.getUserInfo());
     }
 
+    /**
+     * 플레이 리스트에 트랙 삭제
+     *
+     * @param command
+     * @param token
+     */
+    public void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String token) {
+        System.out.println("PlaylistFacade :: removeTrackToPlaylist");
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        playlistService.removeTrackToPlaylist(command, usertokenInfo.getUserInfo());
+    }
 }

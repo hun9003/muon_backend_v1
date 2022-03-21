@@ -1,14 +1,7 @@
 package com.muesli.music.domain.like;
 
 import com.muesli.music.common.exception.BaseException;
-import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.common.response.ErrorCode;
-import com.muesli.music.domain.album.AlbumInfo;
-import com.muesli.music.domain.album.AlbumReader;
-import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.artist.ArtistReader;
-import com.muesli.music.domain.track.TrackInfo;
-import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,3 +1,177 @@
+GET http://localhost:8080/api/v1/playlists/my?page=3&size=3
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T145722.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=2&size=3
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T145707.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=3
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T145652.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/likeables?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T141525.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T141519.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/likeables?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T141310.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/likeables?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T141300.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T135818.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T135747.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T135607.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T135529.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T135350.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132757.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132642.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132535.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132312.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132258.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132229.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T132146.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T124728.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-21T124518.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/likeables
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+###
+
 POST http://localhost:8080/api/v1/playlists/removeTrack
 authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
@@ -344,355 +518,6 @@ Content-Type: application/json
 }
 
 <> 2022-03-19T152528.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T152351.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T152138.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T151435.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T151341.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T145811.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T145602.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T144734.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T144146.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T143955.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T143938.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T143854.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T143820.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "playlistId" : 6,
-  "trackList" : [1,2,3,4,5]
-}
-
-<> 2022-03-19T135443.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "playlistId" : 6,
-  "trackList" : [
-    {
-      "trackId" : 1
-    },
-    {
-      "trackId" : 2
-    },
-    {
-      "trackId" : 3
-    },
-    {
-      "trackId" : 4
-    },
-    {
-      "trackId" : 5
-    }
-  ]
-}
-
-<> 2022-03-19T135051.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" : [
-    {
-      "playlistId" : 6,
-      "trackId" : 1
-    },
-    {
-      "playlistId" : 6,
-      "trackId" : 2
-    },
-    {
-      "playlistId" : 6,
-      "trackId" : 3
-    },
-    {
-      "playlistId" : 6,
-      "trackId" : 4
-    },
-    {
-      "playlistId" : 6,
-      "trackId" : 5
-    }
-  ]
-}
-
-<> 2022-03-19T134843.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" : [
-    {
-      "playlistId" : 6,
-      "trackId" : 1
-    }
-  ]
-}
-
-<> 2022-03-19T134811.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" : [
-    {
-      "playlistId" : 6,
-      "trackId" : 1
-    }
-  ]
-}
-
-<> 2022-03-19T134719.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" : [
-    {
-      "playlistId" : 6,
-      "trackId" : 1
-    }
-  ]
-}
-
-<> 2022-03-19T133851.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" : [
-    {
-      "playlistId" : 6,
-      "trackId" : 1
-    }
-  ]
-}
-
-<> 2022-03-19T133817.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" :[
-    {
-      "trackId" : 1,
-      "playlistId" : 6
-    }
-  ]
-
-}
-
-<> 2022-03-19T132913.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" :
-    {
-      "trackId" : 1,
-      "playlistId" : 6
-    }
-}
-
-<> 2022-03-19T132850.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-{
-  "trackList" :
-    {
-      "trackId" : 1,
-      "playlistId" : 6
-    }
-}
-
-<> 2022-03-19T131932.500.json
 
 ###
 

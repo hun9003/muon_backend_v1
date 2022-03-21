@@ -1,6 +1,5 @@
 package com.muesli.music.infrastructure.track.lyrics;
 
-import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import com.muesli.music.domain.track.lyrics.LyricsReader;

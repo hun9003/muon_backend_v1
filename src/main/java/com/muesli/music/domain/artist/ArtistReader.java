@@ -1,7 +1,6 @@
 package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
-import com.muesli.music.domain.artist.Artist;
 
 import java.util.List;
 

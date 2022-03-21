@@ -2,7 +2,6 @@ package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
-import com.muesli.music.domain.like.Like;
 import com.muesli.music.domain.like.LikeInfo;
 import lombok.Getter;
 import lombok.ToString;

@@ -21,5 +21,5 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     Optional<Album> findAlbumById(Long albumId);
 
     @Query(value = "SELECT a FROM Album a JOIN FETCH a.likeList l WHERE l.userId = :userId")
-    Optional<List<Album>> findLikeAlbum(Long userId);
+    Optional<List<Album>> findAllLikeList(Long userId);
 }

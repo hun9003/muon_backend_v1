@@ -17,6 +17,6 @@ public interface ArtistRepository  extends JpaRepository<Artist, Long> {
     Optional<Artist> findArtistById(Long artistId);
 
     @Query(value = "SELECT a FROM Artist a JOIN FETCH a.likeList l LEFT JOIN FETCH a.bios b WHERE l.userId = :userId")
-    Optional<List<Artist>> findLikeArtist(Long userId);
+    Optional<List<Artist>> findAllLikeList(Long userId);
 
 }

@@ -7,5 +7,5 @@ public interface TrackReader {
 
     Track getTrackArtist(Long albumId);
 
-    List<TrackInfo.Main> getTrackLikeList(String likeableType, Long userId);
+    List<TrackInfo.Main> getTrackLikeList(Long userId);
 }

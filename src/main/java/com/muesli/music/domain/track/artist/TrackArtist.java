@@ -4,8 +4,6 @@ import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.track.Track;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 

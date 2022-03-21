@@ -64,17 +64,16 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 좋아요 리스트 조회
-     * @param likeableType
      * @param token
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AlbumInfo.Main> getLikeList(String likeableType, String token) {
+    public List<AlbumInfo.Main> getLikeList(String token) {
         System.out.println("LikeServiceImpl :: getLikeAlbumList");
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
-        var albumInfoList = albumReader.getAlbumLikeList(likeableType, usertoken.getUser().getId());
+        var albumInfoList = albumReader.getAlbumLikeList(usertoken.getUser().getId());
         return albumInfoList.stream().peek(
                 main -> {
                     var track = trackReader.getTrackArtist(main.getId());

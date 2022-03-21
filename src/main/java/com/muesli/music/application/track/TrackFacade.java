@@ -1,6 +1,5 @@
 package com.muesli.music.application.track;
 
-import com.muesli.music.domain.like.LikeService;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
 import com.muesli.music.domain.user.token.UsertokenService;
@@ -15,13 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrackFacade {
     private final TrackService trackService;
-    private final LikeService likeService;
     private final UsertokenService usertokenService;
 
-    public TrackInfo.Main findTrackInfo(Long trackId, String usertoken) {
+    public TrackInfo.Main findTrackInfo(Long trackId, String token) {
         System.out.println("TrackFacade :: findTrackInfo");
         // 유저 토큰 조회
-        var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
         // 트랙 조회
         return trackService.findTrackInfo(trackId, usertokenInfo.getUserInfo());
     }
@@ -29,11 +27,11 @@ public class TrackFacade {
 
     /**
      * 좋아요 트랙 리스트 조회
-     * @param usertoken
+     * @param token
      * @return
      */
-    public List<TrackInfo.Main> retrieveLikeList(String usertoken) {
+    public List<TrackInfo.Main> retrieveLikeList(String token) {
         System.out.println("TrackFacade :: retrieveLikeList");
-        return trackService.getLikeList("App\\Track", usertoken);
+        return trackService.getLikeList(token);
     }
 }

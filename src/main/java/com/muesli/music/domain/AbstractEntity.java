@@ -20,6 +20,6 @@ public class AbstractEntity {
     private ZonedDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private ZonedDateTime updateAt;
 }

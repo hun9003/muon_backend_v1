@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +36,9 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
-    public List<TrackInfo.Main> getTrackLikeList(String likeableType, Long userId) {
+    public List<TrackInfo.Main> getTrackLikeList(Long userId) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        var trackList = trackRepository.findAllJoinFetch(likeableType, userId)
+        var trackList = trackRepository.findAllLikeList(userId)
                 .orElseThrow(EntityNotFoundException::new);
         // 좋아요 갯수 리턴 로직 추가
         return trackList.stream().map(

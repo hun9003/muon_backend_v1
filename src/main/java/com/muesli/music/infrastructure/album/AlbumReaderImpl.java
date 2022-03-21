@@ -41,9 +41,9 @@ public class AlbumReaderImpl implements AlbumReader {
     }
 
     @Override
-    public List<AlbumInfo.Main> getAlbumLikeList(String likeableType, Long userId) {
+    public List<AlbumInfo.Main> getAlbumLikeList(Long userId) {
         System.out.println("AlbumReaderImpl :: getAlbumLikeList");
-        var albumList = albumRepository.findLikeAlbum(userId)
+        var albumList = albumRepository.findAllLikeList(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return albumList.stream().map(
                 album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().iterator().next(), (long) album.getLikeList().size()))

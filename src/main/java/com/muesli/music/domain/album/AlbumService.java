@@ -10,5 +10,5 @@ public interface AlbumService {
 
     LikeInfo.Main findLikeBy(UserInfo.Main userInfo, AlbumInfo.Main albumInfo);
 
-    List<AlbumInfo.Main> getLikeList(String likeableType, String usertoken);
+    List<AlbumInfo.Main> getLikeList(String usertoken);
 }

@@ -5,7 +5,6 @@ import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
-import com.muesli.music.domain.track.lyrics.LyricsReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
@@ -44,17 +43,16 @@ public class TrackServiceImpl implements TrackService{
 
     /**
      * 좋아요 리스트 조회
-     * @param likeableType
      * @param token
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public List<TrackInfo.Main> getLikeList(String likeableType, String token) {
+    public List<TrackInfo.Main> getLikeList(String token) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
-        return trackReader.getTrackLikeList(likeableType, usertoken.getUser().getId());
+        return trackReader.getTrackLikeList(usertoken.getUser().getId());
     }
 
 }

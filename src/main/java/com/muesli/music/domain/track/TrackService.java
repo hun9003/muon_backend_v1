@@ -7,5 +7,5 @@ import java.util.List;
 public interface TrackService {
     TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo);
 
-    List<TrackInfo.Main> getLikeList(String likeableType, String usertoken);
+    List<TrackInfo.Main> getLikeList(String usertoken);
 }

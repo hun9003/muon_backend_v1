@@ -1,14 +1,11 @@
 package com.muesli.music.interfaces.user;
 
-import com.muesli.music.common.util.TokenGenerator;
 import com.muesli.music.domain.user.User;
-import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenCommand;
 import lombok.Getter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 
 public class UserTokenDto {
 

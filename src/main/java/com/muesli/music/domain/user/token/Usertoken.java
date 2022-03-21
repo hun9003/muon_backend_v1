@@ -1,7 +1,6 @@
 package com.muesli.music.domain.user.token;
 
 import com.muesli.music.common.exception.InvalidParamException;
-import com.muesli.music.common.util.TokenGenerator;
 import com.muesli.music.domain.AbstractEntity;
 import com.muesli.music.domain.user.User;
 import lombok.Builder;

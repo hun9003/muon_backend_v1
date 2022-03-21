@@ -1,6 +1,7 @@
 package com.muesli.music.domain.playlist;
 
 import com.muesli.music.domain.playlist.track.PlaylistTrack;
+import com.muesli.music.domain.user.UserInfo;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface PlaylistReader {
 
     PlaylistTrack getPlaylistTrack(Long playlistId, Long TrackId);
 
-    List<PlaylistInfo.Main> getPlaylistList(Long userId);
+    List<PlaylistInfo.Main> getPlaylistList(UserInfo.Main userInfo);
 
-    List<PlaylistInfo.Main> getPlaylistLikeList(String likeableType, Long userId);
+    List<PlaylistInfo.Main> getPlaylistLikeList(UserInfo.Main userInfo);
 }

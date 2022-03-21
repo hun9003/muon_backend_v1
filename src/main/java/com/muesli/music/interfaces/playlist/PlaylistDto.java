@@ -37,6 +37,13 @@ public class PlaylistDto {
     @Getter
     @Builder
     @ToString
+    public static class PlaylistInfoList {
+        private final List<PlaylistInfo> playlistInfoList;
+    }
+
+    @Getter
+    @Builder
+    @ToString
     public static class RegisterPlaylist {
 
         @NotBlank

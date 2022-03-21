@@ -1,15 +1,24 @@
 package com.muesli.music.infrastructure.playlist;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.EntityNotFoundException;
+import com.muesli.music.domain.artist.Artist;
+import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.like.Like;
+import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.playlist.Playlist;
 import com.muesli.music.domain.playlist.PlaylistInfo;
 import com.muesli.music.domain.playlist.PlaylistReader;
 import com.muesli.music.domain.playlist.track.PlaylistTrack;
+import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.user.UserInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -32,15 +41,47 @@ public class PlaylistReaderImpl implements PlaylistReader {
     }
 
     @Override
-    public List<PlaylistInfo.Main> getPlaylistList(Long userId) {
+    public List<PlaylistInfo.Main> getPlaylistList(UserInfo.Main userInfo) {
         System.out.println("PlaylistReaderImpl :: getPlaylistList");
-        return null;
+        var playlistList = playlistRepository.findPlaylistByUserId(userInfo.getId()).orElse(Lists.newArrayList());
+        return playlistList.stream().map(
+                playlist -> {
+                    var trackInfoList = playlist.getPlaylistTrackList().stream().map(
+                            playlistTrack -> {
+                                var track = playlistTrack.getTrack();
+                                return new TrackInfo.Main(track, new ArtistInfo.Main(new Artist()));
+                            }
+                    ).collect(Collectors.toList());
+
+                    var likeCount = (long) playlist.getLikeList().size();
+                    var initLikeInfo = playlist.getLikeList().size() > 0 ? playlist.getLikeList().iterator().next() : new Like();
+                    var likeInfo = new LikeInfo.Main(initLikeInfo, likeCount);
+                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList,  likeInfo);
+                }
+        ).collect(Collectors.toList());
     }
 
     @Override
-    public List<PlaylistInfo.Main> getPlaylistLikeList(String likeableType, Long userId) {
+    public List<PlaylistInfo.Main> getPlaylistLikeList(UserInfo.Main userInfo) {
         System.out.println("PlaylistReaderImpl :: getPlaylistLikeList");
-        return null;
+        var playlistList = playlistRepository.findAllLikeList(userInfo.getId())
+                .orElseThrow(EntityNotFoundException::new);
+
+        return playlistList.stream().map(
+                playlist -> {
+                    var trackInfoList = playlist.getPlaylistTrackList().stream().map(
+                            playlistTrack -> {
+                                var track = playlistTrack.getTrack();
+                                return new TrackInfo.Main(track, new ArtistInfo.Main(new Artist()));
+                            }
+                    ).collect(Collectors.toList());
+
+                    var likeCount = (long) playlist.getLikeList().size();
+                    var initLikeInfo = playlist.getLikeList().iterator().next() != null ? playlist.getLikeList().iterator().next() : new Like();
+                    var likeInfo = new LikeInfo.Main(initLikeInfo, likeCount);
+                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList,  likeInfo);
+                }
+        ).collect(Collectors.toList());
     }
 
 }

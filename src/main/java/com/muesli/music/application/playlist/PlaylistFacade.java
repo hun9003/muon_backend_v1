@@ -6,9 +6,10 @@ import com.muesli.music.domain.playlist.PlaylistService;
 import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -17,10 +18,28 @@ public class PlaylistFacade {
     private final PlaylistService playlistService;
     private final UsertokenService usertokenService;
 
+    /**
+     * 플레이 리스트 정보 조회
+     * @param playlistId
+     * @param token
+     * @param pageable
+     * @return
+     */
     public PlaylistInfo.Main findPlaylistInfo(Long playlistId, String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: registerPlaylist");
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return playlistService.findPlaylistInfo(playlistId, usertokenInfo.getUserInfo(), pageable);
+    }
+
+    public List<PlaylistInfo.Main> retrieveMyPlaylist(String token, Pageable pageable) {
+        System.out.println("PlaylistFacade :: retrieveMyPlaylist");
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return playlistService.findPlaylistInfoMyList(usertokenInfo.getUserInfo(), pageable);
+    }
+
+    public List<PlaylistInfo.Main> retrieveLikeList(String token, Pageable pageable) {
+        System.out.println("PlaylistFacade :: retrieveLikeList");
+        return playlistService.getLikeList(token, pageable);
     }
 
     /**

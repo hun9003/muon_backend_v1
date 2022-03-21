@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -24,6 +25,24 @@ public class PlaylistApiController {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken, pageable);
         var response = playlistDtoMapper.of(playlistInfo);
+        return CommonResponse.success(response);
+    }
+
+    @GetMapping("/my")
+    public CommonResponse retrieveMyPlaylist(@RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
+        System.out.println("PlaylistApiController :: registerPlaylist");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var playlistInfoList = playlistFacade.retrieveMyPlaylist(usertoken, pageable);
+        var response = playlistInfoList.stream().map(playlistDtoMapper::of).collect(Collectors.toList());
+        return CommonResponse.success(response);
+    }
+
+    @GetMapping("/likeables")
+    public CommonResponse retrieveLikePlaylistList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
+        System.out.println("PlaylistApiController :: registerPlaylist");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var playlistInfoList = playlistFacade.retrieveLikeList(usertoken, pageable);
+        var response = playlistInfoList.stream().map(playlistDtoMapper::of).collect(Collectors.toList());
         return CommonResponse.success(response);
     }
 

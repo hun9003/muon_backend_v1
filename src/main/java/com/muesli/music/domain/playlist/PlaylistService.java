@@ -10,7 +10,7 @@ public interface PlaylistService {
     PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo, Pageable pageable);
 
     // 플레이리스트 목록
-    List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo);
+    List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable);
 
     // 플레이리스트 추가
     PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, UserInfo.Main userInfo);
@@ -22,7 +22,7 @@ public interface PlaylistService {
     void removePlaylist(Long playlistId, UserInfo.Main userInfo);
 
     // 플레이리스트 좋아요 목록
-    List<PlaylistInfo.Main> getLikeList(String likeableType, UserInfo.Main userInfo);
+    List<PlaylistInfo.Main> getLikeList(String token, Pageable pageable);
 
     // 플레이리스트에 트랙 추가
     void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo);

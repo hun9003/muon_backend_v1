@@ -5,6 +5,8 @@ import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
@@ -38,10 +40,11 @@ public class TrackApiController {
      * @return
      */
     @GetMapping("/likeables")
-    public CommonResponse retrieveLikeTrackList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+    public CommonResponse retrieveLikeTrackList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                                @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("LikeApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var trackInfoList = trackFacade.retrieveLikeList(usertoken);
+        var trackInfoList = trackFacade.retrieveLikeList(usertoken, pageable);
         var trackInfoDtoList = trackInfoList.stream().map(trackDtoMapper::ofItem).collect(Collectors.toList());
         var response = new TrackDto.TrackList(trackInfoDtoList);
         return CommonResponse.success(response);

@@ -35,12 +35,12 @@ Content-Type: application/json
 
 ### 좋아요
 POST http://localhost:8080/api/v1/likes/like
-authorization:Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 {
-  "likeableId" : 1545,
-  "likeableType" : "App\\Track"
+  "likeableId" : 80,
+  "likeableType" : "App\\Playlist"
 }
 
 ### 좋아요 취소
@@ -50,17 +50,17 @@ Content-Type: application/json
 
 ### 좋아요 리스트(트랙)
 GET http://localhost:8080/api/v1/tracks/likeables
-authorization:Bearer afa0a93dfb7edec9ad7ea9c775cdd1d76d8f9ed7
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 ### 좋아요 리스트(아티스트)
 GET http://localhost:8080/api/v1/artists/likeables
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 ### 좋아요 리스트(앨범)
-GET http://localhost:8080/api/v1/albums/likeables
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+GET http://localhost:8080/api/v1/albums/likeables?page=1&size=3
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 ### 플레이 리스트 생성
@@ -123,5 +123,5 @@ Content-Type: application/json
 
 ### 좋아요 리스트(플레이 리스트)
 GET http://localhost:8080/api/v1/playlists/likeables?page=1&size=100
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json

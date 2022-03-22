@@ -63,13 +63,11 @@ public class ArtistDto {
     @ToString
     public static class ArtistList {
         private final String type;
-        private final int listSize;
         private final List<ArtistInfo> list;
 
         public ArtistList(List<ArtistInfo> list) {
             this.type = "Artist";
             this.list = list;
-            this.listSize = list.size();
         }
     }
 

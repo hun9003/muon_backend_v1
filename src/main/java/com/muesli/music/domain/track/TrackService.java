@@ -8,7 +8,7 @@ import java.util.List;
 public interface TrackService {
     TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo);
 
-    List<TrackInfo.Main> getLikeList(String usertoken);
+    List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
 
     List<TrackInfo.Main> getTrackRank(String token, Pageable pageable);
 }

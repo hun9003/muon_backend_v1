@@ -6,6 +6,7 @@ import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,7 +30,8 @@ public class PlaylistApiController {
     }
 
     @GetMapping("/my")
-    public CommonResponse retrieveMyPlaylist(@RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
+    public CommonResponse retrieveMyPlaylist(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                             @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var playlistInfoList = playlistFacade.retrieveMyPlaylist(usertoken, pageable);
@@ -38,11 +40,13 @@ public class PlaylistApiController {
     }
 
     @GetMapping("/likeables")
-    public CommonResponse retrieveLikePlaylistList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
+    public CommonResponse retrieveLikePlaylistList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                                   @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var playlistInfoList = playlistFacade.retrieveLikeList(usertoken, pageable);
-        var response = playlistInfoList.stream().map(playlistDtoMapper::of).collect(Collectors.toList());
+        var playlistInfoDtoList = playlistInfoList.stream().map(playlistDtoMapper::of).collect(Collectors.toList());
+        var response = new PlaylistDto.PlaylistInfoList(playlistInfoDtoList);
         return CommonResponse.success(response);
     }
 

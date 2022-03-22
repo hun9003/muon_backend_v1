@@ -33,7 +33,6 @@ public class UsertokenCommand {
     public static Usertoken makeToken(User user) {
         System.out.println("UsertokenCommand :: makeToken");
         String token = TokenGenerator.randomCharacter(40);
-        Timestamp uploadAt = new Timestamp(System.currentTimeMillis());
         // 현재시간으로 부터 +3개월
         Timestamp time = new Timestamp(System.currentTimeMillis());
         Calendar cal = Calendar.getInstance();
@@ -41,6 +40,7 @@ public class UsertokenCommand {
         cal.add(Calendar.MONTH, 3);
         time.setTime(cal.getTime().getTime());
         String setTime = time.getTime()+"";
+        Timestamp uploadAt = new Timestamp(Long.parseLong(setTime));
         setTime = setTime.substring(0, setTime.length()-3);
         Long exp = Long.parseLong(setTime);
         return Usertoken.builder()

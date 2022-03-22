@@ -5,6 +5,7 @@ import com.muesli.music.domain.album.AlbumService;
 import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,10 +34,10 @@ public class AlbumFacade {
      * @param token
      * @return
      */
-    public List<AlbumInfo.Main> retrieveLikeList(String token) {
+    public List<AlbumInfo.Main> retrieveLikeList(String token, Pageable pageable) {
         System.out.println("TrackFacade :: retrieveLikeList");
         usertokenService.checkUsertoken(token);
-        return albumService.getLikeList(token);
+        return albumService.getLikeList(token, pageable);
     }
 
 }

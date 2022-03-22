@@ -35,10 +35,15 @@ public class PlaylistDto {
     }
 
     @Getter
-    @Builder
     @ToString
     public static class PlaylistInfoList {
-        private final List<PlaylistInfo> playlistInfoList;
+        private final String type;
+        private final List<PlaylistInfo> list;
+
+        public PlaylistInfoList(List<PlaylistInfo> list) {
+            this.type = "Playlist";
+            this.list = list;
+        }
     }
 
     @Getter

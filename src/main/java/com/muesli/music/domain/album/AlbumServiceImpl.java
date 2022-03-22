@@ -8,8 +8,10 @@ import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
+import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,11 +71,11 @@ public class AlbumServiceImpl implements AlbumService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AlbumInfo.Main> getLikeList(String token) {
+    public List<AlbumInfo.Main> getLikeList(String token, Pageable pageable) {
         System.out.println("LikeServiceImpl :: getLikeAlbumList");
         var usertoken = usertokenReader.getUsertoken(token);
-        var albumInfoList = albumReader.getAlbumLikeList(usertoken.getUser().getId());
-        return albumInfoList.stream().peek(
+        var userId = usertoken.getUser().getId();
+        var albumInfoList = albumReader.getAlbumLikeList(userId).stream().peek(
                 main -> {
                     var track = trackReader.getTrackArtist(main.getId());
                     if (track != null) {
@@ -81,5 +83,8 @@ public class AlbumServiceImpl implements AlbumService {
                     }
                 }
         ).collect(Collectors.toList());
+        // 페이징
+        var pageInfo = new PageInfo(pageable, albumInfoList.size());
+        return albumInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
     }
 }

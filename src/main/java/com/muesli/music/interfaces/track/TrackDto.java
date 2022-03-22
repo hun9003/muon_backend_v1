@@ -78,13 +78,11 @@ public class TrackDto {
     @ToString
     public static class TrackList {
         private final String type;
-        private final int listSize;
         private final List<TrackInfo> list;
 
         public TrackList(List<TrackInfo> list) {
             this.type = "Track";
             this.list = list;
-            this.listSize = list.size();
         }
     }
 

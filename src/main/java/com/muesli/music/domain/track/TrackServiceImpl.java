@@ -7,6 +7,7 @@ import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
+import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -49,10 +50,13 @@ public class TrackServiceImpl implements TrackService{
      */
     @Override
     @Transactional(readOnly = true)
-    public List<TrackInfo.Main> getLikeList(String token) {
+    public List<TrackInfo.Main> getLikeList(String token, Pageable pageable) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
-        return trackReader.getTrackLikeList(usertoken.getUser().getId());
+        var trackInfoList = trackReader.getTrackLikeList(usertoken.getUser().getId());
+        // 페이징
+        var pageInfo = new PageInfo(pageable, trackInfoList.size());
+        return trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
     }
 
     /**

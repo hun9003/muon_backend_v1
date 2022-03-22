@@ -77,6 +77,48 @@ public class TrackInfo {
         }
     }
 
+    /*
+            아티스트 내 앨범 리스트 조회를 위한 클래스 입니다.
+         */
+    @Getter
+    @ToString
+    public static class TrackBasicInfo {
+        private final Long id;
+        private final String name;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String description;
+        private final String image;
+        private final String composer;
+        private final String lyricser;
+        private final String arranger;
+        private final Long adult;
+        private final ArtistInfo.Main artistInfo;
+        private final AlbumInfo.AlbumBasicInfo albumInfo;
+        private LikeInfo.Main likeInfo;
+
+        public TrackBasicInfo(Track track, AlbumInfo.AlbumBasicInfo albumBasicInfo, ArtistInfo.Main artistInfo) {
+            this.id = track.getId();
+            this.name = track.getName();
+            this.number = track.getNumber();
+            this.duration = track.getDuration();
+            this.artistsLegacy = track.getArtistsLegacy();
+            this.description = track.getDescription();
+            this.image = track.getImage();
+            this.composer = track.getComposer();
+            this.lyricser = track.getLyricser();
+            this.arranger = track.getArranger();
+            this.adult = track.getAdult();
+            this.albumInfo = albumBasicInfo;
+            this.artistInfo = artistInfo;
+        }
+
+        public void setLikeInfo(LikeInfo.Main likeInfo) {
+            this.likeInfo = likeInfo;
+        }
+
+    }
 
     @Getter
     @ToString

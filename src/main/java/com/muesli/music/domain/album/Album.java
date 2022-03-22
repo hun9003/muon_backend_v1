@@ -47,7 +47,7 @@ public class Album extends AbstractEntity {
     private Artist artist;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)
-    private List<Track> trackList = Lists.newArrayList();
+    private Set<Track> trackList = Sets.newHashSet();
 
     @Where(clause = "likeable_type LIKE '%Album'")
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album", cascade = CascadeType.PERSIST)

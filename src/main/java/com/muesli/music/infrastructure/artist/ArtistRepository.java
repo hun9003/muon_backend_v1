@@ -10,10 +10,12 @@ import java.util.Optional;
 public interface ArtistRepository  extends JpaRepository<Artist, Long> {
 
     @Query(value = "SELECT a FROM Artist a " +
-            "LEFT JOIN FETCH a.likeList " +
             "LEFT JOIN FETCH a.albumList al " +
             "LEFT JOIN FETCH al.likeList " +
-            "WHERE a.id = :artistId")
+            "JOIN FETCH al.trackList t " +
+            "LEFT JOIN FETCH t.likeList " +
+            "WHERE a.id = :artistId " +
+            "GROUP BY al.id")
     Optional<Artist> findArtistById(Long artistId);
 
     @Query(value = "SELECT a FROM Artist a JOIN FETCH a.likeList l LEFT JOIN FETCH a.bios b WHERE l.userId = :userId")

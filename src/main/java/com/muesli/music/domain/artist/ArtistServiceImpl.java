@@ -2,9 +2,12 @@ package com.muesli.music.domain.artist;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.domain.album.Album;
+import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
+import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -14,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,18 +41,34 @@ public class ArtistServiceImpl implements ArtistService{
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);
-        var bios = artist.getBios().iterator().next() != null ? artist.getBios().iterator().next() : new Bios();
+        var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
-        albumList.forEach(
-                albumBasicInfo -> {
-                    var albumLikeCount = albumBasicInfo.getLikeInfo().getLikeCount();
-                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumBasicInfo.getId(), "App\\Album"), albumLikeCount);
-                    albumBasicInfo.setLikeInfo(albumLikeInfo);
+        System.out.println("albumList : " + albumList.size());
+        var albumBasicList = albumList.stream().map(
+                album -> {
+                    var albumInfo = new AlbumInfo.AlbumBasicInfo(album);
+                    var albumLikeCount = (long) album.getLikeList().size();
+                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"), albumLikeCount);
+                    albumInfo.setLikeInfo(albumLikeInfo);
+                    return albumInfo;
                 }
-        );
+        ).collect(Collectors.toList());
         var artistLikecount = (long) artist.getLikeList().size();
         var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
-        return new ArtistInfo.Main(artist, biosInfo, albumList, artistLikeInfo);
+
+        var trackInfoList = new ArrayList<TrackInfo.TrackBasicInfo>();
+        for (var album : albumList) {
+            var trackList = album.getTrackList();
+            for (var track : trackList) {
+                var trackLikeCount = (long) track.getLikeList().size();
+                var likeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
+                var trackInfo = new TrackInfo.TrackBasicInfo(track, new AlbumInfo.AlbumBasicInfo(album), new ArtistInfo.Main(artist));
+                trackInfo.setLikeInfo(likeInfo);
+                trackInfoList.add(trackInfo);
+            }
+        }
+
+        return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList, artistLikeInfo);
     }
 
     /**

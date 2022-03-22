@@ -3,6 +3,7 @@ package com.muesli.music.domain.artist;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.track.TrackInfo;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -26,10 +27,11 @@ public class ArtistInfo {
         private final int views;
         private final String imageSmall;
         private final List<AlbumInfo.AlbumBasicInfo> albumList;
+        private final List<TrackInfo.TrackBasicInfo> trackList;
         private final LikeInfo.Main likeInfo;
         private final BiosInfo biosInfo;
 
-        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumBasicInfo> albumList, LikeInfo.Main likeInfo) {
+        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumBasicInfo> albumList, List<TrackInfo.TrackBasicInfo> trackList, LikeInfo.Main likeInfo) {
             this.id = artist.getId();
             this.name = artist.getName();
             this.originalName = artist.getOriginalName();
@@ -43,6 +45,7 @@ public class ArtistInfo {
             this.views = artist.getViews();
             this.imageSmall = artist.getImageSmall();
             this.albumList = albumList;
+            this.trackList = trackList;
             this.likeInfo = likeInfo;
             this.biosInfo = biosInfo;
         }
@@ -62,6 +65,7 @@ public class ArtistInfo {
             this.imageSmall = artist.getImageSmall();
             this.albumList = null;
             this.biosInfo = null;
+            this.trackList = null;
             this.likeInfo = likeInfo;
         }
 
@@ -79,6 +83,7 @@ public class ArtistInfo {
             this.views = artist.getViews();
             this.imageSmall = artist.getImageSmall();
             this.albumList = null;
+            this.trackList = null;
             this.biosInfo = null;
             this.likeInfo = null;
         }

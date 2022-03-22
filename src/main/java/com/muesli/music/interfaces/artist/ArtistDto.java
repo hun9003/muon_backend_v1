@@ -3,6 +3,7 @@ package com.muesli.music.interfaces.artist;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.like.LikeDto;
+import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -32,6 +33,7 @@ public class ArtistDto {
         private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
         private final LikeDto.LikeInfo likeInfo;
         private final List<AlbumDto.ArtistAlbumInfo> albumList;
+        private final List<TrackDto.ArtistTrackInfo> trackList;
     }
 
     /**

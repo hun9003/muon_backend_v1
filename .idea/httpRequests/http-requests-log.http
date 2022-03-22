@@ -1,3 +1,19 @@
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-22T144017.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artists/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-03-22T143514.200.json
+
+###
+
 GET http://localhost:8080/api/v1/artists/1114
 Content-Type: application/json
 authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
@@ -461,32 +477,6 @@ Content-Type: application/json
 }
 
 <> 2022-03-22T120947.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
-Content-Type: application/json
-
-{
-  "likeableId" : 1545,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-03-22T120939.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
-Content-Type: application/json
-
-{
-  "likeableId" : 1545,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-03-22T120909.500.json
 
 ###
 

@@ -23,10 +23,10 @@ public class ArtistFacade {
      * @param usertoken
      * @return
      */
-    public ArtistInfo.Main findArtistInfo(Long artistId, String usertoken) {
+    public ArtistInfo.Main findArtistInfo(Long artistId, String usertoken, Pageable pageable) {
         System.out.println("ArtistFacade :: findArtistInfo");
         var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
-        return artistService.findArtistInfo(artistId, usertokenInfo.getUserInfo());
+        return artistService.findArtistInfo(artistId, usertokenInfo.getUserInfo(), pageable);
     }
 
     /**

@@ -37,13 +37,13 @@ public class ArtistServiceImpl implements ArtistService{
      */
     @Override
     @Transactional(readOnly = true)
-    public ArtistInfo.Main findArtistInfo(Long artistId, UserInfo.Main userInfo) {
+    public ArtistInfo.Main findArtistInfo(Long artistId, UserInfo.Main userInfo, Pageable pageable) {
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);
         var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
-        System.out.println("albumList : " + albumList.size());
+
         var albumBasicList = albumList.stream().map(
                 album -> {
                     var albumInfo = new AlbumInfo.AlbumBasicInfo(album);
@@ -56,7 +56,11 @@ public class ArtistServiceImpl implements ArtistService{
         var artistLikecount = (long) artist.getLikeList().size();
         var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
 
-        var trackInfoList = new ArrayList<TrackInfo.TrackBasicInfo>();
+        // 페이징
+        var pageInfo = new PageInfo(pageable, albumBasicList.size());
+        albumBasicList = albumBasicList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+
+        List<TrackInfo.TrackBasicInfo> trackInfoList = new ArrayList<>();
         for (var album : albumList) {
             var trackList = album.getTrackList();
             for (var track : trackList) {
@@ -67,6 +71,10 @@ public class ArtistServiceImpl implements ArtistService{
                 trackInfoList.add(trackInfo);
             }
         }
+
+        // 페이징
+        pageInfo = new PageInfo(pageable, trackInfoList.size());
+        trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
 
         return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList, artistLikeInfo);
     }

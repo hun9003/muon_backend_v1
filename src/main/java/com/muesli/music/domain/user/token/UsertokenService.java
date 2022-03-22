@@ -6,4 +6,6 @@ public interface UsertokenService {
     UserInfo.UsertokenInfo findUsertokenInfo(String token);
 
     UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command);
+
+    void checkUsertoken(String token);
 }

@@ -9,6 +9,7 @@ import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +52,18 @@ public class TrackServiceImpl implements TrackService{
     public List<TrackInfo.Main> getLikeList(String token) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
         return trackReader.getTrackLikeList(usertoken.getUser().getId());
     }
 
+    /**
+     * 곡 순위 리스트
+     * @param token
+     * @param pageable
+     * @return
+     */
+    public List<TrackInfo.Main> getTrackRank(String token, Pageable pageable) {
+        System.out.println("LikeServiceImpl :: getLikeTrackList");
+        var usertoken = usertokenReader.getUsertoken(token);
+        return null;
+    }
 }

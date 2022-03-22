@@ -31,14 +31,28 @@ public class PlaylistFacade {
         return playlistService.findPlaylistInfo(playlistId, usertokenInfo.getUserInfo(), pageable);
     }
 
+    /**
+     * 내 플레이 리스트 목록 조회
+     * @param token
+     * @param pageable
+     * @return
+     */
     public List<PlaylistInfo.Main> retrieveMyPlaylist(String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: retrieveMyPlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return playlistService.findPlaylistInfoMyList(usertokenInfo.getUserInfo(), pageable);
     }
 
+    /**
+     * 좋아하는 플레이 리스트 목록 조회
+     * @param token
+     * @param pageable
+     * @return
+     */
     public List<PlaylistInfo.Main> retrieveLikeList(String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: retrieveLikeList");
+        usertokenService.checkUsertoken(token);
         return playlistService.getLikeList(token, pageable);
     }
 
@@ -51,6 +65,7 @@ public class PlaylistFacade {
      */
     public PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: registerPlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return playlistService.registerPlaylist(command, usertokenInfo.getUserInfo());
     }
@@ -64,6 +79,7 @@ public class PlaylistFacade {
      */
     public void updatePlaylist(PlaylistCommand.UpdatePlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: updatePlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.updatePlaylist(command, usertokenInfo.getUserInfo());
     }
@@ -75,6 +91,7 @@ public class PlaylistFacade {
      */
     public void removePlaylist(Long playlistId, String token) {
         System.out.println("PlaylistFacade :: removePlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.removePlaylist(playlistId, usertokenInfo.getUserInfo());
     }
@@ -87,6 +104,7 @@ public class PlaylistFacade {
      */
     public void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: addTrackToPlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.addTrackToPlaylist(command, usertokenInfo.getUserInfo());
     }
@@ -99,6 +117,7 @@ public class PlaylistFacade {
      */
     public void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, String token) {
         System.out.println("PlaylistFacade :: removeTrackToPlaylist");
+        usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.removeTrackToPlaylist(command, usertokenInfo.getUserInfo());
     }

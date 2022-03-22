@@ -35,6 +35,7 @@ public class AlbumFacade {
      */
     public List<AlbumInfo.Main> retrieveLikeList(String token) {
         System.out.println("TrackFacade :: retrieveLikeList");
+        usertokenService.checkUsertoken(token);
         return albumService.getLikeList(token);
     }
 

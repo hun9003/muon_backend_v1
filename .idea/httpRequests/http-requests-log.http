@@ -1,3 +1,145 @@
+GET http://localhost:8080/api/v1/tracks/likeables
+authorization: Bearer afa0a93dfb7edec9ad7ea9c775cdd1d76d8f9ed7
+Content-Type: application/json
+
+<> 2022-03-22T121025.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T120947.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T120939.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T120909.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T120749.500.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+###
+
+POST http://localhost:8080/api/v1/playlists/addTrack
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "playlistId" : 80,
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-03-22T120111.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=3&size=3
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+<> 2022-03-22T120054.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T115805.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T115707.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+<> 2022-03-22T115500.200.json
+
+###
+
+POST http://localhost:8080/api/v1/likes/like
+authorization: Bearer bd538778de566bd4795bdffb137a009a9c8a2f5d
+Content-Type: application/json
+
+{
+  "likeableId" : 1545,
+  "likeableType" : "App\\Track"
+}
+
+###
+
 GET http://localhost:8080/api/v1/playlists/my?page=3&size=3
 authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 Content-Type: application/json
@@ -362,162 +504,6 @@ Content-Type: application/json
 }
 
 <> 2022-03-19T202333.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/removeTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42862]
-}
-
-<> 2022-03-19T201950.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/removeTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42862]
-}
-
-<> 2022-03-19T201536.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/removeTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42862]
-}
-
-<> 2022-03-19T201338.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42865]
-}
-
-<> 2022-03-19T154818.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T154747.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 6,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T154727.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 6,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T154659.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 6,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T154410.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T153444.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T153312.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T153010.500.json
-
-###
-
-POST http://localhost:8080/api/v1/playlists/addTrack
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 80,
-  "trackList" : [42860,42861,42862,42863,42864]
-}
-
-<> 2022-03-19T152528.500.json
 
 ###
 

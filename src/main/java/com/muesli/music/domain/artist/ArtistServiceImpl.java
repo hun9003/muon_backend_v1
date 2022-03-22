@@ -64,16 +64,14 @@ public class ArtistServiceImpl implements ArtistService{
 
     /**
      * 좋아요 리스트 조회
-     * @param likeableType
      * @param token
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public List<ArtistInfo.Main> getLikeList(String likeableType, String token) {
+    public List<ArtistInfo.Main> getLikeList(String token) {
         System.out.println("LikeServiceImpl :: getLikeArtistList");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
         return artistReader.getArtistLikeList(usertoken.getUser().getId());
     }
 }

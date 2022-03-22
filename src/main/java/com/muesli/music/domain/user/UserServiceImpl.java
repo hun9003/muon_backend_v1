@@ -70,6 +70,10 @@ public class UserServiceImpl implements UserService {
         user.changeConfirmed();
     }
 
+    /**
+     * 로그인시 UUID가 존재하지 않을 시 생성
+     * @param email
+     */
     @Override
     @Transactional
     public void registerUserUuid(String email) {

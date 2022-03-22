@@ -10,5 +10,5 @@ public interface ArtistService {
 
     LikeInfo.Main findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo);
 
-    List<ArtistInfo.Main> getLikeList(String likeableType, String usertoken);
+    List<ArtistInfo.Main> getLikeList(String usertoken);
 }

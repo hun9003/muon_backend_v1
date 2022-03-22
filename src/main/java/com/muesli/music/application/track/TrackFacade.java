@@ -16,6 +16,12 @@ public class TrackFacade {
     private final TrackService trackService;
     private final UsertokenService usertokenService;
 
+    /**
+     * 트랙 정보 조회
+     * @param trackId
+     * @param token
+     * @return
+     */
     public TrackInfo.Main findTrackInfo(Long trackId, String token) {
         System.out.println("TrackFacade :: findTrackInfo");
         // 유저 토큰 조회
@@ -32,6 +38,7 @@ public class TrackFacade {
      */
     public List<TrackInfo.Main> retrieveLikeList(String token) {
         System.out.println("TrackFacade :: retrieveLikeList");
+        usertokenService.checkUsertoken(token);
         return trackService.getLikeList(token);
     }
 }

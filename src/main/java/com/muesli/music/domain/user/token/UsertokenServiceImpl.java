@@ -19,6 +19,11 @@ public class UsertokenServiceImpl implements UsertokenService {
     private final UserReader userReader;
     private final UsertokenStore usertokenStore;
 
+    /**
+     * 토큰 정보 조회
+     * @param token
+     * @return
+     */
     @Override
     public UserInfo.UsertokenInfo findUsertokenInfo(String token) {
         System.out.println("UsertokenServiceImpl :: findUsertokenInfo");
@@ -33,6 +38,11 @@ public class UsertokenServiceImpl implements UsertokenService {
         return new UserInfo.UsertokenInfo(usertoken, userInfo);
     }
 
+    /**
+     * 로그인시 토큰 등록
+     * @param command
+     * @return
+     */
     @Override
     public UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command) {
         System.out.println("UsertokenServiceImpl :: registerUsertoken");
@@ -40,5 +50,17 @@ public class UsertokenServiceImpl implements UsertokenService {
         var userToken = usertokenStore.store(initUsertoken);
         var user = new UserInfo.Main(userReader.getUser(command.getUser()));
         return new UserInfo.UsertokenInfo(userToken, user);
+    }
+
+    /**
+     * 3개월이 지나지 않은 토큰인지 확인
+     * @param token
+     */
+    @Override
+    public void checkUsertoken(String token) {
+        System.out.println("UsertokenServiceImpl :: checkUsertoken");
+        var usertoken = usertokenReader.getUsertoken(token);
+        if (usertoken.getUploadAt() == null || usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis())))
+            throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
     }
 }

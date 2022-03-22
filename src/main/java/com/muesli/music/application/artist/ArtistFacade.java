@@ -28,8 +28,14 @@ public class ArtistFacade {
         return artistService.findArtistInfo(artistId, usertokenInfo.getUserInfo());
     }
 
-    public List<ArtistInfo.Main> retrieveLikeList(String usertoken) {
+    /**
+     * 좋아하는 아티스트 리스트 조회
+     * @param token
+     * @return
+     */
+    public List<ArtistInfo.Main> retrieveLikeList(String token) {
         System.out.println("ArtistFacade :: retrieveLikeList");
-        return artistService.getLikeList("App\\Artist", usertoken);
+        usertokenService.checkUsertoken(token);
+        return artistService.getLikeList("App\\Artist", token);
     }
 }

@@ -34,6 +34,12 @@ public class AlbumApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 좋아하는 앨범 리스트
+     * @param usertoken
+     * @param pageable
+     * @return
+     */
     @GetMapping("/likeables")
     public CommonResponse retrieveLikeAlbumList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {

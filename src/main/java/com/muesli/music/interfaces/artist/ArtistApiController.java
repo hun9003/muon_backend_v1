@@ -19,14 +19,26 @@ public class ArtistApiController {
     private final ArtistFacade artistFacade;
     private final ArtistDtoMapper artistDtoMapper;
 
+    /**
+     * 아티스트 조회
+     * @param artistId
+     * @param usertoken
+     * @return
+     */
     @GetMapping("/{id}")
     public CommonResponse retrieveArtist(@PathVariable("id") Long artistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var albumInfo = artistFacade.findArtistInfo(artistId, usertoken);
-        var response = artistDtoMapper.of(albumInfo);
+        var artistInfo = artistFacade.findArtistInfo(artistId, usertoken);
+        var response = artistDtoMapper.of(artistInfo);
         return CommonResponse.success(response);
     }
 
+    /**
+     * 좋아하는 아티스트 목록 조회
+     * @param usertoken
+     * @param pageable
+     * @return
+     */
     @GetMapping("/likeables")
     public CommonResponse retrieveLikeAlbumList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {

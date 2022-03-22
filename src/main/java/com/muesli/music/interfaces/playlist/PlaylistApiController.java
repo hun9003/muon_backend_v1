@@ -20,8 +20,16 @@ public class PlaylistApiController {
     private final PlaylistFacade playlistFacade;
     private final PlaylistDtoMapper playlistDtoMapper;
 
+    /**
+     * 플레이리스트 정보 조회
+     * @param playlistId
+     * @param usertoken
+     * @param pageable
+     * @return
+     */
     @GetMapping("/{id}")
-    public CommonResponse retrievePlaylist(@PathVariable("id") Long playlistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken, Pageable pageable) {
+    public CommonResponse retrievePlaylist(@PathVariable("id") Long playlistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                           @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken, pageable);
@@ -29,6 +37,12 @@ public class PlaylistApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 나의 플레이리스트 목록 조회
+     * @param usertoken
+     * @param pageable
+     * @return
+     */
     @GetMapping("/my")
     public CommonResponse retrieveMyPlaylist(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                              @PageableDefault(size = 100, page = 1) Pageable pageable) {
@@ -39,6 +53,12 @@ public class PlaylistApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 좋아하는 플레이리스트 목록 조회
+     * @param usertoken
+     * @param pageable
+     * @return
+     */
     @GetMapping("/likeables")
     public CommonResponse retrieveLikePlaylistList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                                    @PageableDefault(size = 100, page = 1) Pageable pageable) {
@@ -50,6 +70,12 @@ public class PlaylistApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 플레이 리스트 생성
+     * @param request
+     * @param usertoken
+     * @return
+     */
     @PostMapping("/create")
     public CommonResponse registerPlaylist(@RequestBody @Valid PlaylistDto.RegisterPlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("PlaylistApiController :: registerPlaylist");
@@ -60,6 +86,12 @@ public class PlaylistApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 플레이 리스트 수정
+     * @param request
+     * @param usertoken
+     * @return
+     */
     @PostMapping("/update")
     public CommonResponse updatePlaylist(@RequestBody @Valid PlaylistDto.UpdatePlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("PlaylistApiController :: updatePlaylist");
@@ -69,6 +101,12 @@ public class PlaylistApiController {
         return CommonResponse.success("OK");
     }
 
+    /**
+     * 플레이 리스트 삭제
+     * @param usertoken
+     * @param playlistId
+     * @return
+     */
     @GetMapping("/delete/{id}")
     public CommonResponse removePlaylist(@RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "id") Long playlistId) {
         System.out.println("PlaylistApiController :: removePlaylist");
@@ -77,6 +115,12 @@ public class PlaylistApiController {
         return CommonResponse.success("OK");
     }
 
+    /**
+     * 플레이 리스트에 트랙 추가
+     * @param request
+     * @param usertoken
+     * @return
+     */
     @PostMapping("/addTrack")
     public CommonResponse addPlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken) {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
@@ -85,6 +129,12 @@ public class PlaylistApiController {
         return CommonResponse.success("OK");
     }
 
+    /**
+     * 플레이 리스트 트랙 삭제
+     * @param request
+     * @param usertoken
+     * @return
+     */
     @PostMapping("/removeTrack")
     public CommonResponse removePlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken) {
         usertoken = TokenGenerator.getHeaderToken(usertoken);

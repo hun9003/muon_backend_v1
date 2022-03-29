@@ -69,9 +69,6 @@ public class TrackServiceImpl implements TrackService{
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
         var trackList = trackReader.getTop100List();
-        for (var track : trackList) {
-            System.out.println(track.getId() + ", " + track.getPlays() + ", " + track.getLikecount());
-        }
         return null;
     }
 }

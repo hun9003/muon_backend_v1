@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -55,7 +56,18 @@ public class TrackReaderImpl implements TrackReader {
     @Override
     public List<Track> getTop100List() {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        return trackRepository.findTop100().orElseThrow(InvalidParamException::new);
+        var list = trackRepository.findTop100().orElseThrow(InvalidParamException::new);
+        System.out.println(list);
+        for(var li : list) {
+            System.out.println("---------------------------------------");
+            for (Map.Entry<String, Object> entrySet : li.entrySet()) {
+                System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
+            }
+        }
+
+
+
+        return null;
     }
 }
 

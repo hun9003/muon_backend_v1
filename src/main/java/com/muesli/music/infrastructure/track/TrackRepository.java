@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -36,9 +37,9 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "WHERE t.album.id = :albumId")
     Optional<List<Track>> findTrackByAlbumId(Long albumId);
 
-    @Query(value = "SELECT count(t.id) AS plays, (" +
+    @Query(value = "SELECT count(t.id) AS playCount, (" +
             "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
-            "        ) as likecount, t.* " +
+            "        ) as likeCount, t.* " +
             "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
@@ -47,5 +48,5 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "GROUP BY t.id " +
             "ORDER By count(t.id) DESC, likecount DESC " +
             "LIMIT 100", nativeQuery = true)
-    Optional<List<Track>> findTop100();
+    Optional<List<Map<String, Object>>> findTop100();
 }

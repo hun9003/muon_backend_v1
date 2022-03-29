@@ -52,4 +52,10 @@ public class TrackReaderImpl implements TrackReader {
         ).collect(Collectors.toList());
     }
 
+    @Override
+    public List<Track> getTop100List() {
+        System.out.println("TrackReaderImpl :: getTrackLikeList");
+        return trackRepository.findTop100().orElseThrow(InvalidParamException::new);
+    }
 }
+

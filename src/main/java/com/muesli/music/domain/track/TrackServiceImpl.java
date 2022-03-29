@@ -68,6 +68,10 @@ public class TrackServiceImpl implements TrackService{
     public List<TrackInfo.Main> getTrackRank(String token, Pageable pageable) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
+        var trackList = trackReader.getTop100List();
+        for (var track : trackList) {
+            System.out.println(track.getId() + ", " + track.getPlays() + ", " + track.getLikecount());
+        }
         return null;
     }
 }

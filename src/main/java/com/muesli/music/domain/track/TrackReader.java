@@ -8,4 +8,6 @@ public interface TrackReader {
     Track getTrackArtist(Long albumId);
 
     List<TrackInfo.Main> getTrackLikeList(Long userId);
+
+    List<Track> getTop100List();
 }

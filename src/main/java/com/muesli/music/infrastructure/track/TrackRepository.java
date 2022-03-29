@@ -35,4 +35,17 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "LEFT JOIN FETCH a.bios " +
             "WHERE t.album.id = :albumId")
     Optional<List<Track>> findTrackByAlbumId(Long albumId);
+
+    @Query(value = "SELECT count(t.id) AS plays, (" +
+            "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
+            "        ) as likecount, t.* " +
+            "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE p.created_at > '2022-01-01' AND p.created_at < '2022-02-01' " +
+            "GROUP BY t.id " +
+            "ORDER By count(t.id) DESC, likecount DESC " +
+            "LIMIT 100", nativeQuery = true)
+    Optional<List<Track>> findTop100();
 }

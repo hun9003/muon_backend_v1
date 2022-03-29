@@ -42,4 +42,10 @@ public class TrackFacade {
         usertokenService.checkUsertoken(token);
         return trackService.getLikeList(token, pageable);
     }
+
+    public List<TrackInfo.Main> retrieveTop100(String token, Pageable pageable) {
+        System.out.println("TrackFacade :: retrieveTop100");
+        trackService.getTrackRank(token, pageable);
+        return null;
+    }
 }

@@ -50,4 +50,13 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
+    @GetMapping("/top100")
+    public CommonResponse retrieveTrackRank(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                                @PageableDefault(size = 100, page = 1) Pageable pageable) {
+        System.out.println("LikeApiController :: retrieveTrackRank");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        trackFacade.retrieveTop100(usertoken, pageable);
+        return CommonResponse.success("OK");
+    }
+
 }

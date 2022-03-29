@@ -69,6 +69,12 @@ public class Track {
     @NotFound(action = NotFoundAction.IGNORE)
     private Set<TrackArtist> trackArtists = Sets.newHashSet();
 
+    @Transient
+    private int plays;
+
+    @Transient
+    private int likecount;
+
     public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");
 

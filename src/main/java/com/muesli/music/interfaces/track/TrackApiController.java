@@ -55,7 +55,7 @@ public class TrackApiController {
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("LikeApiController :: retrieveTrackRank");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        trackFacade.retrieveTop100(usertoken, pageable);
+        trackFacade.retrieveTop100(usertoken, pageable, "now", "2021-02-01");
         return CommonResponse.success("OK");
     }
 

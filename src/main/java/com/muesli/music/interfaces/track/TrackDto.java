@@ -144,4 +144,28 @@ public class TrackDto {
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
+
+    /**
+     * 앨범에게 제공하는 트랙 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class TrackRankInfo {
+        private final int rank;
+        private final int wave;
+        private final Long id;
+        private final String name;
+        private final String original;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String url;
+        private final String description;
+        private final String image;
+        private final Long adult;
+        private final LikeDto.LikeInfo likeInfo;
+        private final ArtistDto.TrackArtistInfo artistInfo;
+        private final AlbumDto.TrackAlbumInfo albumInfo;
+    }
 }

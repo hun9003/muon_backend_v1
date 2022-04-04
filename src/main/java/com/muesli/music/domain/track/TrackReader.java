@@ -1,6 +1,7 @@
 package com.muesli.music.domain.track;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TrackReader {
     Track getTrackBy(Long trackId);
@@ -9,5 +10,5 @@ public interface TrackReader {
 
     List<TrackInfo.Main> getTrackLikeList(Long userId);
 
-    List<Track> getTop100List();
+    List<Map<String, Object>> getTop100List(String begin, String end);
 }

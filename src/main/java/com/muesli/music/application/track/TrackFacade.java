@@ -43,9 +43,9 @@ public class TrackFacade {
         return trackService.getLikeList(token, pageable);
     }
 
-    public List<TrackInfo.Main> retrieveTop100(String token, Pageable pageable) {
+    public List<TrackInfo.Main> retrieveTop100(String token, Pageable pageable, String type, String date) {
         System.out.println("TrackFacade :: retrieveTop100");
-        trackService.getTrackRank(token, pageable);
+        trackService.getTrackRank(token, pageable, type, date);
         return null;
     }
 }

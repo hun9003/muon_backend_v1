@@ -54,20 +54,9 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
-    public List<Track> getTop100List() {
+    public List<Map<String, Object>> getTop100List(String begin, String end) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        var list = trackRepository.findTop100().orElseThrow(InvalidParamException::new);
-        System.out.println(list);
-        for(var li : list) {
-            System.out.println("---------------------------------------");
-            for (Map.Entry<String, Object> entrySet : li.entrySet()) {
-                System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
-            }
-        }
-
-
-
-        return null;
+        return trackRepository.findTop100(begin, end).orElseThrow(InvalidParamException::new);
     }
 }
 

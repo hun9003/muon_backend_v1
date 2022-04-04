@@ -9,6 +9,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+import java.util.Map;
+
 
 public class TrackInfo {
 
@@ -129,6 +132,43 @@ public class TrackInfo {
         public LyricsInfo(Lyrics lyrics) {
             this.id = lyrics.getId();
             this.text = lyrics.getText();
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class RankInfo {
+        private final int rank;
+        private final Long wave;
+        private final Long id;
+        private final String name;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String description;
+        private final String image;
+        private final Long adult;
+        private final ArtistInfo.Main artistInfo;
+        private final AlbumInfo.AlbumBasicInfo albumInfo;
+        private LikeInfo.Main likeInfo;
+
+        public RankInfo(Map<String, Object> track, AlbumInfo.AlbumBasicInfo albumBasicInfo, ArtistInfo.Main artistInfo) {
+            this.rank = Integer.parseInt((String) track.get("rank"));
+            this.wave = (Long) track.get("wave");
+            this.id = (Long) track.get("id");
+            this.name = (String) track.get("id");
+            this.number = (Long) track.get("id");
+            this.duration = (Long) track.get("id");
+            this.artistsLegacy = (String) track.get("id");
+            this.description = (String) track.get("id");
+            this.image = (String) track.get("id");
+            this.adult = (Long) track.get("id");
+            this.albumInfo = albumBasicInfo;
+            this.artistInfo = artistInfo;
+        }
+
+        public void setLikeInfo(LikeInfo.Main likeInfo) {
+            this.likeInfo = likeInfo;
         }
     }
 

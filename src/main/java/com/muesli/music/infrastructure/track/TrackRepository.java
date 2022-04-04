@@ -39,14 +39,17 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
 
     @Query(value = "SELECT count(t.id) AS playCount, (" +
             "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
-            "        ) as likeCount, t.* " +
+            "        ) as likeCount, t.id, t.name, t.number, t.duration, " +
+            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "a2.id AS artistId, a2.name AS artistName " +
             "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
             "JOIN artists a2 on at2.artist_id = a2.id " +
-            "WHERE p.created_at > '2022-01-01' AND p.created_at < '2022-02-01' " +
+            "WHERE p.created_at > :beginDate AND p.created_at < :endDate " +
             "GROUP BY t.id " +
             "ORDER By count(t.id) DESC, likecount DESC " +
             "LIMIT 100", nativeQuery = true)
-    Optional<List<Map<String, Object>>> findTop100();
+    Optional<List<Map<String, Object>>> findTop100(String beginDate, String endDate);
 }

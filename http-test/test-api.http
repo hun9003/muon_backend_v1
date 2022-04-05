@@ -118,7 +118,7 @@ Content-Type: application/json
 
 ### 내 플레이리스트 조회
 GET http://localhost:8080/api/v1/playlists/my?page=3&size=3
-authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 ### 좋아요 리스트(플레이 리스트)

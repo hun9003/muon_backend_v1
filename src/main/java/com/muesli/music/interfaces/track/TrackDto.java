@@ -31,7 +31,6 @@ public class TrackDto {
         private final String arranger;
         private final Long adult;
         private final LyricsInfo lyricsInfo;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -55,7 +54,6 @@ public class TrackDto {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -103,7 +101,6 @@ public class TrackDto {
         private final String description;
         private final String image;
         private final Long adult;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
     }
 
@@ -122,7 +119,6 @@ public class TrackDto {
         private final String description;
         private final String image;
         private final Long adult;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -140,7 +136,6 @@ public class TrackDto {
         private final String artistsLegacy;
         private final String image;
         private final Long adult;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -164,7 +159,6 @@ public class TrackDto {
         private final String description;
         private final String image;
         private final Long adult;
-        private final LikeDto.LikeInfo likeInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }

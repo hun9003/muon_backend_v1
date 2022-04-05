@@ -39,16 +39,7 @@ public class AlbumServiceImpl implements AlbumService {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
         var album = albumReader.getAlbumBy(albumId);
         var trackList = albumReader.getTrackList(album);
-        trackList.forEach(
-                trackInfo -> {
-                    var trackLikeCount = trackInfo.getLikeInfo().getLikeCount();
-                    var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), trackInfo.getId(), "App\\Track"), trackLikeCount);
-                    trackInfo.setLikeInfo(trackLikeInfo);
-                }
-        );
-        var albumLikeCount = (long) album.getLikeList().size();
-        var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), album.getId(), "App\\Album"), albumLikeCount);
-        return new AlbumInfo.Main(album, trackList, albumLikeInfo);
+        return new AlbumInfo.Main(album, trackList);
     }
 
     /**

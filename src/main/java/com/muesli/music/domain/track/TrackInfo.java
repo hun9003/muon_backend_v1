@@ -33,7 +33,6 @@ public class TrackInfo {
         private final Long adult;
         private final AlbumInfo.Main albumInfo;
         private final LyricsInfo lyricsInfo;
-        private LikeInfo.Main likeInfo;
         private final ArtistInfo.Main artistInfo;
 
         public Main(Track track, ArtistInfo.Main artistInfo) {
@@ -55,7 +54,7 @@ public class TrackInfo {
             this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
         }
 
-        public Main(Track track, ArtistInfo.Main artistInfo, LyricsInfo lyricsInfo, LikeInfo.Main likeInfo) {
+        public Main(Track track, ArtistInfo.Main artistInfo, LyricsInfo lyricsInfo) {
             this.id = track.getId();
             this.original = track.getOriginal();
             this.name = track.getName();
@@ -69,14 +68,9 @@ public class TrackInfo {
             this.lyricser = track.getLyricser();
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
-            this.likeInfo = likeInfo;
             this.lyricsInfo = lyricsInfo;
             this.artistInfo = artistInfo;
             this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
-        }
-
-        public void setLikeInfo(LikeInfo.Main likeInfo) {
-            this.likeInfo = likeInfo;
         }
     }
 
@@ -99,7 +93,6 @@ public class TrackInfo {
         private final Long adult;
         private final ArtistInfo.Main artistInfo;
         private final AlbumInfo.AlbumBasicInfo albumInfo;
-        private LikeInfo.Main likeInfo;
 
         public TrackBasicInfo(Track track, AlbumInfo.AlbumBasicInfo albumBasicInfo, ArtistInfo.Main artistInfo) {
             this.id = track.getId();
@@ -116,11 +109,6 @@ public class TrackInfo {
             this.albumInfo = albumBasicInfo;
             this.artistInfo = artistInfo;
         }
-
-        public void setLikeInfo(LikeInfo.Main likeInfo) {
-            this.likeInfo = likeInfo;
-        }
-
     }
 
     @Getter
@@ -150,7 +138,6 @@ public class TrackInfo {
         private final Long adult;
         private final ArtistInfo.Main artistInfo;
         private final AlbumInfo.AlbumBasicInfo albumInfo;
-        private LikeInfo.Main likeInfo;
 
         public RankInfo(Map<String, Object> track, AlbumInfo.AlbumBasicInfo albumBasicInfo, ArtistInfo.Main artistInfo) {
             this.rank = Integer.parseInt((String) track.get("rank"));
@@ -165,10 +152,6 @@ public class TrackInfo {
             this.adult = (Long) track.get("id");
             this.albumInfo = albumBasicInfo;
             this.artistInfo = artistInfo;
-        }
-
-        public void setLikeInfo(LikeInfo.Main likeInfo) {
-            this.likeInfo = likeInfo;
         }
     }
 

@@ -44,17 +44,7 @@ public class ArtistServiceImpl implements ArtistService{
         var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
 
-        var albumBasicList = albumList.stream().map(
-                album -> {
-                    var albumInfo = new AlbumInfo.AlbumBasicInfo(album);
-                    var albumLikeCount = (long) album.getLikeList().size();
-                    var albumLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), albumInfo.getId(), "App\\Album"), albumLikeCount);
-                    albumInfo.setLikeInfo(albumLikeInfo);
-                    return albumInfo;
-                }
-        ).collect(Collectors.toList());
-        var artistLikecount = (long) artist.getLikeList().size();
-        var artistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artist.getId(), "App\\Artist"), artistLikecount);
+        var albumBasicList = albumList.stream().map(AlbumInfo.AlbumBasicInfo::new).collect(Collectors.toList());
 
         // 페이징
         var pageInfo = new PageInfo(pageable, albumBasicList.size());
@@ -64,10 +54,7 @@ public class ArtistServiceImpl implements ArtistService{
         for (var album : albumList) {
             var trackList = album.getTrackList();
             for (var track : trackList) {
-                var trackLikeCount = (long) track.getLikeList().size();
-                var likeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
                 var trackInfo = new TrackInfo.TrackBasicInfo(track, new AlbumInfo.AlbumBasicInfo(album), new ArtistInfo.Main(artist));
-                trackInfo.setLikeInfo(likeInfo);
                 trackInfoList.add(trackInfo);
             }
         }
@@ -76,7 +63,7 @@ public class ArtistServiceImpl implements ArtistService{
         pageInfo = new PageInfo(pageable, trackInfoList.size());
         trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
 
-        return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList, artistLikeInfo);
+        return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList);
     }
 
     /**

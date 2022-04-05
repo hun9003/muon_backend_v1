@@ -31,7 +31,6 @@ public class ArtistDto {
         private final int views;
         private final String imageSmall;
         private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
-        private final LikeDto.LikeInfo likeInfo;
         private final List<AlbumDto.ArtistAlbumInfo> albumList;
         private final List<TrackDto.ArtistTrackInfo> trackList;
     }
@@ -55,7 +54,6 @@ public class ArtistDto {
         private final String label;
         private final int views;
         private final String imageSmall;
-        private final LikeDto.LikeInfo likeInfo;
     }
 
     /**

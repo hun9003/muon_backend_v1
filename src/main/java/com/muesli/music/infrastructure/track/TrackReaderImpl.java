@@ -45,10 +45,7 @@ public class TrackReaderImpl implements TrackReader {
         return trackList.stream().map(
                 track -> {
                     var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
-                    var trackInfo = new TrackInfo.Main(track, artistInfo);
-                    var likeCount = (long) track.getLikeList().size();
-                    trackInfo.setLikeInfo(new LikeInfo.Main(track.getLikeList().iterator().next(), likeCount));
-                    return trackInfo;
+                    return new TrackInfo.Main(track, artistInfo);
                 }
         ).collect(Collectors.toList());
     }

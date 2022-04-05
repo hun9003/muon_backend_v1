@@ -1,9 +1,6 @@
 package com.muesli.music.domain.track;
 
-import com.muesli.music.common.exception.BaseException;
-import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -18,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -40,10 +36,8 @@ public class TrackServiceImpl implements TrackService{
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
         var lyrics = track.getLyrics().iterator().next();
-        var trackLikeCount = (long) track.getLikeList().size();
-        var trackLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"), trackLikeCount);
 
-        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics), trackLikeInfo);
+        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics));
     }
 
     /**

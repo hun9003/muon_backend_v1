@@ -30,7 +30,6 @@ public class PlaylistDto {
         private final ZonedDateTime createAt;
         private final int trackCount;
         private final UserDto.PlaylistUserInfo userInfo;
-        private final LikeDto.LikeInfo likeInfo;
         private final List<TrackDto.PlaylistTrackInfo> trackInfoList;
     }
 

@@ -52,11 +52,7 @@ public class PlaylistReaderImpl implements PlaylistReader {
                                 return new TrackInfo.Main(track, new ArtistInfo.Main(new Artist()));
                             }
                     ).collect(Collectors.toList());
-
-                    var likeCount = (long) playlist.getLikeList().size();
-                    var initLikeInfo = playlist.getLikeList().size() > 0 ? playlist.getLikeList().iterator().next() : new Like();
-                    var likeInfo = new LikeInfo.Main(initLikeInfo, likeCount);
-                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList,  likeInfo);
+                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList);
                 }
         ).collect(Collectors.toList());
     }
@@ -75,11 +71,7 @@ public class PlaylistReaderImpl implements PlaylistReader {
                                 return new TrackInfo.Main(track, new ArtistInfo.Main(new Artist()));
                             }
                     ).collect(Collectors.toList());
-
-                    var likeCount = (long) playlist.getLikeList().size();
-                    var initLikeInfo = playlist.getLikeList().iterator().next() != null ? playlist.getLikeList().iterator().next() : new Like();
-                    var likeInfo = new LikeInfo.Main(initLikeInfo, likeCount);
-                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList,  likeInfo);
+                    return new PlaylistInfo.Main(playlist, userInfo, trackInfoList);
                 }
         ).collect(Collectors.toList());
     }

@@ -32,11 +32,7 @@ public class AlbumReaderImpl implements AlbumReader {
         var trackList = album.getTrackList();
         return trackList.stream().map(track -> {
             var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
-            var likeInfo = new LikeInfo.Main(new Like());
-            likeInfo.setLikeCount((long) track.getLikeList().size());
-            var trackInfo = new TrackInfo.Main(track, artistInfo);
-            trackInfo.setLikeInfo(likeInfo);
-            return trackInfo;
+            return new TrackInfo.Main(track, artistInfo);
         }).collect(Collectors.toList());
     }
 
@@ -45,8 +41,6 @@ public class AlbumReaderImpl implements AlbumReader {
         System.out.println("AlbumReaderImpl :: getAlbumLikeList");
         var albumList = albumRepository.findAllLikeList(userId)
                 .orElseThrow(EntityNotFoundException::new);
-        return albumList.stream().map(
-                album -> new AlbumInfo.Main(album, new LikeInfo.Main(album.getLikeList().iterator().next(), (long) album.getLikeList().size()))
-        ).collect(Collectors.toList());
+        return albumList.stream().map(AlbumInfo.Main::new).collect(Collectors.toList());
     }
 }

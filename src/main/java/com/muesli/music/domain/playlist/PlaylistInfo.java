@@ -23,10 +23,9 @@ public class PlaylistInfo {
         private final ZonedDateTime createAt;
         private int trackCount;
         private final UserInfo.Main userInfo;
-        private final LikeInfo.Main likeInfo;
         private final List<TrackInfo.Main> trackInfoList;
 
-        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.Main> trackInfoList, LikeInfo.Main likeInfo) {
+        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.Main> trackInfoList) {
             this.id = playlist.getId();
             this.name = playlist.getName();
             this.isPublic = playlist.getIsPublic();
@@ -36,7 +35,6 @@ public class PlaylistInfo {
             this.userInfo = userInfo;
             this.createAt = playlist.getCreatedAt();
             this.trackInfoList = trackInfoList;
-            this.likeInfo = likeInfo;
         }
 
         public Main(Playlist playlist, UserInfo.Main userInfo) {
@@ -49,7 +47,6 @@ public class PlaylistInfo {
             this.userInfo = userInfo;
             this.createAt = playlist.getCreatedAt();
             this.trackInfoList = null;
-            this.likeInfo = null;
         }
 
         public void setTrackCount(int trackCount) {

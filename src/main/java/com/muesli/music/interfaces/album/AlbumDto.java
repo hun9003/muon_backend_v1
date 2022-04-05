@@ -25,7 +25,6 @@ public class AlbumDto {
         private final String originalName;
         private final String image;
         private final String description;
-        private final LikeDto.LikeInfo likeInfo;
         private final List<TrackDto.AlbumTrackInfo> trackList;
     }
 
@@ -44,7 +43,6 @@ public class AlbumDto {
         private final String image;
         private final String description;
         private final ArtistDto.TrackArtistInfo artistInfo;
-        private final LikeDto.LikeInfo likeInfo;
     }
 
     /**
@@ -88,6 +86,5 @@ public class AlbumDto {
         private final String originalName;
         private final String image;
         private final String description;
-        private final LikeDto.LikeInfo likeInfo;
     }
 }

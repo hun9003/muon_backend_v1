@@ -54,16 +54,10 @@ public class PlaylistServiceImpl implements PlaylistService{
                     var track = playlistTrack.getTrack();
                     if (track.getTrackArtists().iterator().next().getArtist() == null) return null;
                     var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
-                    var likeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), track.getId(), "App\\Track"));
-                    likeInfo.setLikeCount((long) track.getLikeList().size());
-                    var trackInfo = new TrackInfo.Main(track, artistInfo);
-                    trackInfo.setLikeInfo(likeInfo);
-                    return trackInfo;
+                    return new TrackInfo.Main(track, artistInfo);
                 }
         ).filter(Objects::nonNull).collect(Collectors.toList());
 
-        var playlistLikeCount = (long) playlist.getLikeList().size();
-        var playlistLikeInfo = new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), playlist.getId(), "App\\Playlist"), playlistLikeCount);
         var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
 
         // 페이징
@@ -71,7 +65,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         var pageInfo = new PageInfo(pageable, trackCount);
         trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
 
-        var playlistInfo = new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList, playlistLikeInfo);
+        var playlistInfo = new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList);
         playlistInfo.setTrackCount(trackCount);
         return playlistInfo;
     }

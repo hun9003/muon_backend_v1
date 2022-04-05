@@ -15,7 +15,10 @@ public enum ErrorCode {
     COMMON_DUPLICATION_EMAIL("이미 가입된 이메일 입니다."),
     COMMON_LOGIN_FALE("아이디 또는 비밀번호가 일치하지 않습니다."),
     COMMON_PERMISSION_FALE("권한이 없습니다"),
-    COMMON_BAD_USERTOKEN("토큰이 유효하지 않습니다.");
+    COMMON_BAD_USERTOKEN("토큰이 유효하지 않습니다."),
+
+    // 아이템 관련 에러
+    ITEM_BAD_TYPE("타입이 올바르지 않습니다.");
 
     private final String errorMsg;
 

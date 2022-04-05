@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,7 +32,36 @@ public class LikeServiceImpl implements LikeService {
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var likeCount = likeReader.getLikeCount(command.getLikeableId(), command.getLikeableType());
-        return new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount);
+        return new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount, command.getLikeableId());
+    }
+
+    /**
+     * 해당 아이템을 좋아요 했는지 확인 (리스트)
+     * @param command
+     * @param token
+     * @return 좋아요 정보
+     */
+    @Override
+    public List<LikeInfo.Main> findLikeBy(LikeCommand.ShowLikeListRequest command, String token) {
+        System.out.println("LikeServiceImpl :: findLikeBy");
+        var usertoken = usertokenReader.getUsertoken(token);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+
+        var type = "";
+        switch (command.getType()) {
+            case "album": type = "App\\Album"; break;
+            case "artist": type = "App\\Artist"; break;
+            case "track": type = "App\\Track"; break;
+            case "playlist": type = "App\\Playlist"; break;
+            default: throw new BaseException(ErrorCode.ITEM_BAD_TYPE);
+        }
+
+        var likeInfoList = new ArrayList<LikeInfo.Main>();
+        for (int i = 0; i < command.getIds().size(); i++) {
+            var likeCount = likeReader.getLikeCount(command.getIds().get(i), type);
+            likeInfoList.add(new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getIds().get(i), type), likeCount, command.getIds().get(i)));
+        }
+        return likeInfoList;
     }
 
     /**

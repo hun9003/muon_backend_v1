@@ -1,7 +1,6 @@
 package com.muesli.music.domain.track;
 
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -21,7 +20,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TrackServiceImpl implements TrackService{
     private final TrackReader trackReader;
-    private final LikeReader likeReader;
     private final UsertokenReader usertokenReader;
 
     /**

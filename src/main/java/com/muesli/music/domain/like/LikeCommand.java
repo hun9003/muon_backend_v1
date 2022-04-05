@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 public class LikeCommand {
 
     @Getter
@@ -22,5 +24,13 @@ public class LikeCommand {
                     .likeableType(likeableType)
                     .build();
         }
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class ShowLikeListRequest {
+        private final String type;
+        private final List<Long> ids;
     }
 }

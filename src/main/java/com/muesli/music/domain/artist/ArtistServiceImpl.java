@@ -1,12 +1,7 @@
 package com.muesli.music.domain.artist;
 
-import com.muesli.music.common.exception.BaseException;
-import com.muesli.music.common.response.ErrorCode;
-import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
-import com.muesli.music.domain.like.LikeInfo;
-import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -26,7 +21,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ArtistServiceImpl implements ArtistService{
     private final ArtistReader artistReader;
-    private final LikeReader likeReader;
     private final UsertokenReader usertokenReader;
 
     /**
@@ -64,19 +58,6 @@ public class ArtistServiceImpl implements ArtistService{
         trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
 
         return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList);
-    }
-
-    /**
-     * 아티스트 좋아요 정보 가져오기
-     * @param userInfo
-     * @param artistInfo
-     * @return
-     */
-    @Override
-    @Transactional(readOnly = true)
-    public LikeInfo.Main findLikeBy(UserInfo.Main userInfo, ArtistInfo.Main artistInfo) {
-        System.out.println("ArtistServiceImpl :: findLikeBy");
-        return new LikeInfo.Main(likeReader.getLikeBy(userInfo.getId(), artistInfo.getId(), "App\\Artist"));
     }
 
     /**

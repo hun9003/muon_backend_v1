@@ -19,6 +19,7 @@ public class LikeDto {
     @ToString
     public static class LikeInfo {
         private final Long id;
+        private final Long likeableId;
         private final int isLike;
         private final ZonedDateTime createdAt;
         private final Long likeCount;
@@ -27,16 +28,29 @@ public class LikeDto {
     @Getter
     @Builder
     @ToString
-    public static class LikeItemInfo {
-        private final Long id;
-        private final ZonedDateTime createdAt;
+    public static class LikeInfoList {
+        private final String type;
+        private final List<LikeInfo> likeInfoList;
+
+        public LikeInfoList(String type, List<LikeInfo> likeInfoList) {
+            this.type = type;
+            this.likeInfoList = likeInfoList;
+        }
     }
 
     @Getter
     @Builder
     @ToString
-    public static class LikeInfoList {
-        private final List<LikeItemInfo> likeInfoList;
+    public static class LikeItemInfoList {
+        private final String type;
+        private final List<Long> ids;
+
+        public LikeCommand.ShowLikeListRequest toCommand() {
+            return LikeCommand.ShowLikeListRequest.builder()
+                    .type(type)
+                    .ids(ids)
+                    .build();
+        }
     }
 
     @Getter

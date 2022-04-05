@@ -3,8 +3,6 @@ package com.muesli.music.domain.playlist;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeInfo;
-import com.muesli.music.domain.like.LikeReader;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
@@ -27,7 +25,6 @@ import java.util.stream.Collectors;
 public class PlaylistServiceImpl implements PlaylistService{
     private final PlaylistReader playlistReader;
     private final PlaylistStore playlistStore;
-    private final LikeReader likeReader;
     private final UserReader userReader;
     private final TrackReader trackReader;
     private final UsertokenReader usertokenReader;

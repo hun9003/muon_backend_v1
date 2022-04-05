@@ -20,7 +20,5 @@ public interface LikeDtoMapper {
     // find
     LikeDto.LikeInfo of(LikeInfo.Main likeInfo);
 
-    LikeDto.LikeItemInfo ofItem(LikeInfo.Main likeInfo);
-
 
 }

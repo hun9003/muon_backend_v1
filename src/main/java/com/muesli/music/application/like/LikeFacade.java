@@ -1,6 +1,7 @@
 package com.muesli.music.application.like;
 
 import com.muesli.music.domain.like.LikeCommand;
+import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.like.LikeService;
 import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,17 @@ public class LikeFacade {
         System.out.println("LikeFacade :: disLike");
         usertokenService.checkUsertoken(token);
         likeService.changeDisLike(likeId, token);
+    }
+
+    /**
+     * 해당 아이템들 좋아요 여부 파악
+     * @param command
+     * @param token
+     * @return
+     */
+    public List<LikeInfo.Main> showLikeItemList(LikeCommand.ShowLikeListRequest command, String token) {
+        System.out.println("LikeFacade :: showLikeItemList");
+        usertokenService.checkUsertoken(token);
+        return likeService.findLikeBy(command, token);
     }
 }

@@ -39,5 +39,4 @@ public class AlbumFacade {
         usertokenService.checkUsertoken(token);
         return albumService.getLikeList(token, pageable);
     }
-
 }

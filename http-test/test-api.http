@@ -127,7 +127,7 @@ authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 ### TOP100
-GET http://localhost:8080/api/v1/tracks/top100
+GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20&date=2022-02-01
 authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 

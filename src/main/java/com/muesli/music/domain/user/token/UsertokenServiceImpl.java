@@ -60,8 +60,6 @@ public class UsertokenServiceImpl implements UsertokenService {
     public void checkUsertoken(String token) {
         System.out.println("UsertokenServiceImpl :: checkUsertoken");
         var usertoken = usertokenReader.getUsertoken(token);
-        System.out.println(usertoken.getUploadAt());
-        System.out.println(usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis())));
         if (usertoken.getUploadAt() == null || usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis())))
             throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
     }

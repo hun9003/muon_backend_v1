@@ -1,15 +1,11 @@
 package com.muesli.music.domain.track;
 
-import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.lyrics.Lyrics;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -126,7 +122,7 @@ public class TrackInfo {
     @Getter
     @ToString
     public static class RankInfo {
-        private final int rank;
+        private final Long rank;
         private final Long wave;
         private final Long id;
         private final String name;
@@ -136,22 +132,36 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
-        private final ArtistInfo.Main artistInfo;
-        private final AlbumInfo.AlbumBasicInfo albumInfo;
 
-        public RankInfo(Map<String, Object> track, AlbumInfo.AlbumBasicInfo albumBasicInfo, ArtistInfo.Main artistInfo) {
-            this.rank = Integer.parseInt((String) track.get("rank"));
-            this.wave = (Long) track.get("wave");
-            this.id = (Long) track.get("id");
-            this.name = (String) track.get("id");
-            this.number = (Long) track.get("id");
-            this.duration = (Long) track.get("id");
-            this.artistsLegacy = (String) track.get("id");
-            this.description = (String) track.get("id");
-            this.image = (String) track.get("id");
-            this.adult = (Long) track.get("id");
-            this.albumInfo = albumBasicInfo;
-            this.artistInfo = artistInfo;
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+        private final String albumImage;
+
+        public RankInfo(Map<String, Object> track) {
+            var wave = track.get("wave") != null ? Long.parseLong(String.valueOf(track.get("wave"))) : null;
+            var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
+            var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+
+            this.rank = Long.parseLong(String.valueOf(track.get("rank")));
+            this.wave = wave;
+            this.id = Long.parseLong(String.valueOf(track.get("id")));
+            this.name = (String) track.get("name");
+            this.number = Long.parseLong(String.valueOf(track.get("number")));
+            this.duration = duration;
+            this.artistsLegacy = (String) track.get("artistsLegacy");
+            this.description = (String) track.get("description");
+            this.image = (String) track.get("image");
+            this.adult = adult;
+
+            this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
+            this.artistName = (String) track.get("artistName");
+
+            this.albumId = Long.parseLong(String.valueOf(track.get("albumId")));
+            this.albumName = (String) track.get("albumName");
+            this.albumImage = (String) track.get("albumImage");
         }
     }
 

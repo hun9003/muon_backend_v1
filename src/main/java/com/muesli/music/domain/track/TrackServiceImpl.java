@@ -10,10 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -56,15 +57,55 @@ public class TrackServiceImpl implements TrackService{
 
     /**
      * 곡 순위 리스트
-     * @param token
      * @param pageable
+     * @param command
      * @return
      */
-    public List<TrackInfo.Main> getTrackRank(String token, Pageable pageable, String type, String date) {
+    public List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
-        var usertoken = usertokenReader.getUsertoken(token);
-        var trackList1 = trackReader.getTop100List("2021-12-01", "2021-12-31");
-        var trackList2 = trackReader.getTop100List("2022-01-01", "2022-01-31");
+        String date = command.getDate() != null ? command.getDate() : String.valueOf(LocalDate.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
+        LocalDate searchDate = LocalDate.parse(date, formatter);
+        LocalDateTime beforeBegin = null;
+        LocalDateTime beforeEnd = null;
+        LocalDateTime afterBegin = null;
+        LocalDateTime afterEnd = null;
+        switch (command.getType()) {
+            case "day":
+                searchDate = LocalDate.now();
+                beforeBegin = searchDate.minusDays(2).atTime(0, 0);
+                beforeEnd = searchDate.minusDays(1).atTime(0, 0);
+                afterBegin = searchDate.minusDays(1).atTime(0, 0);
+                afterEnd = searchDate.minusDays(0).atTime(0, 0);
+                break;
+            case "month":
+                beforeBegin = searchDate.minusMonths(1).withDayOfMonth(1).atTime(0, 0);
+                beforeEnd = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
+                afterBegin = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
+                afterEnd = searchDate.plusMonths(1).withDayOfMonth(1).atTime(0, 0);
+                break;
+            case "week":
+                beforeBegin = searchDate.minusDays(15).atTime(0, 0);
+                beforeEnd = searchDate.minusDays(8).atTime(0, 0);
+                afterBegin = searchDate.minusDays(8).atTime(0, 0);
+                afterEnd = searchDate.minusDays(1).atTime(0, 0);
+                break;
+            case "now":
+            default:
+                LocalDateTime now = LocalDateTime.now();
+                beforeBegin = now.minusHours(2).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                beforeEnd = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                afterBegin = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                afterEnd = now.minusHours(0).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+        }
+        String beforeBeginFormat = beforeBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String beforeEndFormat = beforeEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String afterBeginFormat = afterBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String afterEndFormat = afterEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        var trackList1 = trackReader.getTop100List(beforeBeginFormat, beforeEndFormat, pageable);
+        var trackList2 = trackReader.getTop100List(afterBeginFormat, afterEndFormat, pageable);
+
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < trackList2.size(); i++) {
             var newTrackMap = new HashMap<>(trackList2.get(i));
@@ -84,10 +125,7 @@ public class TrackServiceImpl implements TrackService{
             }
             newTrackList.add(newTrackMap);
         }
-        for(var li : newTrackList) {
-            System.out.println("---------------------------------------");
-            System.out.println("rank : " + li.get("rank") + ",wave : "+ li.get("wave") + ", name : " + li.get("name"));
-        }
-        return null;
+
+        return newTrackList.stream().map(TrackInfo.RankInfo::new).collect(Collectors.toList());
     }
 }

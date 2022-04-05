@@ -3,12 +3,12 @@ package com.muesli.music.infrastructure.track;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -51,9 +51,9 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
-    public List<Map<String, Object>> getTop100List(String begin, String end) {
+    public List<Map<String, Object>> getTop100List(String begin, String end, Pageable pageable) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        return trackRepository.findTop100(begin, end).orElseThrow(InvalidParamException::new);
+        return trackRepository.findTop100(begin, end, pageable.getPageSize()).orElseThrow(InvalidParamException::new);
     }
 }
 

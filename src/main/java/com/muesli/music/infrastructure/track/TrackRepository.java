@@ -50,6 +50,6 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "WHERE p.created_at > :beginDate AND p.created_at < :endDate " +
             "GROUP BY t.id " +
             "ORDER By count(t.id) DESC, likecount DESC " +
-            "LIMIT 100", nativeQuery = true)
-    Optional<List<Map<String, Object>>> findTop100(String beginDate, String endDate);
+            "LIMIT :limit", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findTop100(String beginDate, String endDate, int limit);
 }

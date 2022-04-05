@@ -1,8 +1,8 @@
 package com.muesli.music.interfaces.track;
 
+import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.artist.ArtistDto;
-import com.muesli.music.interfaces.like.LikeDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -147,19 +147,47 @@ public class TrackDto {
     @ToString
     @Builder
     public static class TrackRankInfo {
-        private final int rank;
-        private final int wave;
+        private final Long rank;
+        private final Long wave;
         private final Long id;
         private final String name;
-        private final String original;
         private final Long number;
         private final Long duration;
         private final String artistsLegacy;
-        private final String url;
         private final String description;
         private final String image;
         private final Long adult;
-        private final ArtistDto.TrackArtistInfo artistInfo;
-        private final AlbumDto.TrackAlbumInfo albumInfo;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+        private final String albumImage;
     }
+
+    @Getter
+    @ToString
+    @Builder
+    public static class TrackRankList {
+        private final String date;
+        private final String type;
+        private final Long genre;
+        private final List<TrackRankInfo> trackList;
+
+        public TrackRankList(String date, String type, Long genre, List<TrackRankInfo> trackList) {
+            this.date = date;
+            this.type = type;
+            this.genre = genre;
+            this.trackList = trackList;
+        }
+
+        public TrackCommand.SearchRankCommand toCommand() {
+            return TrackCommand.SearchRankCommand.builder()
+                    .date(date)
+                    .genre(genre)
+                    .type(type).build();
+        }
+    }
+
 }

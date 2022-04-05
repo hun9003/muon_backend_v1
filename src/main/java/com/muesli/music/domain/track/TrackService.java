@@ -10,5 +10,5 @@ public interface TrackService {
 
     List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
 
-    List<TrackInfo.Main> getTrackRank(String token, Pageable pageable, String type, String date);
+    List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
 }

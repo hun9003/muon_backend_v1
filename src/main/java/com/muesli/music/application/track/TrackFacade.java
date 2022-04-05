@@ -1,8 +1,10 @@
 package com.muesli.music.application.track;
 
+import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
 import com.muesli.music.domain.user.token.UsertokenService;
+import com.muesli.music.interfaces.track.TrackDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -43,9 +45,14 @@ public class TrackFacade {
         return trackService.getLikeList(token, pageable);
     }
 
-    public List<TrackInfo.Main> retrieveTop100(String token, Pageable pageable, String type, String date) {
+    /**
+     * 곡 정보 조회
+     * @param pageable
+     * @param command
+     * @return
+     */
+    public List<TrackInfo.RankInfo> retrieveTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
         System.out.println("TrackFacade :: retrieveTop100");
-        trackService.getTrackRank(token, pageable, type, date);
-        return null;
+        return trackService.getTrackRank(pageable, command);
     }
 }

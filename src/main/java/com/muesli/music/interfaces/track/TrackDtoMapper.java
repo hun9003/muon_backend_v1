@@ -7,8 +7,6 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import java.util.List;
-
 @Mapper(
         componentModel = "spring",
         injectionStrategy = InjectionStrategy.CONSTRUCTOR,
@@ -24,4 +22,6 @@ public interface TrackDtoMapper {
     LikeDto.LikeInfo of(LikeInfo.Main like);
 
     TrackDto.LyricsInfo of(TrackInfo.LyricsInfo lyrics);
+
+    TrackDto.TrackRankInfo of(TrackInfo.RankInfo trackInfo);
 }

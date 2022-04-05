@@ -50,13 +50,25 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
-    @GetMapping("/top100")
-    public CommonResponse retrieveTrackRank(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
-                                                @PageableDefault(size = 100, page = 1) Pageable pageable) {
+    /**
+     * 곡 순위
+     * @param pageable
+     * @param date
+     * @param type
+     * @param genre
+     * @return
+     */
+    @GetMapping("/rank")
+    public CommonResponse retrieveTrackRank(@PageableDefault(size = 100, page = 1) Pageable pageable,
+                                            @RequestParam(name = "date", required = false) String date,
+                                            @RequestParam(name = "type", defaultValue = "now") String type,
+                                            @RequestParam(name = "genre", required = false) Long genre) {
         System.out.println("LikeApiController :: retrieveTrackRank");
-        usertoken = TokenGenerator.getHeaderToken(usertoken);
-        trackFacade.retrieveTop100(usertoken, pageable, "now", "2021-02-01");
-        return CommonResponse.success("OK");
+        var searchDto = new TrackDto.TrackRankList(date, type, genre, null);
+        var command = searchDto.toCommand();
+        var trackList = trackFacade.retrieveTrackRank(pageable, command);
+        var response = new TrackDto.TrackRankList(date, type, genre, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
+        return CommonResponse.success(response);
     }
 
 }

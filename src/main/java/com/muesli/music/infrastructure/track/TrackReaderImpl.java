@@ -67,5 +67,11 @@ public class TrackReaderImpl implements TrackReader {
         System.out.println("TrackReaderImpl :: getNewTrack");
         return trackRepository.findNewTrack(start, end).orElseThrow(InvalidParamException::new);
     }
+
+    @Override
+    public List<Map<String, Object>> getUserHistoryTrack(Long userId, int start, int end) {
+        System.out.println("TrackReaderImpl :: getNewTrack");
+        return trackRepository.findUserHistoryTrack(userId, start, end).orElseThrow(InvalidParamException::new);
+    }
 }
 

@@ -78,4 +78,15 @@ public class TrackFacade {
         System.out.println("TrackFacade :: retrieveNewTrack");
         return trackService.getNewTrack(pageable);
     }
+
+    /**
+     * 유저 최근 들은 곡 리스트 호출
+     * @param pageable
+     * @return
+     */
+    public List<TrackInfo.ChartInfo> retrieveUserHistoryTrack(String token, Pageable pageable) {
+        System.out.println("TrackFacade :: retrieveNewTrack");
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return trackService.getUserHistoryTrack(usertokenInfo, pageable);
+    }
 }

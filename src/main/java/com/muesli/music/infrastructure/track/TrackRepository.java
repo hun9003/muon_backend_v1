@@ -84,4 +84,18 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "ORDER By a.release_date DESC " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findNewTrack(int start, int end);
+
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE p.user_id = :userId " +
+            "GROUP BY t.id " +
+            "ORDER By p.created_at DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findUserHistoryTrack(Long userId, int start, int end);
 }

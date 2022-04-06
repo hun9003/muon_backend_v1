@@ -95,4 +95,19 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 최근 들은 곡
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/history")
+    public CommonResponse retrieveUserHistoryTrack(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                                   @PageableDefault(size = 50, page = 1) Pageable pageable) {
+        System.out.println("LikeApiController :: retrieveUserHistoryTrack");
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var trackList = trackFacade.retrieveUserHistoryTrack(usertoken, pageable);
+        var response = new TrackDto.TrackRankList(null, null, null, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
+        return CommonResponse.success(response);
+    }
+
 }

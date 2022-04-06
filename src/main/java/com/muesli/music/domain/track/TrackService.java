@@ -16,4 +16,6 @@ public interface TrackService {
     Map<String, Object> getChartLayout();
 
     List<TrackInfo.ChartInfo> getNewTrack(Pageable pageable);
+
+    List<TrackInfo.ChartInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
 }

@@ -17,4 +17,6 @@ public interface TrackReader {
     List<Map<String, Object>> getTrackGenreRank(String begin, String end, Pageable pageable, Long genreId);
 
     List<Map<String, Object>> getNewTrack(int start, int end);
+
+    List<Map<String, Object>> getUserHistoryTrack(Long userId, int start, int end);
 }

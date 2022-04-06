@@ -191,4 +191,24 @@ public class TrackServiceImpl implements TrackService {
         }
         return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
     }
+
+    /**
+     * 유저 최근 들은 곡 호출
+     * @param userInfo
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<TrackInfo.ChartInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable) {
+        System.out.println("TrackServiceImpl :: getUserHistoryTrack");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, 100);
+        var trackList = trackReader.getUserHistoryTrack(userInfo.getUserInfo().getId(),pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newTrackMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newTrackMap);
+        }
+        return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
+    }
 }

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 
 @Slf4j
 @RestController
@@ -39,7 +40,10 @@ public class UserApiController {
     public CommonResponse loginUser(@RequestBody @Valid UserDto.LoginUser request) {
         var usertokenInfo = userFacade.loginUser(request.getEmail(), request.getPassword());
         var response = new UserDto.LoginResponse(usertokenInfo);
-        return CommonResponse.success(response);
+        var message = new HashMap<String, String>();
+        message.put("dev", "로그인 완료");
+        message.put("user", "로그인을 성공적으로 완료했습니다.");
+        return CommonResponse.success(response, message);
     }
 
     /**

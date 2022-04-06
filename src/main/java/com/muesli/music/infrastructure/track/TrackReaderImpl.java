@@ -51,9 +51,15 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
-    public List<Map<String, Object>> getTop100List(String begin, String end, Pageable pageable) {
+    public List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
-        return trackRepository.findTop100(begin, end, pageable.getPageSize()).orElseThrow(InvalidParamException::new);
+        return trackRepository.findTrackRank(begin, end, pageable.getPageSize()).orElseThrow(InvalidParamException::new);
+    }
+
+    @Override
+    public List<Map<String, Object>> getTrackGenreRank(String begin, String end, Pageable pageable, Long genreId) {
+        System.out.println("TrackReaderImpl :: getTrackLikeList");
+        return trackRepository.findTrackGenreRank(begin, end, pageable.getPageSize(), genreId).orElseThrow(InvalidParamException::new);
     }
 }
 

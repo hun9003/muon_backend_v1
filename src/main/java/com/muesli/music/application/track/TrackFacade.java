@@ -1,10 +1,10 @@
 package com.muesli.music.application.track;
 
+import com.muesli.music.domain.genre.GenreService;
 import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
 import com.muesli.music.domain.user.token.UsertokenService;
-import com.muesli.music.interfaces.track.TrackDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrackFacade {
     private final TrackService trackService;
+    private final GenreService genreService;
     private final UsertokenService usertokenService;
 
     /**
@@ -54,5 +55,17 @@ public class TrackFacade {
     public List<TrackInfo.RankInfo> retrieveTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
         System.out.println("TrackFacade :: retrieveTop100");
         return trackService.getTrackRank(pageable, command);
+    }
+
+    /**
+     * 트랙 차트 레이아웃 정보 가져오기
+     * @return
+     */
+    public TrackInfo.ChartLayoutInfo getChartLayout() {
+        System.out.println("TrackFacade :: getChartLayout");
+        var genreInfoList = genreService.getGenreList();
+        var chartLayout = trackService.getChartLayout();
+        chartLayout.put("genreList", genreInfoList);
+        return new TrackInfo.ChartLayoutInfo(chartLayout);
     }
 }

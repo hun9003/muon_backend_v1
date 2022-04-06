@@ -71,4 +71,15 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 트랙 차트 레이아웃 호출
+     * @return
+     */
+    @GetMapping("/rank/layout")
+    public CommonResponse retrieveChartLayout(){
+        System.out.println("TrackApiController :: retrieveChartLayout");
+        var response = trackFacade.getChartLayout();
+        return CommonResponse.success(response);
+    }
+
 }

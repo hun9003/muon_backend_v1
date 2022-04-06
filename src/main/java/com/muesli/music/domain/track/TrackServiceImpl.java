@@ -19,12 +19,13 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TrackServiceImpl implements TrackService{
+public class TrackServiceImpl implements TrackService {
     private final TrackReader trackReader;
     private final UsertokenReader usertokenReader;
 
     /**
      * 트랙 정보 가져오기
+     *
      * @param trackId
      * @param userInfo
      * @return
@@ -41,6 +42,7 @@ public class TrackServiceImpl implements TrackService{
 
     /**
      * 좋아요 리스트 조회
+     *
      * @param token
      * @return
      */
@@ -57,10 +59,13 @@ public class TrackServiceImpl implements TrackService{
 
     /**
      * 곡 순위 리스트
+     *
      * @param pageable
      * @param command
      * @return
      */
+    @Override
+    @Transactional(readOnly = true)
     public List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
         System.out.println("LikeServiceImpl :: getLikeTrackList");
         String date = command.getDate() != null ? command.getDate() : String.valueOf(LocalDate.now());
@@ -85,10 +90,10 @@ public class TrackServiceImpl implements TrackService{
                 afterEnd = searchDate.plusMonths(1).withDayOfMonth(1).atTime(0, 0);
                 break;
             case "week":
-                beforeBegin = searchDate.minusDays(15).atTime(0, 0);
-                beforeEnd = searchDate.minusDays(8).atTime(0, 0);
-                afterBegin = searchDate.minusDays(8).atTime(0, 0);
-                afterEnd = searchDate.minusDays(1).atTime(0, 0);
+                beforeBegin = searchDate.minusDays(13).atTime(0, 0);
+                beforeEnd = searchDate.minusDays(6).atTime(0, 0);
+                afterBegin = searchDate.minusDays(6).atTime(0, 0);
+                afterEnd = searchDate.plusDays(1).atTime(0, 0);
                 break;
             case "now":
             default:
@@ -103,29 +108,73 @@ public class TrackServiceImpl implements TrackService{
         String afterBeginFormat = afterBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String afterEndFormat = afterEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        var trackList1 = trackReader.getTop100List(beforeBeginFormat, beforeEndFormat, pageable);
-        var trackList2 = trackReader.getTop100List(afterBeginFormat, afterEndFormat, pageable);
+        System.out.println(beforeBeginFormat);
+        System.out.println(beforeEndFormat);
+        System.out.println(afterBeginFormat);
+        System.out.println(afterEndFormat);
+
+        List<Map<String, Object>> trackList1 = null;
+        List<Map<String, Object>> trackList2 = null;
+        if (command.getGenre() == null) {
+            trackList1 = trackReader.getTrackRank(beforeBeginFormat, beforeEndFormat, pageable);
+            trackList2 = trackReader.getTrackRank(afterBeginFormat, afterEndFormat, pageable);
+        } else {
+            trackList1 = trackReader.getTrackGenreRank(beforeBeginFormat, beforeEndFormat, pageable, command.getGenre());
+            trackList2 = trackReader.getTrackGenreRank(afterBeginFormat, afterEndFormat, pageable, command.getGenre());
+        }
 
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < trackList2.size(); i++) {
             var newTrackMap = new HashMap<>(trackList2.get(i));
-            newTrackMap.put("rank", i+1);
+            newTrackMap.put("rank", i + 1);
             boolean isNew = true;
             for (int j = 0; j < trackList1.size(); j++) {
                 int id = Integer.parseInt(String.valueOf(trackList2.get(i).get("id")));
                 int id2 = Integer.parseInt(String.valueOf(trackList1.get(j).get("id")));
                 if (id == id2) {
-                    newTrackMap.put("wave", j-i);
+                    newTrackMap.put("wave", j - i);
                     isNew = false;
                     break;
                 }
             }
-            if(isNew) {
+            if (isNew) {
                 newTrackMap.put("wave", null);
             }
             newTrackList.add(newTrackMap);
         }
 
         return newTrackList.stream().map(TrackInfo.RankInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 트랙 차트 레이아웃 정보 가져오기
+     * @return
+     */
+    @Override
+    public Map<String, Object> getChartLayout() {
+        System.out.println("LikeServiceImpl :: getChartLayout");
+
+        LocalDate nowDate = LocalDate.now();
+        var chartLayout = new HashMap<String, Object>();
+
+        List<String> yearDate = new ArrayList<>();
+        List<String> monthDate = new ArrayList<>();
+        List<String> weekDate = new ArrayList<>();
+
+        for (int i = 0; i < 2; i++) {
+            yearDate.add(String.valueOf(nowDate.minusDays(nowDate.getDayOfMonth()-1).minusMonths(nowDate.getMonthValue()-1).minusYears(i)));
+        }
+        for (int i = 0; i < nowDate.getMonthValue() + 11; i++) {
+            monthDate.add(String.valueOf(nowDate.minusDays(nowDate.getDayOfMonth()-1).minusMonths(i+1)));
+        }
+        for (int i = 0; i < 12; i++) {
+            weekDate.add(String.valueOf(nowDate.minusDays(i*7+1)));
+        }
+
+        chartLayout.put("yearDate", yearDate);
+        chartLayout.put("monthDate", monthDate);
+        chartLayout.put("weekDate", weekDate);
+
+        return chartLayout;
     }
 }

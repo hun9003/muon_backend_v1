@@ -12,5 +12,7 @@ public interface TrackReader {
 
     List<TrackInfo.Main> getTrackLikeList(Long userId);
 
-    List<Map<String, Object>> getTop100List(String begin, String end, Pageable pageable);
+    List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable);
+
+    List<Map<String, Object>> getTrackGenreRank(String begin, String end, Pageable pageable, Long genreId);
 }

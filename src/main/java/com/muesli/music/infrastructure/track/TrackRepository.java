@@ -51,5 +51,37 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "GROUP BY t.id " +
             "ORDER By count(t.id) DESC, likecount DESC " +
             "LIMIT :limit", nativeQuery = true)
-    Optional<List<Map<String, Object>>> findTop100(String beginDate, String endDate, int limit);
+    Optional<List<Map<String, Object>>> findTrackRank(String beginDate, String endDate, int limit);
+
+    @Query(value = "SELECT count(t.id) AS playCount, (" +
+            "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
+            "        ) as likeCount, t.id, t.name, t.number, t.duration, " +
+            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "JOIN genreables ga on ga.genreable_id = t.id " +
+            "JOIN genres g on ga.genre_id = g.id " +
+            "WHERE p.created_at > :beginDate AND p.created_at < :endDate " +
+            "AND ga.genreable_type Like '%Track%' AND g.id = :genreId " +
+            "GROUP BY t.id " +
+            "ORDER By count(t.id) DESC, likecount DESC " +
+            "LIMIT :limit", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findTrackGenreRank(String beginDate, String endDate, int limit, Long genreId);
+
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM tracks t " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE a.release_date > :beginDate AND a.release_date < :endDate " +
+            "ORDER By a.release_date DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findNewTrack(String beginDate, String endDate, int start, int end);
 }

@@ -2,10 +2,12 @@ package com.muesli.music.domain.track;
 
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.genre.GenreInfo;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -165,4 +167,19 @@ public class TrackInfo {
         }
     }
 
+    @Getter
+    @ToString
+    public static class ChartLayoutInfo {
+        private final List<GenreInfo.Main> genreList;
+        private final List<String> yearDate;
+        private final List<String> monthDate;
+        private final List<String> weekDate;
+
+        public ChartLayoutInfo(Map<String, Object> chartLayout) {
+            this.genreList = (List<GenreInfo.Main>) chartLayout.get("genreList");
+            this.yearDate = (List<String>) chartLayout.get("yearDate");
+            this.monthDate = (List<String>) chartLayout.get("monthDate");
+            this.weekDate = (List<String>) chartLayout.get("weekDate");
+        }
+    }
 }

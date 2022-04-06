@@ -4,6 +4,7 @@ import com.muesli.music.domain.user.UserInfo;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TrackService {
     TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo);
@@ -11,4 +12,6 @@ public interface TrackService {
     List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
 
     List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
+
+    Map<String, Object> getChartLayout();
 }

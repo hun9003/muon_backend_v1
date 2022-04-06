@@ -61,5 +61,11 @@ public class TrackReaderImpl implements TrackReader {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
         return trackRepository.findTrackGenreRank(begin, end, pageable.getPageSize(), genreId).orElseThrow(InvalidParamException::new);
     }
+
+    @Override
+    public List<Map<String, Object>> getNewTrack(int start, int end) {
+        System.out.println("TrackReaderImpl :: getNewTrack");
+        return trackRepository.findNewTrack(start, end).orElseThrow(InvalidParamException::new);
+    }
 }
 

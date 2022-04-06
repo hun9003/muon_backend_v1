@@ -80,8 +80,8 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
             "JOIN artists a2 on at2.artist_id = a2.id " +
-            "WHERE a.release_date > :beginDate AND a.release_date < :endDate " +
+            "GROUP BY a.id " +
             "ORDER By a.release_date DESC " +
             "LIMIT :start, :end", nativeQuery = true)
-    Optional<List<Map<String, Object>>> findNewTrack(String beginDate, String endDate, int start, int end);
+    Optional<List<Map<String, Object>>> findNewTrack(int start, int end);
 }

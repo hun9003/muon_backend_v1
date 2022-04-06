@@ -123,7 +123,7 @@ public class TrackInfo {
 
     @Getter
     @ToString
-    public static class RankInfo {
+    public static class ChartInfo {
         private final Long rank;
         private final Long wave;
         private final Long id;
@@ -142,12 +142,13 @@ public class TrackInfo {
         private final String albumName;
         private final String albumImage;
 
-        public RankInfo(Map<String, Object> track) {
+        public ChartInfo(Map<String, Object> track) {
+            var rank = track.get("rank") != null ? Long.parseLong(String.valueOf(track.get("rank"))) : null;
             var wave = track.get("wave") != null ? Long.parseLong(String.valueOf(track.get("wave"))) : null;
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
 
-            this.rank = Long.parseLong(String.valueOf(track.get("rank")));
+            this.rank = rank;
             this.wave = wave;
             this.id = Long.parseLong(String.valueOf(track.get("id")));
             this.name = (String) track.get("name");

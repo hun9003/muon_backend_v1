@@ -11,7 +11,9 @@ public interface TrackService {
 
     List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
 
-    List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
+    List<TrackInfo.ChartInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
 
     Map<String, Object> getChartLayout();
+
+    List<TrackInfo.ChartInfo> getNewTrack(Pageable pageable);
 }

@@ -52,7 +52,7 @@ public class TrackFacade {
      * @param command
      * @return
      */
-    public List<TrackInfo.RankInfo> retrieveTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
+    public List<TrackInfo.ChartInfo> retrieveTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
         System.out.println("TrackFacade :: retrieveTop100");
         return trackService.getTrackRank(pageable, command);
     }
@@ -67,5 +67,15 @@ public class TrackFacade {
         var chartLayout = trackService.getChartLayout();
         chartLayout.put("genreList", genreInfoList);
         return new TrackInfo.ChartLayoutInfo(chartLayout);
+    }
+
+    /**
+     * 최신 곡 리스트 호출
+     * @param pageable
+     * @return
+     */
+    public List<TrackInfo.ChartInfo> retrieveNewTrack(Pageable pageable) {
+        System.out.println("TrackFacade :: retrieveNewTrack");
+        return trackService.getNewTrack(pageable);
     }
 }

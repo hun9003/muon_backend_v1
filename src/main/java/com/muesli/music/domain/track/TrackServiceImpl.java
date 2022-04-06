@@ -49,7 +49,7 @@ public class TrackServiceImpl implements TrackService {
     @Override
     @Transactional(readOnly = true)
     public List<TrackInfo.Main> getLikeList(String token, Pageable pageable) {
-        System.out.println("LikeServiceImpl :: getLikeTrackList");
+        System.out.println("TrackServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
         var trackInfoList = trackReader.getTrackLikeList(usertoken.getUser().getId());
         // 페이징
@@ -66,15 +66,15 @@ public class TrackServiceImpl implements TrackService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<TrackInfo.RankInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
-        System.out.println("LikeServiceImpl :: getLikeTrackList");
+    public List<TrackInfo.ChartInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
+        System.out.println("TrackServiceImpl :: getLikeTrackList");
         String date = command.getDate() != null ? command.getDate() : String.valueOf(LocalDate.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
         LocalDate searchDate = LocalDate.parse(date, formatter);
-        LocalDateTime beforeBegin = null;
-        LocalDateTime beforeEnd = null;
-        LocalDateTime afterBegin = null;
-        LocalDateTime afterEnd = null;
+        LocalDateTime beforeBegin;
+        LocalDateTime beforeEnd;
+        LocalDateTime afterBegin;
+        LocalDateTime afterEnd;
         switch (command.getType()) {
             case "day":
                 searchDate = LocalDate.now();
@@ -108,13 +108,8 @@ public class TrackServiceImpl implements TrackService {
         String afterBeginFormat = afterBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         String afterEndFormat = afterEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        System.out.println(beforeBeginFormat);
-        System.out.println(beforeEndFormat);
-        System.out.println(afterBeginFormat);
-        System.out.println(afterEndFormat);
-
-        List<Map<String, Object>> trackList1 = null;
-        List<Map<String, Object>> trackList2 = null;
+        List<Map<String, Object>> trackList1;
+        List<Map<String, Object>> trackList2;
         if (command.getGenre() == null) {
             trackList1 = trackReader.getTrackRank(beforeBeginFormat, beforeEndFormat, pageable);
             trackList2 = trackReader.getTrackRank(afterBeginFormat, afterEndFormat, pageable);
@@ -143,7 +138,7 @@ public class TrackServiceImpl implements TrackService {
             newTrackList.add(newTrackMap);
         }
 
-        return newTrackList.stream().map(TrackInfo.RankInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -152,7 +147,7 @@ public class TrackServiceImpl implements TrackService {
      */
     @Override
     public Map<String, Object> getChartLayout() {
-        System.out.println("LikeServiceImpl :: getChartLayout");
+        System.out.println("TrackServiceImpl :: getChartLayout");
 
         LocalDate nowDate = LocalDate.now();
         var chartLayout = new HashMap<String, Object>();
@@ -176,5 +171,24 @@ public class TrackServiceImpl implements TrackService {
         chartLayout.put("weekDate", weekDate);
 
         return chartLayout;
+    }
+
+    /**
+     * 최신 곡 리스트 호출
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<TrackInfo.ChartInfo> getNewTrack(Pageable pageable) {
+        System.out.println("TrackServiceImpl :: getChartLayout");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, 500);
+        var trackList = trackReader.getNewTrack(pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newTrackMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newTrackMap);
+        }
+        return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
     }
 }

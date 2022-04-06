@@ -82,4 +82,17 @@ public class TrackApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 최신 곡
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/new")
+    public CommonResponse retrieveNewTrack(@PageableDefault(size = 50, page = 1) Pageable pageable) {
+        System.out.println("LikeApiController :: retrieveNewTrack");
+        var trackList = trackFacade.retrieveNewTrack(pageable);
+        var response = new TrackDto.TrackRankList(null, null, null, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
+        return CommonResponse.success(response);
+    }
+
 }

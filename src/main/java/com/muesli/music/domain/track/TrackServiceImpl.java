@@ -1,5 +1,7 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -203,6 +205,7 @@ public class TrackServiceImpl implements TrackService {
         System.out.println("TrackServiceImpl :: getUserHistoryTrack");
         // 페이징
         var pageInfo = new PageInfo(pageable, 100);
+        if(userInfo.getUserInfo().getId() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
         var trackList = trackReader.getUserHistoryTrack(userInfo.getUserInfo().getId(),pageInfo.getStartNum(), pageInfo.getEndNum());
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : trackList) {

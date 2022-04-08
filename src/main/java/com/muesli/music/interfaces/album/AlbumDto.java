@@ -1,7 +1,6 @@
 package com.muesli.music.interfaces.album;
 
 import com.muesli.music.interfaces.artist.ArtistDto;
-import com.muesli.music.interfaces.like.LikeDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +18,6 @@ public class AlbumDto {
     @ToString
     public static class Main {
         private final Long id;
-        private final String albumCode;
         private final String name;
         private final String releaseDate;
         private final String originalName;
@@ -36,7 +34,6 @@ public class AlbumDto {
     @ToString
     public static class AlbumInfo {
         private final Long id;
-        private final String albumCode;
         private final String name;
         private final String releaseDate;
         private final String originalName;
@@ -80,7 +77,6 @@ public class AlbumDto {
     @ToString
     public static class ArtistAlbumInfo {
         private final Long id;
-        private final String albumCode;
         private final String name;
         private final String releaseDate;
         private final String originalName;

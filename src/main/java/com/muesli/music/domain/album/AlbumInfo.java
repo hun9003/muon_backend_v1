@@ -1,10 +1,9 @@
 package com.muesli.music.domain.album;
 
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.track.TrackInfo;
 import lombok.Getter;
 import lombok.ToString;
-import com.muesli.music.domain.track.TrackInfo;
 
 import java.util.List;
 
@@ -15,7 +14,6 @@ public class AlbumInfo {
     @ToString
     public static class Main {
         private final Long id;
-        private final String albumCode;
         private final String name;
         private final String releaseDate;
         private final String originalName;
@@ -26,7 +24,6 @@ public class AlbumInfo {
 
         public Main(Album album, List<TrackInfo.Main> trackInfoList) {
             this.id = album.getId();
-            this.albumCode = album.getAlbumCode();
             this.name = album.getName();
             this.releaseDate = album.getReleaseDate();
             this.originalName = album.getOriginalName();
@@ -37,7 +34,6 @@ public class AlbumInfo {
 
         public Main(Album album) {
             this.id = album.getId();
-            this.albumCode = album.getAlbumCode();
             this.name = album.getName();
             this.releaseDate = album.getReleaseDate();
             this.originalName = album.getOriginalName();
@@ -58,7 +54,6 @@ public class AlbumInfo {
     @ToString
     public static class AlbumBasicInfo {
         private final Long id;
-        private final String albumCode;
         private final String name;
         private final String releaseDate;
         private final String originalName;
@@ -67,7 +62,6 @@ public class AlbumInfo {
 
         public AlbumBasicInfo(Album album) {
             this.id = album.getId();
-            this.albumCode = album.getAlbumCode();
             this.name = album.getName();
             this.releaseDate = album.getReleaseDate();
             this.originalName = album.getOriginalName();

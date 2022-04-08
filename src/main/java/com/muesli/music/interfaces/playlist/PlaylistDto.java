@@ -1,7 +1,8 @@
 package com.muesli.music.interfaces.playlist;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.playlist.PlaylistCommand;
-import com.muesli.music.interfaces.like.LikeDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import com.muesli.music.interfaces.user.UserDto;
 import lombok.Builder;
@@ -11,7 +12,6 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -50,8 +50,8 @@ public class PlaylistDto {
     @ToString
     public static class RegisterPlaylist {
 
-        @NotBlank
-        @NotEmpty(message = "대상 name(name)은 필수값입니다.")
+        @NotBlank(message = "플레이리스트의 이름은 공백일 수 없습니다")
+        @NotEmpty(message = "플레이리스트의 이름은 필수값입니다.")
         private final String name;
 
         private final Long isPublic;
@@ -74,11 +74,10 @@ public class PlaylistDto {
     @ToString
     public static class UpdatePlaylist {
 
-        @NotNull(message = "대상 id(id)은 필수값입니다.")
-        private final Long id;
+        private Long id;
 
-        @NotBlank
-        @NotEmpty(message = "대상 name(name)은 필수값입니다.")
+        @NotBlank(message = "플레이리스트의 이름은 공백일 수 없습니다")
+        @NotEmpty(message = "플레이리스트의 이름은 필수값입니다.")
         private final String name;
 
         private final Long isPublic;
@@ -86,6 +85,11 @@ public class PlaylistDto {
         private final String description;
 
         private final Long userId;
+
+        public void setId(Long id) {
+            if(id == null) throw new BaseException(ErrorCode.COMMON_INVALID_PARAMETER);
+            this.id = id;
+        }
 
         public PlaylistCommand.UpdatePlaylistRequest toCommand() {
             return PlaylistCommand.UpdatePlaylistRequest.builder()
@@ -101,8 +105,12 @@ public class PlaylistDto {
     @Setter
     @ToString
     public static class PlaylistTracksRequest {
-        @NotNull(message = "플레이리스트 ID(playlistId)은 필수값입니다.")
         private Long playlistId;
         private List<Long> trackList;
+
+        public void setPlaylistId(Long playlistId) {
+            if(playlistId == null) throw new BaseException(ErrorCode.COMMON_INVALID_PARAMETER);
+            this.playlistId = playlistId;
+        }
     }
 }

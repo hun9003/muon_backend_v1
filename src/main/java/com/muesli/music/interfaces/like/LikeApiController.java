@@ -24,7 +24,7 @@ public class LikeApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("/like")
+    @PostMapping("")
     public CommonResponse doLike(@RequestBody @Valid LikeDto.RegisterLike request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("LikeApiController :: doLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
@@ -38,7 +38,7 @@ public class LikeApiController {
      * @param likeId
      * @return
      */
-    @PostMapping("/disLike/{id}")
+    @PutMapping("/{id}")
     public CommonResponse doDisLike(@PathVariable("id") Long likeId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
     {
         System.out.println("LikeApiController :: doDisLike");
@@ -53,7 +53,7 @@ public class LikeApiController {
      * @param usertoken
      * @return
      */
-    @GetMapping("/show")
+    @PostMapping("/show")
     public CommonResponse showLikeItem(@RequestBody @Valid LikeDto.LikeItemInfoList request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
     {
         System.out.println("LikeApiController :: showLikeItem");

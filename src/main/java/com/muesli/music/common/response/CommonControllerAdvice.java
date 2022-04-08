@@ -92,7 +92,8 @@ public class CommonControllerAdvice {
         BindingResult bindingResult = e.getBindingResult();
         FieldError fe = bindingResult.getFieldError();
         if (fe != null) {
-            String message = "Request Error" + " " + fe.getField() + "=" + fe.getRejectedValue() + " (" + fe.getDefaultMessage() + ")";
+//            String message = "Request Error" + " " + fe.getField() + "=" + fe.getRejectedValue() + " (" + fe.getDefaultMessage() + ")";
+            String message = fe.getDefaultMessage();
             return CommonResponse.fail(message, ErrorCode.COMMON_INVALID_PARAMETER.name());
         } else {
             return CommonResponse.fail(ErrorCode.COMMON_INVALID_PARAMETER.getErrorMsg(), ErrorCode.COMMON_INVALID_PARAMETER.name());

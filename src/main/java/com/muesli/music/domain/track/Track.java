@@ -8,13 +8,11 @@ import com.muesli.music.domain.track.artist.TrackArtist;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -35,14 +33,10 @@ public class Track {
     private Long number;
     @Column(name = "duration")
     private Long duration;
-    @Column(name = "artists_legacy")
-    private String artistsLegacy;
     @Column(name = "url")
     private String url;
     @Column(name = "description")
     private String description;
-    @Column(name = "image")
-    private String image;
     @Column(name = "composer")
     private String composer;
     @Column(name = "lyricser")
@@ -70,7 +64,7 @@ public class Track {
     private Set<TrackArtist> trackArtists = Sets.newHashSet();
 
 
-    public Track(Long id, String name, String original, Long number, Long duration, String artistsLegacy, String url, String description, String image, String composer, String lyricser, String arranger, Long adult) {
+    public Track(Long id, String name, String original, Long number, Long duration, String url, String description, String composer, String lyricser, String arranger, Long adult) {
         if (id == null) throw new InvalidParamException("Tracks.id");
 
         this.id = id;
@@ -78,10 +72,8 @@ public class Track {
         this.original = original;
         this.number = number;
         this.duration = duration;
-        this.artistsLegacy = artistsLegacy;
         this.url = url;
         this.description = description;
-        this.image = image;
         this.composer = composer;
         this.lyricser = lyricser;
         this.arranger = arranger;

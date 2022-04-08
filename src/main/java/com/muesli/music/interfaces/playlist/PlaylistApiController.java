@@ -76,7 +76,7 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("/create")
+    @PostMapping("")
     public CommonResponse registerPlaylist(@RequestBody @Valid PlaylistDto.RegisterPlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
@@ -92,9 +92,10 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("/update")
-    public CommonResponse updatePlaylist(@RequestBody @Valid PlaylistDto.UpdatePlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
+    @PutMapping("/{id}")
+    public CommonResponse updatePlaylist(@RequestBody @Valid PlaylistDto.UpdatePlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken, @PathVariable(value = "id") Long playlistId) {
         System.out.println("PlaylistApiController :: updatePlaylist");
+        request.setId(playlistId);
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var playlistCommand = request.toCommand();
         playlistFacade.updatePlaylist(playlistCommand, usertoken);
@@ -107,7 +108,7 @@ public class PlaylistApiController {
      * @param playlistId
      * @return
      */
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public CommonResponse removePlaylist(@RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "id") Long playlistId) {
         System.out.println("PlaylistApiController :: removePlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
@@ -121,8 +122,10 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("/addTrack")
-    public CommonResponse addPlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken) {
+    @PutMapping("/tracks/{playlistId}")
+    public CommonResponse addPlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "playlistId") Long playlistId) {
+        System.out.println("PlaylistApiController :: addPlaylistTracks");
+        request.setPlaylistId(playlistId);
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var command = playlistDtoMapper.of(request);
         playlistFacade.addTrackToPlaylist(command, usertoken);
@@ -135,8 +138,10 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("/removeTrack")
-    public CommonResponse removePlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken) {
+    @DeleteMapping("/tracks/{playlistId}")
+    public CommonResponse removePlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "playlistId") Long playlistId) {
+        System.out.println("PlaylistApiController :: removePlaylistTracks");
+        request.setPlaylistId(playlistId);
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var command = playlistDtoMapper.of(request);
         playlistFacade.removeTrackToPlaylist(command, usertoken);

@@ -20,10 +20,8 @@ public class TrackDto {
     public static class Main {
         private final Long id;
         private final String name;
-        private final String original;
         private final Long number;
         private final Long duration;
-        private final String artistsLegacy;
         private final String url;
         private final String description;
         private final String composer;
@@ -44,10 +42,8 @@ public class TrackDto {
     public static class TrackInfo {
         private final Long id;
         private final String name;
-        private final String original;
         private final Long number;
         private final Long duration;
-        private final String artistsLegacy;
         private final String url;
         private final String description;
         private final String composer;
@@ -93,13 +89,10 @@ public class TrackDto {
     public static class AlbumTrackInfo {
         private final Long id;
         private final String name;
-        private final String original;
         private final Long number;
         private final Long duration;
-        private final String artistsLegacy;
         private final String url;
         private final String description;
-        private final String image;
         private final Long adult;
         private final ArtistDto.TrackArtistInfo artistInfo;
     }
@@ -115,9 +108,7 @@ public class TrackDto {
         private final String name;
         private final Long number;
         private final Long duration;
-        private final String artistsLegacy;
         private final String description;
-        private final String image;
         private final Long adult;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
@@ -133,8 +124,6 @@ public class TrackDto {
         private final Long id;
         private final String name;
         private final Long duration;
-        private final String artistsLegacy;
-        private final String image;
         private final Long adult;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
@@ -147,23 +136,21 @@ public class TrackDto {
     @ToString
     @Builder
     public static class TrackRankInfo {
-        private final Long rank;
-        private final Long wave;
         private final Long id;
         private final String name;
+        private final Long rank;
+        private final Long wave;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
         private final Long number;
         private final Long duration;
-        private final String artistsLegacy;
-        private final String description;
-        private final String image;
-        private final Long adult;
 
         private final Long artistId;
         private final String artistName;
 
         private final Long albumId;
         private final String albumName;
-        private final String albumImage;
     }
 
     @Getter

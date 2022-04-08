@@ -40,7 +40,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     @Query(value = "SELECT count(t.id) AS playCount, (" +
             "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
             "        ) as likeCount, t.id, t.name, t.number, t.duration, " +
-            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "t.description, t.image, t.adult, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
@@ -56,7 +56,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     @Query(value = "SELECT count(t.id) AS playCount, (" +
             "    SELECT count(*) FROM likes WHERE likeable_id = t.id AND likeable_type LIKE '%Track%' " +
             "        ) as likeCount, t.id, t.name, t.number, t.duration, " +
-            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "t.description, t.image, t.adult, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
@@ -73,7 +73,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     Optional<List<Map<String, Object>>> findTrackGenreRank(String beginDate, String endDate, int limit, Long genreId);
 
     @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
-            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "t.description, t.image, t.adult, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM tracks t " +
@@ -86,7 +86,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     Optional<List<Map<String, Object>>> findNewTrack(int start, int end);
 
     @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
-            "t.artists_legacy AS artistsLegacy, t.description, t.image, t.adult, " +
+            "t.description, t.image, t.adult, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM play_log p JOIN tracks t ON p.track_id = t.id " +

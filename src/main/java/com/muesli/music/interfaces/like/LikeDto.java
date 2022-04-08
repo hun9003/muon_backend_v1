@@ -9,7 +9,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class LikeDto {
@@ -21,7 +21,7 @@ public class LikeDto {
         private final Long id;
         private final Long likeableId;
         private final int isLike;
-        private final ZonedDateTime createdAt;
+        private final LocalDate createdAt;
         private final Long likeCount;
     }
 

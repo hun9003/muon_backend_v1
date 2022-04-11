@@ -17,4 +17,6 @@ public interface PlaylistTrackRepository extends JpaRepository<PlaylistTrack, Lo
             "WHERE playlist_id = :playlistId " +
             "AND position > :position", nativeQuery = true)
     void changePosition(Long playlistId, int position);
+
+    void deleteByPlaylistId(Long playlistId);
 }

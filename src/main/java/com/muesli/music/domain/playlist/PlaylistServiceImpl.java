@@ -3,6 +3,7 @@ package com.muesli.music.domain.playlist;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.playlist.track.PlaylistTrack;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
@@ -15,8 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -108,6 +108,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         System.out.println("PlaylistServiceImpl :: updatePlaylist");
         var initPlaylist = command.toEntity(userInfo.getId());
         var playlist = playlistReader.getPlaylistBy(initPlaylist.getId());
+
         if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
             playlist.setPlaylist(initPlaylist);
         } else {
@@ -170,13 +171,9 @@ public class PlaylistServiceImpl implements PlaylistService{
         var initTrackList = command.getTrackList();
 
         // 트랙 중복 제거
-        for (var i = 0; i < initTrackList.size(); i++) {
-            for (com.muesli.music.domain.playlist.track.PlaylistTrack playlistTrack : trackList) {
-                if (Objects.equals(initTrackList.get(i), playlistTrack.getTrack().getId())) {
-                    initTrackList.remove(i);
-                }
-            }
-        }
+        var trackIdList = trackList.stream().map(playlistTrack -> playlistTrack.getTrack().getId()).collect(Collectors.toList());
+
+        initTrackList.removeAll(trackIdList);
 
         for (var i = 0; i < initTrackList.size(); i++) {
             var track = trackReader.getTrackBy(initTrackList.get(i));
@@ -209,5 +206,25 @@ public class PlaylistServiceImpl implements PlaylistService{
             playlistStore.delete(playlistTrack);
             playlistStore.updatePosition(playlistTrack);
         }
+    }
+
+    /**
+     * 플레이리스트의 트랙 조회
+     * @param playlistId
+     * @param userInfo
+     * @return
+     */
+    @Transactional
+    @Override
+    public List<PlaylistTrack> getTrackToPlaylist(Long playlistId, UserInfo.Main userInfo) {
+        System.out.println("PlaylistServiceImpl :: addTrackToPlaylist");
+        var playlist = playlistReader.getPlaylistBy(playlistId);
+
+        // 사용자 유효성 체크
+        if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        }
+
+        return playlist.getPlaylistTrackList();
     }
 }

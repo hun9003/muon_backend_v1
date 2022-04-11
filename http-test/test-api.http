@@ -83,11 +83,11 @@ Content-Type: application/json
   "name": "실험용플레이리스트3!!!!!!",
   "description": "테스트 설명글!!",
   "isPublic": 0,
-  "trackList" : [42860,42861]
+  "trackList" : [42859, 42863, 42865, 42866, 42861, 42870]
 }
 
 ### 플레이 리스트 삭제
-DELETE http://localhost:8080/api/v1/playlists/87
+DELETE http://localhost:8080/api/v1/playlists/85
 authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
@@ -116,8 +116,8 @@ Content-Type: application/json
 }
 
 ### 내 플레이리스트 조회
-GET http://localhost:8080/api/v1/playlists/my?page=3&size=3
-authorization:Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 ### 좋아요 리스트(플레이 리스트)

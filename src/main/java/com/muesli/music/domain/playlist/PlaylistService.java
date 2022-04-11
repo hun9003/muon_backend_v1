@@ -1,5 +1,6 @@
 package com.muesli.music.domain.playlist;
 
+import com.muesli.music.domain.playlist.track.PlaylistTrack;
 import com.muesli.music.domain.user.UserInfo;
 import org.springframework.data.domain.Pageable;
 
@@ -29,4 +30,7 @@ public interface PlaylistService {
 
     // 플레이리스트에 트랙 삭제
     void removeTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo);
+
+    // 플레이리스트의 트랙 조회
+    List<PlaylistTrack> getTrackToPlaylist(Long playlistId, UserInfo.Main userInfo);
 }

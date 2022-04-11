@@ -65,7 +65,7 @@ public class PlaylistCommand {
     @ToString
     public static class TrackToPlaylistRequest {
         private final Long playlistId;
-        private final List<Long> trackList;
+        private List<Long> trackList;
 
         public PlaylistTrack toEntity(Playlist playlist, Track track, int position) {
             System.out.println("PlaylistCommand :: toEntity");
@@ -74,6 +74,10 @@ public class PlaylistCommand {
                     .track(track)
                     .position(position)
                     .build();
+        }
+
+        public void setTrackList(List<Long> trackList) {
+            this.trackList = trackList;
         }
     }
 }

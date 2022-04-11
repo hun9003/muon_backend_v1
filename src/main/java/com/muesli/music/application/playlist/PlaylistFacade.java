@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -82,8 +85,25 @@ public class PlaylistFacade {
         usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.updatePlaylist(command, usertokenInfo.getUserInfo());
+
+        var trackList = playlistService.getTrackToPlaylist(command.getId(), usertokenInfo.getUserInfo());
+        var trackIdList = trackList.stream().map(playlistTrack -> playlistTrack.getTrack().getId()).collect(Collectors.toList());
+
+        Collection<Long> oldTrackList = new ArrayList<>(trackIdList);
+        Collection<Long> newTrackList = new ArrayList<>(command.getTrackList());
+        List<Long> removeList = new ArrayList<>(oldTrackList);
+        List<Long> addList = new ArrayList<>(newTrackList);
+
+        removeList.removeAll(newTrackList);
+        addList.removeAll(oldTrackList);
+
+
         var playlistTrackCommand = command.playlistTrackToCommand(command.getId(), command.getTrackList());
+        playlistTrackCommand.setTrackList(removeList);
         playlistService.removeTrackToPlaylist(playlistTrackCommand, usertokenInfo.getUserInfo());
+
+        playlistTrackCommand.setTrackList(addList);
+        playlistService.addTrackToPlaylist(playlistTrackCommand, usertokenInfo.getUserInfo());
     }
 
     /**
@@ -95,6 +115,7 @@ public class PlaylistFacade {
         System.out.println("PlaylistFacade :: removePlaylist");
         usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
+
         playlistService.removePlaylist(playlistId, usertokenInfo.getUserInfo());
     }
 

@@ -1,3 +1,82 @@
+DELETE http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122647.500.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122614.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0,
+  "trackList" : [42859, 42863, 42865, 42866, 42861, 42870]
+}
+
+<> 2022-04-11T122610.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122511.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122449.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/my?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122353.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T122332.200.json
+
+###
+
+DELETE http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105953.500.json
+
+###
+
+DELETE http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105731.500.json
+
+###
+
 GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -445,78 +524,6 @@ authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 <> 2022-04-06T132027.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=month&size=20&date=2022-01-01&genre=27
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-06T131836.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=month&size=20&date=2022-01-01&genre=27
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-06T131832.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=month&size=20&date=2021-12-01&genre=27
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-06T131750.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20&date=2022-02-01&genre=27
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-06T131656.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20&date=2022-02-01
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-06T131646.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20&date=2022-02-01
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172556.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=now&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172528.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=day&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172517.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=month&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172503.200.json
 
 ###
 

@@ -11,5 +11,8 @@ public interface PlaylistStore {
 
     void delete(PlaylistTrack playlistTrack);
 
+    void deletePlaylistTrack(Long playlistId);
+
     void updatePosition(PlaylistTrack playlistTrack);
+
 }

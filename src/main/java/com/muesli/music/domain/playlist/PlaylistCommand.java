@@ -39,6 +39,7 @@ public class PlaylistCommand {
         private final String name;
         private final String description;
         private final Long isPublic;
+        private List<Long> trackList;
 
         public Playlist toEntity(Long userId) {
             System.out.println("PlaylistCommand :: toEntity");
@@ -48,6 +49,13 @@ public class PlaylistCommand {
                     .name(name)
                     .description(description)
                     .isPublic(isPublic)
+                    .build();
+        }
+
+        public TrackToPlaylistRequest playlistTrackToCommand(Long playlistId, List<Long> trackList) {
+            return TrackToPlaylistRequest.builder()
+                    .playlistId(playlistId)
+                    .trackList(trackList)
                     .build();
         }
     }

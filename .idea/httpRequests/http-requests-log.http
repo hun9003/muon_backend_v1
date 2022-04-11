@@ -1,3 +1,135 @@
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105532.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/tracks/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-04-11T105528.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105501.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0,
+  "trackList" : [42860,42861]
+}
+
+<> 2022-04-11T105458.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105443.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/tracks/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "playlistId" : 85,
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-04-11T105438.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/tracks/85
+authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+Content-Type: application/json
+
+{
+  "playlistId" : 85,
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-04-11T105431.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-11T105416.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
+authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
+Content-Type: application/json
+
+<> 2022-04-11T105411.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlists/6?page=1&size=100
+authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
+Content-Type: application/json
+
+<> 2022-04-11T105403.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0,
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-04-11T104824.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlists/85
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트3!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 0,
+  "playlistId" : 0,
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-04-11T104555.500.json
+
+###
+
 DELETE http://localhost:8080/api/v1/playlists/87
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -385,102 +517,6 @@ authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 <> 2022-04-05T172503.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172436.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172406.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=now&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T172035.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=now&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T171947.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T171931.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T171216.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=week&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T171159.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=month&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T171008.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?type=day&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T170310.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?date=2022-02-01&type=day&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T170243.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?date=2022-02-01&type=day&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T170213.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank?date=2022-02-01&type=day&size=20
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-05T165641.200.json
 
 ###
 

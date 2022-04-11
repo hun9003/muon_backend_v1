@@ -86,6 +86,8 @@ public class PlaylistDto {
 
         private final Long userId;
 
+        private List<Long> trackList;
+
         public void setId(Long id) {
             if(id == null) throw new BaseException(ErrorCode.COMMON_INVALID_PARAMETER);
             this.id = id;
@@ -97,6 +99,7 @@ public class PlaylistDto {
                     .name(name)
                     .isPublic(isPublic)
                     .description(description)
+                    .trackList(trackList)
                     .build();
         }
     }

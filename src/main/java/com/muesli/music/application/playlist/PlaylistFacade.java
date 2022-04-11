@@ -82,6 +82,8 @@ public class PlaylistFacade {
         usertokenService.checkUsertoken(token);
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         playlistService.updatePlaylist(command, usertokenInfo.getUserInfo());
+        var playlistTrackCommand = command.playlistTrackToCommand(command.getId(), command.getTrackList());
+        playlistService.removeTrackToPlaylist(playlistTrackCommand, usertokenInfo.getUserInfo());
     }
 
     /**

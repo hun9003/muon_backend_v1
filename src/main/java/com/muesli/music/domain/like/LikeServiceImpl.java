@@ -81,17 +81,21 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 이미 좋아요를 했던 아이템 상태변경 (좋아요)
-     * @param command
+     * @param likeId
      * @param token
      */
     @Override
     @Transactional
-    public void changeDoLike(LikeCommand.RegisterLikeRequest command, String token) {
+    public void changeDoLike(Long likeId, String token) {
         System.out.println("LikeServiceImpl :: changeDoLike");
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
-        var like = likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType());
-        like.doLike();
+        var like = likeReader.getLikeBy(likeId);
+        if(Objects.equals(usertoken.getUser().getId(), like.getUserId())) {
+            like.doLike();
+        } else {
+            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        }
     }
 
     /**
@@ -113,4 +117,13 @@ public class LikeServiceImpl implements LikeService {
         }
     }
 
+    /**
+     * 좋아요 상태 확인
+     * @param likeId
+     */
+    @Override
+    public LikeInfo.Main getLike(Long likeId) {
+        System.out.println("LikeServiceImpl :: getLike");
+        return new LikeInfo.Main(likeReader.getLikeBy(likeId));
+    }
 }

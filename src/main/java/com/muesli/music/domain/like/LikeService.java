@@ -8,9 +8,11 @@ public interface LikeService {
 
     void registerLike(LikeCommand.RegisterLikeRequest command, String usertoken);
 
-    void changeDoLike(LikeCommand.RegisterLikeRequest command, String usertoken);
+    void changeDoLike(Long likeId, String token);
 
     void changeDisLike(Long likeId, String usertoken);
 
     List<LikeInfo.Main> findLikeBy(LikeCommand.ShowLikeListRequest command, String token);
+
+    LikeInfo.Main getLike(Long likeId);
 }

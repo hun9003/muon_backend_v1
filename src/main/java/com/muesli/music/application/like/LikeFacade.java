@@ -28,20 +28,27 @@ public class LikeFacade {
         var likeInfo = likeService.findLikeBy(command, token);
         if (likeInfo.getId() == null) {
             likeService.registerLike(command, token);
+        } else if (likeInfo.getIsLike() == 1 ) {
+            likeService.changeDisLike(likeInfo.getId(), token);
         } else {
-            likeService.changeDoLike(command, token);
+            likeService.changeDoLike(likeInfo.getId(), token);
         }
     }
 
     /**
-     * 좋아요 취소
+     * 좋아요 상태변경
      * @param likeId
      * @param token
      */
-    public void disLike(Long likeId, String token) {
+    public void changeLike(Long likeId, String token) {
         System.out.println("LikeFacade :: disLike");
         usertokenService.checkUsertoken(token);
-        likeService.changeDisLike(likeId, token);
+        var likeInfo = likeService.getLike(likeId);
+        if(likeInfo.getIsLike() == 1) {
+            likeService.changeDisLike(likeId, token);
+        } else {
+            likeService.changeDoLike(likeId, token);
+        }
     }
 
     /**

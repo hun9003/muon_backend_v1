@@ -127,6 +127,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         System.out.println("PlaylistServiceImpl :: removePlaylist");
         var playlist = playlistReader.getPlaylistBy(playlistId);
         if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
+            playlistStore.deletePlaylistTrack(playlistId);
             playlistStore.delete(playlist);
         } else {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
@@ -217,7 +218,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     @Transactional
     @Override
     public List<PlaylistTrack> getTrackToPlaylist(Long playlistId, UserInfo.Main userInfo) {
-        System.out.println("PlaylistServiceImpl :: addTrackToPlaylist");
+        System.out.println("PlaylistServiceImpl :: getTrackToPlaylist");
         var playlist = playlistReader.getPlaylistBy(playlistId);
 
         // 사용자 유효성 체크

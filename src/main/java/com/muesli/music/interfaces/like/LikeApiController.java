@@ -43,7 +43,7 @@ public class LikeApiController {
     {
         System.out.println("LikeApiController :: doDisLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        likeFacade.disLike(likeId, usertoken);
+        likeFacade.changeLike(likeId, usertoken);
         return CommonResponse.success("OK");
     }
 

@@ -47,7 +47,9 @@ public class PlaylistStoreImpl implements PlaylistStore {
 
     @Override
     public void deletePlaylistTrack(Long playlistId) {
-
+        System.out.println("PlaylistStoreImpl :: deletePlaylistTrack");
+        if (playlistId == null) throw new InvalidParamException("playlistTrack.id");
+        playlistTrackRepository.deleteByPlaylistId(playlistId);
     }
 
     @Override

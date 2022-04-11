@@ -43,7 +43,7 @@ Content-Type: application/json
   "likeableType" : "App\\Artist"
 }
 
-### 좋아요 취소
+### 좋아요 상태변경
 PUT http://localhost:8080/api/v1/likes/840
 authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json

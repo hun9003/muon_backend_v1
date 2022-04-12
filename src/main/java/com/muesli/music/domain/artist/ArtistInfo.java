@@ -2,12 +2,12 @@ package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.TrackInfo;
 import lombok.Getter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Map;
 
 public class ArtistInfo {
 
@@ -76,6 +76,33 @@ public class ArtistInfo {
         public BiosInfo(Bios bios) {
             this.id = bios.getId();
             this.content = bios.getContent();
+        }
+    }
+
+    /*
+        검색 결과 아티스트 리스트 조회를 위한 클래스 입니다.
+     */
+    @Getter
+    @ToString
+    public static class SearchInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+        private final String image;
+        private final String birthday;
+        private final String country;
+        private final Long debut;
+
+        public SearchInfo(Map<String, Object> artist) {
+            this.id = Long.parseLong(String.valueOf(artist.get("id")));
+            this.name = (String) artist.get("name");
+            this.originalName = (String) artist.get("originalName");
+            this.englishName = (String) artist.get("englishName");
+            this.image = (String) artist.get("image");
+            this.birthday = (String) artist.get("birthday");
+            this.country = (String) artist.get("country");
+            this.debut = Long.parseLong(String.valueOf(artist.get("debut")));
         }
     }
 

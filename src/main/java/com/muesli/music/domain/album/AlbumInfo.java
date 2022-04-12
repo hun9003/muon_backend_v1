@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class AlbumInfo {
@@ -67,6 +68,30 @@ public class AlbumInfo {
             this.originalName = album.getOriginalName();
             this.image = album.getImage();
             this.description = album.getDescription();
+        }
+    }
+
+    /*
+        검색 결과 앨범 리스트 조회를 위한 클래스 입니다.
+     */
+    @Getter
+    @ToString
+    public static class SearchInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+        private final String description;
+
+        public SearchInfo(Map<String, Object> album) {
+
+            this.id = Long.parseLong(String.valueOf(album.get("id")));
+            this.name = (String) album.get("name");
+            this.releaseDate = (String) album.get("releaseDate");
+            this.originalName = (String) album.get("originalName");
+            this.image = (String) album.get("image");
+            this.description = (String) album.get("description");
         }
     }
 

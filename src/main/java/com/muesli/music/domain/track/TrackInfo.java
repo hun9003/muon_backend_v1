@@ -129,6 +129,8 @@ public class TrackInfo {
         private final String albumName;
         private final String albumImage;
 
+        private final String date;
+
         public ChartInfo(Map<String, Object> track) {
             var rank = track.get("rank") != null ? Long.parseLong(String.valueOf(track.get("rank"))) : null;
             var wave = track.get("wave") != null ? Long.parseLong(String.valueOf(track.get("wave"))) : null;
@@ -152,6 +154,8 @@ public class TrackInfo {
             this.albumId = Long.parseLong(String.valueOf(track.get("albumId")));
             this.albumName = (String) track.get("albumName");
             this.albumImage = (String) track.get("albumImage");
+
+            this.date = (String) track.get("date");
         }
     }
 

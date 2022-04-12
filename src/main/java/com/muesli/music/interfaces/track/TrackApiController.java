@@ -67,6 +67,7 @@ public class TrackApiController {
         var searchDto = new TrackDto.TrackRankList(date, type, genre, null);
         var command = searchDto.toCommand();
         var trackList = trackFacade.retrieveTrackRank(pageable, command);
+        date = trackList.get(0).getDate();
         var response = new TrackDto.TrackRankList(date, type, genre, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
         return CommonResponse.success(response);
     }

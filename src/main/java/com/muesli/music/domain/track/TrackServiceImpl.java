@@ -73,56 +73,44 @@ public class TrackServiceImpl implements TrackService {
         String date = command.getDate() != null ? command.getDate() : String.valueOf(LocalDate.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
         LocalDate searchDate = LocalDate.parse(date, formatter);
-        LocalDateTime beforeBegin;
-        LocalDateTime beforeEnd;
-        LocalDateTime afterBegin;
-        LocalDateTime afterEnd;
-        switch (command.getType()) {
-            case "day":
-                searchDate = LocalDate.now();
-                beforeBegin = searchDate.minusDays(2).atTime(0, 0);
-                beforeEnd = searchDate.minusDays(1).atTime(0, 0);
-                afterBegin = searchDate.minusDays(1).atTime(0, 0);
-                afterEnd = searchDate.minusDays(0).atTime(0, 0);
-                break;
-            case "month":
-                beforeBegin = searchDate.minusMonths(1).withDayOfMonth(1).atTime(0, 0);
-                beforeEnd = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
-                afterBegin = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
-                afterEnd = searchDate.plusMonths(1).withDayOfMonth(1).atTime(0, 0);
-                break;
-            case "week":
-                beforeBegin = searchDate.minusDays(13).atTime(0, 0);
-                beforeEnd = searchDate.minusDays(6).atTime(0, 0);
-                afterBegin = searchDate.minusDays(6).atTime(0, 0);
-                afterEnd = searchDate.plusDays(1).atTime(0, 0);
-                break;
-            case "now":
-            default:
-                LocalDateTime now = LocalDateTime.now();
-                beforeBegin = now.minusHours(2).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
-                beforeEnd = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
-                afterBegin = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
-                afterEnd = now.minusHours(0).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
-        }
-        String beforeBeginFormat = beforeBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        String beforeEndFormat = beforeEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        String afterBeginFormat = afterBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        String afterEndFormat = afterEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        List<Map<String, Object>> trackList1;
-        List<Map<String, Object>> trackList2;
-        if (command.getGenre() == null) {
-            trackList1 = trackReader.getTrackRank(beforeBeginFormat, beforeEndFormat, pageable);
-            trackList2 = trackReader.getTrackRank(afterBeginFormat, afterEndFormat, pageable);
-        } else {
-            trackList1 = trackReader.getTrackGenreRank(beforeBeginFormat, beforeEndFormat, pageable, command.getGenre());
-            trackList2 = trackReader.getTrackGenreRank(afterBeginFormat, afterEndFormat, pageable, command.getGenre());
+        List<Map<String, Object>> trackList1 = new ArrayList<>();
+        List<Map<String, Object>> trackList2 = new ArrayList<>();
+
+        // 실시간 차트가 데이터가 없을 때 과거의 차트를 불러오기 위한 변수
+        int minusCount = 0;
+        String finalDate = "";
+        String type = command.getType();
+        while (trackList2.size() < 100 || trackList1.size() < 100) {
+            System.out.println("trackList2.size() : " + trackList2.size());
+            var searchDateMap = makeDateMap(searchDate, type, minusCount);
+            if (command.getGenre() == null) {
+                trackList1 = trackReader.getTrackRank(searchDateMap.get("beforeBeginFormat"), searchDateMap.get("beforeEndFormat"), pageable);
+                trackList2 = trackReader.getTrackRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterEndFormat"), pageable);
+            } else {
+                trackList1 = trackReader.getTrackGenreRank(searchDateMap.get("beforeBeginFormat"), searchDateMap.get("beforeEndFormat"), pageable, command.getGenre());
+                trackList2 = trackReader.getTrackGenreRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterBeginFormat"), pageable, command.getGenre());
+            }
+            finalDate = searchDateMap.get("afterBeginFormat");
+            if (command.getType().equals("now")) {
+                type = "day";
+                minusCount ++;
+//                if (nowMinusCount > 24) {
+//                    nowMinusCount += 24;
+//                    System.out.println(nowMinusCount);
+//                } else {
+//                    nowMinusCount++;
+//                }
+            } else {
+                break;
+            }
         }
+
 
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < trackList2.size(); i++) {
             var newTrackMap = new HashMap<>(trackList2.get(i));
+            newTrackMap.put("date", finalDate);
             newTrackMap.put("rank", i + 1);
             boolean isNew = true;
             for (int j = 0; j < trackList1.size(); j++) {
@@ -213,5 +201,48 @@ public class TrackServiceImpl implements TrackService {
             newTrackList.add(newTrackMap);
         }
         return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
+    }
+
+    private Map<String, String> makeDateMap(LocalDate searchDate, String type, int nowMinusCount) {
+        LocalDateTime beforeBegin;
+        LocalDateTime beforeEnd;
+        LocalDateTime afterBegin;
+        LocalDateTime afterEnd;
+
+        switch (type) {
+            case "day":
+                searchDate = LocalDate.now();
+                beforeBegin = searchDate.minusDays(2 + nowMinusCount).atTime(0, 0);
+                beforeEnd = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);
+                afterBegin = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);
+                afterEnd = searchDate.minusDays(nowMinusCount).atTime(0, 0);
+                break;
+            case "month":
+                beforeBegin = searchDate.minusMonths(1).withDayOfMonth(1).atTime(0, 0);
+                beforeEnd = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
+                afterBegin = searchDate.minusMonths(0).withDayOfMonth(1).atTime(0, 0);
+                afterEnd = searchDate.plusMonths(1).withDayOfMonth(1).atTime(0, 0);
+                break;
+            case "week":
+                beforeBegin = searchDate.minusDays(13).atTime(0, 0);
+                beforeEnd = searchDate.minusDays(6).atTime(0, 0);
+                afterBegin = searchDate.minusDays(6).atTime(0, 0);
+                afterEnd = searchDate.plusDays(1).atTime(0, 0);
+                break;
+            case "now":
+            default:
+                LocalDateTime now = LocalDateTime.now();
+                beforeBegin = now.minusHours(2).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                beforeEnd = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                afterBegin = now.minusHours(1).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+                afterEnd = now.minusHours(0).minusMinutes(now.getMinute()).minusSeconds(now.getSecond());
+        }
+        Map<String, String> searchDateMap = new HashMap<>();
+        searchDateMap.put("beforeBeginFormat", beforeBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        searchDateMap.put("beforeEndFormat", beforeEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        searchDateMap.put("afterBeginFormat", afterBegin.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        searchDateMap.put("afterEndFormat", afterEnd.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        return searchDateMap;
     }
 }

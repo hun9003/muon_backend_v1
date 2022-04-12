@@ -12,19 +12,29 @@ public class SearchInfo {
     // 통합검색
     @Getter
     @ToString
-    public static class searchTotal {
+    public static class searchAll {
+        private final SearchTrack searchTrack;
+        private final SearchAlbum searchAlbum;
+        private final SearchArtist searchArtist;
+        private final SearchLyrics searchLyrics;
 
+        public searchAll(SearchTrack searchTrack, SearchAlbum searchAlbum, SearchArtist searchArtist, SearchLyrics searchLyrics) {
+            this.searchTrack = searchTrack;
+            this.searchAlbum = searchAlbum;
+            this.searchArtist = searchArtist;
+            this.searchLyrics = searchLyrics;
+        }
     }
 
     // 곡 검색
     @Getter
     @ToString
-    public static class searchTrack {
+    public static class SearchTrack {
         private final int count;
         private final String order;
         private final List<TrackInfo.SearchInfo> trackList;
 
-        public searchTrack(int count, String order, List<TrackInfo.SearchInfo> trackList) {
+        public SearchTrack(int count, String order, List<TrackInfo.SearchInfo> trackList) {
             this.count = count;
             this.order = order;
             this.trackList = trackList;
@@ -34,12 +44,12 @@ public class SearchInfo {
     // 앨범 검색
     @Getter
     @ToString
-    public static class searchAlbum {
+    public static class SearchAlbum {
         private final int count;
         private final String order;
         private final List<AlbumInfo.SearchInfo> albumList;
 
-        public searchAlbum(int count, String order, List<AlbumInfo.SearchInfo> albumList) {
+        public SearchAlbum(int count, String order, List<AlbumInfo.SearchInfo> albumList) {
             this.count = count;
             this.order = order;
             this.albumList = albumList;
@@ -49,12 +59,12 @@ public class SearchInfo {
     // 아티스트 검색
     @Getter
     @ToString
-    public static class searchArtist {
+    public static class SearchArtist {
         private final int count;
         private final String order;
         private final List<ArtistInfo.SearchInfo> artistList;
 
-        public searchArtist(int count, String order, List<ArtistInfo.SearchInfo> artistList) {
+        public SearchArtist(int count, String order, List<ArtistInfo.SearchInfo> artistList) {
             this.count = count;
             this.order = order;
             this.artistList = artistList;
@@ -64,12 +74,12 @@ public class SearchInfo {
     // 가사 검색
     @Getter
     @ToString
-    public static class searchLyrics {
+    public static class SearchLyrics {
         private final int count;
         private final String order;
         private final List<TrackInfo.SearchLyricsInfo> lyricsList;
 
-        public searchLyrics(int count, String order, List<TrackInfo.SearchLyricsInfo> lyricsList) {
+        public SearchLyrics(int count, String order, List<TrackInfo.SearchLyricsInfo> lyricsList) {
             this.count = count;
             this.order = order;
             this.lyricsList = lyricsList;

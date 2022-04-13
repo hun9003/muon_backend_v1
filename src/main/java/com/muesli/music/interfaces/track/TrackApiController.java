@@ -90,9 +90,9 @@ public class TrackApiController {
      */
     @GetMapping("/new")
     public CommonResponse retrieveNewTrack(@PageableDefault(size = 50, page = 1) Pageable pageable) {
-        System.out.println("LikeApiController :: retrieveNewTrack");
+        System.out.println("TrackApiController :: retrieveNewTrack");
         var trackList = trackFacade.retrieveNewTrack(pageable);
-        var response = new TrackDto.TrackRankList(null, null, null, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
+        var response = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         return CommonResponse.success(response);
     }
 
@@ -104,10 +104,10 @@ public class TrackApiController {
     @GetMapping("/history")
     public CommonResponse retrieveUserHistoryTrack(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                                    @PageableDefault(size = 50, page = 1) Pageable pageable) {
-        System.out.println("LikeApiController :: retrieveUserHistoryTrack");
+        System.out.println("TrackApiController :: retrieveUserHistoryTrack");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var trackList = trackFacade.retrieveUserHistoryTrack(usertoken, pageable);
-        var response = new TrackDto.TrackRankList(null, null, null, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
+        var response = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         return CommonResponse.success(response);
     }
 

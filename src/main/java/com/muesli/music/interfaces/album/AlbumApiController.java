@@ -43,7 +43,7 @@ public class AlbumApiController {
     @GetMapping("/likeables")
     public CommonResponse retrieveLikeAlbumList(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {
-        System.out.println("LikeApiController :: retrieveLikeTrackList");
+        System.out.println("AlbumApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var albumInfoList = albumFacade.retrieveLikeList(usertoken, pageable);
         var albumInfoDtoList = albumInfoList.stream().map(albumDtoMapper::ofItem).collect(Collectors.toList());
@@ -51,5 +51,17 @@ public class AlbumApiController {
         return CommonResponse.success(response);
     }
 
+    /**
+     * 최신 앨범
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/new")
+    public CommonResponse retrieveNewAlbum(@PageableDefault(size = 50, page = 1) Pageable pageable) {
+        System.out.println("AlbumApiController :: retrieveNewTrack");
+        var albumList = albumFacade.retrieveNewAlbum(pageable);
+        var response = albumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        return CommonResponse.success(response);
+    }
 
 }

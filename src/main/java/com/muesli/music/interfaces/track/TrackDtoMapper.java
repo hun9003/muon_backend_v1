@@ -24,4 +24,10 @@ public interface TrackDtoMapper {
     TrackDto.LyricsInfo of(TrackInfo.LyricsInfo lyrics);
 
     TrackDto.TrackRankInfo of(TrackInfo.ChartInfo trackInfo);
+
+    TrackDto.NewestTrackInfo of(TrackInfo.NewestTrackInfo trackInfo);
+
+    TrackDto.HistoryTrackInfo of(TrackInfo.HistoryTrackInfo trackInfo);
+
+    TrackDto.TrackSearchInfo of(TrackInfo.SearchInfo trackInfo);
 }

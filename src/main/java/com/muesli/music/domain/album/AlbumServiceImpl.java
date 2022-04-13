@@ -11,7 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -34,7 +37,9 @@ public class AlbumServiceImpl implements AlbumService {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
         var album = albumReader.getAlbumBy(albumId);
         var trackList = albumReader.getTrackList(album);
-        return new AlbumInfo.Main(album, trackList);
+        var albumInfo = new AlbumInfo.Main(album, trackList);
+        albumInfo.setArtistInfo(new ArtistInfo.Main(album.getArtist()));
+        return albumInfo;
     }
 
     /**
@@ -59,5 +64,19 @@ public class AlbumServiceImpl implements AlbumService {
         // 페이징
         var pageInfo = new PageInfo(pageable, albumInfoList.size());
         return albumInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+
+    @Override
+    public List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable) {
+        System.out.println("LikeServiceImpl :: getNewAlbum");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, 500);
+        var albumList = albumReader.getNewAlbum(pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newAlbumList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : albumList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newAlbumList.add(newAlbumMap);
+        }
+        return newAlbumList.stream().map(AlbumInfo.NewestAlbumInfo::new).collect(Collectors.toList());
     }
 }

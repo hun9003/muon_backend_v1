@@ -1,12 +1,11 @@
 package com.muesli.music.interfaces.artist;
 
-import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.interfaces.album.AlbumDto;
-import com.muesli.music.interfaces.like.LikeDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+
 import java.util.List;
 
 public class ArtistDto {
@@ -78,6 +77,19 @@ public class ArtistDto {
     @ToString
     @Builder
     public static class TrackArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+    }
+
+    /**
+     * 트랙에게 제공하는 아티스트 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class AlbumArtistInfo {
         private final Long id;
         private final String name;
         private final String originalName;

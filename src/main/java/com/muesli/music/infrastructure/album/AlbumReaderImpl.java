@@ -1,19 +1,19 @@
 package com.muesli.music.infrastructure.album;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
+import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
 import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.like.Like;
-import com.muesli.music.domain.like.LikeInfo;
+import com.muesli.music.domain.track.TrackInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import com.muesli.music.domain.track.TrackInfo;
-import java.util.stream.Collectors;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -42,5 +42,11 @@ public class AlbumReaderImpl implements AlbumReader {
         var albumList = albumRepository.findAllLikeList(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return albumList.stream().map(AlbumInfo.Main::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Map<String, Object>> getNewAlbum(int start, int end) {
+        System.out.println("AlbumReaderImpl :: getNewAlbum");
+        return albumRepository.findNewAlbum(start, end).orElseThrow(InvalidParamException::new);
     }
 }

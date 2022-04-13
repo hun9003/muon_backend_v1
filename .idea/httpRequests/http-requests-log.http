@@ -1,3 +1,179 @@
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-04-13T180707.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-04-13T180410.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175724.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175642.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175603.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175531.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175508.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175502.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175236.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175224.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175102.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T175042.500.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T174918.200.json
+
+###
+
+GET http://localhost:8080/api/v1/albums/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T174757.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-04-13T164828.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T163818.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&type=newest&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T163802.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&type=newest
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T163734.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&type=newest
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T163728.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&type=newest
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T163404.500.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난&type=newest
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T160443.200.json
+
+###
+
+GET http://localhost:8080/api/v1/tracks/search?keyword=명탐정코난&type=newest
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-13T160105.500.json
+
+###
+
 GET http://localhost:8080/api/v1/tracks/rank
 authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
@@ -262,271 +438,6 @@ authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 <> 2022-04-11T105416.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-<> 2022-04-11T105411.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/6?page=1&size=100
-authorization: Bearer 247cc06dbedd6ac043466a37b0e001c84ec2b2ae
-Content-Type: application/json
-
-<> 2022-04-11T105403.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0,
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-04-11T104824.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0,
-  "playlistId" : 0,
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-04-11T104555.500.json
-
-###
-
-DELETE http://localhost:8080/api/v1/playlists/87
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-08T182047.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T180832.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/update
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "id": 85,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-04-08T174215.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 85,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-04-08T174200.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/update
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "id": 85,
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0
-}
-
-<> 2022-04-08T174150.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/disLike/840
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-08T172307.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/show
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "type" : "artist",
-  "ids" : [1113, 3212, 3214, 5234]
-}
-
-<> 2022-04-08T170700.500.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/show
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "type" : "artist",
-  "ids" : [1113, 3212, 3214, 5234]
-}
-
-<> 2022-04-08T170447.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/show
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-{
-  "type" : "artist",
-  "ids" : [1113, 3212, 3214, 5234]
-}
-
-<> 2022-04-08T170437.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T165543.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-04-08T165531.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer 905109e171781ccffb5f4677c50d2b3cdeabeb35
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T165522.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T165457.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T165446.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes/like
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-{
-  "likeableId" : 1113,
-  "likeableType" : "App\\Artist"
-}
-
-<> 2022-04-08T165429.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/42860
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-04-08T152735.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/history?page=1
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-06T173247.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user/login
-Content-Type: application/json
-
-{
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
-}
-
-<> 2022-04-06T173233.200.json
 
 ###
 

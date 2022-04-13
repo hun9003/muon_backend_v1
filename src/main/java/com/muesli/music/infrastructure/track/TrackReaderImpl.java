@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,13 +53,13 @@ public class TrackReaderImpl implements TrackReader {
 
     @Override
     public List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable) {
-        System.out.println("TrackReaderImpl :: getTrackLikeList");
+        System.out.println("TrackReaderImpl :: getTrackRank");
         return trackRepository.findTrackRank(begin, end, pageable.getPageSize()).orElseThrow(InvalidParamException::new);
     }
 
     @Override
     public List<Map<String, Object>> getTrackGenreRank(String begin, String end, Pageable pageable, Long genreId) {
-        System.out.println("TrackReaderImpl :: getTrackLikeList");
+        System.out.println("TrackReaderImpl :: getTrackGenreRank");
         return trackRepository.findTrackGenreRank(begin, end, pageable.getPageSize(), genreId).orElseThrow(InvalidParamException::new);
     }
 
@@ -70,8 +71,27 @@ public class TrackReaderImpl implements TrackReader {
 
     @Override
     public List<Map<String, Object>> getUserHistoryTrack(Long userId, int start, int end) {
-        System.out.println("TrackReaderImpl :: getNewTrack");
+        System.out.println("TrackReaderImpl :: getUserHistoryTrack");
         return trackRepository.findUserHistoryTrack(userId, start, end).orElseThrow(InvalidParamException::new);
+    }
+
+    @Override
+    public int getSearchTrackCount(String keyword) {
+        System.out.println("TrackReaderImpl :: getSearchTrackCount");
+        return trackRepository.findSearchTrackCount(keyword).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getSearchTrack(String keyword, String type, int start, int end) {
+        System.out.println("TrackReaderImpl :: getNewTrack");
+        List<Map<String, Object>> trackList;
+        switch (type) {
+            case "similar" : trackList = trackRepository.findSearchTrackOrderBySimilar(keyword, start, end).orElse(new ArrayList<>()); break;
+            case "newest" : trackList = trackRepository.findSearchTrackOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
+            case "popularity":
+            default: trackList = trackRepository.findSearchTrackOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
+        }
+        return trackList;
     }
 }
 

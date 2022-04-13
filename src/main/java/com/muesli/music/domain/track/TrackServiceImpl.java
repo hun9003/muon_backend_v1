@@ -3,6 +3,7 @@ package com.muesli.music.domain.track;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -69,7 +70,7 @@ public class TrackServiceImpl implements TrackService {
     @Override
     @Transactional(readOnly = true)
     public List<TrackInfo.ChartInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command) {
-        System.out.println("TrackServiceImpl :: getLikeTrackList");
+        System.out.println("TrackServiceImpl :: getTrackRank");
         String date = command.getDate() != null ? command.getDate() : String.valueOf(LocalDate.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
         LocalDate searchDate = LocalDate.parse(date, formatter);
@@ -81,7 +82,7 @@ public class TrackServiceImpl implements TrackService {
         int minusCount = 0;
         String finalDate = "";
         String type = command.getType();
-        while (trackList2.size() < 100 || trackList1.size() < 100) {
+        while (trackList2.size() < pageable.getPageSize() || trackList1.size() < pageable.getPageSize()) {
             System.out.println("trackList2.size() : " + trackList2.size());
             var searchDateMap = makeDateMap(searchDate, type, minusCount);
             if (command.getGenre() == null) {
@@ -169,7 +170,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.ChartInfo> getNewTrack(Pageable pageable) {
+    public List<TrackInfo.NewestTrackInfo> getNewTrack(Pageable pageable) {
         System.out.println("TrackServiceImpl :: getChartLayout");
         // 페이징
         var pageInfo = new PageInfo(pageable, 500);
@@ -179,7 +180,7 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.NewestTrackInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -189,7 +190,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.ChartInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable) {
+    public List<TrackInfo.HistoryTrackInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable) {
         System.out.println("TrackServiceImpl :: getUserHistoryTrack");
         // 페이징
         var pageInfo = new PageInfo(pageable, 100);
@@ -200,9 +201,36 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.ChartInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.HistoryTrackInfo::new).collect(Collectors.toList());
     }
 
+    /**
+     * 트랙 키워드로 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("TrackServiceImpl :: getSearchTrack");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, trackReader.getSearchTrackCount(command.getKeyword()));
+        var trackList = trackReader.getSearchTrack(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newTrackMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newTrackMap);
+        }
+        return newTrackList.stream().map(TrackInfo.SearchInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 곡 순위 날짜 조회 커스텀
+     * @param searchDate
+     * @param type
+     * @param nowMinusCount
+     * @return
+     */
     private Map<String, String> makeDateMap(LocalDate searchDate, String type, int nowMinusCount) {
         LocalDateTime beforeBegin;
         LocalDateTime beforeEnd;

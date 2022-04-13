@@ -28,4 +28,6 @@ public interface AlbumDtoMapper {
     TrackDto.AlbumTrackInfo of(TrackInfo.Main track);
 
     ArtistDto.TrackArtistInfo of(ArtistInfo.Main artist);
+
+    AlbumDto.NewestAlbumInfo of(AlbumInfo.NewestAlbumInfo albumInfo);
 }

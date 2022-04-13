@@ -19,4 +19,8 @@ public interface TrackReader {
     List<Map<String, Object>> getNewTrack(int start, int end);
 
     List<Map<String, Object>> getUserHistoryTrack(Long userId, int start, int end);
+
+    int getSearchTrackCount(String keyword);
+
+    List<Map<String, Object>> getSearchTrack(String keyword, String type, int start, int end);
 }

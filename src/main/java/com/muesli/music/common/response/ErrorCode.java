@@ -18,7 +18,8 @@ public enum ErrorCode {
     COMMON_BAD_USERTOKEN("토큰이 유효하지 않습니다."),
 
     // 아이템 관련 에러
-    ITEM_BAD_TYPE("타입이 올바르지 않습니다.");
+    ITEM_BAD_TYPE("타입이 올바르지 않습니다."),
+    ITEM_EMPTY_RESULT("결과가 없습니다.");
 
     private final String errorMsg;
 

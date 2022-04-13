@@ -23,6 +23,7 @@ public class AlbumDto {
         private final String originalName;
         private final String image;
         private final String description;
+        private final ArtistDto.AlbumArtistInfo artistInfo;
         private final List<TrackDto.AlbumTrackInfo> trackList;
     }
 
@@ -82,5 +83,22 @@ public class AlbumDto {
         private final String originalName;
         private final String image;
         private final String description;
+    }
+
+    /**
+     * 최신 앨범 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class NewestAlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
     }
 }

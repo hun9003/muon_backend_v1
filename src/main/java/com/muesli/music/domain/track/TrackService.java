@@ -1,5 +1,6 @@
 package com.muesli.music.domain.track;
 
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.user.UserInfo;
 import org.springframework.data.domain.Pageable;
 
@@ -15,7 +16,9 @@ public interface TrackService {
 
     Map<String, Object> getChartLayout();
 
-    List<TrackInfo.ChartInfo> getNewTrack(Pageable pageable);
+    List<TrackInfo.NewestTrackInfo> getNewTrack(Pageable pageable);
 
-    List<TrackInfo.ChartInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
+    List<TrackInfo.HistoryTrackInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
+
+    List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable);
 }

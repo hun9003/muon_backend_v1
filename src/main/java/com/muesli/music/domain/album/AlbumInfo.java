@@ -72,6 +72,34 @@ public class AlbumInfo {
     }
 
     /*
+        최신 앨범 조회
+     */
+    @Getter
+    @ToString
+    public static class NewestAlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
+
+        public NewestAlbumInfo(Map<String, Object> album) {
+
+            this.id = Long.parseLong(String.valueOf(album.get("id")));
+            this.name = (String) album.get("name");
+            this.releaseDate = (String) album.get("releaseDate");
+            this.originalName = (String) album.get("originalName");
+            this.image = (String) album.get("image");
+
+            this.artistId = Long.parseLong(String.valueOf(album.get("artistId")));
+            this.artistName = (String) album.get("artistName");
+        }
+    }
+
+    /*
         검색 결과 앨범 리스트 조회를 위한 클래스 입니다.
      */
     @Getter
@@ -82,7 +110,9 @@ public class AlbumInfo {
         private final String releaseDate;
         private final String originalName;
         private final String image;
-        private final String description;
+
+        private final Long artistId;
+        private final String artistName;
 
         public SearchInfo(Map<String, Object> album) {
 
@@ -91,7 +121,9 @@ public class AlbumInfo {
             this.releaseDate = (String) album.get("releaseDate");
             this.originalName = (String) album.get("originalName");
             this.image = (String) album.get("image");
-            this.description = (String) album.get("description");
+
+            this.artistId = Long.parseLong(String.valueOf(album.get("artistId")));
+            this.artistName = (String) album.get("artistName");
         }
     }
 

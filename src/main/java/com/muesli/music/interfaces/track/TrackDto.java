@@ -130,7 +130,7 @@ public class TrackDto {
     }
 
     /**
-     * 앨범에게 제공하는 트랙 정보
+     * 트랙 순위 정보
      */
     @Getter
     @ToString
@@ -153,6 +153,53 @@ public class TrackDto {
         private final String albumName;
     }
 
+    /**
+     * 최신 곡 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class NewestTrackInfo {
+        private final Long id;
+        private final String name;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
+        private final Long number;
+        private final Long duration;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+    }
+
+    /**
+     * 최근 들은 곡 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class HistoryTrackInfo {
+        private final Long id;
+        private final String name;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
+        private final Long number;
+        private final Long duration;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+    }
+
+    /**
+     * 곡 순위 리스트
+     */
     @Getter
     @ToString
     @Builder
@@ -177,4 +224,23 @@ public class TrackDto {
         }
     }
 
+    /**
+     * 트랙 검색 결과
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class TrackSearchInfo {
+        private final Long id;
+        private final String name;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+    }
 }

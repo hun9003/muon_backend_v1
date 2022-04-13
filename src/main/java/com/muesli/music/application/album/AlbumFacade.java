@@ -35,8 +35,18 @@ public class AlbumFacade {
      * @return
      */
     public List<AlbumInfo.Main> retrieveLikeList(String token, Pageable pageable) {
-        System.out.println("TrackFacade :: retrieveLikeList");
+        System.out.println("AlbumFacade :: retrieveLikeList");
         usertokenService.checkUsertoken(token);
         return albumService.getLikeList(token, pageable);
+    }
+
+    /**
+     * 최신 앨범 리스트 호출
+     * @param pageable
+     * @return
+     */
+    public List<AlbumInfo.NewestAlbumInfo> retrieveNewAlbum(Pageable pageable) {
+        System.out.println("AlbumFacade :: retrieveNewAlbum");
+        return albumService.getNewAlbum(pageable);
     }
 }

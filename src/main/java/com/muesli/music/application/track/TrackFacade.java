@@ -1,6 +1,7 @@
 package com.muesli.music.application.track;
 
 import com.muesli.music.domain.genre.GenreService;
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
@@ -74,7 +75,7 @@ public class TrackFacade {
      * @param pageable
      * @return
      */
-    public List<TrackInfo.ChartInfo> retrieveNewTrack(Pageable pageable) {
+    public List<TrackInfo.NewestTrackInfo> retrieveNewTrack(Pageable pageable) {
         System.out.println("TrackFacade :: retrieveNewTrack");
         return trackService.getNewTrack(pageable);
     }
@@ -84,9 +85,20 @@ public class TrackFacade {
      * @param pageable
      * @return
      */
-    public List<TrackInfo.ChartInfo> retrieveUserHistoryTrack(String token, Pageable pageable) {
+    public List<TrackInfo.HistoryTrackInfo> retrieveUserHistoryTrack(String token, Pageable pageable) {
         System.out.println("TrackFacade :: retrieveNewTrack");
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return trackService.getUserHistoryTrack(usertokenInfo, pageable);
+    }
+
+    /**
+     * 트랙 키워드 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    public List<TrackInfo.SearchInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("TrackFacade :: retrieveNewTrack");
+        return trackService.getSearchTrack(command, pageable);
     }
 }

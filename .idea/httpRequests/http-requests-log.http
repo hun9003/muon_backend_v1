@@ -1,3 +1,81 @@
+GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T152140.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T152052.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T151840.500.json
+
+###
+
+GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T151817.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/artists?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T151805.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/albums?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T145754.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/tracks?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T145711.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/albums?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T145708.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/albums?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-14T145654.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/tracks?keyword=명탐정코난&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+###
+
 GET http://localhost:8080/api/v1/albums/1809
 Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
@@ -337,107 +415,6 @@ authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 <> 2022-04-11T122332.200.json
-
-###
-
-DELETE http://localhost:8080/api/v1/playlists/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105953.500.json
-
-###
-
-DELETE http://localhost:8080/api/v1/playlists/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105731.500.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105532.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/tracks/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-04-11T105528.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105501.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트3!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 0,
-  "trackList" : [42860,42861]
-}
-
-<> 2022-04-11T105458.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105443.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/tracks/85
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "playlistId" : 85,
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-04-11T105438.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlists/tracks/85
-authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-Content-Type: application/json
-
-{
-  "playlistId" : 85,
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-04-11T105431.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlists/85?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-11T105416.200.json
 
 ###
 

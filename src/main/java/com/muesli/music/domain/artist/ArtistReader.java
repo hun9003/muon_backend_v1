@@ -3,6 +3,7 @@ package com.muesli.music.domain.artist;
 import com.muesli.music.domain.album.Album;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ArtistReader {
     Artist getArtistBy(Long artistId);
@@ -10,4 +11,8 @@ public interface ArtistReader {
     List<Album> getAlbumList(Artist artist);
 
     List<ArtistInfo.Main> getArtistLikeList(Long userId);
+
+    int getSearchArtistCount(String keyword);
+
+    List<Map<String, Object>> getSearchArtist(String keyword, String type, int start, int end);
 }

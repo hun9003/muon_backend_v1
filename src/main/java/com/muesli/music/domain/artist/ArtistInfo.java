@@ -100,7 +100,7 @@ public class ArtistInfo {
             this.originalName = (String) artist.get("originalName");
             this.englishName = (String) artist.get("englishName");
             this.image = (String) artist.get("image");
-            this.birthday = (String) artist.get("birthday");
+            this.birthday = artist.get("birthday") != null ? String.valueOf(artist.get("birthday")) : null;
             this.country = (String) artist.get("country");
             this.debut = Long.parseLong(String.valueOf(artist.get("debut")));
         }

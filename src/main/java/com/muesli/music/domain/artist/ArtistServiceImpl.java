@@ -2,6 +2,7 @@ package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,6 +40,8 @@ public class ArtistServiceImpl implements ArtistService{
         var albumList = artistReader.getAlbumList(artist);
         var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
+
+        artist.setViews(artist.getViews());
 
         var albumBasicList = albumList.stream().map(AlbumInfo.AlbumBasicInfo::new).collect(Collectors.toList());
 
@@ -74,5 +79,25 @@ public class ArtistServiceImpl implements ArtistService{
         // 페이징
         var pageInfo = new PageInfo(pageable, artistInfoList.size());
         return artistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+
+    /**
+     * 아티스트 검색 결과 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("ArtistServiceImpl :: getSearchArtist");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, artistReader.getSearchArtistCount(command.getKeyword()));
+        var artistList = artistReader.getSearchArtist(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newArtistList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : artistList) {
+            var newArtistMap = new HashMap<>(stringObjectMap);
+            newArtistList.add(newArtistMap);
+        }
+        return newArtistList.stream().map(ArtistInfo.SearchInfo::new).collect(Collectors.toList());
     }
 }

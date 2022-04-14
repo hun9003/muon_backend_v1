@@ -89,4 +89,8 @@ public class Artist {
 
         this.id = id;
     }
+
+    public void setViews(int views) {
+        this.views = views + 1;
+    }
 }

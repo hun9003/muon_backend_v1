@@ -95,4 +95,22 @@ public class ArtistDto {
         private final String originalName;
         private final String englishName;
     }
+
+    /**
+     * 아티스트 검색 결과 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class SearchArtistInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+        private final String image;
+        private final String birthday;
+        private final String country;
+        private final Long debut;
+    }
+
 }

@@ -91,14 +91,4 @@ public class TrackFacade {
         return trackService.getUserHistoryTrack(usertokenInfo, pageable);
     }
 
-    /**
-     * 트랙 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
-     */
-    public List<TrackInfo.SearchInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("TrackFacade :: retrieveNewTrack");
-        return trackService.getSearchTrack(command, pageable);
-    }
 }

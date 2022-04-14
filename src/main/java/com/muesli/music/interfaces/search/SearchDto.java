@@ -1,6 +1,8 @@
 package com.muesli.music.interfaces.search;
 
 import com.muesli.music.domain.search.SearchCommand;
+import com.muesli.music.interfaces.album.AlbumDto;
+import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,6 +49,36 @@ public class SearchDto {
             this.keyword = keyword;
             this.type = type;
             this.trackList = trackList;
+        }
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class SearchAlbumResult {
+        private final String keyword;
+        private final String type;
+        private final List<AlbumDto.SearchAlbumInfo> albumList;
+
+        public SearchAlbumResult(String keyword, String type, List<AlbumDto.SearchAlbumInfo> albumList) {
+            this.keyword = keyword;
+            this.type = type;
+            this.albumList = albumList;
+        }
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class SearchArtistResult {
+        private final String keyword;
+        private final String type;
+        private final List<ArtistDto.SearchArtistInfo> artistList;
+
+        public SearchArtistResult(String keyword, String type, List<ArtistDto.SearchArtistInfo> artistList) {
+            this.keyword = keyword;
+            this.type = type;
+            this.artistList = artistList;
         }
     }
 }

@@ -30,4 +30,6 @@ public interface AlbumDtoMapper {
     ArtistDto.TrackArtistInfo of(ArtistInfo.Main artist);
 
     AlbumDto.NewestAlbumInfo of(AlbumInfo.NewestAlbumInfo albumInfo);
+
+    AlbumDto.SearchAlbumInfo of(AlbumInfo.SearchInfo albumInfo);
 }

@@ -1,6 +1,5 @@
 package com.muesli.music.domain.album;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.AbstractEntity;
@@ -15,7 +14,6 @@ import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -40,6 +38,8 @@ public class Album extends AbstractEntity {
     private String image;
     @Column(name = "description")
     private String description;
+    @Column(name = "views")
+    private int views;
 
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -71,5 +71,9 @@ public class Album extends AbstractEntity {
         if (id == null) throw new InvalidParamException("Albums.id");
 
         this.id = id;
+    }
+
+    public void setViews(int views) {
+        this.views = views + 1;
     }
 }

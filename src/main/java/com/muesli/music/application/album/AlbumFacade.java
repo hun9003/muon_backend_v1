@@ -49,4 +49,6 @@ public class AlbumFacade {
         System.out.println("AlbumFacade :: retrieveNewAlbum");
         return albumService.getNewAlbum(pageable);
     }
+
+
 }

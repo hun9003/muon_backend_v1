@@ -1,5 +1,6 @@
 package com.muesli.music.domain.album;
 
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.user.UserInfo;
 import org.springframework.data.domain.Pageable;
 
@@ -11,4 +12,6 @@ public interface AlbumService {
     List<AlbumInfo.Main> getLikeList(String usertoken, Pageable pageable);
 
     List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable);
+
+    List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable);
 }

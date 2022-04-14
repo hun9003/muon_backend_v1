@@ -11,4 +11,8 @@ public interface AlbumReader {
     List<AlbumInfo.Main> getAlbumLikeList(Long userId);
 
     List<Map<String, Object>> getNewAlbum(int start, int end);
+
+    int getSearchAlbumCount(String keyword);
+
+    List<Map<String, Object>> getSearchAlbum(String keyword, String type, int start, int end);
 }

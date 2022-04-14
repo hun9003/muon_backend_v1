@@ -1,6 +1,7 @@
 package com.muesli.music.domain.album;
 
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -36,6 +37,7 @@ public class AlbumServiceImpl implements AlbumService {
     public AlbumInfo.Main findAlbumInfo(Long albumId, UserInfo.Main userInfo) {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
         var album = albumReader.getAlbumBy(albumId);
+        album.setViews(album.getViews());
         var trackList = albumReader.getTrackList(album);
         var albumInfo = new AlbumInfo.Main(album, trackList);
         albumInfo.setArtistInfo(new ArtistInfo.Main(album.getArtist()));
@@ -50,7 +52,7 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     @Transactional(readOnly = true)
     public List<AlbumInfo.Main> getLikeList(String token, Pageable pageable) {
-        System.out.println("LikeServiceImpl :: getLikeAlbumList");
+        System.out.println("AlbumServiceImpl :: getLikeList");
         var usertoken = usertokenReader.getUsertoken(token);
         var userId = usertoken.getUser().getId();
         var albumInfoList = albumReader.getAlbumLikeList(userId).stream().peek(
@@ -66,9 +68,14 @@ public class AlbumServiceImpl implements AlbumService {
         return albumInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
     }
 
+    /**
+     * 최신 앨범 조회
+     * @param pageable
+     * @return
+     */
     @Override
     public List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable) {
-        System.out.println("LikeServiceImpl :: getNewAlbum");
+        System.out.println("AlbumServiceImpl :: getNewAlbum");
         // 페이징
         var pageInfo = new PageInfo(pageable, 500);
         var albumList = albumReader.getNewAlbum(pageInfo.getStartNum(), pageInfo.getEndNum());
@@ -78,5 +85,25 @@ public class AlbumServiceImpl implements AlbumService {
             newAlbumList.add(newAlbumMap);
         }
         return newAlbumList.stream().map(AlbumInfo.NewestAlbumInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 앨범 키워드로 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("AlbumServiceImpl :: getSearchAlbum");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, albumReader.getSearchAlbumCount(command.getKeyword()));
+        var albumList = albumReader.getSearchAlbum(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newAlbumList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : albumList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newAlbumList.add(newAlbumMap);
+        }
+        return newAlbumList.stream().map(AlbumInfo.SearchInfo::new).collect(Collectors.toList());
     }
 }

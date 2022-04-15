@@ -20,5 +20,5 @@ public interface ArtistDtoMapper {
 
     LikeDto.LikeInfo of(LikeDto.LikeInfo like);
 
-    ArtistDto.SearchArtistInfo of(ArtistInfo.SearchInfo artistInfo);
+    ArtistDto.ArtistSearchInfo of(ArtistInfo.SearchInfo artistInfo);
 }

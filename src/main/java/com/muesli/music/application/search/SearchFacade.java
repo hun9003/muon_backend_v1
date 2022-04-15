@@ -12,7 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -25,18 +27,26 @@ public class SearchFacade {
     검색 요구사항
 
     - 키워드에 대한 결과 리스트 전송
-
-    - 검색 결과 리스트 전송
-
-    - 곡 결과 리스트 전송 ( 인기순, 최신순 )
-
-    - 앨범 결과 리스트 전송 ( 인기순, 최신순 )
-
-    - 아티스트 결과 리스트 전송 ( 가나다순, 인기순 )
-
-    - 가사 결과 리스트 전송 ( 가나다순, 최신순 )
      */
-
+    /**
+     * 트랙 키워드 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    public Map<String, List> retrieveSearchAll(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("SearchFacade :: retrieveNewTrack");
+        var searchMap = new HashMap<String, List>();
+        var trackList = trackService.getSearchTrack(command, pageable);
+        var albumList = albumService.getSearchAlbum(command, pageable);
+        var artistList = artistService.getSearchArtist(command, pageable);
+        var lyricsList = trackService.getSearchLyrics(command, pageable);
+        searchMap.put("trackList", trackList);
+        searchMap.put("albumList", albumList);
+        searchMap.put("artistList", artistList);
+        searchMap.put("lyricsList", lyricsList);
+        return searchMap;
+    }
 
     /**
      * 트랙 키워드 검색 조회
@@ -45,7 +55,7 @@ public class SearchFacade {
      * @return
      */
     public List<TrackInfo.SearchInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("TrackFacade :: retrieveNewTrack");
+        System.out.println("SearchFacade :: retrieveNewTrack");
         return trackService.getSearchTrack(command, pageable);
     }
 
@@ -56,7 +66,7 @@ public class SearchFacade {
      * @return
      */
     public List<AlbumInfo.SearchInfo> retrieveSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("AlbumFacade :: retrieveNewAlbum");
+        System.out.println("SearchFacade :: retrieveNewAlbum");
         return albumService.getSearchAlbum(command, pageable);
     }
 
@@ -67,7 +77,35 @@ public class SearchFacade {
      * @return
      */
     public List<ArtistInfo.SearchInfo> retrieveSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("ArtistFacade :: retrieveNewArtist");
+        System.out.println("SearchFacade :: retrieveNewArtist");
         return artistService.getSearchArtist(command, pageable);
+    }
+
+    /**
+     * 가사 키워드 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    public List<TrackInfo.SearchLyricsInfo> retrieveSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("SearchFacade :: retrieveSearchLyrics");
+        return trackService.getSearchLyrics(command, pageable);
+    }
+
+    /**
+     * 타입별 컨텐츠 개수 조회
+     * @param command
+     * @param type
+     * @return
+     */
+    public int getSearchCount(SearchCommand.SearchRequest command, String type) {
+        System.out.println("SearchFacade :: retrieveSearchLyrics");
+        switch (type) {
+            case "track" : return trackService.getSearchTrackCount(command);
+            case "album" : return albumService.getSearchAlbumCount(command);
+            case "artist" : return artistService.getSearchArtistCount(command);
+            case "lyrics" : return trackService.getSearchLyricsCount(command);
+        }
+        return 0;
     }
 }

@@ -97,7 +97,7 @@ public class AlbumServiceImpl implements AlbumService {
     public List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getSearchAlbum");
         // 페이징
-        var pageInfo = new PageInfo(pageable, albumReader.getSearchAlbumCount(command.getKeyword()));
+        var pageInfo = new PageInfo(pageable, command.getAlbumCount());
         var albumList = albumReader.getSearchAlbum(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
         var newAlbumList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : albumList) {
@@ -105,5 +105,16 @@ public class AlbumServiceImpl implements AlbumService {
             newAlbumList.add(newAlbumMap);
         }
         return newAlbumList.stream().map(AlbumInfo.SearchInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 앨범 검색 결과 개수
+     * @param command
+     * @return
+     */
+    @Override
+    public int getSearchAlbumCount(SearchCommand.SearchRequest command) {
+        System.out.println("AlbumServiceImpl :: getSearchAlbumCount");
+        return albumReader.getSearchAlbumCount(command.getKeyword());
     }
 }

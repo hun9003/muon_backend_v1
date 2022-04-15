@@ -62,10 +62,20 @@ public class TrackDto {
     @ToString
     public static class LyricsInfo {
         private final Long id;
-        private final String text;
+        private final List<LyricsDetailInfo> lyrics;
     }
 
-    /**
+    @Getter
+    @Builder
+    @ToString
+    public static class LyricsDetailInfo {
+        private final String timeline;
+        private final String text;
+        private final String textOriginal;
+        private final String textPron;
+    }
+
+        /**
      * 트랙 리스트
      */
     @Getter
@@ -242,5 +252,28 @@ public class TrackDto {
 
         private final Long albumId;
         private final String albumName;
+    }
+
+    /**
+     * 가사 검색 결과
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class LyricsSearchInfo {
+        private final Long id;
+        private final String name;
+        private final Long adult;
+
+        private final String lyricsText;
+        private final String lyricsTextPron;
+        private final String lyricsTextOriginal;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+        private final String albumImage;
     }
 }

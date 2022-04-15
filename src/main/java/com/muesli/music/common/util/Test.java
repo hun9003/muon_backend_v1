@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 public class Test {
     public static void main(String[] args) {
 
-        Collection<Integer> olds = new ArrayList<>(Arrays.asList(7,2,6,5,3,1));
-        Collection<Integer> news = new ArrayList<>(Arrays.asList(2,3,4,7,8));
-        List<Integer> olds2 = new ArrayList<>(olds);
-        List<Integer> news2 = new ArrayList<>(news);
-
-        olds2.removeAll(news);
-        news2.removeAll(olds);
-
-        System.out.println("삭제되어야 하는것 : " + olds2);
-        System.out.println("생성되어야 하는것 : " + news2);
+//        Collection<Integer> olds = new ArrayList<>(Arrays.asList(7,2,6,5,3,1));
+//        Collection<Integer> news = new ArrayList<>(Arrays.asList(2,3,4,7,8));
+//        List<Integer> olds2 = new ArrayList<>(olds);
+//        List<Integer> news2 = new ArrayList<>(news);
+//
+//        olds2.removeAll(news);
+//        news2.removeAll(olds);
+//
+//        System.out.println("삭제되어야 하는것 : " + olds2);
+//        System.out.println("생성되어야 하는것 : " + news2);
 
 
         // 가사 가공 테스트
@@ -55,6 +55,22 @@ public class Test {
                 "199.0|내 옆에 있자 살자 내 옆에#";
 
         System.out.println(makeLyrics(lyrics));
+        String ssr = "おねがいぎゅっと抱きしめて\\n(오네가이 큣토 다키시메테)/夢見ているの Charming Do！\\n(유메미테 이루노 Charming Do！)/もっとちゃんと近づいて\\n(못토 찬토 치카즈이테)/ねえドキドキしようよ\\n(네에 도키도키시요오요)/간주 중~♬/ジタバタしてるキモチ\\n(지타바타 시테루 키모치)/気づいてほしいだから\\n(키즈이테 호시이 다카라)/勇気のかけら集め\\n(유우키노 카케라 아츠메)/フルスロットルでいこ！\\n(후루스롯토루데 이코！)/想像以上過剰？/乙女のホンキモード/ハートのゲージ上げて/あの雲のかなたまで\n";
+        System.out.println(Arrays.toString(ssr.split("/")));
+
+        var lyricsArr = List.of(ssr.split("/"));
+        var lyricsArr1 = lyricsArr.stream().map(
+                s -> {
+                    if(s.contains("\\n")){
+                        s = s.substring(s.indexOf("\\n")+2);
+                        if(s.contains("(")) {
+                            s = s.substring(s.indexOf("(")+1, s.indexOf(")"));
+                        }
+                    }
+                    return s;
+                }
+        ).collect(Collectors.toList());
+        System.out.println(String.join("/", lyricsArr1));
 //        makeAlbumName("チントン
 //        シャン (친톤샨) off vocal");
 //        getKeyword();
@@ -62,18 +78,16 @@ public class Test {
     }
 
 
-    public static StringBuilder makeLyrics(String lyrics) {
+    public static String makeLyrics(String lyrics) {
         var lyricsArr = List.of(lyrics.split("\\n"));
-
+        var lyricsArr1 = lyricsArr.stream().map(
+                s -> s.substring(0, s.indexOf("|"))
+        ).collect(Collectors.toList());
         var lyricsArr2 = lyricsArr.stream().map(
                 s -> s.substring(s.indexOf("|")+1).replaceAll("#", " ").replaceAll("\\n", "")
         ).collect(Collectors.toList());
-        StringBuilder lyricsArr3 = new StringBuilder();
-        for (String l : lyricsArr2) {
-            lyricsArr3.append(l);
-        }
 
-        return lyricsArr3;
+        return String.join("/", lyricsArr2);
     }
 
     public static String makeAlbumName(String name) {

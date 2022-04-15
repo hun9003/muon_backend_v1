@@ -6,6 +6,7 @@ import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
@@ -24,6 +25,7 @@ public class SearchDto {
         private final String keyword;
         private final String type;
 
+
         public SearchRequest(String keyword, String type) {
             this.keyword = keyword;
             this.type = type;
@@ -36,6 +38,26 @@ public class SearchDto {
                     .build();
         }
     }
+    @Getter
+    @Builder
+    @ToString
+    public static class SearchAllResult {
+        private final String keyword;
+        private final String type;
+        private final SearchTrackResult track;
+        private final SearchAlbumResult album;
+        private final SearchArtistResult artist;
+        private final SearchLyricsResult lyrics;
+
+        public SearchAllResult(String keyword, String type, SearchTrackResult track, SearchAlbumResult album, SearchArtistResult artist, SearchLyricsResult lyrics) {
+            this.keyword = keyword;
+            this.type = type;
+            this.track = track;
+            this.album = album;
+            this.artist = artist;
+            this.lyrics = lyrics;
+        }
+    }
 
     @Getter
     @Builder
@@ -43,11 +65,13 @@ public class SearchDto {
     public static class SearchTrackResult {
         private final String keyword;
         private final String type;
+        private final int count;
         private final List<TrackDto.TrackSearchInfo> trackList;
 
-        public SearchTrackResult(String keyword, String type, List<TrackDto.TrackSearchInfo> trackList) {
+        public SearchTrackResult(String keyword, String type, int count, List<TrackDto.TrackSearchInfo> trackList) {
             this.keyword = keyword;
             this.type = type;
+            this.count = count;
             this.trackList = trackList;
         }
     }
@@ -58,11 +82,13 @@ public class SearchDto {
     public static class SearchAlbumResult {
         private final String keyword;
         private final String type;
-        private final List<AlbumDto.SearchAlbumInfo> albumList;
+        private final int count;
+        private final List<AlbumDto.AlbumSearchInfo> albumList;
 
-        public SearchAlbumResult(String keyword, String type, List<AlbumDto.SearchAlbumInfo> albumList) {
+        public SearchAlbumResult(String keyword, String type, int count, List<AlbumDto.AlbumSearchInfo> albumList) {
             this.keyword = keyword;
             this.type = type;
+            this.count = count;
             this.albumList = albumList;
         }
     }
@@ -73,12 +99,31 @@ public class SearchDto {
     public static class SearchArtistResult {
         private final String keyword;
         private final String type;
-        private final List<ArtistDto.SearchArtistInfo> artistList;
+        private final int count;
+        private final List<ArtistDto.ArtistSearchInfo> artistList;
 
-        public SearchArtistResult(String keyword, String type, List<ArtistDto.SearchArtistInfo> artistList) {
+        public SearchArtistResult(String keyword, String type, int count, List<ArtistDto.ArtistSearchInfo> artistList) {
             this.keyword = keyword;
             this.type = type;
+            this.count = count;
             this.artistList = artistList;
+        }
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class SearchLyricsResult {
+        private final String keyword;
+        private final String type;
+        private final int count;
+        private final List<TrackDto.LyricsSearchInfo> lyricsList;
+
+        public SearchLyricsResult(String keyword, String type, int count, List<TrackDto.LyricsSearchInfo> lyricsList) {
+            this.keyword = keyword;
+            this.type = type;
+            this.count = count;
+            this.lyricsList = lyricsList;
         }
     }
 }

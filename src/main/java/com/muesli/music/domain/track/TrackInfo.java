@@ -3,7 +3,6 @@ package com.muesli.music.domain.track;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.genre.GenreInfo;
-import com.muesli.music.domain.track.lyrics.Lyrics;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -100,11 +99,27 @@ public class TrackInfo {
     @ToString
     public static class LyricsInfo {
         private final Long id;
-        private final String text;
+        private final List<LyricsDetailInfo> lyrics;
 
-        public LyricsInfo(Lyrics lyrics) {
-            this.id = lyrics.getId();
-            this.text = lyrics.getText();
+        public LyricsInfo(Long id, List<LyricsDetailInfo> lyricsDetailInfo) {
+            this.id = id;
+            this.lyrics = lyricsDetailInfo;
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class LyricsDetailInfo {
+        private final String timeline;
+        private final String text;
+        private final String textOriginal;
+        private final String textPron;
+
+        public LyricsDetailInfo(String timeline, String text, String textOriginal, String textPron) {
+            this.timeline = timeline;
+            this.text = text;
+            this.textOriginal = textOriginal;
+            this.textPron = textPron;
         }
     }
 
@@ -306,7 +321,9 @@ public class TrackInfo {
         private final String name;
         private final Long adult;
 
-        private final String lyrics;
+        private final String lyricsText;
+        private final String lyricsTextPron;
+        private final String lyricsTextOriginal;
 
         private final Long artistId;
         private final String artistName;
@@ -317,10 +334,15 @@ public class TrackInfo {
 
         public SearchLyricsInfo(Map<String, Object> lyrics) {
             var adult = lyrics.get("adult") != null ? Long.parseLong(String.valueOf(lyrics.get("adult"))) : null;
+            var lyricsText = lyrics.get("lyricsText") != null && !lyrics.get("lyricsText").equals("null") ? String.valueOf(lyrics.get("lyricsText")) : "";
+            var lyricsTextPron = lyrics.get("lyricsTextPron") != null && !lyrics.get("lyricsTextPron").equals("null") ? String.valueOf(lyrics.get("lyricsTextPron")) : "";
+            var lyricsTextOriginal = lyrics.get("lyricsTextOriginal") != null && !lyrics.get("lyricsTextOriginal").equals("null") ? String.valueOf(lyrics.get("lyricsTextOriginal")) : "";
 
             this.id = Long.parseLong(String.valueOf(lyrics.get("id")));
             this.name = (String) lyrics.get("name");
-            this.lyrics = (String) lyrics.get("lyrics");
+            this.lyricsText = lyricsText.replaceAll("/", "");
+            this.lyricsTextPron = lyricsTextPron.replaceAll("/", "");
+            this.lyricsTextOriginal = lyricsTextOriginal.replaceAll("/", "");
 
             this.adult = adult;
 

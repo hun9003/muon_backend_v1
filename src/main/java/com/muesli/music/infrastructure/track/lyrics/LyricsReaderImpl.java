@@ -7,6 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -19,4 +23,25 @@ public class LyricsReaderImpl implements LyricsReader {
         return lyricsRepository.findLyricsByTrack(track)
                 .orElse(new Lyrics());
     }
+
+    @Override
+    public int getSearchLyricsCount(String keyword) {
+        System.out.println("LyricsReaderImpl :: getSearchLyrics");
+        return lyricsRepository.findSearchLyricsCount(keyword).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getSearchLyrics(String keyword, String type, int start, int end) {
+        System.out.println("LyricsReaderImpl :: getSearchLyrics");
+        List<Map<String, Object>> lyricsList;
+        switch (type) {
+            case "alpha" : lyricsList = lyricsRepository.findSearchLyricsOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;
+            case "newest" : lyricsList = lyricsRepository.findSearchLyricsOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
+            case "similar":
+            default: lyricsList = lyricsRepository.findSearchLyricsOrderBySimilar(keyword, start, end).orElse(new ArrayList<>());
+        }
+        return lyricsList;
+    }
+
+
 }

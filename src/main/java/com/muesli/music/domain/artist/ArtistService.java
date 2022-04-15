@@ -12,4 +12,6 @@ public interface ArtistService {
     List<ArtistInfo.Main> getLikeList(String token, Pageable pageable);
 
     List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable);
+
+    int getSearchArtistCount(SearchCommand.SearchRequest command);
 }

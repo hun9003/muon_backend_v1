@@ -2,8 +2,10 @@ package com.muesli.music.domain.track;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.LyricsGenerator;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.search.SearchCommand;
+import com.muesli.music.domain.track.lyrics.LyricsReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TrackServiceImpl implements TrackService {
     private final TrackReader trackReader;
+    private final LyricsReader lyricsReader;
     private final UsertokenReader usertokenReader;
 
     /**
@@ -39,8 +42,8 @@ public class TrackServiceImpl implements TrackService {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
         var lyrics = track.getLyrics().iterator().next();
-
-        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics));
+        var lyricsInfolist = LyricsGenerator.makeLyrics(lyrics);
+        return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics.getId() ,lyricsInfolist));
     }
 
     /**
@@ -214,7 +217,7 @@ public class TrackServiceImpl implements TrackService {
     public List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("TrackServiceImpl :: getSearchTrack");
         // 페이징
-        var pageInfo = new PageInfo(pageable, trackReader.getSearchTrackCount(command.getKeyword()));
+        var pageInfo = new PageInfo(pageable, command.getTrackCount());
         var trackList = trackReader.getSearchTrack(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : trackList) {
@@ -222,6 +225,48 @@ public class TrackServiceImpl implements TrackService {
             newTrackList.add(newTrackMap);
         }
         return newTrackList.stream().map(TrackInfo.SearchInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 가사 키워드로 검색 조회
+     * @param command
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<TrackInfo.SearchLyricsInfo> getSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable) {
+        System.out.println("LyricsServiceImpl :: getSearchLyrics");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, command.getLyricsCount());
+        var lyricsList = lyricsReader.getSearchLyrics(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newLyricsList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : lyricsList) {
+            var newLyricsMap = new HashMap<>(stringObjectMap);
+            newLyricsList.add(newLyricsMap);
+        }
+        return newLyricsList.stream().map(TrackInfo.SearchLyricsInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 트랙 검색 결과 개수
+     * @param command
+     * @return
+     */
+    @Override
+    public int getSearchTrackCount(SearchCommand.SearchRequest command) {
+        System.out.println("LyricsServiceImpl :: getSearchLyrics");
+        return trackReader.getSearchTrackCount(command.getKeyword());
+    }
+
+    /**
+     * 가사 검색 결과 개수
+     * @param command
+     * @return
+     */
+    @Override
+    public int getSearchLyricsCount(SearchCommand.SearchRequest command) {
+        System.out.println("LyricsServiceImpl :: getSearchLyrics");
+        return lyricsReader.getSearchLyricsCount(command.getKeyword());
     }
 
     /**
@@ -273,4 +318,5 @@ public class TrackServiceImpl implements TrackService {
 
         return searchDateMap;
     }
+
 }

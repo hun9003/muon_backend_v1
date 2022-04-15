@@ -91,7 +91,7 @@ public class ArtistServiceImpl implements ArtistService{
     public List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("ArtistServiceImpl :: getSearchArtist");
         // 페이징
-        var pageInfo = new PageInfo(pageable, artistReader.getSearchArtistCount(command.getKeyword()));
+        var pageInfo = new PageInfo(pageable, command.getArtistCount());
         var artistList = artistReader.getSearchArtist(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
         var newArtistList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : artistList) {
@@ -99,5 +99,16 @@ public class ArtistServiceImpl implements ArtistService{
             newArtistList.add(newArtistMap);
         }
         return newArtistList.stream().map(ArtistInfo.SearchInfo::new).collect(Collectors.toList());
+    }
+
+    /**
+     * 아티스트 검색 결과 개수
+     * @param command
+     * @return
+     */
+    @Override
+    public int getSearchArtistCount(SearchCommand.SearchRequest command) {
+        System.out.println("ArtistServiceImpl :: getSearchArtistCount");
+        return artistReader.getSearchArtistCount(command.getKeyword());
     }
 }

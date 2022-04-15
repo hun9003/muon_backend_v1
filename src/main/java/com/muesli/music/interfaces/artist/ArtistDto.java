@@ -102,7 +102,7 @@ public class ArtistDto {
     @Getter
     @ToString
     @Builder
-    public static class SearchArtistInfo {
+    public static class ArtistSearchInfo {
         private final Long id;
         private final String name;
         private final String originalName;

@@ -31,5 +31,5 @@ public interface AlbumDtoMapper {
 
     AlbumDto.NewestAlbumInfo of(AlbumInfo.NewestAlbumInfo albumInfo);
 
-    AlbumDto.SearchAlbumInfo of(AlbumInfo.SearchInfo albumInfo);
+    AlbumDto.AlbumSearchInfo of(AlbumInfo.SearchInfo albumInfo);
 }

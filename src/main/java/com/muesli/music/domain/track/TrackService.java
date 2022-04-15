@@ -20,5 +20,11 @@ public interface TrackService {
 
     List<TrackInfo.HistoryTrackInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
 
+    int getSearchTrackCount(SearchCommand.SearchRequest command);
+
     List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable);
+
+    int getSearchLyricsCount(SearchCommand.SearchRequest command);
+
+    List<TrackInfo.SearchLyricsInfo> getSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable);
 }

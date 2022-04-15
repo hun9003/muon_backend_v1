@@ -108,7 +108,7 @@ public class AlbumDto {
     @Getter
     @ToString
     @Builder
-    public static class SearchAlbumInfo {
+    public static class AlbumSearchInfo {
         private final Long id;
         private final String name;
         private final String releaseDate;

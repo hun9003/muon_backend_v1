@@ -14,4 +14,6 @@ public interface AlbumService {
     List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable);
 
     List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable);
+
+    int getSearchAlbumCount(SearchCommand.SearchRequest command);
 }

@@ -1,5 +1,6 @@
 package com.muesli.music.domain.search;
 
+import com.muesli.music.domain.search.history.History;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +21,24 @@ public class SearchCommand {
         private int artistCount;
         private int lyricsCount;
     }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class saveSearchHistory {
+        private final String keyword;
+        private final String ip;
+        private final int resultCount;
+        private final Long userId;
+
+        public History toEntity(Long userId) {
+            return History.builder()
+                    .keyword(keyword)
+                    .ip(ip)
+                    .resultCount(resultCount)
+                    .userId(userId)
+                    .build();
+        }
+    }
+
 }

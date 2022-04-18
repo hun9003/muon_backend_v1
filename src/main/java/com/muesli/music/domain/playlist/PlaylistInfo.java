@@ -1,6 +1,5 @@
 package com.muesli.music.domain.playlist;
 
-import com.muesli.music.domain.like.LikeInfo;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.user.UserInfo;
 import lombok.Getter;

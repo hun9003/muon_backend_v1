@@ -5,8 +5,10 @@ import com.muesli.music.domain.album.AlbumService;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.artist.ArtistService;
 import com.muesli.music.domain.search.SearchCommand;
+import com.muesli.music.domain.search.SearchService;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
+import com.muesli.music.domain.user.token.UsertokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +22,11 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class SearchFacade {
+    private final SearchService searchService;
     private final TrackService trackService;
     private final AlbumService albumService;
     private final ArtistService artistService;
+    private final UsertokenService usertokenService;
     /*
     검색 요구사항
 
@@ -107,5 +111,16 @@ public class SearchFacade {
             case "lyrics" : return trackService.getSearchLyricsCount(command);
         }
         return 0;
+    }
+
+    /**
+     * 검색 시 키워드 히스토라에 저장 후 키워드 조회수 증가
+     * @param command
+     * @param token
+     */
+    public void saveSearchHistory(SearchCommand.saveSearchHistory command, String token) {
+        System.out.println("SearchFacade :: saveSearchHistory");
+        var usertoken = usertokenService.findUsertokenInfo(token);
+        searchService.saveSearchHistory(command, usertoken.getUserInfo());
     }
 }

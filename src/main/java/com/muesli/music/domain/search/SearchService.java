@@ -1,17 +1,17 @@
 package com.muesli.music.domain.search;
 
-import org.springframework.data.domain.Pageable;
+import com.muesli.music.domain.search.keyword.KeywordInfo;
+import com.muesli.music.domain.user.UserInfo;
+
+import java.util.List;
 
 public interface SearchService {
-    // 곡 검색 결과
-    SearchInfo.SearchTrack getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable);
+    void saveSearchHistory(SearchCommand.saveSearchHistory command, UserInfo.Main userInfo);
 
-    // 앨범 검색 결과
-    SearchInfo.SearchAlbum getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable);
+    void saveSearchKeyword();
 
-    // 아티스트 검색 결과
-    SearchInfo.SearchArtist getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable);
+    List<KeywordInfo> getSearchKeywordList(String keyword);
 
-    // 가사 검색 결과
-    SearchInfo.SearchLyrics getSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable);
+    void setKeywordPublic(String keyword, int isPublic);
+
 }

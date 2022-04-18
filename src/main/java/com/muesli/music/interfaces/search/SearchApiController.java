@@ -2,6 +2,8 @@ package com.muesli.music.interfaces.search;
 
 import com.muesli.music.application.search.SearchFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.util.ClientUtils;
+import com.muesli.music.common.util.TokenGenerator;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.track.TrackInfo;
@@ -12,11 +14,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,12 +39,16 @@ public class SearchApiController {
      * @return
      */
     @GetMapping("/all")
-    public CommonResponse retrieveAllSearch(@RequestParam(name = "keyword") String keyword,
-                                              @RequestParam(name = "type", defaultValue = "all") String type,
-                                              @PageableDefault(size = 10, page = 1) Pageable pageable) {
+    public CommonResponse retrieveAllSearch(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+                                            HttpServletRequest request,
+                                            @RequestParam(name = "keyword") String keyword,
+                                            @RequestParam(name = "type", defaultValue = "all") String type,
+                                            @PageableDefault(size = 10, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveAllSearch");
-        var request = new SearchDto.SearchRequest(keyword, type);
-        var command = request.toCommand();
+        usertoken = TokenGenerator.getHeaderToken(usertoken);
+
+        var Searchrequest = new SearchDto.SearchRequest(keyword, type);
+        var command = Searchrequest.toCommand();
 
         command.setTrackCount(searchFacade.getSearchCount(command, "track"));
         command.setAlbumCount(searchFacade.getSearchCount(command, "album"));
@@ -62,6 +66,17 @@ public class SearchApiController {
         var albumSearchList = new SearchDto.SearchAlbumResult(keyword, type, command.getAlbumCount(), albumDtoList);
         var artistSearchList = new SearchDto.SearchArtistResult(keyword, type, command.getArtistCount(), artistDtoList);
         var lyricsSearchList = new SearchDto.SearchLyricsResult(keyword, type, command.getLyricsCount(), lyricsDtoList);
+
+        int resultCount = 0;
+        if (trackSearchList.getTrackList().size() > 0 || albumSearchList.getAlbumList().size() > 0 || artistSearchList.getArtistList().size() > 0 || lyricsSearchList.getLyricsList().size() > 0) {
+            resultCount = 1;
+        }
+
+
+        var ip = ClientUtils.getRemoteIP(request);
+        var historyDto = new SearchDto.SearchHistory(keyword, ip, resultCount);
+        searchFacade.saveSearchHistory(historyDto.toCommand(), usertoken);
+
 
         var response = new SearchDto.SearchAllResult(keyword, type, trackSearchList, albumSearchList, artistSearchList, lyricsSearchList);
         return CommonResponse.success(response);

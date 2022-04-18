@@ -6,7 +6,6 @@ import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
@@ -124,6 +123,26 @@ public class SearchDto {
             this.type = type;
             this.count = count;
             this.lyricsList = lyricsList;
+        }
+    }
+
+    public static class SearchHistory {
+        private final String keyword;
+        private final String ip;
+        private final int resultCount;
+
+        public SearchHistory(String keyword, String ip, int resultCount) {
+            this.keyword = keyword;
+            this.ip = ip;
+            this.resultCount = resultCount;
+        }
+
+        public SearchCommand.saveSearchHistory toCommand() {
+            return SearchCommand.saveSearchHistory.builder()
+                    .keyword(keyword)
+                    .ip(ip)
+                    .resultCount(resultCount)
+                    .build();
         }
     }
 }

@@ -16,5 +16,12 @@ public interface KeywordRepository extends JpaRepository<Keyword, Long> {
             "AND REPLACE(k.keyword, ' ', '') <= REPLACE(:end, ' ', '') " +
             "ORDER BY k.views DESC LIMIT 10", nativeQuery = true)
     Optional<List<Keyword>> findKeywordByKeyword(String start, String end);
+
+    @Query(value = "SELECT * FROM search_keyword k WHERE k.public = 1 AND REPLACE(k.keyword, ' ', '') LIKE REPLACE(CONCAT('%', :keyword, '%'), ' ', '') " +
+            "ORDER BY " +
+            "(CASE WHEN REPLACE(k.keyword, ' ', '') LIKE REPLACE(CONCAT(:keyword, '%'), ' ', '') THEN 1 " +
+            " WHEN REPLACE(k.keyword, ' ', '') LIKE REPLACE(CONCAT('%', :keyword, '%'), ' ', '') THEN 2 " +
+            "ELSE 3 END)", nativeQuery = true)
+    Optional<List<Keyword>> findKeywordByKeyword(String keyword);
 }
 

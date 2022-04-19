@@ -1,5 +1,6 @@
 package com.muesli.music.domain.search;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.util.KeywordScanner;
 import com.muesli.music.domain.search.keyword.Keyword;
 import com.muesli.music.domain.search.keyword.KeywordInfo;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -69,8 +72,33 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<KeywordInfo> getSearchKeywordList(String keyword) {
         System.out.println("SearchServiceImpl :: getSearchKeywordList");
-        var endKeyword = KeywordScanner.makeSearchKeyword(keyword);
-        var keywordList = searchReader.getSearchKeywordList(keyword, endKeyword);
+        if (keyword.trim().equals("")) return Lists.newArrayList();
+
+        Pattern p = Pattern.compile("[a-zA-Z0-9]");
+        Matcher m = p.matcher(keyword);
+        var keywordKo = KeywordScanner.getEnToKo(keyword);
+
+        var endKeyword = KeywordScanner.makeSearchKeyword(keywordKo);
+        var keywordList = searchReader.getSearchKeywordList(keywordKo, endKeyword);
+
+        try {
+            var keyword2 = KeywordScanner.makeSearchKeywordJong(keywordKo.substring(keywordKo.length()-1));
+            keyword2 = keywordKo.substring(0, keywordKo.length()-1) + keyword2;
+            var keywordList2 = searchReader.getSearchKeywordList(keyword2, KeywordScanner.makeSearchKeyword(keyword2));
+
+            keywordList.addAll(keywordList2);
+        } catch (Exception ignored) {
+
+        }
+
+        if(m.find()) {
+            var keywordList3 = searchReader.getSearchKeywordList(keyword);
+            keywordList.addAll(keywordList3);
+        }
+
+        var listSize = Math.min(keywordList.size(), 9);
+        keywordList.subList(0, listSize);
+
         return keywordList.stream().map(KeywordInfo::new).collect(Collectors.toList());
     }
 

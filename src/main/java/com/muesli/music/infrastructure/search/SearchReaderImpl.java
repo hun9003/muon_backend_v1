@@ -31,6 +31,12 @@ public class SearchReaderImpl implements SearchReader {
     }
 
     @Override
+    public List<Keyword> getSearchKeywordList(String keyword) {
+        System.out.println("SearchReaderImpl :: getSearchKeywordList");
+        return keywordRepository.findKeywordByKeyword(keyword).orElse(Lists.newArrayList());
+    }
+
+    @Override
     public List<History> getSearchHistoryList() {
         System.out.println("SearchReaderImpl :: getSearchHistoryList");
         return historyRepository.findHistoryAll().orElse(Lists.newArrayList());

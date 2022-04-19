@@ -181,7 +181,7 @@ authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 ### 전체 검색 결과 페이지
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
+GET http://localhost:8080/api/v1/search/all?keyword=박진훈&page=1&size=10
 authorization:Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 

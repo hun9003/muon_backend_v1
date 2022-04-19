@@ -10,6 +10,8 @@ public interface SearchReader {
 
     List<Keyword> getSearchKeywordList(String keyword, String endKeyword);
 
+    List<Keyword> getSearchKeywordList(String keyword);
+
     List<History> getSearchHistoryList();
 
     Keyword getSearchKeyword(String keyword);

@@ -25,9 +25,9 @@ public class SearchReaderImpl implements SearchReader {
     }
 
     @Override
-    public List<Keyword> getSearchKeywordList(String keyword) {
+    public List<Keyword> getSearchKeywordList(String keyword, String endKeyword) {
         System.out.println("SearchReaderImpl :: getSearchKeywordList");
-        return null;
+        return keywordRepository.findKeywordByKeyword(keyword, endKeyword).orElse(Lists.newArrayList());
     }
 
     @Override
@@ -41,4 +41,6 @@ public class SearchReaderImpl implements SearchReader {
         System.out.println("SearchReaderImpl :: getSearchKeyword");
         return keywordRepository.findKeywordBykeyword(keyword).orElse(new Keyword());
     }
+
+
 }

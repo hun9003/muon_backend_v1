@@ -8,9 +8,10 @@ import java.util.List;
 public interface SearchReader {
     History getSearchHistory(SearchCommand.saveSearchHistory command);
 
-    List<Keyword> getSearchKeywordList(String keyword);
+    List<Keyword> getSearchKeywordList(String keyword, String endKeyword);
 
     List<History> getSearchHistoryList();
 
     Keyword getSearchKeyword(String keyword);
+
 }

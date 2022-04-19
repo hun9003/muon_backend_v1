@@ -145,4 +145,11 @@ public class SearchDto {
                     .build();
         }
     }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class SearchKeyword {
+        private final String keyword;
+    }
 }

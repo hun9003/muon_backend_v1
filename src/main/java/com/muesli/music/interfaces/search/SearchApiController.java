@@ -30,6 +30,7 @@ public class SearchApiController {
     private final TrackDtoMapper trackDtoMapper;
     private final AlbumDtoMapper albumDtoMapper;
     private final ArtistDtoMapper artistDtoMapper;
+    private final SearchDtoMapper searchDtoMapper;
 
     /**
      * 전체 검색 결과 페이지
@@ -163,6 +164,19 @@ public class SearchApiController {
         var LyricsList = searchFacade.retrieveSearchLyrics(command, pageable);
         var LyricsDtoList = LyricsList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var response = new SearchDto.SearchLyricsResult(keyword, type, count, LyricsDtoList);
+        return CommonResponse.success(response);
+    }
+
+    /**
+     * 검색 자동완성 리스트
+     * @param keyword
+     * @return
+     */
+    @GetMapping
+    public CommonResponse searchKeywordList(@RequestParam(name = "keyword") String keyword) {
+        System.out.println("SearchApiController :: retrieveLyricsSearch");
+        var keywordInfoList = searchFacade.getSearchKeywordList(keyword);
+        var response = keywordInfoList.stream().map(searchDtoMapper::of).collect(Collectors.toList());
         return CommonResponse.success(response);
     }
 

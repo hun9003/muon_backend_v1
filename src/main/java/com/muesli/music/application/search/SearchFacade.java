@@ -6,6 +6,7 @@ import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.artist.ArtistService;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.search.SearchService;
+import com.muesli.music.domain.search.keyword.KeywordInfo;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
 import com.muesli.music.domain.user.token.UsertokenService;
@@ -122,5 +123,15 @@ public class SearchFacade {
         System.out.println("SearchFacade :: saveSearchHistory");
         var usertoken = usertokenService.findUsertokenInfo(token);
         searchService.saveSearchHistory(command, usertoken.getUserInfo());
+    }
+
+    /**
+     * 검색 자동 완성 리스트
+     * @param keyword
+     * @return
+     */
+    public List<KeywordInfo> getSearchKeywordList(String keyword) {
+        System.out.println("SearchFacade :: getSearchKeywordList");
+        return searchService.getSearchKeywordList(keyword);
     }
 }

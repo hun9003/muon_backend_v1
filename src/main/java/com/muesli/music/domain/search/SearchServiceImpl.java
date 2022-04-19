@@ -1,5 +1,6 @@
 package com.muesli.music.domain.search;
 
+import com.muesli.music.common.util.KeywordScanner;
 import com.muesli.music.domain.search.keyword.Keyword;
 import com.muesli.music.domain.search.keyword.KeywordInfo;
 import com.muesli.music.domain.user.UserInfo;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -67,8 +69,9 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<KeywordInfo> getSearchKeywordList(String keyword) {
         System.out.println("SearchServiceImpl :: getSearchKeywordList");
-        var keywordList = searchReader.getSearchKeywordList(keyword);
-        return null;
+        var endKeyword = KeywordScanner.makeSearchKeyword(keyword);
+        var keywordList = searchReader.getSearchKeywordList(keyword, endKeyword);
+        return keywordList.stream().map(KeywordInfo::new).collect(Collectors.toList());
     }
 
     /**

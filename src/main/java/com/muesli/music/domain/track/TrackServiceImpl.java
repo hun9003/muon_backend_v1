@@ -33,12 +33,11 @@ public class TrackServiceImpl implements TrackService {
      * 트랙 정보 가져오기
      *
      * @param trackId
-     * @param userInfo
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo) {
+    public TrackInfo.Main findTrackInfo(Long trackId) {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
         var lyrics = track.getLyrics().iterator().next();

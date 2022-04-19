@@ -1,3 +1,179 @@
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T161825.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T155858.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzoa
+Content-Type: application/json
+
+<> 2022-04-19T155521.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T155416.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T154853.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T154544.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T154206.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T154132.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-04-19T153914.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T153823.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T153754.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/42860
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T153629.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/1
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T153504.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/1
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T152132.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/1
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T152109.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/1
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T152042.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player/1
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T152009.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T151956.404.json
+
+###
+
+GET http://localhost:8080/api/v1/player
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T145721.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T145649.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T145611.200.json
+
+###
+
+GET http://localhost:8080/api/v1/player
+authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-04-19T144802.200.json
+
+###
+
 GET http://localhost:8080/api/v1/search/all?keyword=박진훈&page=1&size=10
 authorization: Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
@@ -219,182 +395,6 @@ authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 <> 2022-04-18T143641.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T143502.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T143248.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T143223.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T143105.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T143014.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T142908.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=아리&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-18T142301.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T173722.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T172325.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T172123.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T172046.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T172010.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T171756.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10&type=alpha
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T171742.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/lyrics?keyword=아&page=1&size=10&type=alpha
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-15T171507.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T152140.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T152052.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10&type=alpha
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T151840.500.json
-
-###
-
-GET http://localhost:8080/api/v1/search/artists?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T151817.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/artists?keyword=명탐정코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T151805.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/albums?keyword=명탐정코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T145754.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/tracks?keyword=명탐정코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-04-14T145711.200.json
 
 ###
 

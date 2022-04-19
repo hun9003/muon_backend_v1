@@ -182,10 +182,15 @@ Content-Type: application/json
 
 ### 전체 검색 결과 페이지
 GET http://localhost:8080/api/v1/search/all?keyword=박진훈&page=1&size=10
-authorization:Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 ### 키워드 자동완성
 GET http://localhost:8080/api/v1/search?keyword=며
-authorization:Bearer authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+### 플레이어 음원 재생 키
+GET http://localhost:8080/api/v1/player/42860
+authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json

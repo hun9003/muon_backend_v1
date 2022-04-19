@@ -26,10 +26,9 @@ public class TrackApiController {
      * @return
      */
     @GetMapping("/{id}")
-    public CommonResponse retrieveTrack(@PathVariable("id") Long trackId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken){
+    public CommonResponse retrieveTrack(@PathVariable("id") Long trackId){
         System.out.println("TrackApiController :: retrieveTrack");
-        usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var trackInfo = trackFacade.findTrackInfo(trackId, usertoken);
+        var trackInfo = trackFacade.findTrackInfo(trackId);
         var response = trackDtoMapper.of(trackInfo);
         return CommonResponse.success(response);
     }

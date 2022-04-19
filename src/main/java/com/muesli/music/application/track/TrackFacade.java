@@ -1,7 +1,6 @@
 package com.muesli.music.application.track;
 
 import com.muesli.music.domain.genre.GenreService;
-import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackService;
@@ -27,12 +26,10 @@ public class TrackFacade {
      * @param token
      * @return
      */
-    public TrackInfo.Main findTrackInfo(Long trackId, String token) {
+    public TrackInfo.Main findTrackInfo(Long trackId) {
         System.out.println("TrackFacade :: findTrackInfo");
-        // 유저 토큰 조회
-        var usertokenInfo = usertokenService.findUsertokenInfo(token);
         // 트랙 조회
-        return trackService.findTrackInfo(trackId, usertokenInfo.getUserInfo());
+        return trackService.findTrackInfo(trackId);
     }
 
 

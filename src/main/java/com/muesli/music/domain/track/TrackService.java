@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface TrackService {
-    TrackInfo.Main findTrackInfo(Long trackId, UserInfo.Main userInfo);
+    TrackInfo.Main findTrackInfo(Long trackId);
 
     List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
 

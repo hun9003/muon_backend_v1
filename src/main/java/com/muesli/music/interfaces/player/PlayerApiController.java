@@ -17,6 +17,13 @@ import java.util.HashMap;
 public class PlayerApiController {
     private final PlayerFacade playerFacade;
 
+    /**
+     * 플레이어 재생 키 호출
+     * @param trackId
+     * @param usertoken
+     * @param request
+     * @return
+     */
     @GetMapping("/{id}")
     public CommonResponse retrievePlayerKey(@PathVariable("id") Long trackId,
                                             @RequestHeader(value="Authorization", defaultValue = "") String usertoken,

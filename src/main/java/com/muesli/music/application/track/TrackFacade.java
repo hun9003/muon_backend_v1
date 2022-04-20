@@ -61,7 +61,7 @@ public class TrackFacade {
      */
     public TrackInfo.ChartLayoutInfo getChartLayout() {
         System.out.println("TrackFacade :: getChartLayout");
-        var genreInfoList = genreService.getGenreList();
+        var genreInfoList = genreService.getGenreParentList();
         var chartLayout = trackService.getChartLayout();
         chartLayout.put("genreList", genreInfoList);
         return new TrackInfo.ChartLayoutInfo(chartLayout);

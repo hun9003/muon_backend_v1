@@ -22,7 +22,6 @@ public class TrackApiController {
     /**
      * 트랙 정보
      * @param trackId
-     * @param usertoken
      * @return
      */
     @GetMapping("/{id}")
@@ -66,7 +65,11 @@ public class TrackApiController {
         var searchDto = new TrackDto.TrackRankList(date, type, genre, null);
         var command = searchDto.toCommand();
         var trackList = trackFacade.retrieveTrackRank(pageable, command);
-        date = trackList.get(0).getDate();
+
+        if(trackList.size() > 0) {
+            date = trackList.get(0).getDate();
+        }
+
         var response = new TrackDto.TrackRankList(date, type, genre, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
         return CommonResponse.success(response);
     }

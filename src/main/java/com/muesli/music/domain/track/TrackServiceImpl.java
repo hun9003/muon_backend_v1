@@ -85,14 +85,13 @@ public class TrackServiceImpl implements TrackService {
         String finalDate = "";
         String type = command.getType();
         while (trackList2.size() < pageable.getPageSize() || trackList1.size() < pageable.getPageSize()) {
-            System.out.println("trackList2.size() : " + trackList2.size());
             var searchDateMap = makeDateMap(searchDate, type, minusCount);
             if (command.getGenre() == null) {
                 trackList1 = trackReader.getTrackRank(searchDateMap.get("beforeBeginFormat"), searchDateMap.get("beforeEndFormat"), pageable);
                 trackList2 = trackReader.getTrackRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterEndFormat"), pageable);
             } else {
                 trackList1 = trackReader.getTrackGenreRank(searchDateMap.get("beforeBeginFormat"), searchDateMap.get("beforeEndFormat"), pageable, command.getGenre());
-                trackList2 = trackReader.getTrackGenreRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterBeginFormat"), pageable, command.getGenre());
+                trackList2 = trackReader.getTrackGenreRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterEndFormat"), pageable, command.getGenre());
             }
             finalDate = searchDateMap.get("afterBeginFormat");
             if (command.getType().equals("now")) {

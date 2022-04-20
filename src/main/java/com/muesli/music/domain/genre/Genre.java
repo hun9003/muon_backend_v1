@@ -24,4 +24,28 @@ public class Genre {
     @Column(name = "display_name")
     private String displayName;
 
+    @Column(name = "popularity")
+    private int popularity;
+
+    @Column(name = "parent_id")
+    private Long parentId;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "order")
+    private int order;
+
+    @Column(name = "views")
+    private int views;
+
+    public Genre(Long id, String name, String displayName) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.displayName = displayName;
+    }
 }

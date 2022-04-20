@@ -49,7 +49,7 @@ public class ArtistReaderImpl implements ArtistReader {
 
     @Override
     public List<Map<String, Object>> getSearchArtist(String keyword, String type, int start, int end) {
-        System.out.println("ArtistReaderImpl :: getNewArtist");
+        System.out.println("ArtistReaderImpl :: getSearchArtist");
         List<Map<String, Object>> artistList;
         switch (type) {
             case "alpha" : artistList = artistRepository.findSearchArtistOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;

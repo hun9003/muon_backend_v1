@@ -98,6 +98,7 @@ public class SearchApiController {
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
         var count = searchFacade.getSearchCount(command, "track");
+        command.setTrackCount(count);
         var trackList = searchFacade.retrieveSearchTrack(command, pageable);
         var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var response = new SearchDto.SearchTrackResult(keyword, type, count, trackDtoList);
@@ -119,6 +120,7 @@ public class SearchApiController {
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
         var count = searchFacade.getSearchCount(command, "album");
+        command.setAlbumCount(count);
         var AlbumList = searchFacade.retrieveSearchAlbum(command, pageable);
         var AlbumDtoList = AlbumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
         var response = new SearchDto.SearchAlbumResult(keyword, type, count, AlbumDtoList);
@@ -140,6 +142,7 @@ public class SearchApiController {
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
         var count = searchFacade.getSearchCount(command, "artist");
+        command.setArtistCount(count);
         var ArtistList = searchFacade.retrieveSearchArtist(command, pageable);
         var ArtistDtoList = ArtistList.stream().map(artistDtoMapper::of).collect(Collectors.toList());
         var response = new SearchDto.SearchArtistResult(keyword, type, count, ArtistDtoList);
@@ -161,6 +164,7 @@ public class SearchApiController {
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
         var count = searchFacade.getSearchCount(command, "lyrics");
+        command.setLyricsCount(count);
         var LyricsList = searchFacade.retrieveSearchLyrics(command, pageable);
         var LyricsDtoList = LyricsList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var response = new SearchDto.SearchLyricsResult(keyword, type, count, LyricsDtoList);

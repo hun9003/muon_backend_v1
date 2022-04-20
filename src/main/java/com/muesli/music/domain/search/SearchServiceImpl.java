@@ -55,11 +55,8 @@ public class SearchServiceImpl implements SearchService {
         for (var history : historyList) {
             var keyword = searchReader.getSearchKeyword(history.getKeyword());
             if(keyword.getId() == null) {
-                System.out.println(history.getKeyword() + " 키워드 저장");
                 var initKeyword = new Keyword(history.getKeyword());
                 searchStore.saveSearchKeyword(initKeyword);
-            } else {
-                System.out.println(history.getKeyword() + " 키워드는 이미 존재함");
             }
         }
     }

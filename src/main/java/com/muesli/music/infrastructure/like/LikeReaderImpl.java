@@ -30,7 +30,8 @@ public class LikeReaderImpl implements LikeReader {
     @Override
     public Long getLikeCount(Long likeableId, String likeableType) {
         System.out.println("LikeReaderImpl :: getLikeCount");
-        return likeRepository.countByLikeableIdAndLikeableType(likeableId, likeableType)
+        System.out.println(likeableId + ", " + likeableType);
+        return likeRepository.countByLike(likeableId, likeableType)
                 .orElse(0L);
     }
 }

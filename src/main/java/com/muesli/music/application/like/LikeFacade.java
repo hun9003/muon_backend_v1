@@ -22,17 +22,18 @@ public class LikeFacade {
      * @param command
      * @param token
      */
-    public void doLike(LikeCommand.RegisterLikeRequest command, String token) {
+    public LikeInfo.Main doLike(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeFacade :: doLike");
         usertokenService.checkUsertoken(token);
         var likeInfo = likeService.findLikeBy(command, token);
         if (likeInfo.getId() == null) {
-            likeService.registerLike(command, token);
+            likeInfo = likeService.registerLike(command, token);
         } else if (likeInfo.getIsLike() == 1 ) {
-            likeService.changeDisLike(likeInfo.getId(), token);
+            likeInfo = likeService.changeDisLike(likeInfo.getId(), token);
         } else {
-            likeService.changeDoLike(likeInfo.getId(), token);
+            likeInfo = likeService.changeDoLike(likeInfo.getId(), token);
         }
+        return likeInfo;
     }
 
     /**
@@ -40,15 +41,16 @@ public class LikeFacade {
      * @param likeId
      * @param token
      */
-    public void changeLike(Long likeId, String token) {
+    public LikeInfo.Main changeLike(Long likeId, String token) {
         System.out.println("LikeFacade :: disLike");
         usertokenService.checkUsertoken(token);
         var likeInfo = likeService.getLike(likeId);
         if(likeInfo.getIsLike() == 1) {
-            likeService.changeDisLike(likeId, token);
+            likeInfo = likeService.changeDisLike(likeId, token);
         } else {
-            likeService.changeDoLike(likeId, token);
+            likeInfo = likeService.changeDoLike(likeId, token);
         }
+        return likeInfo;
     }
 
     /**

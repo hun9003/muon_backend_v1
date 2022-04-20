@@ -29,8 +29,9 @@ public class LikeApiController {
         System.out.println("LikeApiController :: doLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var likeCommand = request.toCommand();
-        likeFacade.doLike(likeCommand, usertoken);
-        return CommonResponse.success("OK");
+        var likeInfo = likeFacade.doLike(likeCommand, usertoken);
+        var response = likeDtoMapper.of(likeInfo);
+        return CommonResponse.success(response);
     }
 
     /**
@@ -43,8 +44,9 @@ public class LikeApiController {
     {
         System.out.println("LikeApiController :: doDisLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        likeFacade.changeLike(likeId, usertoken);
-        return CommonResponse.success("OK");
+        var likeInfo = likeFacade.changeLike(likeId, usertoken);
+        var response = likeDtoMapper.of(likeInfo);
+        return CommonResponse.success(response);
     }
 
     /**

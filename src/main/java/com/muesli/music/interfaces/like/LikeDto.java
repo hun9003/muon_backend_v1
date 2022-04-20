@@ -20,6 +20,7 @@ public class LikeDto {
     public static class LikeInfo {
         private final Long id;
         private final Long likeableId;
+        private final String likeableType;
         private final int isLike;
         private final LocalDate createdAt;
         private final Long likeCount;

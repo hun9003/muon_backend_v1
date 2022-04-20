@@ -49,10 +49,10 @@ public class LikeServiceImpl implements LikeService {
 
         var type = "";
         switch (command.getType()) {
-            case "album": type = "App\\Album"; break;
-            case "artist": type = "App\\Artist"; break;
-            case "track": type = "App\\Track"; break;
-            case "playlist": type = "App\\Playlist"; break;
+            case "album": type = "Album"; break;
+            case "artist": type = "Artist"; break;
+            case "track": type = "Track"; break;
+            case "playlist": type = "Playlist"; break;
             default: throw new BaseException(ErrorCode.ITEM_BAD_TYPE);
         }
 
@@ -71,12 +71,16 @@ public class LikeServiceImpl implements LikeService {
      */
     @Override
     @Transactional
-    public void registerLike(LikeCommand.RegisterLikeRequest command, String token) {
+    public LikeInfo.Main registerLike(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: registerLike");
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         var initLike = command.toEntity(usertoken.getUser().getId());
-        likeStore.store(initLike);
+        var like = likeStore.store(initLike);
+        var likeInfo = new LikeInfo.Main(like);
+        var count = likeReader.getLikeCount(likeInfo.getLikeableId(), likeInfo.getLikeableType());
+        likeInfo.setLikeCount(count);
+        return likeInfo;
     }
 
     /**
@@ -86,7 +90,7 @@ public class LikeServiceImpl implements LikeService {
      */
     @Override
     @Transactional
-    public void changeDoLike(Long likeId, String token) {
+    public LikeInfo.Main changeDoLike(Long likeId, String token) {
         System.out.println("LikeServiceImpl :: changeDoLike");
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
@@ -96,6 +100,10 @@ public class LikeServiceImpl implements LikeService {
         } else {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         }
+        var likeInfo = new LikeInfo.Main(like);
+        var count = likeReader.getLikeCount(likeInfo.getLikeableId(), likeInfo.getLikeableType());
+        likeInfo.setLikeCount(count);
+        return likeInfo;
     }
 
     /**
@@ -105,7 +113,7 @@ public class LikeServiceImpl implements LikeService {
      */
     @Override
     @Transactional
-    public void changeDisLike(Long likeId, String token) {
+    public LikeInfo.Main changeDisLike(Long likeId, String token) {
         System.out.println("LikeServiceImpl :: changeDisLike");
         var usertoken = usertokenReader.getUsertoken(token);
         var like = likeReader.getLikeBy(likeId);
@@ -115,6 +123,10 @@ public class LikeServiceImpl implements LikeService {
         } else {
             throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
         }
+        var likeInfo = new LikeInfo.Main(like);
+        var count = likeReader.getLikeCount(likeInfo.getLikeableId(), likeInfo.getLikeableType());
+        likeInfo.setLikeCount(count);
+        return likeInfo;
     }
 
     /**

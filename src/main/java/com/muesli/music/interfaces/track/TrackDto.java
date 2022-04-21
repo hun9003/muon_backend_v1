@@ -217,12 +217,14 @@ public class TrackDto {
         private final String date;
         private final String type;
         private final Long genre;
+        private final com.muesli.music.domain.track.TrackInfo.ChartLayoutInfo layout;
         private final List<TrackRankInfo> trackList;
 
-        public TrackRankList(String date, String type, Long genre, List<TrackRankInfo> trackList) {
+        public TrackRankList(String date, String type, Long genre, com.muesli.music.domain.track.TrackInfo.ChartLayoutInfo layout, List<TrackRankInfo> trackList) {
             this.date = date;
             this.type = type;
             this.genre = genre;
+            this.layout = layout;
             this.trackList = trackList;
         }
 

@@ -23,7 +23,6 @@ public class TrackFacade {
     /**
      * 트랙 정보 조회
      * @param trackId
-     * @param token
      * @return
      */
     public TrackInfo.Main findTrackInfo(Long trackId) {
@@ -45,7 +44,7 @@ public class TrackFacade {
     }
 
     /**
-     * 곡 정보 조회
+     * 트랙 차트 가져오기
      * @param pageable
      * @param command
      * @return
@@ -59,12 +58,12 @@ public class TrackFacade {
      * 트랙 차트 레이아웃 정보 가져오기
      * @return
      */
-    public TrackInfo.ChartLayoutInfo getChartLayout() {
+    public TrackInfo.ChartLayoutInfo getChartLayout(String type) {
         System.out.println("TrackFacade :: getChartLayout");
         var genreInfoList = genreService.getGenreParentList();
         var chartLayout = trackService.getChartLayout();
         chartLayout.put("genreList", genreInfoList);
-        return new TrackInfo.ChartLayoutInfo(chartLayout);
+        return new TrackInfo.ChartLayoutInfo(chartLayout, type);
     }
 
     /**

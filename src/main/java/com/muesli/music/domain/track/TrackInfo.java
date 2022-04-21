@@ -178,15 +178,15 @@ public class TrackInfo {
     @ToString
     public static class ChartLayoutInfo {
         private final List<GenreInfo.Main> genreList;
-        private final List<String> yearDate;
-        private final List<String> monthDate;
-        private final List<String> weekDate;
+        private final List<String> dateList;
 
-        public ChartLayoutInfo(Map<String, Object> chartLayout) {
+        public ChartLayoutInfo(Map<String, Object> chartLayout, String type) {
             this.genreList = (List<GenreInfo.Main>) chartLayout.get("genreList");
-            this.yearDate = (List<String>) chartLayout.get("yearDate");
-            this.monthDate = (List<String>) chartLayout.get("monthDate");
-            this.weekDate = (List<String>) chartLayout.get("weekDate");
+            switch (type) {
+                case "week" : this.dateList = (List<String>) chartLayout.get("weekDate"); break;
+                case "month" : this.dateList = (List<String>) chartLayout.get("monthDate"); break;
+                default: this.dateList = null;
+            }
         }
     }
 

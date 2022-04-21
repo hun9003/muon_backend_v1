@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.track;
 
 import com.muesli.music.application.track.TrackFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,36 +53,27 @@ public class TrackApiController {
      * 곡 순위
      * @param pageable
      * @param date
-     * @param type
      * @param genre
      * @return
      */
-    @GetMapping("/rank")
+    @GetMapping("/rank/{type}")
     public CommonResponse retrieveTrackRank(@PageableDefault(size = 100, page = 1) Pageable pageable,
                                             @RequestParam(name = "date", required = false) String date,
-                                            @RequestParam(name = "type", defaultValue = "now") String type,
-                                            @RequestParam(name = "genre", required = false) Long genre) {
+                                            @RequestParam(name = "genre", required = false) Long genre,
+                                            @PathVariable(value = "type") String type) {
         System.out.println("LikeApiController :: retrieveTrackRank");
-        var searchDto = new TrackDto.TrackRankList(date, type, genre, null);
+        if(!type.equals("now") && !type.equals("day") && !type.equals("week") && !type.equals("month"))
+            return CommonResponse.fail(ErrorCode.COMMON_INVALID_PARAMETER);
+
+        var layout = trackFacade.getChartLayout(type);
+        var searchDto = new TrackDto.TrackRankList(date, type, genre, layout, null);
         var command = searchDto.toCommand();
         var trackList = trackFacade.retrieveTrackRank(pageable, command);
-
         if(trackList.size() > 0) {
             date = trackList.get(0).getDate();
         }
 
-        var response = new TrackDto.TrackRankList(date, type, genre, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
-        return CommonResponse.success(response);
-    }
-
-    /**
-     * 트랙 차트 레이아웃 호출
-     * @return
-     */
-    @GetMapping("/rank/layout")
-    public CommonResponse retrieveChartLayout(){
-        System.out.println("TrackApiController :: retrieveChartLayout");
-        var response = trackFacade.getChartLayout();
+        var response = new TrackDto.TrackRankList(date, type, genre, layout, trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList()));
         return CommonResponse.success(response);
     }
 

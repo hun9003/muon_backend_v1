@@ -268,6 +268,28 @@ public class TrackServiceImpl implements TrackService {
     }
 
     /**
+     * 장르별 트랙 리스트
+     * @param genreId
+     * @param type
+     * @param pageable
+     * @return
+     */
+    @Override
+    public List<TrackInfo.GenreTrackInfo> getGenreTrackList(Long genreId, String type, Pageable pageable) {
+        System.out.println("TrackSerciceImpl :: getGenreTrackList");
+        var count = trackReader.getGenreTrackCount(genreId);
+        // 페이징
+        var pageInfo = new PageInfo(pageable, count);
+        var trackList = trackReader.getGenreTrackList(genreId, type, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newTrackMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newTrackMap);
+        }
+        return newTrackList.stream().map(TrackInfo.GenreTrackInfo::new).collect(Collectors.toList());
+    }
+
+    /**
      * 곡 순위 날짜 조회 커스텀
      * @param searchDate
      * @param type

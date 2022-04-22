@@ -27,4 +27,6 @@ public interface TrackService {
     int getSearchLyricsCount(SearchCommand.SearchRequest command);
 
     List<TrackInfo.SearchLyricsInfo> getSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable);
+
+    List<TrackInfo.GenreTrackInfo> getGenreTrackList(Long genreId, String type, Pageable pageable);
 }

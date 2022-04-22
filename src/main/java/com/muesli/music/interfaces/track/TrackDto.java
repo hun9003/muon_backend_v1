@@ -278,4 +278,24 @@ public class TrackDto {
         private final String albumName;
         private final String albumImage;
     }
+
+    /**
+     * 장르별 트랙 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class GenreTrackInfo {
+        private final Long id;
+        private final String name;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+    }
 }

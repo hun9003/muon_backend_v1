@@ -32,4 +32,6 @@ public interface TrackDtoMapper {
     TrackDto.TrackSearchInfo of(TrackInfo.SearchInfo trackInfo);
 
     TrackDto.LyricsSearchInfo of(TrackInfo.SearchLyricsInfo lyricsInfo);
+
+    TrackDto.GenreTrackInfo of(TrackInfo.GenreTrackInfo trackInfo);
 }

@@ -93,5 +93,23 @@ public class TrackReaderImpl implements TrackReader {
         }
         return trackList;
     }
+
+    @Override
+    public int getGenreTrackCount(Long genreId) {
+        System.out.println("TrackReaderImpl :: getGenreTrackCount");
+        return trackRepository.findGenreTrackCount(genreId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getGenreTrackList(Long genreId, String type, int start, int end) {
+        System.out.println("TrackReaderImpl :: getGenreTrackList");
+        List<Map<String, Object>> trackList;
+        switch (type) {
+            case "newest" : trackList = trackRepository.findGenreTrackOrderByNewest(genreId, start, end).orElse(new ArrayList<>()); break;
+            case "popularity":
+            default: trackList = trackRepository.findGenreTrackOrderByPopularity(genreId, start, end).orElse(new ArrayList<>());
+        }
+        return trackList;
+    }
 }
 

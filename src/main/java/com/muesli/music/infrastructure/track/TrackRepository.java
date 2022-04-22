@@ -241,4 +241,68 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findSearchTrackOrderByNewest(String keyword, int start, int end);
 
+
+    /**
+     * 트랙 장르별 개수 조회
+     * @param genreId
+     * @return
+     */
+    @Query(value = "SELECT COUNT(id) FROM (" +
+            "SELECT t.id as id " +
+            "FROM genres g JOIN genreables g2 ON g.id = g2.genre_id " +
+            "JOIN tracks t ON t.id = g2.genreable_id " +
+            "JOIN play_log p ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE g.id = :genreId AND g2.genreable_type LIKE CONCAT('%','Track') " +
+            "GROUP BY t.id) as track", nativeQuery = true)
+    Optional<Integer> findGenreTrackCount(Long genreId);
+
+
+    /**
+     * 트랙 장르별 조회 (인기순)
+     * @param start
+     * @param end
+     * @return
+     */
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, a.release_date AS albumReleaseDate, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM genres g JOIN genreables g2 ON g.id = g2.genre_id " +
+            "JOIN tracks t ON t.id = g2.genreable_id " +
+            "JOIN play_log p ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE g.id = :genreId AND g2.genreable_type LIKE CONCAT('%','Track') " +
+            "GROUP BY t.id " +
+            "ORDER By COUNT(p.idx) DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findGenreTrackOrderByPopularity(Long genreId, int start, int end);
+
+    /**
+     * 트랙 장르별 조회 (최신순)
+     * @param start
+     * @param end
+     * @return
+     */
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "t.description, t.image, t.adult, " +
+            "a.id AS albumId, a.name AS albumName, a.image AS albumImage, a.release_date AS albumReleaseDate, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM genres g JOIN genreables g2 ON g.id = g2.genre_id " +
+            "JOIN tracks t ON t.id = g2.genreable_id " +
+            "JOIN play_log p ON p.track_id = t.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN artist_track at2 on t.id = at2.track_id " +
+            "JOIN artists a2 on at2.artist_id = a2.id " +
+            "WHERE g.id = :genreId AND g2.genreable_type LIKE CONCAT('%','Track') " +
+            "GROUP BY t.id " +
+            "ORDER By a.release_date DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findGenreTrackOrderByNewest(Long genreId, int start, int end);
+
+
 }

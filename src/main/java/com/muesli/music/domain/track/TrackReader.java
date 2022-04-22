@@ -23,4 +23,8 @@ public interface TrackReader {
     int getSearchTrackCount(String keyword);
 
     List<Map<String, Object>> getSearchTrack(String keyword, String type, int start, int end);
+
+    int getGenreTrackCount(Long genreId);
+
+    List<Map<String, Object>> getGenreTrackList(Long genreId, String type, int start, int end);
 }

@@ -1,6 +1,8 @@
 package com.muesli.music.domain.album;
 
 import com.muesli.music.domain.artist.ArtistInfo;
+import com.muesli.music.domain.genre.GenreInfo;
+import com.muesli.music.domain.genre.GenreReader;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.UserInfo;
@@ -25,6 +27,7 @@ public class AlbumServiceImpl implements AlbumService {
     private final AlbumReader albumReader;
     private final TrackReader trackReader;
     private final UsertokenReader usertokenReader;
+    private final GenreReader genreReader;
 
     /**
      * 앨범 정보 가져오기
@@ -116,5 +119,36 @@ public class AlbumServiceImpl implements AlbumService {
     public int getSearchAlbumCount(SearchCommand.SearchRequest command) {
         System.out.println("AlbumServiceImpl :: getSearchAlbumCount");
         return albumReader.getSearchAlbumCount(command.getKeyword());
+    }
+
+
+    @Override
+    public List<AlbumInfo.GenreAlbumInfo> getGenreAlbumList(Long genreId, Pageable pageable) {
+        // 페이징
+        var albumList = albumReader.getGenreAlbumList(genreId, pageable);
+        var newAlbumList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : albumList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newAlbumList.add(newAlbumMap);
+        }
+        return newAlbumList.stream().map(AlbumInfo.GenreAlbumInfo::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<GenreInfo.Main> getGenreAlbumListAll(Pageable pageable) {
+        var genreList = genreReader.getGenreParentList();
+        return genreList.stream().map(
+                genre -> {
+                    var genreInfo = new GenreInfo.Main(genre);
+                    var albumList = albumReader.getGenreAlbumList(genre.getId(), pageable);
+                    var newAlbumList = new ArrayList<Map<String, Object>>();
+                    for (Map<String, Object> stringObjectMap : albumList) {
+                        var newAlbumMap = new HashMap<>(stringObjectMap);
+                        newAlbumList.add(newAlbumMap);
+                    }
+                    genreInfo.setAlbumList(newAlbumList.stream().map(AlbumInfo.GenreAlbumInfo::new).collect(Collectors.toList()));
+                    return genreInfo;
+                }
+        ).collect(Collectors.toList());
     }
 }

@@ -118,4 +118,21 @@ public class AlbumDto {
         private final Long artistId;
         private final String artistName;
     }
+
+    /**
+     * 장르별 앨범 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class GenreAlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
+    }
 }

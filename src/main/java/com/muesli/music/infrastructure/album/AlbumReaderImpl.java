@@ -1,5 +1,6 @@
 package com.muesli.music.infrastructure.album;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.domain.album.Album;
@@ -9,6 +10,7 @@ import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.track.TrackInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -68,5 +70,11 @@ public class AlbumReaderImpl implements AlbumReader {
             default: albumList = albumRepository.findSearchAlbumOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
         }
         return albumList;
+    }
+
+    @Override
+    public List<Map<String, Object>> getGenreAlbumList(Long genreId, Pageable pageable) {
+        System.out.println("AlbumReaderImpl :: getGenreAlbumList");
+        return albumRepository.findGenreAlbumList(genreId, pageable.getPageSize()).orElse(Lists.newArrayList());
     }
 }

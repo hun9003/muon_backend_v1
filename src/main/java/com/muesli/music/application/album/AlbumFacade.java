@@ -50,5 +50,4 @@ public class AlbumFacade {
         return albumService.getNewAlbum(pageable);
     }
 
-
 }

@@ -1,5 +1,7 @@
 package com.muesli.music.domain.album;
 import com.muesli.music.domain.track.TrackInfo;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,4 +17,6 @@ public interface AlbumReader {
     int getSearchAlbumCount(String keyword);
 
     List<Map<String, Object>> getSearchAlbum(String keyword, String type, int start, int end);
+
+    List<Map<String, Object>> getGenreAlbumList(Long genreId, Pageable pageable);
 }

@@ -140,4 +140,23 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "ORDER By a.release_date DESC " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findSearchAlbumOrderByNewest(String keyword, int start, int end);
+
+    /**
+     * 장르별 앨범 리스트 호출
+     * @param genreId
+     * @param limit
+     * @return
+     */
+    @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, a2.id AS artistId, a2.name AS artistName " +
+            "    FROM genres g " +
+            "    JOIN genreables g2 on g.id = g2.genre_id " +
+            "    JOIN tracks t ON t.id = g2.genreable_id " +
+            "    JOIN albums a on a.id = t.album_id " +
+            "    JOIN artist_track at2 on t.id = at2.track_id " +
+            "    JOIN artists a2 on at2.artist_id = a2.id " +
+            "    JOIN play_log pl on t.id = pl.track_id " +
+            "WHERE g.id = :genreId " +
+            "GROUP BY a.id ORDER BY g.id, COUNT(pl.idx) DESC " +
+            "LIMIT :limit", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findGenreAlbumList(Long genreId, int limit);
 }

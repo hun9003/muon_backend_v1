@@ -79,7 +79,6 @@ public class Test {
 
     }
 
-
     public static String makeLyrics(String lyrics) {
         var lyricsArr = List.of(lyrics.split("\\n"));
         var lyricsArr1 = lyricsArr.stream().map(

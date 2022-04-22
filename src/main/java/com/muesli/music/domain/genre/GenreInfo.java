@@ -1,7 +1,10 @@
 package com.muesli.music.domain.genre;
 
+import com.muesli.music.domain.album.AlbumInfo;
 import lombok.Getter;
 import lombok.ToString;
+
+import java.util.List;
 
 public class GenreInfo {
 
@@ -15,6 +18,7 @@ public class GenreInfo {
         private final String title;
         private final String description;
         private final int views;
+        private List<AlbumInfo.GenreAlbumInfo> albumList;
 
         public Main(Genre genre) {
             this.id = genre.getId();
@@ -24,6 +28,10 @@ public class GenreInfo {
             this.title = genre.getTitle();
             this.description = genre.getDescription();
             this.views = genre.getViews();
+        }
+
+        public void setAlbumList(List<AlbumInfo.GenreAlbumInfo> albumList) {
+            this.albumList = albumList;
         }
     }
 }

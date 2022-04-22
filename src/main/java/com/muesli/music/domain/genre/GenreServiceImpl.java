@@ -1,7 +1,6 @@
 package com.muesli.music.domain.genre;
 
 import com.muesli.music.common.util.KeywordScanner;
-import com.muesli.music.domain.track.TrackInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -45,10 +44,5 @@ public class GenreServiceImpl implements GenreService {
             System.out.println(item);
         }
         return itemList;
-    }
-
-    @Override
-    public List<TrackInfo.TrackBasicInfo> getGenreTrackList(Long genreId) {
-        return null;
     }
 }

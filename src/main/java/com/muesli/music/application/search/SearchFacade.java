@@ -28,69 +28,69 @@ public class SearchFacade {
     private final AlbumService albumService;
     private final ArtistService artistService;
     private final UsertokenService usertokenService;
-    /*
-    검색 요구사항
 
-    - 키워드에 대한 결과 리스트 전송
-     */
     /**
-     * 트랙 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * 키워드를 통해 전체(트랙, 앨범, 아티스트, 가사 정보) 검색
+     * @param command 검색을 위한 데이터 객체
+     * @param pageable 검색 결과 페이징 처리를 위한 객체
+     * @return 전체 검색 결과 정보
      */
     public Map<String, List> retrieveSearchAll(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("SearchFacade :: retrieveNewTrack");
         var searchMap = new HashMap<String, List>();
+        // 각 검색 키워드별 결과 리스트 호출
         var trackList = trackService.getSearchTrack(command, pageable);
         var albumList = albumService.getSearchAlbum(command, pageable);
         var artistList = artistService.getSearchArtist(command, pageable);
         var lyricsList = trackService.getSearchLyrics(command, pageable);
+
+        // 객체에 결과 저장
         searchMap.put("trackList", trackList);
         searchMap.put("albumList", albumList);
         searchMap.put("artistList", artistList);
         searchMap.put("lyricsList", lyricsList);
+
         return searchMap;
     }
 
     /**
      * 트랙 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색을 위한 데이터 객체
+     * @param pageable 검색 결과 페이징 처리를 위한 객체
+     * @return 트랙 검색 결과 정보
      */
     public List<TrackInfo.SearchInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("SearchFacade :: retrieveNewTrack");
+        System.out.println("SearchFacade :: retrieveSearchTrack");
         return trackService.getSearchTrack(command, pageable);
     }
 
     /**
      * 앨범 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색을 위한 데이터 객체
+     * @param pageable 검색 결과 페이징 처리를 위한 객체
+     * @return 앨범 검색 결과 정보
      */
     public List<AlbumInfo.SearchInfo> retrieveSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("SearchFacade :: retrieveNewAlbum");
+        System.out.println("SearchFacade :: retrieveSearchAlbum");
         return albumService.getSearchAlbum(command, pageable);
     }
 
     /**
      * 아티스트 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색을 위한 데이터 객체
+     * @param pageable 검색 결과 페이징 처리를 위한 객체
+     * @return 아티스트 검색 결과 정보
      */
     public List<ArtistInfo.SearchInfo> retrieveSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
-        System.out.println("SearchFacade :: retrieveNewArtist");
+        System.out.println("SearchFacade :: retrieveSearchArtist");
         return artistService.getSearchArtist(command, pageable);
     }
 
     /**
      * 가사 키워드 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색을 위한 데이터 객체
+     * @param pageable 검색 결과 페이징 처리를 위한 객체
+     * @return 가사 검색 결과 정보
      */
     public List<TrackInfo.SearchLyricsInfo> retrieveSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("SearchFacade :: retrieveSearchLyrics");
@@ -99,12 +99,13 @@ public class SearchFacade {
 
     /**
      * 타입별 컨텐츠 개수 조회
-     * @param command
-     * @param type
+     * @param command 검색을 위한 데이터 객체
+     * @param type 검색 대상 타입 (트랙, 앨범, 아티스트, 가사)
      * @return
      */
     public int getSearchCount(SearchCommand.SearchRequest command, String type) {
-        System.out.println("SearchFacade :: retrieveSearchLyrics");
+        System.out.println("SearchFacade :: getSearchCount");
+        // TODO 상수 저장 필요
         switch (type) {
             case "track" : return trackService.getSearchTrackCount(command);
             case "album" : return albumService.getSearchAlbumCount(command);
@@ -115,20 +116,21 @@ public class SearchFacade {
     }
 
     /**
-     * 검색 시 키워드 히스토라에 저장 후 키워드 조회수 증가
-     * @param command
-     * @param token
+     * 검색 시 키워드 히스토리에 저장 후 키워드 조회수 증가
+     * @param command 키워드 저장을 위한 데이터 객체
+     * @param token 유저 토큰
      */
     public void saveSearchHistory(SearchCommand.saveSearchHistory command, String token) {
         System.out.println("SearchFacade :: saveSearchHistory");
+        // 유저 토큰을 통해 유저토큰 정보 조회
         var usertoken = usertokenService.findUsertokenInfo(token);
         searchService.saveSearchHistory(command, usertoken.getUserInfo());
     }
 
     /**
-     * 검색 자동 완성 리스트
-     * @param keyword
-     * @return
+     * 키워드 자동 완성을 위한 키워드 리스트
+     * @param keyword 키워드
+     * @return 키워드 정보 리스트
      */
     public List<KeywordInfo> getSearchKeywordList(String keyword) {
         System.out.println("SearchFacade :: getSearchKeywordList");

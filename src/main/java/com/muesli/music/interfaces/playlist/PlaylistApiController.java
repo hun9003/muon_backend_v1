@@ -32,7 +32,7 @@ public class PlaylistApiController {
                                            @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, usertoken, pageable);
+        var playlistInfo = playlistFacade.findPlaylistInfo(playlistId, pageable, usertoken);
         var response = playlistDtoMapper.of(playlistInfo);
         return CommonResponse.success(response);
     }

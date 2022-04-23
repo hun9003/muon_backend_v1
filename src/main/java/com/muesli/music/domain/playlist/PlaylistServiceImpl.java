@@ -32,12 +32,11 @@ public class PlaylistServiceImpl implements PlaylistService{
     /**
      * 플레이리스트 조회
      * @param playlistId
-     * @param userInfo
      * @return
      */
     @Override
     @Transactional
-    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo, Pageable pageable) {
+    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, UserInfo.Main userInfo) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfo");
         var playlist = playlistReader.getPlaylistBy(playlistId);
 

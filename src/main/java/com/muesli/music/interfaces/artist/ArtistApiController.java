@@ -22,14 +22,13 @@ public class ArtistApiController {
     /**
      * 아티스트 조회
      * @param artistId
-     * @param usertoken
      * @return
      */
     @GetMapping("/{id}")
-    public CommonResponse retrieveArtist(@PathVariable("id") Long artistId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken,
+    public CommonResponse retrieveArtist(@PathVariable("id") Long artistId,
                                          @PageableDefault(size = 100, page = 1) Pageable pageable) {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var artistInfo = artistFacade.findArtistInfo(artistId, usertoken, pageable);
+        var artistInfo = artistFacade.findArtistInfo(artistId, pageable);
         var response = artistDtoMapper.of(artistInfo);
         return CommonResponse.success(response);
     }

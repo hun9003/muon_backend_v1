@@ -2,13 +2,12 @@ package com.muesli.music.domain.album;
 
 import com.muesli.music.domain.genre.GenreInfo;
 import com.muesli.music.domain.search.SearchCommand;
-import com.muesli.music.domain.user.UserInfo;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface AlbumService {
-    AlbumInfo.Main findAlbumInfo(Long albumId, UserInfo.Main userInfo);
+    AlbumInfo.Main findAlbumInfo(Long albumId);
 
     List<AlbumInfo.Main> getLikeList(String usertoken, Pageable pageable);
 

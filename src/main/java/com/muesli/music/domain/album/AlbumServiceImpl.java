@@ -5,7 +5,6 @@ import com.muesli.music.domain.genre.GenreInfo;
 import com.muesli.music.domain.genre.GenreReader;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackReader;
-import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
@@ -32,12 +31,11 @@ public class AlbumServiceImpl implements AlbumService {
     /**
      * 앨범 정보 가져오기
      * @param albumId
-     * @param userInfo
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public AlbumInfo.Main findAlbumInfo(Long albumId, UserInfo.Main userInfo) {
+    public AlbumInfo.Main findAlbumInfo(Long albumId) {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
         var album = albumReader.getAlbumBy(albumId);
         album.setViews(album.getViews());

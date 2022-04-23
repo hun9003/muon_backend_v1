@@ -22,6 +22,12 @@ public class GenreFacade {
     private final AlbumService albumService;
     private final TrackService trackService;
 
+    /**
+     * 키워드를 통해 장르 리스트 호출
+     * @param command 장르 데이터 서치를 위한 객체
+     * @return
+     */
+    @Deprecated 
     public List<Object> getGenreItemList(GenreCommand.GenreRequest command) {
         System.out.println("GenreFacade :: getGenreItemList");
         return genreService.getGenreItemList(command);
@@ -29,9 +35,9 @@ public class GenreFacade {
 
     /**
      * 장르별 앨범 리스트
-     * @param genreId
-     * @param pageable
-     * @return
+     * @param genreId 장르 PK
+     * @param pageable 앨범 리스트 페이징을 위한 객체
+     * @return 장르별 앨범 정보 리스트
      */
     public List<AlbumInfo.GenreAlbumInfo> retrieveGenreAlbumList(Long genreId, Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveGenreAlbumList");
@@ -40,8 +46,8 @@ public class GenreFacade {
 
     /**
      * 전체 장르별 앨범 리스트
-     * @param pageable
-     * @return
+     * @param pageable 앨범 리스트 페이징을 위한 객체
+     * @return 앨범 리스트가 담긴 장르 정보 리스트
      */
     public List<GenreInfo.Main> retrieveGenreAlbumListAll(Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveGenreAlbumListAll");
@@ -50,10 +56,10 @@ public class GenreFacade {
 
     /**
      * 장르별 곡 리스트
-     * @param genreId
-     * @param type
-     * @param pageable
-     * @return
+     * @param genreId 장르 PK
+     * @param type order 타입
+     * @param pageable 앨범 리스트 페이징을 위한 객체
+     * @return 장르별 곡 정보 리스트
      */
     public List<TrackInfo.GenreTrackInfo> retrieveGenreTrackList(Long genreId, String type, Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveGenreAlbumList");

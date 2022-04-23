@@ -29,12 +29,11 @@ public class ArtistServiceImpl implements ArtistService{
     /**
      * 아티스트 정보 가져오기
      * @param artistId
-     * @param userInfo
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public ArtistInfo.Main findArtistInfo(Long artistId, UserInfo.Main userInfo, Pageable pageable) {
+    public ArtistInfo.Main findArtistInfo(Long artistId, Pageable pageable) {
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);

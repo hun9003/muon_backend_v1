@@ -19,23 +19,23 @@ public class ArtistFacade {
 
     /**
      * 아티스트 정보 조회
-     * @param artistId
-     * @param usertoken
-     * @return
+     * @param artistId 아티스트 PK
+     * @param pageable 아티스트의 앨범과 트랙 페이징 처리를 위한 객체
+     * @return 아티스트 메인 정보
      */
-    public ArtistInfo.Main findArtistInfo(Long artistId, String usertoken, Pageable pageable) {
+    public ArtistInfo.Main findArtistInfo(Long artistId, Pageable pageable) {
         System.out.println("ArtistFacade :: findArtistInfo");
-        var usertokenInfo = usertokenService.findUsertokenInfo(usertoken);
-        return artistService.findArtistInfo(artistId, usertokenInfo.getUserInfo(), pageable);
+        return artistService.findArtistInfo(artistId, pageable);
     }
 
     /**
      * 좋아하는 아티스트 리스트 조회
-     * @param token
-     * @return
+     * @param token 유저 토큰
+     * @return 아티스트 정보 리스트
      */
     public List<ArtistInfo.Main> retrieveLikeList(String token, Pageable pageable) {
         System.out.println("ArtistFacade :: retrieveLikeList");
+        // 유저 토큰 유효성 검사
         usertokenService.checkUsertoken(token);
         return artistService.getLikeList(token, pageable);
     }

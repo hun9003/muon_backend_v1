@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PlaylistService {
     // 플레이리스트 조회
-    PlaylistInfo.Main findPlaylistInfo(Long playlistId, UserInfo.Main userInfo, Pageable pageable);
+    PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, UserInfo.Main userInfo);
 
     // 플레이리스트 목록
     List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable);

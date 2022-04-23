@@ -23,8 +23,8 @@ public class UserFacade {
 
     /**
      * 회원가입
-     * @param command
-     * @return
+     * @param command 회원가입을 위한 유저 데이터 객체
+     * @return 가입 된 유저 정보
      */
     public UserInfo.Main registerUser(UserCommand.RegisterUserRequest command) {
         System.out.println("UserFacade :: registerUser");
@@ -56,7 +56,7 @@ public class UserFacade {
      * 유저 로그인
      * @param email 이메일
      * @param password 패스워드
-     * @return
+     * @return 로그인한 유저 정보
      */
     public UserInfo.UsertokenInfo loginUser(String email, String password) {
         System.out.println("UserFacade :: loginUser");
@@ -74,8 +74,8 @@ public class UserFacade {
 
     /**
      * 유저 토큰 생성
-     * @param command
-     * @return
+     * @param command 토큰 생성을 위한 데이터 객체
+     * @return 유저 토큰 정보
      */
     public UserInfo.UsertokenInfo registerUsertoken(UsertokenCommand command) {
         System.out.println("UserFacade :: registerUsertoken");
@@ -84,10 +84,10 @@ public class UserFacade {
 
     /**
      * 이메일 인증
-     * @param email
+     * @param email 이메일
      */
     public void changeUserConfirmed(String email) {
-        System.out.println("UserFacade :: changeUserConrimed");
+        System.out.println("UserFacade :: changeUserConfirmed");
         userService.changeConfirmed(email);
     }
 

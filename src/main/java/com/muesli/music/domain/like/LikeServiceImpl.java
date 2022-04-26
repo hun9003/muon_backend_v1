@@ -31,7 +31,7 @@ public class LikeServiceImpl implements LikeService {
     public LikeInfo.Main findLikeBy(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: findLikeBy");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         var likeCount = likeReader.getLikeCount(command.getLikeableId(), command.getLikeableType());
         return new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getLikeableId(), command.getLikeableType()), likeCount, command.getLikeableId());
     }
@@ -46,7 +46,7 @@ public class LikeServiceImpl implements LikeService {
     public List<LikeInfo.Main> findLikeBy(LikeCommand.ShowLikeListRequest command, String token) {
         System.out.println("LikeServiceImpl :: findLikeBy");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
 
         var type = "";
         switch (command.getType()) {
@@ -75,7 +75,7 @@ public class LikeServiceImpl implements LikeService {
     public LikeInfo.Main registerLike(LikeCommand.RegisterLikeRequest command, String token) {
         System.out.println("LikeServiceImpl :: registerLike");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         var initLike = command.toEntity(usertoken.getUser().getId());
         var like = likeStore.store(initLike);
         var likeInfo = new LikeInfo.Main(like);
@@ -94,12 +94,12 @@ public class LikeServiceImpl implements LikeService {
     public LikeInfo.Main changeDoLike(Long likeId, String token) {
         System.out.println("LikeServiceImpl :: changeDoLike");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         var like = likeReader.getLikeBy(likeId);
         if(Objects.equals(usertoken.getUser().getId(), like.getUserId())) {
             like.doLike();
         } else {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
         var likeInfo = new LikeInfo.Main(like);
         var count = likeReader.getLikeCount(likeInfo.getLikeableId(), likeInfo.getLikeableType());
@@ -118,11 +118,11 @@ public class LikeServiceImpl implements LikeService {
         System.out.println("LikeServiceImpl :: changeDisLike");
         var usertoken = usertokenReader.getUsertoken(token);
         var like = likeReader.getLikeBy(likeId);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         if(Objects.equals(usertoken.getUser().getId(), like.getUserId())) {
             like.doDisLike();
         } else {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
         var likeInfo = new LikeInfo.Main(like);
         var count = likeReader.getLikeCount(likeInfo.getLikeableId(), likeInfo.getLikeableType());

@@ -31,8 +31,8 @@ POST http://localhost:8080/api/v1/user/login
 Content-Type: application/json
 
 {
-  "email" : "hun9003@naver.com",
-  "password": "wlsgns12"
+  "email" : "jinhun3892123@gmail.com",
+  "password": "12345678"
 }
 
 ### 좋아요
@@ -213,3 +213,13 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/genre/1/track
 authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
+
+### 비밀번호 변경
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization:Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345678",
+  "newPassword" : "12345679"
+}

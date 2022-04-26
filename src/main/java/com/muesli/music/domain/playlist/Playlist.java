@@ -51,7 +51,7 @@ public class Playlist extends AbstractEntity {
     public Playlist(Long id, String name, Long isPublic, String description, Long userId) {
         if(StringUtils.isEmpty(name)) throw new InvalidParamException("empty name");
         if(StringUtils.isEmpty(description)) throw new InvalidParamException("empty description");
-        if(userId == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+        if(userId == null) throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
         if(isPublic == null) isPublic = 0L;
 
         this.id = id;

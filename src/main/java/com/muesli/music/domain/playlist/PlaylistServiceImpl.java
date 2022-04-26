@@ -41,7 +41,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         var playlist = playlistReader.getPlaylistBy(playlistId);
 
         if (playlist.getIsPublic() == 0) {
-            if (!Objects.equals(playlist.getUserId(), userInfo.getId())) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            if (!Objects.equals(playlist.getUserId(), userInfo.getId())) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
 
         playlist.setViews(playlist.getViews());
@@ -111,7 +111,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         if (Objects.equals(userInfo.getId(), playlist.getUserId())) {
             playlist.setPlaylist(initPlaylist);
         } else {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
     }
 
@@ -129,7 +129,7 @@ public class PlaylistServiceImpl implements PlaylistService{
             playlistStore.deletePlaylistTrack(playlistId);
             playlistStore.delete(playlist);
         } else {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
     }
 
@@ -143,7 +143,7 @@ public class PlaylistServiceImpl implements PlaylistService{
     public List<PlaylistInfo.Main> getLikeList(String token, Pageable pageable) {
         System.out.println("PlaylistServiceImpl :: getLikeList");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         var userInfo = new UserInfo.Main(usertoken.getUser());
         var playlistInfoList =  playlistReader.getPlaylistLikeList(userInfo);
         // 페이징
@@ -163,7 +163,7 @@ public class PlaylistServiceImpl implements PlaylistService{
 
         // 사용자 유효성 체크
         if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
 
         var trackList = playlist.getPlaylistTrackList();
@@ -196,7 +196,7 @@ public class PlaylistServiceImpl implements PlaylistService{
 
         // 사용자 유효성 체크
         if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
 
         var initTrackList = command.getTrackList();
@@ -222,7 +222,7 @@ public class PlaylistServiceImpl implements PlaylistService{
 
         // 사용자 유효성 체크
         if (!Objects.equals(userInfo.getId(), playlist.getUserId())) {
-            throw new BaseException(ErrorCode.COMMON_PERMISSION_FALE);
+            throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         }
 
         return playlist.getPlaylistTrackList();

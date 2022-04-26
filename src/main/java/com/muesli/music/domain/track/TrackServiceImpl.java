@@ -195,7 +195,7 @@ public class TrackServiceImpl implements TrackService {
         System.out.println("TrackServiceImpl :: getUserHistoryTrack");
         // 페이징
         var pageInfo = new PageInfo(pageable, 100);
-        if(userInfo.getUserInfo().getId() == null) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+        if(userInfo.getUserInfo().getId() == null) throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
         var trackList = trackReader.getUserHistoryTrack(userInfo.getUserInfo().getId(),pageInfo.getStartNum(), pageInfo.getEndNum());
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : trackList) {
@@ -304,7 +304,10 @@ public class TrackServiceImpl implements TrackService {
 
         switch (type) {
             case "day":
-                searchDate = LocalDate.now();
+                // TODO 임시 DATE
+//                searchDate = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
+                searchDate = LocalDate.parse("2022-03-26", formatter);
                 beforeBegin = searchDate.minusDays(2 + nowMinusCount).atTime(0, 0);
                 beforeEnd = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);
                 afterBegin = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);

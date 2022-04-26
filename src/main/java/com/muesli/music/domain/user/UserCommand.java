@@ -15,6 +15,8 @@ public class UserCommand {
         private final String email;
         private final String password;
         private final String phoneNumber;
+        private final Long gender;
+        private final String birthDay;
 
         public User toEntity() {
             System.out.println("UserCommand.RegisterUserRequest :: toEntity");

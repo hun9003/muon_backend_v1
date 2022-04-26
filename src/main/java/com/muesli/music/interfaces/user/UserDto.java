@@ -37,12 +37,19 @@ public class UserDto {
         @NotEmpty(message = "전화번호(phoneNumber)은 필수값입니다.")
         private String phoneNumber;
 
+        // 생년월일, 성별
+        private Long gender;
+
+        private String birthDay;
+
         public UserCommand.RegisterUserRequest toCommand() {
             return UserCommand.RegisterUserRequest.builder()
                     .username(username)
                     .email(email)
                     .password(password)
                     .phoneNumber(phoneNumber)
+                    .gender(gender)
+                    .birthDay(birthDay)
                     .build();
         }
     }

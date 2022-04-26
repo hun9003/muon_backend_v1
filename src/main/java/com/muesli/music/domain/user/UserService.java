@@ -10,4 +10,11 @@ public interface UserService {
     void changeConfirmed(String email);
 
     void registerUserUuid(String email);
+
+    // 닉네임 중복 여부
+    // 비밀번호 변경
+    // 프로필 사진 업로드
+    // 사용자 선호 취향 리스트
+
+
 }

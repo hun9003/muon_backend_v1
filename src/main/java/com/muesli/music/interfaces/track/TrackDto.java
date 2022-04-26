@@ -192,6 +192,19 @@ public class TrackDto {
         private final String albumName;
     }
 
+    @Getter
+    @ToString
+    @Builder
+    public static class NewestTrackList {
+        private final String type;
+        private final List<NewestTrackInfo> list;
+
+        public NewestTrackList(String type, List<NewestTrackInfo> list) {
+            this.type = type;
+            this.list = list;
+        }
+    }
+
     /**
      * 최근 들은 곡 정보
      */
@@ -213,6 +226,19 @@ public class TrackDto {
 
         private final Long albumId;
         private final String albumName;
+    }
+
+    @Getter
+    @ToString
+    @Builder
+    public static class HistoryTrackList {
+        private final String type;
+        private final List<HistoryTrackInfo> list;
+
+        public HistoryTrackList(String type, List<HistoryTrackInfo> list) {
+            this.type = type;
+            this.list = list;
+        }
     }
 
     /**

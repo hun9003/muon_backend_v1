@@ -102,6 +102,19 @@ public class AlbumDto {
         private final String artistName;
     }
 
+    @Getter
+    @ToString
+    @Builder
+    public static class NewestAlbumList {
+        private final String type;
+        private final List<NewestAlbumInfo> list;
+
+        public NewestAlbumList(String type, List<NewestAlbumInfo> list) {
+            this.type = type;
+            this.list = list;
+        }
+    }
+
     /**
      * 앨범 검색 결과 정보
      */

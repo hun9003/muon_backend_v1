@@ -81,4 +81,11 @@ public class UserServiceImpl implements UserService {
         var user = userReader.getUser(email);
         user.setUuid();
     }
+
+    @Override
+    public boolean isDuplicateUsername(String username) {
+        System.out.println("UserServiceImpl :: isDuplicateUsername");
+        var user = userReader.getUserByusername(username);
+        return user.getId() != null;
+    }
 }

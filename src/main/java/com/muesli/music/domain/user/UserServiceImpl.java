@@ -1,5 +1,8 @@
 package com.muesli.music.domain.user;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.HashGenerator;
 import com.muesli.music.domain.user.token.UsertokenCommand;
 import com.muesli.music.domain.user.token.UsertokenStore;
 import lombok.RequiredArgsConstructor;
@@ -44,15 +47,14 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 유저 로그인
-     * @param email
-     * @param password
+     * @param command
      * @return
      */
     @Override
     @Transactional
-    public UserInfo.UsertokenInfo loginUser(String email, String password) {
+    public UserInfo.UsertokenInfo loginUser(UserCommand.LoginUserRequest command) {
         System.out.println("UserServiceImpl :: loginUser");
-        var user = userReader.getUser(email, password);
+        var user = userReader.getUser(command.getEmail(), HashGenerator.hashPassword(command.getEmail(), command.getPassword()));
         var initUsertoken = UsertokenCommand.makeToken(user);
         var usertoken = usertokenStore.store(initUsertoken);
         return new UserInfo.UsertokenInfo(usertoken, new UserInfo.Main(user));
@@ -99,7 +101,14 @@ public class UserServiceImpl implements UserService {
      * @param command
      */
     @Override
-    public void changePassword(UserCommand.ChangeUserPassword command) {
-        
+    @Transactional
+    public void changePassword(UserCommand.ChangeUserPassword command, String email) {
+        System.out.println("UserServiceImpl :: changePassword");
+        var user = userReader.getUser(email);
+        if (user.getPassword().equals(HashGenerator.hashPassword(email, command.getPassword()))) {
+            user.setPassword(email, command.getNewPassword());
+        } else {
+            throw new BaseException(ErrorCode.USER_BAD_PASSWORD);
+        }
     }
 }

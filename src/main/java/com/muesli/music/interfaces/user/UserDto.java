@@ -87,8 +87,8 @@ public class UserDto {
         private final String username;
         private final String email;
         private final String phoneNumber;
-        private String gender;
-        private LocalDate birthday;
+        private final String gender;
+        private final LocalDate birthday;
 
         public RegisterResponse(UserInfo.Main userInfo) {
             this.username = userInfo.getUsername();
@@ -119,6 +119,21 @@ public class UserDto {
     public static class PlaylistUserInfo {
         private final Long id;
         private final String username;
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class ChangePasswordRequest {
+        private final String password;
+        private final String newPassword;
+
+        public UserCommand.ChangeUserPassword toCommand() {
+            return UserCommand.ChangeUserPassword.builder()
+                    .password(password)
+                    .newPassword(newPassword)
+                    .build();
+        }
     }
 
 }

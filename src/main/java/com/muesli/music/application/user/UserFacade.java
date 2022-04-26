@@ -2,7 +2,6 @@ package com.muesli.music.application.user;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
-import com.muesli.music.common.util.HashGenerator;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserService;
@@ -32,10 +31,10 @@ public class UserFacade {
         var userinfo = userService.findUserInfo(command.getEmail());
 
         // 2. 가입한 유저가 있으면 중복 오류 던지기
-        if (userinfo.getId() != null) throw new BaseException(ErrorCode.COMMON_DUPLICATION_EMAIL);
+        if (userinfo.getId() != null) throw new BaseException(ErrorCode.USER_DUPLICATION_EMAIL);
 
         // 3. 닉네임이 중복 되는지 검색
-        if (userService.isDuplicateUsername(command.getUsername())) throw new BaseException(ErrorCode.COMMON_DUPLICATION_USERNAME);
+        if (userService.isDuplicateUsername(command.getUsername())) throw new BaseException(ErrorCode.USER_DUPLICATION_USERNAME);
 
         //  4. 가입 처리
         var user = userService.registerUser(command);
@@ -57,14 +56,13 @@ public class UserFacade {
 
     /**
      * 유저 로그인
-     * @param email 이메일
-     * @param password 패스워드
+     * @param command
      * @return 로그인한 유저 정보
      */
-    public UserInfo.UsertokenInfo loginUser(String email, String password) {
+    public UserInfo.UsertokenInfo loginUser(UserCommand.LoginUserRequest command) {
         System.out.println("UserFacade :: loginUser");
         // 1. 아이디, 비밀번호가 일치하는지 확인 후 일치하면 토큰 생성
-        var usertokenInfo = userService.loginUser(email, HashGenerator.hashPassword(email, password));
+        var usertokenInfo = userService.loginUser(command);
 
         // 2. 이메일 인증이 되어있지 않다면 오류 던지기
 //        if (userinfo.getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
@@ -94,5 +92,14 @@ public class UserFacade {
         userService.changeConfirmed(email);
     }
 
+    /**
+     * 비밀번호 변경
+     * @param command
+     */
+    public void changeUserPassword(UserCommand.ChangeUserPassword command, String token) {
+        System.out.println("UserFacade :: changeUserPassword");
+        var usertoken = usertokenService.findUsertokenInfo(token);
+        userService.changePassword(command, usertoken.getUserInfo().getEmail());
+    }
 
 }

@@ -69,4 +69,8 @@ public class User extends AbstractEntity {
     public void setUuid() {
         this.uuid = UUIDGenerator.makeUUID();
     }
+
+    public void setPassword(String email, String password) {
+        this.password = HashGenerator.hashPassword(email, password);
+    }
 }

@@ -5,7 +5,7 @@ public interface UserService {
 
     UserInfo.Main findUserInfo(String email);
 
-    UserInfo.UsertokenInfo loginUser(String email, String password);
+    UserInfo.UsertokenInfo loginUser(UserCommand.LoginUserRequest command);
 
     void changeConfirmed(String email);
 
@@ -15,7 +15,7 @@ public interface UserService {
     boolean isDuplicateUsername(String username);
 
     // 비밀번호 변경
-    void changePassword(UserCommand.ChangeUserPassword command);
+    void changePassword(UserCommand.ChangeUserPassword command, String email);
 
     // 프로필 사진 업로드
     // 사용자 선호 취향 리스트

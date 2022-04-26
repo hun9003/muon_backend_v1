@@ -30,7 +30,7 @@ public class UsertokenServiceImpl implements UsertokenService {
         var usertoken = usertokenReader.getUsertoken(token);
         UserInfo.Main userInfo;
         try {
-            if (usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis()))) throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+            if (usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis()))) throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
             userInfo = new UserInfo.Main(userReader.getUser(usertoken.getUser()));
         } catch (Exception e){
             userInfo = new UserInfo.Main(new User());
@@ -61,6 +61,6 @@ public class UsertokenServiceImpl implements UsertokenService {
         System.out.println("UsertokenServiceImpl :: checkUsertoken");
         var usertoken = usertokenReader.getUsertoken(token);
         if (usertoken.getUploadAt() == null || usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis())))
-            throw new BaseException(ErrorCode.COMMON_BAD_USERTOKEN);
+            throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
     }
 }

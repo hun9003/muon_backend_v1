@@ -3,6 +3,7 @@ package com.muesli.music.interfaces.track;
 import com.muesli.music.application.track.TrackFacade;
 import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/tracks")
+@RequestMapping("/api/v1/track")
 public class TrackApiController {
     private final TrackFacade trackFacade;
     private final TrackDtoMapper trackDtoMapper;
@@ -86,7 +87,8 @@ public class TrackApiController {
     public CommonResponse retrieveNewTrack(@PageableDefault(size = 50, page = 1) Pageable pageable) {
         System.out.println("TrackApiController :: retrieveNewTrack");
         var trackList = trackFacade.retrieveNewTrack(pageable);
-        var response = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var response = new TrackDto.NewestTrackList(Constant.Item.TRACK, trackDtoList);
         return CommonResponse.success(response);
     }
 
@@ -101,7 +103,8 @@ public class TrackApiController {
         System.out.println("TrackApiController :: retrieveUserHistoryTrack");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var trackList = trackFacade.retrieveUserHistoryTrack(usertoken, pageable);
-        var response = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var response = new TrackDto.HistoryTrackList(Constant.Item.TRACK, trackDtoList);
         return CommonResponse.success(response);
     }
 

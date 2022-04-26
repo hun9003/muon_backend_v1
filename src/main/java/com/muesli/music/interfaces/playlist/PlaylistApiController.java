@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/playlists")
+@RequestMapping("/api/v1/playlist")
 public class PlaylistApiController {
     private final PlaylistFacade playlistFacade;
     private final PlaylistDtoMapper playlistDtoMapper;

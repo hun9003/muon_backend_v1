@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.album;
 
 import com.muesli.music.application.album.AlbumFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/albums")
+@RequestMapping("/api/v1/album")
 public class AlbumApiController {
     private final AlbumFacade albumFacade;
     private final AlbumDtoMapper albumDtoMapper;
@@ -22,7 +23,6 @@ public class AlbumApiController {
     /**
      * 앨범 정보
      * @param albumId
-     * @param usertoken
      * @return
      */
     @GetMapping("/{id}")
@@ -59,7 +59,8 @@ public class AlbumApiController {
     public CommonResponse retrieveNewAlbum(@PageableDefault(size = 50, page = 1) Pageable pageable) {
         System.out.println("AlbumApiController :: retrieveNewTrack");
         var albumList = albumFacade.retrieveNewAlbum(pageable);
-        var response = albumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        var albumDtoList = albumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        var response = new AlbumDto.NewestAlbumList(Constant.Item.ALBUM, albumDtoList);
         return CommonResponse.success(response);
     }
 

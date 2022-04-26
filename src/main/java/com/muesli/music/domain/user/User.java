@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Entity
@@ -41,19 +41,24 @@ public class User extends AbstractEntity {
     private int confirmed;
     @Column(name="confirmed_at")
     private Timestamp confirmedAt;
+    @Column(name="gender")
+    private String gender;
+    @Column(name="birthday")
+    private LocalDate birthday;
 
 
     @Builder
-    public User(String username, String email, String password, String phoneNumber) {
+    public User(String username, String email, String password, String phoneNumber, String gender, LocalDate birthday) {
         if (StringUtils.isEmpty(username)) throw new InvalidParamException("empty username");
         if (StringUtils.isEmpty(email)) throw new InvalidParamException("empty email");
         if (StringUtils.isEmpty(password)) throw new InvalidParamException("empty password");
-        if (StringUtils.isEmpty(phoneNumber)) throw new InvalidParamException("empty phone_number");
 
         this.username = username;
         this.email = email;
         this.password = HashGenerator.hashPassword(email, password);
         this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birthday = birthday;
     }
 
     public void changeConfirmed() {

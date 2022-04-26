@@ -38,4 +38,10 @@ public class UserReaderImpl implements UserReader {
         System.out.println("UserReaderImpl :: getUser");
         return userRepository.findById(userId).orElse(new User());
     }
+
+    @Override
+    public User getUserByusername(String username) {
+        System.out.println("UserReaderImpl :: getUserByusername");
+        return userRepository.findFirstByUsername(username).orElse(new User());
+    }
 }

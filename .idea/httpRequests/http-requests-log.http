@@ -1,3 +1,240 @@
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun38921234@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthday" : "1995-07-04"
+}
+
+<> 2022-04-26T163044.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892123@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthday" : "1995-07-04"
+}
+
+<> 2022-04-26T162323.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892123@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T162306.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892123@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T162216.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892123@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161619.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun3892123@gmail.com",
+  "password": "12345678",
+  "username": "테스트32132",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161530.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161238.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161225.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "01000000000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161210.400.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T161126.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T160617.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "gender" : "M",
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T160450.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "gender" : 1,
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T160439.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "gender" : 1,
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T160053.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "jinhun389212@gmail.com",
+  "password": "12345678",
+  "username": "테스트",
+  "phoneNumber": "010-0000-0000",
+  "gender" : 1,
+  "birthDay" : "1995-07-04"
+}
+
+<> 2022-04-26T160007.200.json
+
+###
+
 GET http://localhost:8080/api/v1/genre/1/track
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -273,181 +510,6 @@ authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 <> 2022-04-20T162620.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T162551.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T154343.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/likeables
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T154338.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/likes/840
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T154330.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "Track"
-}
-
-<> 2022-04-20T154303.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "Track"
-}
-
-<> 2022-04-20T154130.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "Track"
-}
-
-<> 2022-04-20T154124.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "Track"
-}
-
-<> 2022-04-20T152150.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "Track"
-}
-
-<> 2022-04-20T152132.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151626.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151529.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151526.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151502.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151457.200.json
-
-###
-
-POST http://localhost:8080/api/v1/likes
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 42860,
-  "likeableType" : "App\\Track"
-}
-
-<> 2022-04-20T151137.200.json
 
 ###
 

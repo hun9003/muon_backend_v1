@@ -11,6 +11,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 public class UserDto {
 
@@ -33,14 +35,12 @@ public class UserDto {
         @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
         private String password;
 
-        @NotBlank
-        @NotEmpty(message = "전화번호(phoneNumber)은 필수값입니다.")
+        @Pattern(regexp = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", message = "휴대폰번호에 '-'가 포함 되어야 합니다.")
         private String phoneNumber;
 
-        // 생년월일, 성별
-        private Long gender;
+        private String gender;
 
-        private String birthDay;
+        private LocalDate birthday;
 
         public UserCommand.RegisterUserRequest toCommand() {
             return UserCommand.RegisterUserRequest.builder()
@@ -49,7 +49,7 @@ public class UserDto {
                     .password(password)
                     .phoneNumber(phoneNumber)
                     .gender(gender)
-                    .birthDay(birthDay)
+                    .birthday(birthday)
                     .build();
         }
     }
@@ -87,11 +87,15 @@ public class UserDto {
         private final String username;
         private final String email;
         private final String phoneNumber;
+        private String gender;
+        private LocalDate birthday;
 
         public RegisterResponse(UserInfo.Main userInfo) {
             this.username = userInfo.getUsername();
             this.email = userInfo.getEmail();
             this.phoneNumber = userInfo.getPhoneNumber();
+            this.gender = userInfo.getGender();
+            this.birthday = userInfo.getBirthday();
         }
     }
 

@@ -34,10 +34,13 @@ public class UserFacade {
         // 2. 가입한 유저가 있으면 중복 오류 던지기
         if (userinfo.getId() != null) throw new BaseException(ErrorCode.COMMON_DUPLICATION_EMAIL);
 
-        // 3. 가입 처리
+        // 3. 닉네임이 중복 되는지 검색
+        if (userService.isDuplicateUsername(command.getUsername())) throw new BaseException(ErrorCode.COMMON_DUPLICATION_USERNAME);
+
+        //  4. 가입 처리
         var user = userService.registerUser(command);
 
-        // 4. 이메일 인증 메일 보내기
+        // 5. 이메일 인증 메일 보내기
         // 가입 축하 메일 보내기
 //        try {
 //            var registerTemplate = new MailController.MailTemplate(user.getEmail(), user.getUsername());

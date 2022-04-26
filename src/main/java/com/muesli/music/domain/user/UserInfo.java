@@ -4,6 +4,8 @@ import com.muesli.music.domain.user.token.Usertoken;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Getter
 public class UserInfo {
     @Getter
@@ -18,6 +20,8 @@ public class UserInfo {
         private final int confirmed;
         private final Long alarmMidnight;
         private final String authType;
+        private final String gender;
+        private final LocalDate birthday;
 
         public Main(User user) {
             System.out.println("UserInfo.Main :: Main");
@@ -30,6 +34,8 @@ public class UserInfo {
             this.confirmed = user.getConfirmed();
             this.alarmMidnight = user.getAlarmMidnight();
             this.authType = user.getAuthType();
+            this.gender = user.getGender();
+            this.birthday = user.getBirthday();
         }
     }
 

@@ -1,5 +1,6 @@
 package com.muesli.music.interfaces.user;
 
+import com.muesli.music.common.util.Message;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import lombok.Builder;
@@ -21,21 +22,21 @@ public class UserDto {
     @ToString
     public static class RegisterUser {
 
-        @NotBlank
-        @NotEmpty(message = "닉네임(username)은 필수값입니다.")
+        @NotBlank(message = Message.User.EMPTY_USERNAME)
+        @NotEmpty(message = Message.User.EMPTY_USERNAME)
         private String username;
 
-        @NotBlank
-        @Email(message = "email 형식에 맞아야 합니다")
-        @NotEmpty(message = "이메일(email)은 필수값입니다.")
+        @NotBlank(message = Message.User.EMPTY_EMAIL)
+        @NotEmpty(message = Message.User.EMPTY_EMAIL)
+        @Email(message = Message.User.BAD_EMAIL_PATTERN)
         private String email;
 
-        @NotBlank
-        @Length(min = 8, max = 30)
-        @NotEmpty(message = "비밀번호(password)는 필수값입니다.")
+        @NotBlank(message = Message.User.EMPTY_PASSWORD)
+        @NotEmpty(message = Message.User.EMPTY_PASSWORD)
+        @Length(min = 8, max = 30, message = Message.User.BAD_PASSWORD_PATTERN)
         private String password;
 
-        @Pattern(regexp = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", message = "휴대폰번호에 '-'가 포함 되어야 합니다.")
+        @Pattern(regexp = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", message = Message.User.BAD_PHONENUMBER_PATTERN)
         private String phoneNumber;
 
         private String gender;

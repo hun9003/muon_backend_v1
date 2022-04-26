@@ -3,13 +3,13 @@ package com.muesli.music.interfaces.user;
 import com.muesli.music.application.user.UserFacade;
 import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.util.HashGenerator;
+import com.muesli.music.common.util.Message;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 
 @Slf4j
 @RestController
@@ -30,7 +30,8 @@ public class UserApiController {
         var command = userDtoMapper.of(request);
         var userInfo = userFacade.registerUser(command);
         var response = new UserDto.RegisterResponse(userInfo);
-        return CommonResponse.success(response);
+        var message = Message.makeResponseMessage(Message.Developer.SUCCESS_SIGNUP);
+        return CommonResponse.success(response, message);
     }
 
     /**
@@ -44,9 +45,7 @@ public class UserApiController {
         var command = request.toCommand();
         var usertokenInfo = userFacade.loginUser(command);
         var response = new UserDto.LoginResponse(usertokenInfo);
-        var message = new HashMap<String, String>();
-        message.put("dev", "로그인 완료");
-        message.put("user", "로그인을 성공적으로 완료했습니다.");
+        var message = Message.makeResponseMessage(Message.Developer.SUCCESS_SIGNIN);
         return CommonResponse.success(response, message);
     }
 
@@ -76,7 +75,8 @@ public class UserApiController {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var command = request.toCommand();
         userFacade.changeUserPassword(command, usertoken);
-        return CommonResponse.success("OK");
+        var message = Message.makeResponseSuccessMessage(Message.Developer.SUCCESS_CHANGE_PASSWORD, Message.User.SUCCESS_CHANGE_PASSWORD);
+        return CommonResponse.success(null, message);
     }
 
 }

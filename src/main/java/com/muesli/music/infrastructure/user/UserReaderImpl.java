@@ -1,6 +1,5 @@
 package com.muesli.music.infrastructure.user;
 
-import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.domain.user.User;
 import com.muesli.music.domain.user.UserReader;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +29,7 @@ public class UserReaderImpl implements UserReader {
     public User getUser(String email, String password) {
         System.out.println("UserReaderImpl :: getUser");
         return userRepository.findByEmailAndPassword(email, password)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElse(new User());
     }
 
     @Override

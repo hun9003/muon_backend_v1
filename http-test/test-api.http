@@ -32,7 +32,7 @@ Content-Type: application/json
 
 {
   "email" : "jinhun3892123@gmail.com",
-  "password": "12345678"
+  "password": "123456712"
 }
 
 ### 좋아요
@@ -220,6 +220,6 @@ authorization:Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
 Content-Type: application/json
 
 {
-  "password" : "12345678",
-  "newPassword" : "12345679"
+  "password" : "12345677",
+  "newPassword" : "12345678"
 }

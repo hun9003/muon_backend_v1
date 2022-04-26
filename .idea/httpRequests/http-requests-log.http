@@ -1,3 +1,130 @@
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892123@gmail.com",
+  "password": "123456712"
+}
+
+<> 2022-04-26T184854.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345677",
+  "newPassword" : "12345678"
+}
+
+<> 2022-04-26T184555.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345679",
+  "newPassword" : "12345678"
+}
+
+<> 2022-04-26T184546.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345678",
+  "newPassword" : "12345679"
+}
+
+<> 2022-04-26T184524.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345679",
+  "newPassword" : "12345678"
+}
+
+<> 2022-04-26T184243.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345677",
+  "newPassword" : "12345679"
+}
+
+<> 2022-04-26T184106.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345678",
+  "newPassword" : "12345679"
+}
+
+<> 2022-04-26T184036.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/user/modify/password
+authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
+Content-Type: application/json
+
+{
+  "password" : "12345679",
+  "newPassword" : "12345678"
+}
+
+<> 2022-04-26T183953.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892123@gmail.com",
+  "password": "12345679"
+}
+
+<> 2022-04-26T183308.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "jinhun3892123@gmail.com",
+  "password": "12345678"
+}
+
+<> 2022-04-26T183258.200.json
+
+###
+
 PUT http://localhost:8080/api/v1/user/modify/password
 authorization: Bearer sAWkGiJ3EJy9eiVDl0a7nJMC4KDlFedJxghno2k7
 Content-Type: application/json
@@ -456,86 +583,6 @@ authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 <> 2022-04-21T114549.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/week
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-21T113911.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/month
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-21T113849.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/layout
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T180014.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/layout
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T175656.200.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/layout
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T175557.500.json
-
-###
-
-GET http://localhost:8080/api/v1/tracks/rank/layout
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-04-20T175539.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/search/1?keyword=나
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T175002.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/search/1?keyword=나
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T174823.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/search/1?keyword=나
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T174747.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/search/1?keyword=나
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-20T174634.500.json
 
 ###
 

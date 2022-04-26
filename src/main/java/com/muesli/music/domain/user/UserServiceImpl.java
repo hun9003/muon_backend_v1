@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
     public UserInfo.UsertokenInfo loginUser(UserCommand.LoginUserRequest command) {
         System.out.println("UserServiceImpl :: loginUser");
         var user = userReader.getUser(command.getEmail(), HashGenerator.hashPassword(command.getEmail(), command.getPassword()));
+        if (user.getId() == null) throw new BaseException(ErrorCode.USER_LOGIN_FALE);
         var initUsertoken = UsertokenCommand.makeToken(user);
         var usertoken = usertokenStore.store(initUsertoken);
         return new UserInfo.UsertokenInfo(usertoken, new UserInfo.Main(user));

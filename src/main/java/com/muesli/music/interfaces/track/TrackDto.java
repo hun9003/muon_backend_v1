@@ -28,6 +28,7 @@ public class TrackDto {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final Long isTitle;
         private final LyricsInfo lyricsInfo;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
@@ -50,6 +51,7 @@ public class TrackDto {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final Long isTitle;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -104,6 +106,7 @@ public class TrackDto {
         private final String url;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
         private final ArtistDto.TrackArtistInfo artistInfo;
     }
 
@@ -120,6 +123,7 @@ public class TrackDto {
         private final Long duration;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -135,6 +139,7 @@ public class TrackDto {
         private final String name;
         private final Long duration;
         private final Long adult;
+        private final Long isTitle;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -153,6 +158,7 @@ public class TrackDto {
         private final String albumImage;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
         private final Long number;
         private final Long duration;
 
@@ -175,6 +181,7 @@ public class TrackDto {
         private final String albumImage;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
         private final Long number;
         private final Long duration;
 
@@ -197,6 +204,7 @@ public class TrackDto {
         private final String albumImage;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
         private final Long number;
         private final Long duration;
 
@@ -248,6 +256,7 @@ public class TrackDto {
         private final String albumImage;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -266,6 +275,7 @@ public class TrackDto {
         private final Long id;
         private final String name;
         private final Long adult;
+        private final Long isTitle;
 
         private final String lyricsText;
         private final String lyricsTextPron;
@@ -291,6 +301,7 @@ public class TrackDto {
         private final String albumImage;
         private final String description;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;

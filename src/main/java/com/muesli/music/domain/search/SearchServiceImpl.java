@@ -100,7 +100,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     /**
-     * 검색 키워드 비공개 처리
+     * 검색 키워드 공개, 비공개 처리
      * @param keyword
      * @param isPublic
      */
@@ -108,6 +108,7 @@ public class SearchServiceImpl implements SearchService {
     @Transactional
     public void setKeywordPublic(String keyword, int isPublic) {
         System.out.println("SearchServiceImpl :: setKeywordPublic");
-
+        var initKeyword = searchReader.getSearchKeyword(keyword);
+        initKeyword.setIsPublic(isPublic);
     }
 }

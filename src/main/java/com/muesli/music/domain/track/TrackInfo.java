@@ -25,6 +25,7 @@ public class TrackInfo {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final Long isTitle;
         private final AlbumInfo.Main albumInfo;
         private final LyricsInfo lyricsInfo;
         private final ArtistInfo.Main artistInfo;
@@ -40,6 +41,7 @@ public class TrackInfo {
             this.lyricser = track.getLyricser();
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
+            this.isTitle = track.getIsTitle();
             this.lyricsInfo = null;
             this.artistInfo = artistInfo;
             this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
@@ -56,6 +58,7 @@ public class TrackInfo {
             this.lyricser = track.getLyricser();
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
+            this.isTitle = track.getIsTitle();
             this.lyricsInfo = lyricsInfo;
             this.artistInfo = artistInfo;
             this.albumInfo = new AlbumInfo.Main(track.getAlbum(), null);
@@ -77,6 +80,7 @@ public class TrackInfo {
         private final String lyricser;
         private final String arranger;
         private final Long adult;
+        private final Long isTitle;
         private final ArtistInfo.Main artistInfo;
         private final AlbumInfo.AlbumBasicInfo albumInfo;
 
@@ -90,6 +94,7 @@ public class TrackInfo {
             this.lyricser = track.getLyricser();
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
+            this.isTitle = track.getIsTitle();
             this.albumInfo = albumBasicInfo;
             this.artistInfo = artistInfo;
         }
@@ -136,6 +141,7 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -151,6 +157,7 @@ public class TrackInfo {
             var wave = track.get("wave") != null ? Long.parseLong(String.valueOf(track.get("wave"))) : null;
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
 
             this.rank = rank;
             this.wave = wave;
@@ -162,6 +169,7 @@ public class TrackInfo {
             this.description = (String) track.get("description");
             this.image = (String) track.get("image");
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -201,6 +209,7 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -212,6 +221,7 @@ public class TrackInfo {
         public NewestTrackInfo(Map<String, Object> track) {
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
 
             this.id = Long.parseLong(String.valueOf(track.get("id")));
             this.name = (String) track.get("name");
@@ -221,6 +231,7 @@ public class TrackInfo {
             this.description = (String) track.get("description");
             this.image = (String) track.get("image");
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -242,6 +253,7 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -253,6 +265,7 @@ public class TrackInfo {
         public HistoryTrackInfo(Map<String, Object> track) {
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
 
             this.id = Long.parseLong(String.valueOf(track.get("id")));
             this.name = (String) track.get("name");
@@ -262,6 +275,7 @@ public class TrackInfo {
             this.description = (String) track.get("description");
             this.image = (String) track.get("image");
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -283,6 +297,7 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -294,6 +309,7 @@ public class TrackInfo {
         public SearchInfo(Map<String, Object> track) {
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
 
             this.id = Long.parseLong(String.valueOf(track.get("id")));
             this.name = (String) track.get("name");
@@ -303,6 +319,7 @@ public class TrackInfo {
             this.description = (String) track.get("description");
             this.image = (String) track.get("image");
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -325,6 +342,7 @@ public class TrackInfo {
         private final String description;
         private final String image;
         private final Long adult;
+        private final Long isTitle;
 
         private final Long artistId;
         private final String artistName;
@@ -336,6 +354,7 @@ public class TrackInfo {
         public GenreTrackInfo(Map<String, Object> track) {
             var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
             var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
 
             this.id = Long.parseLong(String.valueOf(track.get("id")));
             this.name = (String) track.get("name");
@@ -345,6 +364,7 @@ public class TrackInfo {
             this.description = (String) track.get("description");
             this.image = (String) track.get("image");
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -362,6 +382,7 @@ public class TrackInfo {
         private final Long id;
         private final String name;
         private final Long adult;
+        private final Long isTitle;
 
         private final String lyricsText;
         private final String lyricsTextPron;
@@ -379,6 +400,7 @@ public class TrackInfo {
             var lyricsText = lyrics.get("lyricsText") != null && !lyrics.get("lyricsText").equals("null") ? String.valueOf(lyrics.get("lyricsText")) : "";
             var lyricsTextPron = lyrics.get("lyricsTextPron") != null && !lyrics.get("lyricsTextPron").equals("null") ? String.valueOf(lyrics.get("lyricsTextPron")) : "";
             var lyricsTextOriginal = lyrics.get("lyricsTextOriginal") != null && !lyrics.get("lyricsTextOriginal").equals("null") ? String.valueOf(lyrics.get("lyricsTextOriginal")) : "";
+            var isTitle = lyrics.get("isTitle") != null ? Long.parseLong(String.valueOf(lyrics.get("isTitle"))) : null;
 
             this.id = Long.parseLong(String.valueOf(lyrics.get("id")));
             this.name = (String) lyrics.get("name");
@@ -387,6 +409,7 @@ public class TrackInfo {
             this.lyricsTextOriginal = lyricsTextOriginal.replaceAll("/", "");
 
             this.adult = adult;
+            this.isTitle = isTitle;
 
             this.artistId = Long.parseLong(String.valueOf(lyrics.get("artistId")));
             this.artistName = (String) lyrics.get("artistName");

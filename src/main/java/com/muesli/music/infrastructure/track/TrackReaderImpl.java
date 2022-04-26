@@ -2,6 +2,7 @@ package com.muesli.music.infrastructure.track;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.TrackInfo;
@@ -85,10 +86,11 @@ public class TrackReaderImpl implements TrackReader {
     public List<Map<String, Object>> getSearchTrack(String keyword, String type, int start, int end) {
         System.out.println("TrackReaderImpl :: getNewTrack");
         List<Map<String, Object>> trackList;
+
         switch (type) {
-            case "similar" : trackList = trackRepository.findSearchTrackOrderBySimilar(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "newest" : trackList = trackRepository.findSearchTrackOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "popularity":
+            case Constant.Order.SIMILAR : trackList = trackRepository.findSearchTrackOrderBySimilar(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.NEWEST : trackList = trackRepository.findSearchTrackOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.POPULARITY :
             default: trackList = trackRepository.findSearchTrackOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
         }
         return trackList;
@@ -105,8 +107,8 @@ public class TrackReaderImpl implements TrackReader {
         System.out.println("TrackReaderImpl :: getGenreTrackList");
         List<Map<String, Object>> trackList;
         switch (type) {
-            case "newest" : trackList = trackRepository.findGenreTrackOrderByNewest(genreId, start, end).orElse(new ArrayList<>()); break;
-            case "popularity":
+            case Constant.Order.NEWEST : trackList = trackRepository.findGenreTrackOrderByNewest(genreId, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.POPULARITY:
             default: trackList = trackRepository.findGenreTrackOrderByPopularity(genreId, start, end).orElse(new ArrayList<>());
         }
         return trackList;

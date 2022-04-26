@@ -46,6 +46,18 @@ public class Track {
     @Column(name = "adult")
     private Long adult;
 
+    @Column(name = "downloadable")
+    private Long downloadable;
+    @Column(name = "flacable")
+    private Long flacable;
+    @Column(name = "streaming_free")
+    private Long streamingFree;
+    @Column(name = "download_free")
+    private Long downloadFree;
+    @Column(name = "is_title")
+    private Long isTitle;
+
+
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "album_id")

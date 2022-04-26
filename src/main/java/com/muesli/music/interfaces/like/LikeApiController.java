@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/likes")
+@RequestMapping("/api/v1/like")
 public class LikeApiController {
     private final LikeFacade likeFacade;
     private final LikeDtoMapper likeDtoMapper;

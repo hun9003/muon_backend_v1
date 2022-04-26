@@ -1,5 +1,6 @@
 package com.muesli.music.interfaces.track;
 
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.track.TrackCommand;
 import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.artist.ArtistDto;
@@ -87,7 +88,7 @@ public class TrackDto {
         private final List<TrackInfo> list;
 
         public TrackList(List<TrackInfo> list) {
-            this.type = "Track";
+            this.type = Constant.Item.TRACK;
             this.list = list;
         }
     }

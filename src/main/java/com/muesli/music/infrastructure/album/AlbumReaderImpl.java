@@ -3,6 +3,7 @@ package com.muesli.music.infrastructure.album;
 import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
@@ -64,9 +65,9 @@ public class AlbumReaderImpl implements AlbumReader {
         System.out.println("AlbumReaderImpl :: getSearchAlbum");
         List<Map<String, Object>> albumList;
         switch (type) {
-            case "similar" : albumList = albumRepository.findSearchAlbumOrderBySimilar(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "newest" : albumList = albumRepository.findSearchAlbumOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "popularity":
+            case Constant.Order.SIMILAR : albumList = albumRepository.findSearchAlbumOrderBySimilar(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.NEWEST : albumList = albumRepository.findSearchAlbumOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.POPULARITY :
             default: albumList = albumRepository.findSearchAlbumOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
         }
         return albumList;

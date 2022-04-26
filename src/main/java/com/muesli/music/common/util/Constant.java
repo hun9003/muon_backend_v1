@@ -22,6 +22,19 @@ public class Constant {
          * 인기도 순
          */
         public static final String POPULARITY = "popularity";
+
+        /**
+         * 가나다 순
+         */
+        public static final String ALPHA = "alpha";
+    }
+
+    public static class Item {
+        public static final String TRACK = "track";
+        public static final String ALBUM = "album";
+        public static final String ARTIST = "artist";
+        public static final String LYRICS = "lyrics";
+        public static final String PLAYLIST = "playlist";
     }
 
 }

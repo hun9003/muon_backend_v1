@@ -1,5 +1,6 @@
 package com.muesli.music.interfaces.artist;
 
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
@@ -65,7 +66,7 @@ public class ArtistDto {
         private final List<ArtistInfo> list;
 
         public ArtistList(List<ArtistInfo> list) {
-            this.type = "Artist";
+            this.type = Constant.Item.ARTIST;
             this.list = list;
         }
     }

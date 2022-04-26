@@ -2,6 +2,7 @@ package com.muesli.music.domain.like;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,10 +50,10 @@ public class LikeServiceImpl implements LikeService {
 
         var type = "";
         switch (command.getType()) {
-            case "album": type = "Album"; break;
-            case "artist": type = "Artist"; break;
-            case "track": type = "Track"; break;
-            case "playlist": type = "Playlist"; break;
+            case Constant.Item.ALBUM: type = "Album"; break;
+            case Constant.Item.ARTIST: type = "Artist"; break;
+            case Constant.Item.TRACK: type = "Track"; break;
+            case Constant.Item.PLAYLIST: type = "Playlist"; break;
             default: throw new BaseException(ErrorCode.ITEM_BAD_TYPE);
         }
 

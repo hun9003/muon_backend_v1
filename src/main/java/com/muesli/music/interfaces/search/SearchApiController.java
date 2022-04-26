@@ -3,6 +3,7 @@ package com.muesli.music.interfaces.search;
 import com.muesli.music.application.search.SearchFacade;
 import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.util.ClientUtils;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.common.util.TokenGenerator;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.ArtistInfo;
@@ -51,10 +52,10 @@ public class SearchApiController {
         var Searchrequest = new SearchDto.SearchRequest(keyword, type);
         var command = Searchrequest.toCommand();
 
-        command.setTrackCount(searchFacade.getSearchCount(command, "track"));
-        command.setAlbumCount(searchFacade.getSearchCount(command, "album"));
-        command.setArtistCount(searchFacade.getSearchCount(command, "artist"));
-        command.setLyricsCount(searchFacade.getSearchCount(command, "lyrics"));
+        command.setTrackCount(searchFacade.getSearchCount(command, Constant.Item.TRACK));
+        command.setAlbumCount(searchFacade.getSearchCount(command, Constant.Item.ALBUM));
+        command.setArtistCount(searchFacade.getSearchCount(command, Constant.Item.ARTIST));
+        command.setLyricsCount(searchFacade.getSearchCount(command, Constant.Item.LYRICS));
 
         var searchMap = searchFacade.retrieveSearchAll(command, pageable);
 
@@ -92,12 +93,12 @@ public class SearchApiController {
      */
     @GetMapping("/tracks")
     public CommonResponse retrieveTrackSearch(@RequestParam(name = "keyword") String keyword,
-                                              @RequestParam(name = "type", defaultValue = "popularity") String type,
+                                              @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveTrackSearch");
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
-        var count = searchFacade.getSearchCount(command, "track");
+        var count = searchFacade.getSearchCount(command, Constant.Item.TRACK);
         command.setTrackCount(count);
         var trackList = searchFacade.retrieveSearchTrack(command, pageable);
         var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
@@ -114,12 +115,12 @@ public class SearchApiController {
      */
     @GetMapping("/albums")
     public CommonResponse retrieveAlbumSearch(@RequestParam(name = "keyword") String keyword,
-                                              @RequestParam(name = "type", defaultValue = "popularity") String type,
+                                              @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveAlbumSearch");
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
-        var count = searchFacade.getSearchCount(command, "album");
+        var count = searchFacade.getSearchCount(command, Constant.Item.ALBUM);
         command.setAlbumCount(count);
         var AlbumList = searchFacade.retrieveSearchAlbum(command, pageable);
         var AlbumDtoList = AlbumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
@@ -136,7 +137,7 @@ public class SearchApiController {
      */
     @GetMapping("/artists")
     public CommonResponse retrieveArtistSearch(@RequestParam(name = "keyword") String keyword,
-                                              @RequestParam(name = "type", defaultValue = "popularity") String type,
+                                              @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveArtistSearch");
         var request = new SearchDto.SearchRequest(keyword, type);
@@ -158,7 +159,7 @@ public class SearchApiController {
      */
     @GetMapping("/lyrics")
     public CommonResponse retrieveLyricsSearch(@RequestParam(name = "keyword") String keyword,
-                                               @RequestParam(name = "type", defaultValue = "similar") String type,
+                                               @RequestParam(name = "type", defaultValue = Constant.Order.SIMILAR) String type,
                                                @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveLyricsSearch");
         var request = new SearchDto.SearchRequest(keyword, type);

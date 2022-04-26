@@ -82,10 +82,24 @@ public class UserServiceImpl implements UserService {
         user.setUuid();
     }
 
+    /**
+     * 닉내임이 중복 되는지 확인
+     * @param username
+     * @return
+     */
     @Override
     public boolean isDuplicateUsername(String username) {
         System.out.println("UserServiceImpl :: isDuplicateUsername");
         var user = userReader.getUserByusername(username);
         return user.getId() != null;
+    }
+
+    /**
+     * 비밀번호 변경
+     * @param command
+     */
+    @Override
+    public void changePassword(UserCommand.ChangeUserPassword command) {
+        
     }
 }

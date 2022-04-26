@@ -48,4 +48,13 @@ public class UserCommand {
                     .build();
         }
     }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class ChangeUserPassword {
+        private final String password;
+        private final String newPassword;
+
+    }
 }

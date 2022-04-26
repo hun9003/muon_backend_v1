@@ -1,6 +1,7 @@
 package com.muesli.music.infrastructure.artist;
 
 import com.muesli.music.common.exception.EntityNotFoundException;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.artist.ArtistInfo;
@@ -52,8 +53,8 @@ public class ArtistReaderImpl implements ArtistReader {
         System.out.println("ArtistReaderImpl :: getSearchArtist");
         List<Map<String, Object>> artistList;
         switch (type) {
-            case "alpha" : artistList = artistRepository.findSearchArtistOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "popularity":
+            case Constant.Order.ALPHA: artistList = artistRepository.findSearchArtistOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.POPULARITY:
             default: artistList = artistRepository.findSearchArtistOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
         }
         return artistList;

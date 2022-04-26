@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.playlist;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.playlist.PlaylistCommand;
 import com.muesli.music.interfaces.track.TrackDto;
 import com.muesli.music.interfaces.user.UserDto;
@@ -40,7 +41,7 @@ public class PlaylistDto {
         private final List<PlaylistInfo> list;
 
         public PlaylistInfoList(List<PlaylistInfo> list) {
-            this.type = "Playlist";
+            this.type = Constant.Item.PLAYLIST;
             this.list = list;
         }
     }

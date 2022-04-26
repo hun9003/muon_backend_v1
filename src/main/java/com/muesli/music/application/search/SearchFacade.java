@@ -1,5 +1,6 @@
 package com.muesli.music.application.search;
 
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumService;
 import com.muesli.music.domain.artist.ArtistInfo;
@@ -107,10 +108,10 @@ public class SearchFacade {
         System.out.println("SearchFacade :: getSearchCount");
         // TODO 상수 저장 필요
         switch (type) {
-            case "track" : return trackService.getSearchTrackCount(command);
-            case "album" : return albumService.getSearchAlbumCount(command);
-            case "artist" : return artistService.getSearchArtistCount(command);
-            case "lyrics" : return trackService.getSearchLyricsCount(command);
+            case Constant.Item.TRACK : return trackService.getSearchTrackCount(command);
+            case Constant.Item.ALBUM : return albumService.getSearchAlbumCount(command);
+            case Constant.Item.ARTIST : return artistService.getSearchArtistCount(command);
+            case Constant.Item.LYRICS : return trackService.getSearchLyricsCount(command);
         }
         return 0;
     }

@@ -13,7 +13,10 @@ public interface UserService {
 
     // 닉네임 중복 여부
     boolean isDuplicateUsername(String username);
+
     // 비밀번호 변경
+    void changePassword(UserCommand.ChangeUserPassword command);
+
     // 프로필 사진 업로드
     // 사용자 선호 취향 리스트
 

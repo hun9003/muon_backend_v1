@@ -2,6 +2,7 @@ package com.muesli.music.interfaces.genre;
 
 import com.muesli.music.application.genre.GenreFacade;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.interfaces.album.AlbumDtoMapper;
 import com.muesli.music.interfaces.track.TrackDtoMapper;
 import lombok.RequiredArgsConstructor;
@@ -49,7 +50,7 @@ public class GenreApiController {
 
     @GetMapping("/{id}/track")
     public CommonResponse retrieveGenreTrack(@PathVariable(value = "id") Long genreId, @PageableDefault(size = 50, page = 1) Pageable pageable,
-                                             @RequestParam(name = "type", required = false, defaultValue = "popularity") String type) {
+                                             @RequestParam(name = "type", required = false, defaultValue = Constant.Order.POPULARITY) String type) {
         System.out.println("GenreApiController :: retrieveGenreAll");
         var trackInfoList = genreFacade.retrieveGenreTrackList(genreId, type, pageable);
         var response = trackInfoList.stream().map(trackDtoMapper::of).collect(Collectors.toList());

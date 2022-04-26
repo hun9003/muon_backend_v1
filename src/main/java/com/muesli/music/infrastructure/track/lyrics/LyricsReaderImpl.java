@@ -1,5 +1,6 @@
 package com.muesli.music.infrastructure.track.lyrics;
 
+import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.track.Track;
 import com.muesli.music.domain.track.lyrics.Lyrics;
 import com.muesli.music.domain.track.lyrics.LyricsReader;
@@ -35,9 +36,9 @@ public class LyricsReaderImpl implements LyricsReader {
         System.out.println("LyricsReaderImpl :: getSearchLyrics");
         List<Map<String, Object>> lyricsList;
         switch (type) {
-            case "alpha" : lyricsList = lyricsRepository.findSearchLyricsOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "newest" : lyricsList = lyricsRepository.findSearchLyricsOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
-            case "similar":
+            case Constant.Order.ALPHA : lyricsList = lyricsRepository.findSearchLyricsOrderByAlpha(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.NEWEST : lyricsList = lyricsRepository.findSearchLyricsOrderByNewest(keyword, start, end).orElse(new ArrayList<>()); break;
+            case Constant.Order.SIMILAR:
             default: lyricsList = lyricsRepository.findSearchLyricsOrderBySimilar(keyword, start, end).orElse(new ArrayList<>());
         }
         return lyricsList;

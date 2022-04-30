@@ -22,7 +22,7 @@ public class TrackFacade {
 
     /**
      * 트랙 정보 조회
-     * @param trackId 트랙 PK
+     * @param trackId 트랙 idx
      * @return 트랙 정보
      */
     public TrackInfo.Main findTrackInfo(Long trackId) {

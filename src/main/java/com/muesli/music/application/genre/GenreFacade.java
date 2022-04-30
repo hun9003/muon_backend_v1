@@ -35,7 +35,7 @@ public class GenreFacade {
 
     /**
      * 장르별 앨범 리스트
-     * @param genreId 장르 PK
+     * @param genreId 장르 idx
      * @param pageable 앨범 리스트 페이징을 위한 객체
      * @return 장르별 앨범 정보 리스트
      */
@@ -56,7 +56,7 @@ public class GenreFacade {
 
     /**
      * 장르별 곡 리스트
-     * @param genreId 장르 PK
+     * @param genreId 장르 idx
      * @param type order 타입
      * @param pageable 앨범 리스트 페이징을 위한 객체
      * @return 장르별 곡 정보 리스트

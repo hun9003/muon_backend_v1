@@ -29,13 +29,13 @@ public class PlayerFacade {
         // 토큰을 통해 유저 토큰 정보 호출
         var usertoken = usertokenService.findUsertokenInfo(token);
 
-        // 키 생성에 필요한 유저 PK 호출
+        // 키 생성에 필요한 유저 idx 호출
         var userId = usertoken.getUserInfo().getId() != null ? usertoken.getUserInfo().getId() : 0;
 
-        // 객체에 저장된 트랙 pk 유효성 검사
+        // 객체에 저장된 트랙 idx 유효성 검사
         var track = trackService.findTrackInfo((Long) metadata.get("t"));
 
-        // 객체에 유저 PK 저장
+        // 객체에 유저 idx 저장
         metadata.put("u", userId);
 
         var url = "";

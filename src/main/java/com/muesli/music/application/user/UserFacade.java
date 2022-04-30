@@ -94,7 +94,8 @@ public class UserFacade {
 
     /**
      * 비밀번호 변경
-     * @param command
+     * @param command 비밀번호 변경을 위한 데이터 객체
+     * @param token  유저 토큰
      */
     public void changeUserPassword(UserCommand.ChangeUserPassword command, String token) {
         System.out.println("UserFacade :: changeUserPassword");

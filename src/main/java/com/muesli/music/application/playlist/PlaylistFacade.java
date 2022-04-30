@@ -23,7 +23,7 @@ public class PlaylistFacade {
 
     /**
      * 플레이 리스트 정보 조회
-     * @param playlistId 플레이리스트 PK
+     * @param playlistId 플레이리스트 idx
      * @param pageable 플레이리스트 트랙 리스트 페이징을 위한 객체
      * @param token 유저 토큰
      * @return 플레이 리스트 정보
@@ -100,10 +100,10 @@ public class PlaylistFacade {
         // 플레이리스트에 담긴 트랙 리스트 조회
         var trackList = playlistService.getTrackToPlaylist(command.getId(), usertokenInfo.getUserInfo());
 
-        // 수정 전 트랙 PK 리스트
+        // 수정 전 트랙 idx 리스트
         Collection<Long> oldTrackList = trackList.stream().map(playlistTrack -> playlistTrack.getTrack().getId()).collect(Collectors.toList());
 
-        // 수정 후 트랙 PK 리스트
+        // 수정 후 트랙 idx 리스트
         Collection<Long> newTrackList = new ArrayList<>(command.getTrackList());
 
         // 삭제 될 트랙 리스트
@@ -130,7 +130,7 @@ public class PlaylistFacade {
 
     /**
      * 플레이 리스트 삭제
-     * @param playlistId 플레이리스트 PK
+     * @param playlistId 플레이리스트 idx
      * @param token 유저 토큰
      */
     public void removePlaylist(Long playlistId, String token) {

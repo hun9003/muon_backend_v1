@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface ArtistReader {
+    
+    // 아티스트 PK로 아티스트 정보 호출
     Artist getArtistBy(Long artistId);
 
     List<Album> getAlbumList(Artist artist);

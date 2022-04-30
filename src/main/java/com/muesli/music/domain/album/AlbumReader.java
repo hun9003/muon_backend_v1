@@ -16,11 +16,15 @@ public interface AlbumReader {
    // 유저 PK로 좋아요 된 앨범 리스트 호출
     List<AlbumInfo.Main> getAlbumLikeList(Long userId);
 
+    // 최신 앨범 리스트 호출
     List<Map<String, Object>> getNewAlbum(int start, int end);
 
+    // 앨범 검색 결과 개수 호출
     int getSearchAlbumCount(String keyword);
 
+    // 앨범 검색 결과 호출
     List<Map<String, Object>> getSearchAlbum(String keyword, String type, int start, int end);
 
+    // 장르별 앨범 리스트 호출
     List<Map<String, Object>> getGenreAlbumList(Long genreId, Pageable pageable);
 }

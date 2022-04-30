@@ -19,7 +19,7 @@ public class AlbumFacade {
 
     /**
      * 앨범 정보 조회
-     * @param albumId 앨범 PK
+     * @param albumId 앨범 idx
      * @return 앨범 메인 정보
      */
     public AlbumInfo.Main findAlbumInfo(Long albumId) {

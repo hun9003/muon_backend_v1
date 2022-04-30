@@ -45,7 +45,7 @@ public class LikeFacade {
 
     /**
      * 좋아요 상태변경
-     * @param likeId 좋아요 PK
+     * @param likeId 좋아요 idx
      * @param token 유저 토큰
      * @return 좋아요 정보
      */

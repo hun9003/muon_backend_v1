@@ -23,8 +23,8 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 해당 아이템을 좋아요 했는지 확인
-     * @param command
-     * @param token
+     * @param command 좋아요 정보가 담긴 데이터 객체
+     * @param token 유저 토큰
      * @return 좋아요 정보
      */
     @Override
@@ -38,9 +38,9 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 해당 아이템을 좋아요 했는지 확인 (리스트)
-     * @param command
-     * @param token
-     * @return 좋아요 정보
+     * @param command 아이템 리스트가 담긴 데이터 객체
+     * @param token 유저 토큰
+     * @return 좋아요 정보 리스트
      */
     @Override
     public List<LikeInfo.Main> findLikeBy(LikeCommand.ShowLikeListRequest command, String token) {
@@ -48,6 +48,7 @@ public class LikeServiceImpl implements LikeService {
         var usertoken = usertokenReader.getUsertoken(token);
         if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
 
+        // 좋아요 정보 조회를 위한 아이템 타입 분류
         var type = "";
         switch (command.getType()) {
             case Constant.Item.ALBUM: type = "Album"; break;
@@ -66,9 +67,10 @@ public class LikeServiceImpl implements LikeService {
     }
 
     /**
-     * 새로 좋아요를 했을때 DB에 저장
-     * @param command
-     * @param token
+     * 새로 좋아요를 했을 때 DB에 저장
+     * @param command 아이템 리스트가 담긴 데이터 객체
+     * @param token 유저 토큰
+     * @return 좋아요 정보
      */
     @Override
     @Transactional
@@ -86,8 +88,9 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 이미 좋아요를 했던 아이템 상태변경 (좋아요)
-     * @param likeId
-     * @param token
+     * @param likeId 좋아요 idx
+     * @param token 유저 정보
+     * @return 좋아요 정보
      */
     @Override
     @Transactional
@@ -109,8 +112,9 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 이미 좋아요를 했던 아이템 상태변경 (좋아요 취소)
-     * @param likeId
-     * @param token
+     * @param likeId 좋아요 idx
+     * @param token 유저 토큰
+     * @return 좋아요 정보
      */
     @Override
     @Transactional
@@ -132,7 +136,8 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 좋아요 상태 확인
-     * @param likeId
+     * @param likeId 좋아요 idx
+     * @return 좋아요 정보
      */
     @Override
     public LikeInfo.Main getLike(Long likeId) {

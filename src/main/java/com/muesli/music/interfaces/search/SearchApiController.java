@@ -91,7 +91,7 @@ public class SearchApiController {
      * @param pageable
      * @return
      */
-    @GetMapping("/tracks")
+    @GetMapping("/track")
     public CommonResponse retrieveTrackSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
@@ -114,7 +114,7 @@ public class SearchApiController {
      * @param pageable
      * @return
      */
-    @GetMapping("/albums")
+    @GetMapping("/album")
     public CommonResponse retrieveAlbumSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
@@ -136,7 +136,7 @@ public class SearchApiController {
      * @param pageable
      * @return
      */
-    @GetMapping("/artists")
+    @GetMapping("/artist")
     public CommonResponse retrieveArtistSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {

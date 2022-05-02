@@ -19,6 +19,9 @@ public enum ErrorCode {
     USER_BAD_USERTOKEN("토큰이 유효하지 않습니다."),
     USER_BAD_PASSWORD("비밀번호가 일치하지 않습니다"),
 
+    // EMPTY 관련
+    EMPTY_SEARCH_KEYWORD("키워드가 없거나 1자 미만 입니다."),
+
     // 아이템 관련 에러
     ITEM_BAD_TYPE("타입이 올바르지 않습니다."),
     ITEM_EMPTY_RESULT("결과가 없습니다.");

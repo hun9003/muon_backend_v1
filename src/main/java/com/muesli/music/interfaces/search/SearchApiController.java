@@ -43,7 +43,7 @@ public class SearchApiController {
     @GetMapping("/all")
     public CommonResponse retrieveAllSearch(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                             HttpServletRequest request,
-                                            @RequestParam(name = "keyword") String keyword,
+                                            @RequestParam(name = "keyword", required = false) String keyword,
                                             @RequestParam(name = "type", defaultValue = "all") String type,
                                             @PageableDefault(size = 10, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveAllSearch");
@@ -92,10 +92,11 @@ public class SearchApiController {
      * @return
      */
     @GetMapping("/tracks")
-    public CommonResponse retrieveTrackSearch(@RequestParam(name = "keyword") String keyword,
+    public CommonResponse retrieveTrackSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveTrackSearch");
+
         var request = new SearchDto.SearchRequest(keyword, type);
         var command = request.toCommand();
         var count = searchFacade.getSearchCount(command, Constant.Item.TRACK);
@@ -114,7 +115,7 @@ public class SearchApiController {
      * @return
      */
     @GetMapping("/albums")
-    public CommonResponse retrieveAlbumSearch(@RequestParam(name = "keyword") String keyword,
+    public CommonResponse retrieveAlbumSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveAlbumSearch");
@@ -136,7 +137,7 @@ public class SearchApiController {
      * @return
      */
     @GetMapping("/artists")
-    public CommonResponse retrieveArtistSearch(@RequestParam(name = "keyword") String keyword,
+    public CommonResponse retrieveArtistSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                               @RequestParam(name = "type", defaultValue = Constant.Order.POPULARITY) String type,
                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveArtistSearch");
@@ -158,7 +159,7 @@ public class SearchApiController {
      * @return
      */
     @GetMapping("/lyrics")
-    public CommonResponse retrieveLyricsSearch(@RequestParam(name = "keyword") String keyword,
+    public CommonResponse retrieveLyricsSearch(@RequestParam(name = "keyword", required = false) String keyword,
                                                @RequestParam(name = "type", defaultValue = Constant.Order.SIMILAR) String type,
                                                @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveLyricsSearch");

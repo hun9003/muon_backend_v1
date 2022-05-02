@@ -34,6 +34,7 @@ public class PlayerApiController {
         var userAgent = request.getHeader("User-Agent");
 
         var metadatas = new HashMap<String, Object>();
+        // TODO. 멤버십 인증 로직 생성 필요
         metadatas.put("t", trackId);
         metadatas.put("u", 0);
         metadatas.put("e", (int) (System.currentTimeMillis() / 1000) + 1200);

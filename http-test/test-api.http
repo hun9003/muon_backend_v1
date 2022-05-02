@@ -195,7 +195,7 @@ Content-Type: application/json
 
 ### 플레이어 음원 재생 키
 GET http://localhost:8080/api/v1/player/42860
-authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+authorization:Bearer vtKYrQBBJM8a7Qxn3R5J8gCShkCcLTcKcoqbRvAZ
 Content-Type: application/json
 
 

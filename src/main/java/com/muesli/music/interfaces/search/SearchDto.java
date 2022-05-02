@@ -1,5 +1,7 @@
 package com.muesli.music.interfaces.search;
 
+import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.artist.ArtistDto;
@@ -9,6 +11,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -19,13 +22,15 @@ public class SearchDto {
     @ToString
     public static class SearchRequest {
 
+        @NotNull(message = "키워드는 필수 값입니다.")
         @NotEmpty(message = "키워드는 필수 값입니다.")
         @Size(min=1, message = "키워드는 1자 이상 입력해야 합니다.")
         private final String keyword;
         private final String type;
 
-
         public SearchRequest(String keyword, String type) {
+            if(keyword == null || keyword.trim().length() < 1)
+                throw new BaseException(ErrorCode.EMPTY_SEARCH_KEYWORD);
             this.keyword = keyword;
             this.type = type;
         }

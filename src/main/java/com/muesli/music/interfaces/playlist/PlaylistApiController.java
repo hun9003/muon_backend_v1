@@ -122,7 +122,7 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PutMapping("/tracks/{playlistId}")
+    @PutMapping("/track/{playlistId}")
     public CommonResponse addPlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "playlistId") Long playlistId) {
         System.out.println("PlaylistApiController :: addPlaylistTracks");
         request.setPlaylistId(playlistId);
@@ -138,7 +138,7 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @DeleteMapping("/tracks/{playlistId}")
+    @DeleteMapping("/track/{playlistId}")
     public CommonResponse removePlaylistTracks(@RequestBody @Valid PlaylistDto.PlaylistTracksRequest request, @RequestHeader(value = "Authorization", defaultValue = "") String usertoken, @PathVariable(value = "playlistId") Long playlistId) {
         System.out.println("PlaylistApiController :: removePlaylistTracks");
         request.setPlaylistId(playlistId);

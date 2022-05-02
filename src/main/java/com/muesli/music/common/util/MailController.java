@@ -18,6 +18,7 @@ public class MailController {
     }
 
     public static final String REGISTER = "회원가입";
+    public static final String FIND_PASSWORD = "비밀번호 찾기";
 
     public static void sendMail(String email, String username, String type) throws Exception {
         MailTemplate template = new MailTemplate();

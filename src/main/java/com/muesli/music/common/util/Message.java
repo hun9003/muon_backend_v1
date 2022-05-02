@@ -35,6 +35,8 @@ public class Message {
         public static final String SUCCESS_SIGNIN = "로그인 완료";
         public static final String SUCCESS_EMAIL_VERIFICATION = "이메일 인증 완료";
         public static final String SUCCESS_CHANGE_PASSWORD = "비밀번호 변경 완료";
+
+        public static final String INFO_EMAIL_VERIFICATION = "이메일 발송";
     }
 
     /**
@@ -47,6 +49,8 @@ public class Message {
         public static final String SUCCESS_SIGNIN = "로그인에 성공했습니다.";
         public static final String SUCCESS_EMAIL_VERIFICATION = "이메일 인증에 성공했습니다.";
         public static final String SUCCESS_CHANGE_PASSWORD = "비밀번호 변경에 성공했습니다.";
+
+        public static final String INFO_EMAIL_VERIFICATION = "이메일 인증을 위한 메일을 발송했습니다.";
 
         public static final String EMPTY_EMAIL = "이메일 작성은 필수 입니다.";
         public static final String BAD_EMAIL_PATTERN = "이메일 형식이 올바르지 않습니다.";

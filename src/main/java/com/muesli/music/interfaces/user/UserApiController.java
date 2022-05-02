@@ -1,15 +1,19 @@
 package com.muesli.music.interfaces.user;
 
 import com.muesli.music.application.user.UserFacade;
+import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.HashGenerator;
-import com.muesli.music.common.util.Message;
+import com.muesli.music.common.util.MailController;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static com.muesli.music.common.util.Message.*;
 
 @Slf4j
 @RestController
@@ -30,7 +34,7 @@ public class UserApiController {
         var command = userDtoMapper.of(request);
         var userInfo = userFacade.registerUser(command);
         var response = new UserDto.RegisterResponse(userInfo);
-        var message = Message.makeResponseMessage(Message.Developer.SUCCESS_SIGNUP);
+        var message = makeResponseMessage(Developer.SUCCESS_SIGNUP);
         return CommonResponse.success(response, message);
     }
 
@@ -45,7 +49,7 @@ public class UserApiController {
         var command = request.toCommand();
         var usertokenInfo = userFacade.loginUser(command);
         var response = new UserDto.LoginResponse(usertokenInfo);
-        var message = Message.makeResponseMessage(Message.Developer.SUCCESS_SIGNIN);
+        var message = makeResponseMessage(Developer.SUCCESS_SIGNIN);
         return CommonResponse.success(response, message);
     }
 
@@ -59,8 +63,30 @@ public class UserApiController {
         System.out.println("UserApiController :: changeUserConfimed");
         String email = HashGenerator.getEmailByKey(key);
         userFacade.changeUserConfirmed(email);
-        return CommonResponse.success("OK");
+        var message = makeResponseInfoMessage(Developer.INFO_EMAIL_VERIFICATION, User.INFO_EMAIL_VERIFICATION);
+        return CommonResponse.success(null, message);
     }
+
+    /**
+     * 이메일 전송
+     * @param
+     * @return 회원 정보
+     */
+    @PostMapping("/mail/send")
+    public CommonResponse sendMail(@RequestParam("email")String email) {
+        System.out.println("UserApiController :: sendMail");
+
+        var userInfo = userFacade.getUserByEmail(email);
+        try {
+            MailController.sendMail(userInfo.getEmail(), userInfo.getUsername(), MailController.REGISTER);
+        } catch (Exception e) {
+            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
+        }
+
+        var message = makeResponseSuccessMessage(Developer.SUCCESS_EMAIL_VERIFICATION, User.SUCCESS_EMAIL_VERIFICATION);
+        return CommonResponse.success(null, message);
+    }
+
 
     /**
      * 비밀번호 변경
@@ -75,7 +101,7 @@ public class UserApiController {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var command = request.toCommand();
         userFacade.changeUserPassword(command, usertoken);
-        var message = Message.makeResponseSuccessMessage(Message.Developer.SUCCESS_CHANGE_PASSWORD, Message.User.SUCCESS_CHANGE_PASSWORD);
+        var message = makeResponseSuccessMessage(Developer.SUCCESS_CHANGE_PASSWORD, User.SUCCESS_CHANGE_PASSWORD);
         return CommonResponse.success(null, message);
     }
 

@@ -1,7 +1,9 @@
 package com.muesli.music.application.user;
 
 import com.muesli.music.common.exception.BaseException;
+import com.muesli.music.common.exception.IllegalStatusException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.MailController;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserService;
@@ -41,12 +43,11 @@ public class UserFacade {
 
         // 5. 이메일 인증 메일 보내기
         // 가입 축하 메일 보내기
-//        try {
-//            var registerTemplate = new MailController.MailTemplate(user.getEmail(), user.getUsername());
-//            MailController.sendMail(registerTemplate.getTitle(), registerTemplate.getContent(), registerTemplate.getEmail());
-//        } catch (Exception e) {
-//            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
-//        }
+        try {
+            MailController.sendMail(user.getEmail(), user.getUsername(), MailController.REGISTER);
+        } catch (Exception e) {
+            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
+        }
         
 
         return user;
@@ -65,7 +66,7 @@ public class UserFacade {
         var usertokenInfo = userService.loginUser(command);
 
         // 2. 이메일 인증이 되어있지 않다면 오류 던지기
-//        if (userinfo.getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
+        if (usertokenInfo.getUserInfo().getConfirmed() == 0) throw new IllegalStatusException("메일 인증이 완료되지 않았습니다.");
 
         // 3. uuid 세팅이 되어있지 않다면 세팅하기
         if (usertokenInfo.getUserInfo().getUuid() == null) userService.registerUserUuid(usertokenInfo.getUserInfo().getEmail());
@@ -100,6 +101,16 @@ public class UserFacade {
         System.out.println("UserFacade :: changeUserPassword");
         var usertoken = usertokenService.findUsertokenInfo(token);
         userService.changePassword(command, usertoken.getUserInfo().getEmail());
+    }
+
+    /**
+     * 이메일로 유저 정보 호출
+     * @param email
+     * @return
+     */
+    public UserInfo.Main getUserByEmail(String email) {
+        System.out.println("UserFacade :: registerUserByEmail");
+        return userService.findUserInfo(email);
     }
 
 }

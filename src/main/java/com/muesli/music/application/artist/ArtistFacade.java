@@ -19,7 +19,7 @@ public class ArtistFacade {
 
     /**
      * 아티스트 정보 조회
-     * @param artistId 아티스트 PK
+     * @param artistId 아티스트 idx
      * @param pageable 아티스트의 앨범과 트랙 페이징 처리를 위한 객체
      * @return 아티스트 메인 정보
      */

@@ -24,8 +24,8 @@ public class SearchServiceImpl implements SearchService {
 
     /**
      * 검색 시 키워드(히스토리) 저장
-     * @param command
-     * @param userInfo
+     * @param command 검색기록 데이터 객체
+     * @param userInfo 유저 정보
      */
     @Override
     @Transactional
@@ -63,8 +63,8 @@ public class SearchServiceImpl implements SearchService {
 
     /**
      * 키워드 리스트 호출
-     * @param keyword
-     * @return
+     * @param keyword 검색 키워드
+     * @return 검색 정보 리스트 조회
      */
     @Override
     public List<KeywordInfo> getSearchKeywordList(String keyword) {
@@ -101,8 +101,8 @@ public class SearchServiceImpl implements SearchService {
 
     /**
      * 검색 키워드 공개, 비공개 처리
-     * @param keyword
-     * @param isPublic
+     * @param keyword 검색 키워드
+     * @param isPublic 공개 여부
      */
     @Override
     @Transactional

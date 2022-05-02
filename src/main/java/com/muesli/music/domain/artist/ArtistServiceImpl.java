@@ -4,7 +4,6 @@ import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackInfo;
-import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +27,9 @@ public class ArtistServiceImpl implements ArtistService{
 
     /**
      * 아티스트 정보 가져오기
-     * @param artistId
-     * @return
+     * @param artistId 아티스트 idx
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 아티스트 정보 호출
      */
     @Override
     @Transactional(readOnly = true)
@@ -37,6 +37,8 @@ public class ArtistServiceImpl implements ArtistService{
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy(artistId);
         var albumList = artistReader.getAlbumList(artist);
+        
+        // 아티스트 설명이 존재할 시 객체 생성
         var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
         var biosInfo = new ArtistInfo.BiosInfo(bios);
 
@@ -65,9 +67,10 @@ public class ArtistServiceImpl implements ArtistService{
     }
 
     /**
-     * 좋아요 리스트 조회
-     * @param token
-     * @return
+     * 아티스트 좋아요 리스트 조회
+     * @param token 유저 토큰
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 아티스트 정보 리스트
      */
     @Override
     @Transactional(readOnly = true)
@@ -82,9 +85,9 @@ public class ArtistServiceImpl implements ArtistService{
 
     /**
      * 아티스트 검색 결과 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색 정보가 담긴 데이터 객체
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 아티스트 검색 결과 리스트
      */
     @Override
     public List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
@@ -102,8 +105,8 @@ public class ArtistServiceImpl implements ArtistService{
 
     /**
      * 아티스트 검색 결과 개수
-     * @param command
-     * @return
+     * @param command 검색 정보가 담긴 데이터 객체
+     * @return 아티스트 검색 결과 개수
      */
     @Override
     public int getSearchArtistCount(SearchCommand.SearchRequest command) {

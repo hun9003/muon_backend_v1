@@ -17,7 +17,7 @@ public class GenreServiceImpl implements GenreService {
 
     /**
      * 장르 리스트
-     * @return
+     * @return 장르 대분류 리스트
      */
     @Override
     public List<GenreInfo.Main> getGenreParentList() {
@@ -28,7 +28,12 @@ public class GenreServiceImpl implements GenreService {
         return genreList.stream().map(GenreInfo.Main::new).collect(Collectors.toList());
     }
 
-    //  대분류 / 소분류 알파벳, 자음별 리스트 호출 ( 장르 부모 없으면 아티스트 리스트 ) (인기순 최신순, 인기순 데뷔순)
+
+    /**
+     * 대분류 / 소분류 알파벳, 자음별 리스트 호출
+     * @param command 검색 정보가 담긴 데이터 객체
+     * @return 장르 아이템 리스트 호출
+     */
     @Override
     public List<Object> getGenreItemList(GenreCommand.GenreRequest command) {
         System.out.println("GenreServiceImpl :: getGenreItemList");

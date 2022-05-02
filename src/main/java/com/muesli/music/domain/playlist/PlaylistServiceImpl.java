@@ -31,8 +31,10 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이리스트 조회
-     * @param playlistId
-     * @return
+     * @param playlistId 플레이리스트 idx
+     * @param pageable 페이징 처리를 위한 객체
+     * @param userInfo 유저 정보
+     * @return 플레이리스트 정보
      */
     @Override
     @Transactional
@@ -68,8 +70,9 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 내 플레이리스트 조회
-     * @param userInfo
-     * @return
+     * @param userInfo 유저 정보
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 플레이리스트 정보 리스트
      */
     @Override
     @Transactional
@@ -84,9 +87,9 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이 리스트 등록
-     * @param command
-     * @param userInfo
-     * @return
+     * @param command 플레이리스트 저장을 위한 데이터 객체
+     * @param userInfo 유저 정보
+     * @return 플레이리스트 정보
      */
     @Override
     @Transactional
@@ -99,7 +102,8 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이 리스트 수정
-     * @param command
+     * @param command 플레이리스트 수정을 위한 데이터 객체
+     * @param userInfo 유저 정보
      */
     @Override
     @Transactional
@@ -117,8 +121,8 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이 리스트 삭제
-     * @param playlistId
-     * @param userInfo
+     * @param playlistId 플레이리스트 idx
+     * @param userInfo 유저 정보
      */
     @Override
     @Transactional
@@ -135,8 +139,9 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 좋아하는 플레이리스트
-     * @param token
-     * @return
+     * @param token 유저 토큰
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 플레이리스트 정보 리스트
      */
     @Override
     @Transactional
@@ -153,7 +158,8 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이리스트에 트랙 추가
-     * @param command
+     * @param command 플레이리스트에 트랙 리스트 저장을 위한 데이터 객체
+     * @param userInfo 유저 정보
      */
     @Override
     @Transactional
@@ -185,8 +191,8 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이리스트에 트랙 삭제
-     * @param command
-     * @param userInfo
+     * @param command 플레이리스트 트랙리스트 삭제를 위한 데이터 객체
+     * @param userInfo 유저 정보
      */
     @Override
     @Transactional
@@ -210,9 +216,9 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 플레이리스트의 트랙 조회
-     * @param playlistId
-     * @param userInfo
-     * @return
+     * @param playlistId 플레이리스트 idx
+     * @param userInfo 유저 정ㅂ
+     * @return 플레이리스트 트랙 리스트
      */
     @Transactional
     @Override

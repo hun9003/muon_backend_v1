@@ -30,13 +30,15 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 앨범 정보 가져오기
-     * @param albumId
-     * @return
+     * @param albumId 앨범 idx
+     * @return 앨범 정보
      */
     @Override
     @Transactional(readOnly = true)
     public AlbumInfo.Main findAlbumInfo(Long albumId) {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
+        
+        // 앨범 데이터 호출
         var album = albumReader.getAlbumBy(albumId);
         album.setViews(album.getViews());
         var trackList = albumReader.getTrackList(album);
@@ -47,8 +49,9 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 좋아요 리스트 조회
-     * @param token
-     * @return
+     * @param token 유저 토큰
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 앨범 정보 리스트
      */
     @Override
     @Transactional(readOnly = true)
@@ -71,8 +74,8 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 최신 앨범 조회
-     * @param pageable
-     * @return
+     * @param pageable 페이징 처리를 위한 객체 
+     * @return 최신 앨범 정보 리스트
      */
     @Override
     public List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable) {
@@ -90,9 +93,9 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 앨범 키워드로 검색 조회
-     * @param command
-     * @param pageable
-     * @return
+     * @param command 검색 정보가 담긴 데이터 객체
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 앨범 검색 결과 리스트
      */
     @Override
     public List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
@@ -110,8 +113,8 @@ public class AlbumServiceImpl implements AlbumService {
 
     /**
      * 앨범 검색 결과 개수
-     * @param command
-     * @return
+     * @param command 검색 정보가 담긴 데이터 객체
+     * @return 앨범 검색 결과 개수
      */
     @Override
     public int getSearchAlbumCount(SearchCommand.SearchRequest command) {
@@ -119,7 +122,12 @@ public class AlbumServiceImpl implements AlbumService {
         return albumReader.getSearchAlbumCount(command.getKeyword());
     }
 
-
+    /**
+     * 장르별 앨범 리스트 호출
+     * @param genreId 장르 idx
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 장르별 앨범 정보 리스트
+     */
     @Override
     public List<AlbumInfo.GenreAlbumInfo> getGenreAlbumList(Long genreId, Pageable pageable) {
         // 페이징
@@ -132,6 +140,11 @@ public class AlbumServiceImpl implements AlbumService {
         return newAlbumList.stream().map(AlbumInfo.GenreAlbumInfo::new).collect(Collectors.toList());
     }
 
+    /**
+     * 장르별 앨범 리스트 호출 (전체)
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 장르별 앨범 정보 리스트 (전체)
+     */
     @Override
     public List<GenreInfo.Main> getGenreAlbumListAll(Pageable pageable) {
         var genreList = genreReader.getGenreParentList();

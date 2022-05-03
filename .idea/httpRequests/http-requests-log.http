@@ -1,3 +1,113 @@
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T153934.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T121250.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120627.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120557.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120359.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120356.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120354.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120350.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120330.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120327.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120321.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120307.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-03T120226.200.json
+
+###
+
 GET http://localhost:8080/api/v1/player/42860
 authorization: Bearer vtKYrQBBJM8a7Qxn3R5J8gCShkCcLTcKcoqbRvAZ
 Content-Type: application/json
@@ -477,132 +587,6 @@ Content-Type: application/json
 }
 
 <> 2022-04-26T160439.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun389212@gmail.com",
-  "password": "12345678",
-  "username": "테스트",
-  "phoneNumber": "010-0000-0000",
-  "gender" : 1,
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T160053.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun389212@gmail.com",
-  "password": "12345678",
-  "username": "테스트",
-  "phoneNumber": "010-0000-0000",
-  "gender" : 1,
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T160007.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T164301.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T164035.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T163940.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T163915.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T163806.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T163129.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T163106.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T161545.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T161519.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T161215.404.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-04-22T161210.404.json
 
 ###
 

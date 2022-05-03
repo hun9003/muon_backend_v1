@@ -1,0 +1,31 @@
+package com.muesli.music.application.channel;
+
+import com.muesli.music.domain.album.AlbumService;
+import com.muesli.music.domain.channel.ChannelInfo;
+import com.muesli.music.domain.channel.ChannelService;
+import com.muesli.music.domain.playlist.PlaylistService;
+import com.muesli.music.domain.track.TrackService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class ChannelFacade {
+    private final ChannelService channelService;
+    private final TrackService trackService;
+    private final PlaylistService playlistService;
+    private final AlbumService albumService;
+
+    /**
+     * 큐레이팅 리스트
+     * @return 큐레이팅 정보 리스트
+     */
+    public List<ChannelInfo.Main> retrieveChannelList() {
+        System.out.println("ChannelFacade :: retrieveChannelList");
+        return channelService.getChannelList();
+    }
+}

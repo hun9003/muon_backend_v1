@@ -32,6 +32,12 @@ public class AlbumReaderImpl implements AlbumReader {
     }
 
     @Override
+    public Album getAlbumBy2(Long albumId) {
+        return albumRepository.findAlbumById2(albumId)
+                .orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Override
     public List<TrackInfo.Main> getTrackList(Album album) {
         var trackList = album.getTrackList();
         return trackList.stream().map(track -> {

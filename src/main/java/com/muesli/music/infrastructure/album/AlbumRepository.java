@@ -26,6 +26,10 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "WHERE a.id = :albumId")
     Optional<Album> findAlbumById(Long albumId);
 
+
+    @Query(value = "SELECT a FROM Album a WHERE a.id = :albumId")
+    Optional<Album> findAlbumById2(Long albumId);
+
     /**
      * 좋아하는 앨범 리스트 조회
      * @param userId

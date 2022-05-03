@@ -22,9 +22,9 @@ public class AlbumFacade {
      * @param albumId 앨범 idx
      * @return 앨범 메인 정보
      */
-    public AlbumInfo.Main findAlbumInfo(Long albumId) {
+    public AlbumInfo.Main findAlbumInfo(Long albumId, Pageable pageable) {
         System.out.println("AlbumFacade :: findAlbumInfo");
-        return albumService.findAlbumInfo(albumId);
+        return albumService.findAlbumInfo(albumId, pageable);
     }
 
     /**

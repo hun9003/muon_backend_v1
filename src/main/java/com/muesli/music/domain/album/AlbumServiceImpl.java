@@ -4,6 +4,7 @@ import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.genre.GenreInfo;
 import com.muesli.music.domain.genre.GenreReader;
 import com.muesli.music.domain.search.SearchCommand;
+import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
@@ -35,17 +36,30 @@ public class AlbumServiceImpl implements AlbumService {
      */
     @Override
     @Transactional(readOnly = true)
-    public AlbumInfo.Main findAlbumInfo(Long albumId) {
+    public AlbumInfo.Main findAlbumInfo(Long albumId, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
-        
+
         // 앨범 데이터 호출
-        var album = albumReader.getAlbumBy(albumId);
+        var album = albumReader.getAlbumBy2(albumId);
         album.setViews(album.getViews());
-        var trackList = albumReader.getTrackList(album);
-        var albumInfo = new AlbumInfo.Main(album, trackList);
+
+        var trackCount = trackReader.getTrackByAlbumCount(albumId);
+        var pageInfo = new PageInfo(pageable, trackCount);
+
+        var trackList = trackReader.getTrackByAlbum(albumId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newAlbumMap);
+        }
+        var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
+
+        var albumInfo = new AlbumInfo.Main(album, trackListInfo);
         albumInfo.setArtistInfo(new ArtistInfo.Main(album.getArtist()));
+
         return albumInfo;
     }
+
 
     /**
      * 좋아요 리스트 조회

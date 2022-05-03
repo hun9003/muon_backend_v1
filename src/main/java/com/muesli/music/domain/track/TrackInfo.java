@@ -66,7 +66,7 @@ public class TrackInfo {
     }
 
     /*
-            아티스트 내 앨범 리스트 조회를 위한 클래스 입니다.
+            아티스트, 앨범 내 트랙 리스트 조회를 위한 클래스 입니다.
          */
     @Getter
     @ToString
@@ -97,6 +97,53 @@ public class TrackInfo {
             this.isTitle = track.getIsTitle();
             this.albumInfo = albumBasicInfo;
             this.artistInfo = artistInfo;
+        }
+    }
+
+    /**
+     * 일반 트랙 리스트 정보
+     */
+    @Getter
+    @ToString
+    public static class TrackListInfo {
+        private final Long id;
+        private final String name;
+        private final Long number;
+        private final Long duration;
+        private final String artistsLegacy;
+        private final String description;
+        private final String image;
+        private final Long adult;
+        private final Long isTitle;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+        private final String albumImage;
+
+        public TrackListInfo(Map<String, Object> track) {
+            var adult = track.get("adult") != null ? Long.parseLong(String.valueOf(track.get("adult"))) : null;
+            var duration = track.get("duration") != null ? Long.parseLong(String.valueOf(track.get("duration"))) : null;
+            var isTitle = track.get("isTitle") != null ? Long.parseLong(String.valueOf(track.get("isTitle"))) : null;
+
+            this.id = Long.parseLong(String.valueOf(track.get("id")));
+            this.name = (String) track.get("name");
+            this.number = Long.parseLong(String.valueOf(track.get("number")));
+            this.duration = duration;
+            this.artistsLegacy = (String) track.get("artistsLegacy");
+            this.description = (String) track.get("description");
+            this.image = (String) track.get("image");
+            this.adult = adult;
+            this.isTitle = isTitle;
+
+            this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
+            this.artistName = (String) track.get("artistName");
+
+            this.albumId = Long.parseLong(String.valueOf(track.get("albumId")));
+            this.albumName = (String) track.get("albumName");
+            this.albumImage = (String) track.get("albumImage");
         }
     }
 

@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface AlbumService {
 
-    // 앨범 정보 호출
-    AlbumInfo.Main findAlbumInfo(Long albumId);
+    AlbumInfo.Main findAlbumInfo(Long albumId, Pageable pageable);
 
     // 좋아하는 앨범 리스트 호출
     List<AlbumInfo.Main> getLikeList(String usertoken, Pageable pageable);

@@ -11,6 +11,43 @@ import java.util.Map;
 
 public class AlbumInfo {
 
+//    @Getter
+//    @ToString
+//    public static class Main {
+//        private final Long id;
+//        private final String name;
+//        private final String releaseDate;
+//        private final String originalName;
+//        private final String image;
+//        private final String description;
+//        private final List<TrackInfo.Main> trackList;
+//        private ArtistInfo.Main artistInfo;
+//
+//        public Main(Album album, List<TrackInfo.Main> trackInfoList) {
+//            this.id = album.getId();
+//            this.name = album.getName();
+//            this.releaseDate = album.getReleaseDate();
+//            this.originalName = album.getOriginalName();
+//            this.image = album.getImage();
+//            this.description = album.getDescription();
+//            this.trackList = trackInfoList;
+//        }
+//
+//        public Main(Album album) {
+//            this.id = album.getId();
+//            this.name = album.getName();
+//            this.releaseDate = album.getReleaseDate();
+//            this.originalName = album.getOriginalName();
+//            this.image = album.getImage();
+//            this.description = album.getDescription();
+//            this.trackList = null;
+//        }
+//
+//        public void setArtistInfo(ArtistInfo.Main artistInfo) {
+//            this.artistInfo = artistInfo;
+//        }
+//    }
+
     @Getter
     @ToString
     public static class Main {
@@ -20,10 +57,10 @@ public class AlbumInfo {
         private final String originalName;
         private final String image;
         private final String description;
-        private final List<TrackInfo.Main> trackList;
+        private final List<TrackInfo.TrackListInfo> trackList;
         private ArtistInfo.Main artistInfo;
 
-        public Main(Album album, List<TrackInfo.Main> trackInfoList) {
+        public Main(Album album, List<TrackInfo.TrackListInfo> trackInfoList) {
             this.id = album.getId();
             this.name = album.getName();
             this.releaseDate = album.getReleaseDate();
@@ -70,6 +107,8 @@ public class AlbumInfo {
             this.description = album.getDescription();
         }
     }
+
+
 
     /*
         최신 앨범 조회

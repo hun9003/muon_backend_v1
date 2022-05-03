@@ -39,6 +39,19 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
+    public int getTrackByAlbumCount(Long albumId) {
+        System.out.println("TrackReaderImpl :: getTrackByAlbumCount");
+        return trackRepository.countTrackByAlbumId(albumId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getTrackByAlbum(Long albumId, int start, int end) {
+        System.out.println("TrackReaderImpl :: getTrackArtist");
+        return trackRepository.findTrackByAlbumId(albumId, start, end)
+                .orElse(null);
+    }
+
+    @Override
     public List<TrackInfo.Main> getTrackLikeList(Long userId) {
         System.out.println("TrackReaderImpl :: getTrackLikeList");
         var trackList = trackRepository.findAllLikeList(userId)

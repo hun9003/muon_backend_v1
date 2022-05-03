@@ -26,9 +26,9 @@ public class AlbumApiController {
      * @return
      */
     @GetMapping("/{id}")
-    public CommonResponse retrieveAlbum(@PathVariable("id") Long albumId) {
+    public CommonResponse retrieveAlbum(@PathVariable("id") Long albumId, @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("AlbumApiController :: retrieveAlbum");
-        var albumInfo = albumFacade.findAlbumInfo(albumId);
+        var albumInfo = albumFacade.findAlbumInfo(albumId, pageable);
         var response = albumDtoMapper.of(albumInfo);
         return CommonResponse.success(response);
     }

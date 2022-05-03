@@ -10,6 +10,10 @@ public interface TrackReader {
 
     Track getTrackArtist(Long albumId);
 
+    int getTrackByAlbumCount(Long albumId);
+
+    List<Map<String, Object>> getTrackByAlbum(Long albumId, int start, int end);
+
     List<TrackInfo.Main> getTrackLikeList(Long userId);
 
     List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable);

@@ -53,6 +53,25 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     Optional<List<Track>> findTrackByAlbumId(Long albumId);
 
     /**
+     * 앨범에 속한 트랙 개수
+     * @param albumId 앨범 idx
+     * @return 트랙 개수
+     */
+    Optional<Integer> countTrackByAlbumId(Long albumId);
+    
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "            t.description, t.image, t.adult, t.is_title, " +
+            "            a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "            a2.id AS artistId, a2.name AS artistName  FROM tracks t " +
+            "JOIN artist_track at on t.id = at.track_id " +
+            "JOIN artists a2 on at.artist_id = a2.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "WHERE t.album_id = :albumId " +
+            "ORDER BY t.id " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findTrackByAlbumId(Long albumId, int start, int end);
+
+    /**
      * 트랙 순위 리스트 조회
      * @param beginDate
      * @param endDate

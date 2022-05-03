@@ -102,14 +102,20 @@ public class TrackDto {
     public static class AlbumTrackInfo {
         private final Long id;
         private final String name;
-        private final Long number;
-        private final Long duration;
-        private final String url;
+        private final String albumImage;
         private final String description;
         private final Long adult;
         private final Long isTitle;
-        private final ArtistDto.TrackArtistInfo artistInfo;
+        private final Long number;
+        private final Long duration;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
     }
+
 
     /**
      * 아티스트에게 제공하는 트랙 정보
@@ -323,6 +329,27 @@ public class TrackDto {
     @ToString
     @Builder
     public static class GenreTrackInfo {
+        private final Long id;
+        private final String name;
+        private final String albumImage;
+        private final String description;
+        private final Long adult;
+        private final Long isTitle;
+
+        private final Long artistId;
+        private final String artistName;
+
+        private final Long albumId;
+        private final String albumName;
+    }
+
+    /**
+     * 채널별 트랙 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class ChannelTrackInfo {
         private final Long id;
         private final String name;
         private final String albumImage;

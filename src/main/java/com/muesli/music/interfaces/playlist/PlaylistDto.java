@@ -117,4 +117,19 @@ public class PlaylistDto {
             this.playlistId = playlistId;
         }
     }
+
+    /**
+     * 채널 별 플레이리스트
+     */
+    @Getter
+    @Builder
+    @ToString
+    public static class ChannelPlaylistInfo {
+        private final Long id;
+        private final String name;
+        private final Long isPublic;
+        private final String image;
+        private final int views;
+        private final String description;
+    }
 }

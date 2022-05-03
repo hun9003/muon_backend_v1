@@ -149,4 +149,21 @@ public class AlbumDto {
         private final Long artistId;
         private final String artistName;
     }
+
+    /**
+     * 채널별 앨범 정보
+     */
+    @Getter
+    @ToString
+    @Builder
+    public static class ChannelAlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
+    }
 }

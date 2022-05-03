@@ -194,4 +194,32 @@ public class AlbumInfo {
         }
     }
 
+    /*
+    장르별 앨범 정보
+    */
+    @Getter
+    @ToString
+    public static class ChannelAlbumInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
+
+        public ChannelAlbumInfo(Map<String, Object> album) {
+
+            this.id = Long.parseLong(String.valueOf(album.get("id")));
+            this.name = (String) album.get("name");
+            this.releaseDate = (String) album.get("releaseDate");
+            this.originalName = (String) album.get("originalName");
+            this.image = (String) album.get("image");
+
+            this.artistId = Long.parseLong(String.valueOf(album.get("artistId")));
+            this.artistName = (String) album.get("artistName");
+        }
+    }
+
 }

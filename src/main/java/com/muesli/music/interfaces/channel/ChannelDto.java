@@ -1,6 +1,8 @@
 package com.muesli.music.interfaces.channel;
 
 import com.muesli.music.common.util.Constant;
+import com.muesli.music.interfaces.album.AlbumDto;
+import com.muesli.music.interfaces.playlist.PlaylistDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +20,32 @@ public class ChannelDto {
         private final List<TrackDto.ChannelTrackInfo> list;
 
         public CuratingInfoInTrack(ChannelInfo channelInfo, List<TrackDto.ChannelTrackInfo> list) {
+            this.channelInfo = channelInfo;
+            this.list = list;
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class CuratingInfoInAlbum {
+        private final ChannelInfo channelInfo;
+        private final String type = Constant.Item.ALBUM;
+        private final List<AlbumDto.ChannelAlbumInfo> list;
+
+        public CuratingInfoInAlbum(ChannelInfo channelInfo, List<AlbumDto.ChannelAlbumInfo> list) {
+            this.channelInfo = channelInfo;
+            this.list = list;
+        }
+    }
+
+    @Getter
+    @ToString
+    public static class CuratingInfoInPlaylist {
+        private final ChannelInfo channelInfo;
+        private final String type = Constant.Item.PLAYLIST;
+        private final List<PlaylistDto.ChannelPlaylistInfo> list;
+
+        public CuratingInfoInPlaylist(ChannelInfo channelInfo, List<PlaylistDto.ChannelPlaylistInfo> list) {
             this.channelInfo = channelInfo;
             this.list = list;
         }

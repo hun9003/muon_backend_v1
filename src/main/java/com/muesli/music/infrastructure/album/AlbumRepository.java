@@ -163,4 +163,41 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "GROUP BY a.id ORDER BY g.id, COUNT(pl.idx) DESC " +
             "LIMIT :limit", nativeQuery = true)
     Optional<List<Map<String, Object>>> findGenreAlbumList(Long genreId, int limit);
+
+    /**
+     * 채널별 앨범 리스트 개수
+     * @param channelId 채널 id
+     * @return
+     */
+    @Query(value = "SELECT COUNT(id) FROM (" +
+            "SELECT a.id " +
+            "FROM channels c LEFT JOIN channelables ca ON ca.channel_id = c.id " +
+            "JOIN albums a on ca.channelable_id = a.id " +
+            "JOIN tracks t on t.album_id = a.id " +
+            "JOIN artist_track at on at.track_id = t.id " +
+            "JOIN artists a2 on a2.id = at.artist_id " +
+            "WHERE ca.channelable_type LIKE '%Album%' AND c.id = :channelId " +
+            "GROUP BY a.id " +
+            "ORDER By a.id ) as album", nativeQuery = true)
+    Optional<Integer> countChannelAlbum(Long channelId);
+
+    /**
+     * 채널별 앨범 리스트
+     * @param channelId
+     * @param start
+     * @param end
+     * @return
+     */
+    @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
+            "a2.id AS artistId, a2.name AS artistName " +
+            "FROM channels c LEFT JOIN channelables ca ON ca.channel_id = c.id " +
+            "JOIN albums a on ca.channelable_id = a.id " +
+            "JOIN tracks t on t.album_id = a.id " +
+            "JOIN artist_track at on at.track_id = t.id " +
+            "JOIN artists a2 on a2.id = at.artist_id " +
+            "WHERE ca.channelable_type LIKE '%Album%' AND c.id = :channelId " +
+            "GROUP BY a.id " +
+            "ORDER By a.id " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findChannelAlbum(Long channelId, int start, int end);
 }

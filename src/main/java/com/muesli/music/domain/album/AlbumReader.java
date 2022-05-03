@@ -28,4 +28,10 @@ public interface AlbumReader {
 
     // 장르별 앨범 리스트 호출
     List<Map<String, Object>> getGenreAlbumList(Long genreId, Pageable pageable);
+
+    // 채널별 앨범 리스트 개수
+    int getChannelAlbumCount(Long channelId);
+
+    // 채널별 앨범 리스트
+    List<Map<String, Object>> getChannelAlbumList(Long channelId, int startNum, int endNum);
 }

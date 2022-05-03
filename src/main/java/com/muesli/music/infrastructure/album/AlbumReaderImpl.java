@@ -84,4 +84,16 @@ public class AlbumReaderImpl implements AlbumReader {
         System.out.println("AlbumReaderImpl :: getGenreAlbumList");
         return albumRepository.findGenreAlbumList(genreId, pageable.getPageSize()).orElse(Lists.newArrayList());
     }
+
+    @Override
+    public int getChannelAlbumCount(Long channelId) {
+        System.out.println("AlbumReaderImpl :: getChannelAlbumCount");
+        return albumRepository.countChannelAlbum(channelId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getChannelAlbumList(Long channelId, int startNum, int endNum) {
+        System.out.println("AlbumReaderImpl :: getChannelAlbumList");
+        return albumRepository.findChannelAlbum(channelId, startNum, endNum).orElse(Lists.newArrayList());
+    }
 }

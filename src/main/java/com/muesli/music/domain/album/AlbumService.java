@@ -27,4 +27,7 @@ public interface AlbumService {
 
     // 장르별 앨범 리스트 호출 (전체결과)
     List<GenreInfo.Main> getGenreAlbumListAll(Pageable pageable);
+    
+    // 채널별 앨범 리스트 호출
+    List<AlbumInfo.ChannelAlbumInfo> getChannelAlbum(Long channelId, Pageable pageable);
 }

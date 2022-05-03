@@ -144,7 +144,7 @@ public class AlbumServiceImpl implements AlbumService {
      */
     @Override
     public List<AlbumInfo.GenreAlbumInfo> getGenreAlbumList(Long genreId, Pageable pageable) {
-        // 페이징
+        System.out.println("AlbumServiceImpl :: getGenreAlbumList");
         var albumList = albumReader.getGenreAlbumList(genreId, pageable);
         var newAlbumList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : albumList) {
@@ -161,6 +161,7 @@ public class AlbumServiceImpl implements AlbumService {
      */
     @Override
     public List<GenreInfo.Main> getGenreAlbumListAll(Pageable pageable) {
+        System.out.println("AlbumServiceImpl :: getGenreAlbumListAll");
         var genreList = genreReader.getGenreParentList();
         return genreList.stream().map(
                 genre -> {
@@ -175,5 +176,25 @@ public class AlbumServiceImpl implements AlbumService {
                     return genreInfo;
                 }
         ).collect(Collectors.toList());
+    }
+
+    /**
+     * 채널별 앨범 리스트 호출
+     * @param channelId 채널 idx
+     * @param pageable 페이징 처리를 위한 객체
+     * @return 채널별 앨범 리스트
+     */
+    @Override
+    public List<AlbumInfo.ChannelAlbumInfo> getChannelAlbum(Long channelId, Pageable pageable) {
+        System.out.println("AlbumServiceImpl :: getChannelAlbum");
+        // 페이징
+        var pageInfo = new PageInfo(pageable, albumReader.getChannelAlbumCount(channelId));
+        var albumList = albumReader.getChannelAlbumList(channelId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newAlbumList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : albumList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newAlbumList.add(newAlbumMap);
+        }
+        return newAlbumList.stream().map(AlbumInfo.ChannelAlbumInfo::new).collect(Collectors.toList());
     }
 }

@@ -40,7 +40,7 @@ public class AlbumServiceImpl implements AlbumService {
         System.out.println("AlbumServiceImpl :: findAlbumInfo");
 
         // 앨범 데이터 호출
-        var album = albumReader.getAlbumBy2(albumId);
+        var album = albumReader.getAlbumBy(albumId);
         album.setViews(album.getViews());
 
         var trackCount = trackReader.getTrackByAlbumCount(albumId);

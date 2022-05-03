@@ -15,20 +15,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
      * @param albumId
      * @return
      */
-    @Query(value = "SELECT a FROM Album a " +
-            "LEFT JOIN FETCH a.likeList " +
-            "LEFT JOIN FETCH a.trackList t " +
-            "LEFT JOIN FETCH t.lyrics " +
-            "LEFT JOIN FETCH t.trackArtists ta " +
-            "LEFT JOIN FETCH t.likeList " +
-            "LEFT JOIN FETCH ta.artist ar " +
-            "LEFT JOIN FETCH ar.bios " +
-            "WHERE a.id = :albumId")
-    Optional<Album> findAlbumById(Long albumId);
-
-
     @Query(value = "SELECT a FROM Album a WHERE a.id = :albumId")
-    Optional<Album> findAlbumById2(Long albumId);
+    Optional<Album> findAlbumById(Long albumId);
 
     /**
      * 좋아하는 앨범 리스트 조회

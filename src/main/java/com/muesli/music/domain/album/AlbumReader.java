@@ -9,7 +9,6 @@ public interface AlbumReader {
 
     // 앨범 정보 호출
     Album getAlbumBy(Long albumId);
-    Album getAlbumBy2(Long albumId);
 
     // 앨범에 속한 트랙 리스트 호출
    List<TrackInfo.Main> getTrackList(Album album);

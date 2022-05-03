@@ -197,7 +197,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "JOIN artists a2 on a2.id = at.artist_id " +
             "WHERE ca.channelable_type LIKE '%Album%' AND c.id = :channelId " +
             "GROUP BY a.id " +
-            "ORDER By a.id " +
+            "ORDER By RAND() " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findChannelAlbum(Long channelId, int start, int end);
 }

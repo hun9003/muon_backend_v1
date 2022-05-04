@@ -26,8 +26,8 @@ public class ArtistApiController {
      */
     @GetMapping("/{id}")
     public CommonResponse retrieveArtist(@PathVariable("id") Long artistId,
-                                         @PageableDefault(size = 100, page = 1) Pageable pageable) {
-        var artistInfo = artistFacade.findArtistInfo(artistId, pageable);
+                                            @PageableDefault(size = 100, page = 1) Pageable pageable) {
+        var artistInfo = artistFacade.findArtistInfo2(artistId, pageable);
         var response = artistDtoMapper.of(artistInfo);
         return CommonResponse.success(response);
     }

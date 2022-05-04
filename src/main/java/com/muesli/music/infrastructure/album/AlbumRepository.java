@@ -11,12 +11,36 @@ import java.util.Optional;
 public interface AlbumRepository extends JpaRepository<Album, Long> {
 
     /**
-     * 앨범 pk로 조회
+     * 앨범 idx로 조회
      * @param albumId
      * @return
      */
     @Query(value = "SELECT a FROM Album a WHERE a.id = :albumId")
     Optional<Album> findAlbumById(Long albumId);
+
+    /**
+     * 아티스트 idx로 앨범 개수 조회
+     * @param artistId
+     * @return
+     */
+    Optional<Integer> countAlbumByArtistId(Long artistId);
+
+    /**
+     * 아티스트 idx로 조회
+     * @param artistId
+     * @param start
+     * @param end
+     * @return
+     */
+    @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
+            "            a2.id AS artistId, a2.name AS artistName " +
+            "            FROM albums a " +
+            "            JOIN artists a2 on a2.id = a.artist_id " +
+            "            WHERE a.artist_id = :artistId " +
+            "            GROUP BY a.id " +
+            "            ORDER By a.id DESC " +
+            "            LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findAlbumByArtist(Long artistId, int start, int end);
 
     /**
      * 좋아하는 앨범 리스트 조회
@@ -35,9 +59,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM albums a " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "GROUP BY a.id " +
             "ORDER By a.release_date DESC " +
             "LIMIT :start, :end", nativeQuery = true)
@@ -51,9 +73,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     @Query(value = "SELECT COUNT(id) FROM (" +
             "SELECT a.id as id " +
             "FROM albums a LEFT JOIN play_log p ON p.album_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN tracks t ON a.id = t.album_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(t.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(a2.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
@@ -72,9 +93,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM albums a LEFT JOIN play_log p ON p.album_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN tracks t ON a.id = t.album_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(t.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(a2.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
@@ -94,9 +114,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM albums a LEFT JOIN play_log p ON p.album_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN tracks t ON a.id = t.album_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(t.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(a2.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
@@ -121,9 +140,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM albums a LEFT JOIN play_log p ON p.album_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN tracks t ON a.id = t.album_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(t.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(a2.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
@@ -144,8 +162,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "    JOIN genreables g2 on g.id = g2.genre_id " +
             "    JOIN tracks t ON t.id = g2.genreable_id " +
             "    JOIN albums a on a.id = t.album_id " +
-            "    JOIN artist_track at2 on t.id = at2.track_id " +
-            "    JOIN artists a2 on at2.artist_id = a2.id " +
+            "    JOIN artists a2 on a.artist_id = a2.id " +
             "    JOIN play_log pl on t.id = pl.track_id " +
             "WHERE g.id = :genreId " +
             "GROUP BY a.id ORDER BY g.id, COUNT(pl.idx) DESC " +
@@ -161,9 +178,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "SELECT a.id " +
             "FROM channels c LEFT JOIN channelables ca ON ca.channel_id = c.id " +
             "JOIN albums a on ca.channelable_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE ca.channelable_type LIKE '%Album%' AND c.id = :channelId " +
             "GROUP BY a.id " +
             "ORDER By a.id ) as album", nativeQuery = true)
@@ -180,9 +195,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "a2.id AS artistId, a2.name AS artistName " +
             "FROM channels c LEFT JOIN channelables ca ON ca.channel_id = c.id " +
             "JOIN albums a on ca.channelable_id = a.id " +
-            "JOIN tracks t on t.album_id = a.id " +
-            "JOIN artist_track at on at.track_id = t.id " +
-            "JOIN artists a2 on a2.id = at.artist_id " +
+            "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE ca.channelable_type LIKE '%Album%' AND c.id = :channelId " +
             "GROUP BY a.id " +
             "ORDER By RAND() " +

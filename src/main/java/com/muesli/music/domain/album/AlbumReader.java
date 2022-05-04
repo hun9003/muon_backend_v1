@@ -1,5 +1,5 @@
 package com.muesli.music.domain.album;
-import com.muesli.music.domain.track.TrackInfo;
+
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -11,8 +11,14 @@ public interface AlbumReader {
     Album getAlbumBy(Long albumId);
 
     // 앨범에 속한 트랙 리스트 호출
-   List<TrackInfo.Main> getTrackList(Album album);
-    
+//    List<TrackInfo.Main> getTrackList(Album album);
+
+    // 아티스트에 속한 앨범 리스트 개수
+    int getAlbumListByArtistCount(Long artistId);
+
+    // 아티스트에 속한 앨범 리스트 호출
+    List<Map<String, Object>> getAlbumListByArtist(Long artistId, int start, int end);
+
    // 좋아요 된 앨범 리스트 호출
     List<AlbumInfo.Main> getAlbumLikeList(Long userId);
 
@@ -33,4 +39,5 @@ public interface AlbumReader {
 
     // 채널별 앨범 리스트
     List<Map<String, Object>> getChannelAlbumList(Long channelId, int startNum, int endNum);
+
 }

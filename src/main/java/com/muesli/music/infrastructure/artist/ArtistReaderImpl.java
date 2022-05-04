@@ -6,6 +6,7 @@ import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.artist.Artist;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.artist.ArtistReader;
+import com.muesli.music.domain.artist.bios.Bios;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -20,12 +21,19 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ArtistReaderImpl implements ArtistReader {
     private final ArtistRepository artistRepository;
+    private final BiosRepository biosRepository;
 
     @Override
     public Artist getArtistBy(Long artistId) {
         System.out.println("ArtistReaderImpl :: getArtistBy");
         return artistRepository.findArtistById(artistId)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Override
+    public Artist getArtistBy2(Long artistId) {
+        System.out.println("ArtistReaderImpl :: getArtistBy");
+        return artistRepository.findArtistById2(artistId).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -58,5 +66,11 @@ public class ArtistReaderImpl implements ArtistReader {
             default: artistList = artistRepository.findSearchArtistOrderByPopularity(keyword, start, end).orElse(new ArrayList<>());
         }
         return artistList;
+    }
+
+    @Override
+    public Bios getBiosByArtist(Long artistId) {
+        System.out.println("ArtistReaderImpl :: getBiosByArtist");
+        return biosRepository.findBiosByArtistId(artistId).orElse(new Bios());
     }
 }

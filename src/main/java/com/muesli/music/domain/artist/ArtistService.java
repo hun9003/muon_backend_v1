@@ -9,6 +9,7 @@ public interface ArtistService {
     
     // 아티스트 정보 호출
     ArtistInfo.Main findArtistInfo(Long artistId, Pageable pageable);
+    ArtistInfo.Main2 findArtistInfo2(Long artistId, Pageable pageable);
 
     // 좋아하는 아티스트 리스트 호출
     List<ArtistInfo.Main> getLikeList(String token, Pageable pageable);

@@ -1,9 +1,11 @@
 package com.muesli.music.domain.artist;
 
 import com.muesli.music.domain.album.AlbumInfo;
+import com.muesli.music.domain.album.AlbumReader;
 import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackInfo;
+import com.muesli.music.domain.track.TrackReader;
 import com.muesli.music.domain.user.token.UsertokenReader;
 import com.muesli.music.interfaces.user.PageInfo;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ArtistServiceImpl implements ArtistService{
     private final ArtistReader artistReader;
+    private final AlbumReader albumReader;
+    private final TrackReader trackReader;
     private final UsertokenReader usertokenReader;
 
     /**
@@ -64,6 +68,41 @@ public class ArtistServiceImpl implements ArtistService{
         trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
 
         return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList);
+    }
+
+    @Override
+    public ArtistInfo.Main2 findArtistInfo2(Long artistId, Pageable pageable) {
+        System.out.println("ArtistServiceImpl :: findArtistInfo");
+        var artist = artistReader.getArtistBy2(artistId);
+        artist.setViews(artist.getViews());
+
+        // 페이징
+        var pageInfo = new PageInfo(pageable, albumReader.getAlbumListByArtistCount(artistId));
+
+        // 아티스트 설명 호출
+        var bios = artistReader.getBiosByArtist(artistId);
+        var biosInfo = new ArtistInfo.BiosInfo(bios);
+
+        // 앨범 리스트 호출
+        var albumList = albumReader.getAlbumListByArtist(artistId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newAlbumList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : albumList) {
+            var newAlbumMap = new HashMap<>(stringObjectMap);
+            newAlbumList.add(newAlbumMap);
+        }
+        var albumListInfo = newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
+
+        // 트랙 리스트 호출
+        pageInfo = new PageInfo(pageable, trackReader.getTrackListByArtistCount(artistId));
+        var trackList = trackReader.getTrackListByArtist(artistId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> stringObjectMap : trackList) {
+            var newTrackMap = new HashMap<>(stringObjectMap);
+            newTrackList.add(newTrackMap);
+        }
+        var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
+
+        return new ArtistInfo.Main2(artist, biosInfo, albumListInfo, trackListInfo);
     }
 
     /**

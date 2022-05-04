@@ -27,6 +27,10 @@ public class ArtistFacade {
         System.out.println("ArtistFacade :: findArtistInfo");
         return artistService.findArtistInfo(artistId, pageable);
     }
+    public ArtistInfo.Main2 findArtistInfo2(Long artistId, Pageable pageable) {
+        System.out.println("ArtistFacade :: findArtistInfo");
+        return artistService.findArtistInfo2(artistId, pageable);
+    }
 
     /**
      * 좋아하는 아티스트 리스트 조회

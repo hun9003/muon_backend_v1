@@ -19,6 +19,9 @@ public interface ArtistRepository  extends JpaRepository<Artist, Long> {
             "GROUP BY al.id")
     Optional<Artist> findArtistById(Long artistId);
 
+    @Query(value = "SELECT a FROM Artist a WHERE a.id = :artistId")
+    Optional<Artist> findArtistById2(Long artistId);
+
     @Query(value = "SELECT a FROM Artist a JOIN FETCH a.likeList l LEFT JOIN FETCH a.bios b WHERE l.userId = :userId")
     Optional<List<Artist>> findAllLikeList(Long userId);
 

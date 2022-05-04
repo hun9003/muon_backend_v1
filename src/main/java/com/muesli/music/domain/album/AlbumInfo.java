@@ -108,7 +108,33 @@ public class AlbumInfo {
         }
     }
 
+    /*
+        일반 앨범 리스트 정보
+    */
+    @Getter
+    @ToString
+    public static class AlbumListInfo {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
 
+        private final Long artistId;
+        private final String artistName;
+
+        public AlbumListInfo(Map<String, Object> album) {
+
+            this.id = Long.parseLong(String.valueOf(album.get("id")));
+            this.name = (String) album.get("name");
+            this.releaseDate = (String) album.get("releaseDate");
+            this.originalName = (String) album.get("originalName");
+            this.image = (String) album.get("image");
+
+            this.artistId = Long.parseLong(String.valueOf(album.get("artistId")));
+            this.artistName = (String) album.get("artistName");
+        }
+    }
 
     /*
         최신 앨범 조회

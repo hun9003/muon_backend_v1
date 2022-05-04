@@ -1,5 +1,6 @@
 package com.muesli.music.infrastructure.track;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.exception.InvalidParamException;
 import com.muesli.music.common.util.Constant;
@@ -45,10 +46,22 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
-    public List<Map<String, Object>> getTrackByAlbum(Long albumId, int start, int end) {
+    public List<Map<String, Object>> getTrackListByAlbum(Long albumId, int start, int end) {
         System.out.println("TrackReaderImpl :: getTrackArtist");
         return trackRepository.findTrackByAlbumId(albumId, start, end)
                 .orElse(null);
+    }
+
+    @Override
+    public int getTrackListByArtistCount(Long artistId) {
+        System.out.println("TrackReaderImpl :: getTrackListByArtistCount");
+        return trackRepository.countTrackByArtistId(artistId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getTrackListByArtist(Long artistId, int startNum, int endNum) {
+        System.out.println("TrackReaderImpl :: getTrackListByArtist");
+        return trackRepository.findTrackByArtistId(artistId, startNum, endNum).orElse(Lists.newArrayList());
     }
 
     @Override

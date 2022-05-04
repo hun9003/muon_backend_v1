@@ -34,6 +34,26 @@ public class ArtistDto {
         private final List<AlbumDto.ArtistAlbumInfo> albumList;
         private final List<TrackDto.ArtistTrackInfo> trackList;
     }
+    @Getter
+    @Builder
+    @ToString
+    public static class Main2 {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+        private final String image;
+        private final String birthday;
+        private final String country;
+        private final Long debut;
+        private final String agency;
+        private final String label;
+        private final int views;
+        private final String imageSmall;
+        private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
+        private final List<AlbumDto.AlbumInfo2> albumList;
+        private final List<TrackDto.TrackInfo2> trackList;
+    }
 
     /**
      * 아티스트 리스트 정보

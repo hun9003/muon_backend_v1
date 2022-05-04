@@ -46,7 +46,7 @@ public class AlbumServiceImpl implements AlbumService {
         var trackCount = trackReader.getTrackByAlbumCount(albumId);
         var pageInfo = new PageInfo(pageable, trackCount);
 
-        var trackList = trackReader.getTrackByAlbum(albumId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var trackList = trackReader.getTrackListByAlbum(albumId, pageInfo.getStartNum(), pageInfo.getEndNum());
         var newTrackList = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> stringObjectMap : trackList) {
             var newAlbumMap = new HashMap<>(stringObjectMap);

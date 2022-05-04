@@ -7,8 +7,6 @@ import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.album.Album;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
-import com.muesli.music.domain.artist.ArtistInfo;
-import com.muesli.music.domain.track.TrackInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -27,17 +25,30 @@ public class AlbumReaderImpl implements AlbumReader {
 
     @Override
     public Album getAlbumBy(Long albumId) {
+        System.out.println("AlbumReaderImpl :: getAlbumListByArtist");
         return albumRepository.findAlbumById(albumId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
+//    @Override
+//    public List<TrackInfo.Main> getTrackList(Album album) {
+//        var trackList = album.getTrackList();
+//        return trackList.stream().map(track -> {
+//            var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
+//            return new TrackInfo.Main(track, artistInfo);
+//        }).collect(Collectors.toList());
+//    }
+
     @Override
-    public List<TrackInfo.Main> getTrackList(Album album) {
-        var trackList = album.getTrackList();
-        return trackList.stream().map(track -> {
-            var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
-            return new TrackInfo.Main(track, artistInfo);
-        }).collect(Collectors.toList());
+    public int getAlbumListByArtistCount(Long artistId) {
+        System.out.println("AlbumReaderImpl :: getAlbumListByArtistCount");
+        return albumRepository.countAlbumByArtistId(artistId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getAlbumListByArtist(Long artistId, int start, int end) {
+        System.out.println("AlbumReaderImpl :: getAlbumListByArtist");
+        return albumRepository.findAlbumByArtist(artistId, start, end).orElse(Lists.newArrayList());
     }
 
     @Override

@@ -12,7 +12,11 @@ public interface TrackReader {
 
     int getTrackByAlbumCount(Long albumId);
 
-    List<Map<String, Object>> getTrackByAlbum(Long albumId, int start, int end);
+    List<Map<String, Object>> getTrackListByAlbum(Long albumId, int start, int end);
+
+    int getTrackListByArtistCount(Long artistId);
+
+    List<Map<String, Object>> getTrackListByArtist(Long artistId, int startNum, int endNum);
 
     List<TrackInfo.Main> getTrackLikeList(Long userId);
 
@@ -31,4 +35,5 @@ public interface TrackReader {
     int getGenreTrackCount(Long genreId);
 
     List<Map<String, Object>> getGenreTrackList(Long genreId, String type, int start, int end);
+
 }

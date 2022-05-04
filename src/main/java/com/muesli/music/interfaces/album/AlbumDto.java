@@ -43,6 +43,19 @@ public class AlbumDto {
         private final String description;
         private final ArtistDto.TrackArtistInfo artistInfo;
     }
+    @Getter
+    @Builder
+    @ToString
+    public static class AlbumInfo2 {
+        private final Long id;
+        private final String name;
+        private final String releaseDate;
+        private final String originalName;
+        private final String image;
+
+        private final Long artistId;
+        private final String artistName;
+    }
 
     /**
      * 앨범 리스트

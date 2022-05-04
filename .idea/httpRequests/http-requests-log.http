@@ -1,3 +1,75 @@
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085834.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085706.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085540.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085535.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085352.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085343.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T085332.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/1113
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-05-04T072229.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/1809
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-05-04T072055.200.json
+
+###
+
 GET http://localhost:8080/api/v1/channel
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -414,148 +486,6 @@ authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
 Content-Type: application/json
 
 <> 2022-04-26T171828.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun38921234@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthday" : "1995-07-04"
-}
-
-<> 2022-04-26T163044.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892123@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthday" : "1995-07-04"
-}
-
-<> 2022-04-26T162323.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892123@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T162306.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892123@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T162216.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892123@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T161619.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun3892123@gmail.com",
-  "password": "12345678",
-  "username": "테스트32132",
-  "phoneNumber": "010-0000-0000",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T161530.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun389212@gmail.com",
-  "password": "12345678",
-  "username": "테스트",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T161238.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun389212@gmail.com",
-  "password": "12345678",
-  "username": "테스트",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T161225.200.json
-
-###
-
-POST http://localhost:8080/api/v1/user
-Content-Type: application/json
-
-{
-  "email": "jinhun389212@gmail.com",
-  "password": "12345678",
-  "username": "테스트",
-  "phoneNumber": "01000000000",
-  "gender" : "M",
-  "birthDay" : "1995-07-04"
-}
-
-<> 2022-04-26T161210.400.json
 
 ###
 

@@ -37,6 +37,6 @@ public class GenreDto {
         private final String title;
         private final String description;
         private final int views;
-        private final List<AlbumDto.GenreAlbumInfo> albumList;
+        private final List<AlbumDto.AlbumInfo> albumList;
     }
 }

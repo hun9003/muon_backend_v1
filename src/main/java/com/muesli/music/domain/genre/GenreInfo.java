@@ -18,7 +18,7 @@ public class GenreInfo {
         private final String title;
         private final String description;
         private final int views;
-        private List<AlbumInfo.GenreAlbumInfo> albumList;
+        private List<AlbumInfo.AlbumListInfo> albumList;
 
         public Main(Genre genre) {
             this.id = genre.getId();
@@ -30,7 +30,7 @@ public class GenreInfo {
             this.views = genre.getViews();
         }
 
-        public void setAlbumList(List<AlbumInfo.GenreAlbumInfo> albumList) {
+        public void setAlbumList(List<AlbumInfo.AlbumListInfo> albumList) {
             this.albumList = albumList;
         }
     }

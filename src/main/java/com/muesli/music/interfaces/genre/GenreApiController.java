@@ -3,7 +3,9 @@ package com.muesli.music.interfaces.genre;
 import com.muesli.music.application.genre.GenreFacade;
 import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.util.Constant;
+import com.muesli.music.interfaces.album.AlbumDto;
 import com.muesli.music.interfaces.album.AlbumDtoMapper;
+import com.muesli.music.interfaces.track.TrackDto;
 import com.muesli.music.interfaces.track.TrackDtoMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,14 +26,6 @@ public class GenreApiController {
     private final AlbumDtoMapper albumDtoMapper;
     private final TrackDtoMapper trackDtoMapper;
 
-//    @GetMapping("/search/{id}")
-//    public CommonResponse retrieveGenreItemList(@PathVariable(value = "id") Long genreId, @RequestParam(name = "keyword") String keyword) {
-//        System.out.println("GenreApiController :: retrieveGenreItemList");
-//        var genreDto = new GenreDto.GenreRequest(keyword, genreId, "");
-//        var itemList = genreFacade.getGenreItemList(genreDto.toCommand());
-//        return CommonResponse.success(itemList);
-//    }
-
     @GetMapping
     public CommonResponse retrieveGenreAll(@PageableDefault(size = 8, page = 1) Pageable pageable) {
         System.out.println("GenreApiController :: retrieveGenreAll");
@@ -44,7 +38,8 @@ public class GenreApiController {
     public CommonResponse retrieveGenre(@PathVariable(value = "id") Long genreId, @PageableDefault(size = 8, page = 1) Pageable pageable) {
         System.out.println("GenreApiController :: retrieveGenreAll");
         var albumInfoList = genreFacade.retrieveGenreAlbumList(genreId, pageable);
-        var response = albumInfoList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        var albumDtoList = albumInfoList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        var response = new AlbumDto.AlbumInfoList(albumDtoList);
         return CommonResponse.success(response);
     }
 
@@ -53,7 +48,8 @@ public class GenreApiController {
                                              @RequestParam(name = "type", required = false, defaultValue = Constant.Order.POPULARITY) String type) {
         System.out.println("GenreApiController :: retrieveGenreAll");
         var trackInfoList = genreFacade.retrieveGenreTrackList(genreId, type, pageable);
-        var response = trackInfoList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var trackDtoList = trackInfoList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+        var response = new TrackDto.TrackInfoList(trackDtoList);
         return CommonResponse.success(response);
     }
 

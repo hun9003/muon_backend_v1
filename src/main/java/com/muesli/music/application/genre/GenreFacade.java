@@ -39,7 +39,7 @@ public class GenreFacade {
      * @param pageable 앨범 리스트 페이징을 위한 객체
      * @return 장르별 앨범 정보 리스트
      */
-    public List<AlbumInfo.GenreAlbumInfo> retrieveGenreAlbumList(Long genreId, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> retrieveGenreAlbumList(Long genreId, Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveGenreAlbumList");
         return albumService.getGenreAlbumList(genreId, pageable);
     }
@@ -61,7 +61,7 @@ public class GenreFacade {
      * @param pageable 앨범 리스트 페이징을 위한 객체
      * @return 장르별 곡 정보 리스트
      */
-    public List<TrackInfo.GenreTrackInfo> retrieveGenreTrackList(Long genreId, String type, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> retrieveGenreTrackList(Long genreId, String type, Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveGenreAlbumList");
         return trackService.getGenreTrackList(genreId, type, pageable);
     }

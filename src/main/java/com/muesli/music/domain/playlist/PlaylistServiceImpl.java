@@ -2,6 +2,7 @@ package com.muesli.music.domain.playlist;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.playlist.track.PlaylistTrack;
 import com.muesli.music.domain.track.TrackInfo;
@@ -68,6 +69,26 @@ public class PlaylistServiceImpl implements PlaylistService{
         return playlistInfo;
     }
 
+    @Override
+    public PlaylistInfo.Main2 findPlaylistInfo2(Long playlistId, Pageable pageable, UserInfo.Main userInfo) {
+        var playlist = playlistReader.getPlaylistBy2(playlistId);
+        if (playlist.getIsPublic() == 0) {
+            if (!Objects.equals(playlist.getUserId(), userInfo.getId())) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
+        }
+        playlist.setViews(playlist.getViews());
+
+        var trackCount = trackReader.getPlaylistTrackCount(playlistId);
+        var pageInfo = new PageInfo(pageable, trackCount);
+        var trackList = trackReader.getPlaylistTrackList(playlistId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
+        var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
+
+        var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
+        var playlistInfo = new PlaylistInfo.Main2(playlist, playlistUserInfo, trackListInfo);
+        playlistInfo.setTrackCount(trackCount);
+        return playlistInfo;
+    }
+
     /**
      * 내 플레이리스트 조회
      * @param userInfo 유저 정보
@@ -83,6 +104,15 @@ public class PlaylistServiceImpl implements PlaylistService{
         // 페이징
         var pageInfo = new PageInfo(pageable, playlistInfoList.size());
         return playlistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+    @Override
+    public List<PlaylistInfo.PlayListInfo> findPlaylistInfoMyList2(UserInfo.Main userInfo, Pageable pageable) {
+        System.out.println("PlaylistServiceImpl :: findPlaylistInfoMyList");
+        var pageInfo = new PageInfo(pageable, playlistReader.getPlaylistListCount(userInfo.getId()));
+        var playlistList = playlistReader.getPlaylistList(userInfo.getId(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newPlaylist = ItemGenerator.makeItemListMap(playlistList);
+
+        return newPlaylist.stream().map(PlaylistInfo.PlayListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -154,6 +184,15 @@ public class PlaylistServiceImpl implements PlaylistService{
         // 페이징
         var pageInfo = new PageInfo(pageable, playlistInfoList.size());
         return playlistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+    @Override
+    public List<PlaylistInfo.PlayListInfo> getLikeList2(UserInfo.Main userInfo, Pageable pageable) {
+        System.out.println("PlaylistServiceImpl :: getLikeList");
+        if(userInfo == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
+        var pageInfo = new PageInfo(pageable, playlistReader.getPlaylistLikeListCount(userInfo.getId()));
+        var playlistList =  playlistReader.getPlaylistLikeList(userInfo.getId(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newPlaylistList = ItemGenerator.makeItemListMap(playlistList);
+        return newPlaylistList.stream().map(PlaylistInfo.PlayListInfo::new).collect(Collectors.toList());
     }
 
     /**

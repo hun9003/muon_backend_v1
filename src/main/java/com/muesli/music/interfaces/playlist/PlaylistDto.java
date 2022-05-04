@@ -13,6 +13,7 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -32,6 +33,38 @@ public class PlaylistDto {
         private final int trackCount;
         private final UserDto.PlaylistUserInfo userInfo;
         private final List<TrackDto.PlaylistTrackInfo> trackInfoList;
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class PlaylistInfo2 {
+        private final Long id;
+        private final String name;
+        private final Long isPublic;
+        private final String image;
+        private final int views;
+        private final String description;
+        private final ZonedDateTime createAt;
+        private final int trackCount;
+        private final UserDto.PlaylistUserInfo userInfo;
+        private final List<TrackDto.TrackInfo> trackInfoList;
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class PlaylistList {
+        private final Long id;
+        private final String name;
+        private final Long isPublic;
+        private final String image;
+        private final int views;
+        private final String description;
+        private final Timestamp createAt;
+        private final int trackCount;
+        private final Long userId;
+        private final String userName;
     }
 
     @Getter

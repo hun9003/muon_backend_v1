@@ -20,5 +20,7 @@ public interface PlaylistDtoMapper {
 
     // find
     PlaylistDto.PlaylistInfo of(PlaylistInfo.Main playlist);
+    PlaylistDto.PlaylistInfo2 of(PlaylistInfo.Main2 playlist);
+    PlaylistDto.PlaylistList of(PlaylistInfo.PlayListInfo playListInfo);
 
 }

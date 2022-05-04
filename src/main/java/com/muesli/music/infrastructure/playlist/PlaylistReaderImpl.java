@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -33,6 +34,12 @@ public class PlaylistReaderImpl implements PlaylistReader {
     public Playlist getPlaylistBy(Long playlistId) {
         System.out.println("PlaylistReaderImpl :: getPlaylistBy");
         return playlistRepository.findPlaylistById(playlistId)
+                .orElseThrow(EntityNotFoundException::new);
+    }
+    @Override
+    public Playlist getPlaylistBy2(Long playlistId) {
+        System.out.println("PlaylistReaderImpl :: getPlaylistBy");
+        return playlistRepository.findById(playlistId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
@@ -70,6 +77,18 @@ public class PlaylistReaderImpl implements PlaylistReader {
         ).collect(Collectors.toList());
     }
 
+    @Override
+    public int getPlaylistListCount(Long userId) {
+        System.out.println("PlaylistReaderImpl :: getPlaylistListCount");
+        return playlistRepository.countPlaylistByUserId(userId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getPlaylistList(Long userId, int start, int end) {
+        System.out.println("PlaylistReaderImpl :: getPlaylistList");
+        return playlistRepository.findPlaylistByUserId(userId, start, end).orElse(Lists.newArrayList());
+    }
+
     /**
      * 좋아하는 플레이리스트 목록 호출
      * @param userInfo 유저 정보
@@ -94,4 +113,15 @@ public class PlaylistReaderImpl implements PlaylistReader {
         ).collect(Collectors.toList());
     }
 
+    @Override
+    public int getPlaylistLikeListCount(Long userId) {
+        System.out.println("PlaylistReaderImpl :: getPlaylistLikeListCount");
+        return playlistRepository.countLikeList(userId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getPlaylistLikeList(Long userId, int start, int end) {
+        System.out.println("PlaylistReaderImpl :: getPlaylistLikeList");
+        return playlistRepository.findLikeList(userId, start, end).orElse(Lists.newArrayList());
+    }
 }

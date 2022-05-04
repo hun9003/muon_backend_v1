@@ -28,11 +28,11 @@ public class PlaylistFacade {
      * @param token 유저 토큰
      * @return 플레이 리스트 정보
      */
-    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, String token) {
-        System.out.println("PlaylistFacade :: registerPlaylist");
+    public PlaylistInfo.Main2 findPlaylistInfo(Long playlistId, Pageable pageable, String token) {
+        System.out.println("PlaylistFacade :: findPlaylistInfo2");
         // 유저토큰을 통해 유저 토큰 정보 호출
         var usertoken = usertokenService.findUsertokenInfo(token);
-        return playlistService.findPlaylistInfo(playlistId,  pageable, usertoken.getUserInfo());
+        return playlistService.findPlaylistInfo2(playlistId,  pageable, usertoken.getUserInfo());
     }
 
     /**
@@ -50,6 +50,16 @@ public class PlaylistFacade {
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
         return playlistService.findPlaylistInfoMyList(usertokenInfo.getUserInfo(), pageable);
     }
+    public List<PlaylistInfo.PlayListInfo> retrieveMyPlaylist2(String token, Pageable pageable) {
+        System.out.println("PlaylistFacade :: retrieveMyPlaylist");
+        // 유저 토큰 유효성 검사
+        usertokenService.checkUsertoken(token);
+
+        // 유저 토큰을 통해 유저토큰 정보 호출
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return playlistService.findPlaylistInfoMyList2(usertokenInfo.getUserInfo(), pageable);
+    }
+
 
     /**
      * 좋아하는 플레이 리스트 목록 조회
@@ -62,6 +72,15 @@ public class PlaylistFacade {
         // 유저 토큰 유효성 검사
         usertokenService.checkUsertoken(token);
         return playlistService.getLikeList(token, pageable);
+    }
+    public List<PlaylistInfo.PlayListInfo> retrieveLikeList2(String token, Pageable pageable) {
+        System.out.println("PlaylistFacade :: retrieveLikeList");
+        // 유저 토큰 유효성 검사
+        usertokenService.checkUsertoken(token);
+
+        // 유저 토큰을 통해 유저토큰 정보 호출
+        var usertokenInfo = usertokenService.findUsertokenInfo(token);
+        return playlistService.getLikeList2(usertokenInfo.getUserInfo(), pageable);
     }
 
     /**

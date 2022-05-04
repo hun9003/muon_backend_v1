@@ -10,7 +10,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LikeDto {
 
@@ -44,12 +47,19 @@ public class LikeDto {
     @ToString
     public static class LikeItemInfoList {
         private final String type;
-        private final List<Long> ids;
+        private final String ids;
+
+        public LikeItemInfoList(String type, String ids) {
+            this.type = type;
+            this.ids = ids;
+        }
 
         public LikeCommand.ShowLikeListRequest toCommand() {
+            List<String> idsStr = new ArrayList<>(Arrays.asList(ids.split(",")));
+            List<Long> idsLong = idsStr.stream().map(Long::parseLong).collect(Collectors.toList());
             return LikeCommand.ShowLikeListRequest.builder()
                     .type(type)
-                    .ids(ids)
+                    .ids(idsLong)
                     .build();
         }
     }

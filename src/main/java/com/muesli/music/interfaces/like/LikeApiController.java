@@ -51,15 +51,17 @@ public class LikeApiController {
 
     /**
      * 아이템 리스트 좋아요 여부 조회
-     * @param request
+     * @param ids 좋아요 체크할 아이템 idx 배열 (id,id,id)
+     * @param type 아이템 타입
      * @param usertoken
      * @return
      */
-    @PostMapping("/show")
-    public CommonResponse showLikeItem(@RequestBody @Valid LikeDto.LikeItemInfoList request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
+    @GetMapping("/show")
+    public CommonResponse showLikeItem(@RequestParam(value = "ids") String ids, @RequestParam(value = "type") String type, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
     {
         System.out.println("LikeApiController :: showLikeItem");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
+        var request = new LikeDto.LikeItemInfoList(type, ids);
         var command = request.toCommand();
         var likeInfoList = likeFacade.showLikeItemList(command, usertoken);
         var response = new LikeDto.LikeInfoList(command.getType(), likeInfoList.stream().map(likeDtoMapper::of).collect(Collectors.toList()));

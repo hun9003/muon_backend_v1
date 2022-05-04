@@ -46,8 +46,8 @@ public class LikeServiceImpl implements LikeService {
     public List<LikeInfo.Main> findLikeBy(LikeCommand.ShowLikeListRequest command, String token) {
         System.out.println("LikeServiceImpl :: findLikeBy");
         var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
-
+//        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
+        var userId = usertoken.getUser() != null ? usertoken.getUser().getId() : 0;
         // 좋아요 정보 조회를 위한 아이템 타입 분류
         var type = "";
         switch (command.getType()) {
@@ -61,7 +61,7 @@ public class LikeServiceImpl implements LikeService {
         var likeInfoList = new ArrayList<LikeInfo.Main>();
         for (int i = 0; i < command.getIds().size(); i++) {
             var likeCount = likeReader.getLikeCount(command.getIds().get(i), type);
-            likeInfoList.add(new LikeInfo.Main(likeReader.getLikeBy(usertoken.getUser().getId(), command.getIds().get(i), type), likeCount, command.getIds().get(i)));
+            likeInfoList.add(new LikeInfo.Main(likeReader.getLikeBy(userId, command.getIds().get(i), type), likeCount, command.getIds().get(i)));
         }
         return likeInfoList;
     }

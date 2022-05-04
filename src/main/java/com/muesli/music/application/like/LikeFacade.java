@@ -74,8 +74,6 @@ public class LikeFacade {
      */
     public List<LikeInfo.Main> showLikeItemList(LikeCommand.ShowLikeListRequest command, String token) {
         System.out.println("LikeFacade :: showLikeItemList");
-        // 유저 토큰 유효성 검사
-        usertokenService.checkUsertoken(token);
         return likeService.findLikeBy(command, token);
     }
 }

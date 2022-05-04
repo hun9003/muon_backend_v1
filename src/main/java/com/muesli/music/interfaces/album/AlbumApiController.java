@@ -2,7 +2,6 @@ package com.muesli.music.interfaces.album;
 
 import com.muesli.music.application.album.AlbumFacade;
 import com.muesli.music.common.response.CommonResponse;
-import com.muesli.music.common.util.Constant;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,8 +44,8 @@ public class AlbumApiController {
         System.out.println("AlbumApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var albumInfoList = albumFacade.retrieveLikeList(usertoken, pageable);
-        var albumInfoDtoList = albumInfoList.stream().map(albumDtoMapper::ofItem).collect(Collectors.toList());
-        var response = new AlbumDto.AlbumList(albumInfoDtoList);
+        var albumInfoDtoList = albumInfoList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
+        var response = new AlbumDto.AlbumInfoList(albumInfoDtoList);
         return CommonResponse.success(response);
     }
 
@@ -60,7 +59,7 @@ public class AlbumApiController {
         System.out.println("AlbumApiController :: retrieveNewTrack");
         var albumList = albumFacade.retrieveNewAlbum(pageable);
         var albumDtoList = albumList.stream().map(albumDtoMapper::of).collect(Collectors.toList());
-        var response = new AlbumDto.NewestAlbumList(Constant.Item.ALBUM, albumDtoList);
+        var response = new AlbumDto.AlbumInfoList(albumDtoList);
         return CommonResponse.success(response);
     }
 

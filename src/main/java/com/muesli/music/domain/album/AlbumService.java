@@ -11,23 +11,23 @@ public interface AlbumService {
     AlbumInfo.Main findAlbumInfo(Long albumId, Pageable pageable);
 
     // 좋아하는 앨범 리스트 호출
-    List<AlbumInfo.Main> getLikeList(String usertoken, Pageable pageable);
+    List<AlbumInfo.AlbumListInfo> getLikeList2(String usertoken, Pageable pageable);
 
     // 최신 앨범 리스트 호출
-    List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable);
+    List<AlbumInfo.AlbumListInfo> getNewAlbum(Pageable pageable);
 
     // 앨범 검색 결과 호출
-    List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable);
+    List<AlbumInfo.AlbumListInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable);
 
     // 앨범 검색 결과 개수 호출
     int getSearchAlbumCount(SearchCommand.SearchRequest command);
 
     // 장르별 앨범 리스트 호출
-    List<AlbumInfo.GenreAlbumInfo> getGenreAlbumList(Long genreId, Pageable pageable);
+    List<AlbumInfo.AlbumListInfo> getGenreAlbumList(Long genreId, Pageable pageable);
 
     // 장르별 앨범 리스트 호출 (전체결과)
     List<GenreInfo.Main> getGenreAlbumListAll(Pageable pageable);
     
     // 채널별 앨범 리스트 호출
-    List<AlbumInfo.ChannelAlbumInfo> getChannelAlbum(Long channelId, Pageable pageable);
+    List<AlbumInfo.AlbumListInfo> getChannelAlbum(Long channelId, Pageable pageable);
 }

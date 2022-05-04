@@ -33,11 +33,11 @@ public class AlbumFacade {
      * @param pageable 앨범 리스트 페이징 처리를 위한 객체
      * @return 앨범 좋아요 정보 리스트
      */
-    public List<AlbumInfo.Main> retrieveLikeList(String token, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> retrieveLikeList(String token, Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveLikeList");
         // 유저 토큰 유효성 검사
         usertokenService.checkUsertoken(token);
-        return albumService.getLikeList(token, pageable);
+        return albumService.getLikeList2(token, pageable);
     }
 
     /**
@@ -45,7 +45,7 @@ public class AlbumFacade {
      * @param pageable 앨범 리스트 페이징 처리를 위한 객체
      * @return 최신 앨범 정보 리스트
      */
-    public List<AlbumInfo.NewestAlbumInfo> retrieveNewAlbum(Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> retrieveNewAlbum(Pageable pageable) {
         System.out.println("AlbumFacade :: retrieveNewAlbum");
         return albumService.getNewAlbum(pageable);
     }

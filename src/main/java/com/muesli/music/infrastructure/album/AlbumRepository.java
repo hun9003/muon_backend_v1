@@ -43,12 +43,35 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
     Optional<List<Map<String, Object>>> findAlbumByArtist(Long artistId, int start, int end);
 
     /**
-     * 좋아하는 앨범 리스트 조회
+     * 좋아하는 앨범 리스트 개수
      * @param userId
      * @return
      */
-    @Query(value = "SELECT a FROM Album a JOIN FETCH a.likeList l WHERE l.userId = :userId")
-    Optional<List<Album>> findAllLikeList(Long userId);
+    @Query(value = "SELECT COUNT(id) FROM (" +
+            "            SELECT a.id FROM albums a " +
+            "            JOIN artists a2 on a2.id = a.artist_id " +
+            "            JOIN likes l on l.likeable_id = a.id " +
+            "            WHERE l.user_id = :userId AND l.likeable_type LIKE '%Album%' AND is_like = 1 " +
+            "            GROUP BY a.id ) AS album", nativeQuery = true)
+    Optional<Integer> countLikeList(Long userId);
+
+    /**
+     * 좋아하는 앨범 리스트 호출
+     * @param userId
+     * @param start
+     * @param end
+     * @return
+     */
+    @Query(value = "SELECT a.id, a.name, a.image, a.original_name AS originalName, a.release_date AS releaseDate, " +
+            "            a2.id AS artistId, a2.name AS artistName " +
+            "            FROM albums a " +
+            "            JOIN artists a2 on a2.id = a.artist_id " +
+            "            JOIN likes l on l.likeable_id = a.id " +
+            "            WHERE l.user_id = :userId AND l.likeable_type LIKE '%Album%' AND is_like = 1 " +
+            "            GROUP BY a.id " +
+            "            ORDER BY l.updated_at DESC " +
+            "            LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findLikeList(Long userId, int start, int end);
 
     /**
      * 최신 앨범 조회

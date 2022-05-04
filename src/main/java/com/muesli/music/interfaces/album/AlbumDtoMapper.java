@@ -19,17 +19,9 @@ public interface AlbumDtoMapper {
     // find
     AlbumDto.Main of(AlbumInfo.Main main);
 
-    AlbumDto.AlbumInfo ofItem(AlbumInfo.Main main);
+    AlbumDto.AlbumInfo of(AlbumInfo.AlbumListInfo main);
 
     LikeDto.LikeInfo of(LikeInfo.Main like);
 
     ArtistDto.TrackArtistInfo of(ArtistInfo.Main artist);
-
-    AlbumDto.NewestAlbumInfo of(AlbumInfo.NewestAlbumInfo albumInfo);
-
-    AlbumDto.AlbumSearchInfo of(AlbumInfo.SearchInfo albumInfo);
-
-    AlbumDto.GenreAlbumInfo of(AlbumInfo.GenreAlbumInfo albumInfo);
-
-    AlbumDto.ChannelAlbumInfo of(AlbumInfo.ChannelAlbumInfo albumInfo);
 }

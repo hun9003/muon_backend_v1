@@ -10,17 +10,17 @@ public interface AlbumReader {
     // 앨범 정보 호출
     Album getAlbumBy(Long albumId);
 
-    // 앨범에 속한 트랙 리스트 호출
-//    List<TrackInfo.Main> getTrackList(Album album);
-
     // 아티스트에 속한 앨범 리스트 개수
     int getAlbumListByArtistCount(Long artistId);
 
     // 아티스트에 속한 앨범 리스트 호출
     List<Map<String, Object>> getAlbumListByArtist(Long artistId, int start, int end);
 
-   // 좋아요 된 앨범 리스트 호출
-    List<AlbumInfo.Main> getAlbumLikeList(Long userId);
+   // 좋아요 된 앨범 리스트 개수
+    int getAlbumLikeListCount(Long userId);
+    // 좋아요 된 앨범 리스트 호출
+    List<Map<String, Object>> getAlbumLikeList(Long userId, int start, int end);
+
 
     // 최신 앨범 리스트 호출
     List<Map<String, Object>> getNewAlbum(int start, int end);

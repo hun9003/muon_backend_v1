@@ -1,5 +1,6 @@
 package com.muesli.music.domain.album;
 
+import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.genre.GenreInfo;
 import com.muesli.music.domain.genre.GenreReader;
@@ -69,21 +70,15 @@ public class AlbumServiceImpl implements AlbumService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AlbumInfo.Main> getLikeList(String token, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> getLikeList2(String token, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getLikeList");
         var usertoken = usertokenReader.getUsertoken(token);
         var userId = usertoken.getUser().getId();
-        var albumInfoList = albumReader.getAlbumLikeList(userId).stream().peek(
-                main -> {
-                    var track = trackReader.getTrackArtist(main.getId());
-                    if (track != null) {
-                        main.setArtistInfo(new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()));
-                    }
-                }
-        ).collect(Collectors.toList());
         // 페이징
-        var pageInfo = new PageInfo(pageable, albumInfoList.size());
-        return albumInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+        var pageInfo = new PageInfo(pageable, albumReader.getAlbumLikeListCount(userId));
+        var albumList = albumReader.getAlbumLikeList(userId, pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newAlbumList = ItemGenerator.makeItemListMap(albumList);
+        return newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -92,7 +87,7 @@ public class AlbumServiceImpl implements AlbumService {
      * @return 최신 앨범 정보 리스트
      */
     @Override
-    public List<AlbumInfo.NewestAlbumInfo> getNewAlbum(Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> getNewAlbum(Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getNewAlbum");
         // 페이징
         var pageInfo = new PageInfo(pageable, 500);
@@ -102,7 +97,7 @@ public class AlbumServiceImpl implements AlbumService {
             var newAlbumMap = new HashMap<>(stringObjectMap);
             newAlbumList.add(newAlbumMap);
         }
-        return newAlbumList.stream().map(AlbumInfo.NewestAlbumInfo::new).collect(Collectors.toList());
+        return newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -112,7 +107,7 @@ public class AlbumServiceImpl implements AlbumService {
      * @return 앨범 검색 결과 리스트
      */
     @Override
-    public List<AlbumInfo.SearchInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> getSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getSearchAlbum");
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getAlbumCount());
@@ -122,7 +117,7 @@ public class AlbumServiceImpl implements AlbumService {
             var newAlbumMap = new HashMap<>(stringObjectMap);
             newAlbumList.add(newAlbumMap);
         }
-        return newAlbumList.stream().map(AlbumInfo.SearchInfo::new).collect(Collectors.toList());
+        return newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -143,7 +138,7 @@ public class AlbumServiceImpl implements AlbumService {
      * @return 장르별 앨범 정보 리스트
      */
     @Override
-    public List<AlbumInfo.GenreAlbumInfo> getGenreAlbumList(Long genreId, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> getGenreAlbumList(Long genreId, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getGenreAlbumList");
         var albumList = albumReader.getGenreAlbumList(genreId, pageable);
         var newAlbumList = new ArrayList<Map<String, Object>>();
@@ -151,7 +146,7 @@ public class AlbumServiceImpl implements AlbumService {
             var newAlbumMap = new HashMap<>(stringObjectMap);
             newAlbumList.add(newAlbumMap);
         }
-        return newAlbumList.stream().map(AlbumInfo.GenreAlbumInfo::new).collect(Collectors.toList());
+        return newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -172,7 +167,7 @@ public class AlbumServiceImpl implements AlbumService {
                         var newAlbumMap = new HashMap<>(stringObjectMap);
                         newAlbumList.add(newAlbumMap);
                     }
-                    genreInfo.setAlbumList(newAlbumList.stream().map(AlbumInfo.GenreAlbumInfo::new).collect(Collectors.toList()));
+                    genreInfo.setAlbumList(newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList()));
                     return genreInfo;
                 }
         ).collect(Collectors.toList());
@@ -185,7 +180,7 @@ public class AlbumServiceImpl implements AlbumService {
      * @return 채널별 앨범 리스트
      */
     @Override
-    public List<AlbumInfo.ChannelAlbumInfo> getChannelAlbum(Long channelId, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> getChannelAlbum(Long channelId, Pageable pageable) {
         System.out.println("AlbumServiceImpl :: getChannelAlbum");
         // 페이징
         var pageInfo = new PageInfo(pageable, albumReader.getChannelAlbumCount(channelId));
@@ -195,6 +190,6 @@ public class AlbumServiceImpl implements AlbumService {
             var newAlbumMap = new HashMap<>(stringObjectMap);
             newAlbumList.add(newAlbumMap);
         }
-        return newAlbumList.stream().map(AlbumInfo.ChannelAlbumInfo::new).collect(Collectors.toList());
+        return newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
     }
 }

@@ -61,7 +61,7 @@ public class SearchApiController {
 
         var trackDtoList = ((List<TrackInfo.TrackListInfo>) searchMap.get("trackList")).stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var albumDtoList = ((List<AlbumInfo.AlbumListInfo>) searchMap.get("albumList")).stream().map(albumDtoMapper::of).collect(Collectors.toList());
-        var artistDtoList = ((List<ArtistInfo.SearchInfo>) searchMap.get("artistList")).stream().map(artistDtoMapper::of).collect(Collectors.toList());
+        var artistDtoList = ((List<ArtistInfo.ArtistListInfo>) searchMap.get("artistList")).stream().map(artistDtoMapper::of).collect(Collectors.toList());
         var lyricsDtoList = ((List<TrackInfo.SearchLyricsInfo>) searchMap.get("lyricsList")).stream().map(trackDtoMapper::of).collect(Collectors.toList());
 
         var trackSearchList = new SearchDto.SearchTrackResult(keyword, type, command.getTrackCount(), trackDtoList);

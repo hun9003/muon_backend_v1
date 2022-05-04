@@ -104,9 +104,9 @@ public class SearchDto {
         private final String keyword;
         private final String type;
         private final int count;
-        private final List<ArtistDto.ArtistSearchInfo> artistList;
+        private final List<ArtistDto.ArtistInfo> artistList;
 
-        public SearchArtistResult(String keyword, String type, int count, List<ArtistDto.ArtistSearchInfo> artistList) {
+        public SearchArtistResult(String keyword, String type, int count, List<ArtistDto.ArtistInfo> artistList) {
             this.keyword = keyword;
             this.type = type;
             this.count = count;

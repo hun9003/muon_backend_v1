@@ -82,7 +82,7 @@ public class SearchFacade {
      * @param pageable 검색 결과 페이징 처리를 위한 객체
      * @return 아티스트 검색 결과 정보
      */
-    public List<ArtistInfo.SearchInfo> retrieveSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<ArtistInfo.ArtistListInfo> retrieveSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("SearchFacade :: retrieveSearchArtist");
         return artistService.getSearchArtist(command, pageable);
     }

@@ -32,9 +32,9 @@ public class SearchInfo {
     public static class SearchTrack {
         private final int count;
         private final String order;
-        private final List<TrackInfo.SearchInfo> trackList;
+        private final List<TrackInfo.TrackListInfo> trackList;
 
-        public SearchTrack(int count, String order, List<TrackInfo.SearchInfo> trackList) {
+        public SearchTrack(int count, String order, List<TrackInfo.TrackListInfo> trackList) {
             this.count = count;
             this.order = order;
             this.trackList = trackList;
@@ -62,9 +62,9 @@ public class SearchInfo {
     public static class SearchArtist {
         private final int count;
         private final String order;
-        private final List<ArtistInfo.SearchInfo> artistList;
+        private final List<ArtistInfo.ArtistListInfo> artistList;
 
-        public SearchArtist(int count, String order, List<ArtistInfo.SearchInfo> artistList) {
+        public SearchArtist(int count, String order, List<ArtistInfo.ArtistListInfo> artistList) {
             this.count = count;
             this.order = order;
             this.artistList = artistList;

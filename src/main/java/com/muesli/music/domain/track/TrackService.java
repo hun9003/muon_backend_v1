@@ -10,16 +10,15 @@ import java.util.Map;
 public interface TrackService {
     TrackInfo.Main findTrackInfo(Long trackId);
 
-    List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
-    List<TrackInfo.TrackListInfo> getLikeList2(String token, Pageable pageable);
+    List<TrackInfo.TrackListInfo> getLikeList(String token, Pageable pageable);
 
     List<TrackInfo.ChartInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
 
     Map<String, Object> getChartLayout();
 
-    List<TrackInfo.NewestTrackInfo> getNewTrack(Pageable pageable);
+    List<TrackInfo.TrackListInfo> getNewTrack(Pageable pageable);
 
-    List<TrackInfo.HistoryTrackInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
+    List<TrackInfo.TrackListInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable);
 
     int getSearchTrackCount(SearchCommand.SearchRequest command);
 

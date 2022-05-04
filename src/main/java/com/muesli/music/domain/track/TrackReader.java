@@ -8,8 +8,6 @@ import java.util.Map;
 public interface TrackReader {
     Track getTrackBy(Long trackId);
 
-    Track getTrackArtist(Long albumId);
-
     int getTrackByAlbumCount(Long albumId);
 
     List<Map<String, Object>> getTrackListByAlbum(Long albumId, int start, int end);
@@ -18,8 +16,8 @@ public interface TrackReader {
 
     List<Map<String, Object>> getTrackListByArtist(Long artistId, int startNum, int endNum);
 
-    List<TrackInfo.Main> getTrackLikeList(Long userId);
     int getTrackLikeListCount(Long userId);
+
     List<Map<String, Object>> getTrackLikeList(Long userId, int start, int end);
 
     List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable);

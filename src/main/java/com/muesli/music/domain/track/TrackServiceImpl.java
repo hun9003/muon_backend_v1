@@ -54,17 +54,7 @@ public class TrackServiceImpl implements TrackService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<TrackInfo.Main> getLikeList(String token, Pageable pageable) {
-        System.out.println("TrackServiceImpl :: getLikeTrackList");
-        var usertoken = usertokenReader.getUsertoken(token);
-        var trackInfoList = trackReader.getTrackLikeList(usertoken.getUser().getId());
-        // 페이징
-        var pageInfo = new PageInfo(pageable, trackInfoList.size());
-        return trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-    }
-    @Override
-    @Transactional(readOnly = true)
-    public List<TrackInfo.TrackListInfo> getLikeList2(String token, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> getLikeList(String token, Pageable pageable) {
         System.out.println("TrackServiceImpl :: getLikeTrackList");
         var usertoken = usertokenReader.getUsertoken(token);
         // 페이징
@@ -185,7 +175,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.NewestTrackInfo> getNewTrack(Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> getNewTrack(Pageable pageable) {
         System.out.println("TrackServiceImpl :: getChartLayout");
         // 페이징
         var pageInfo = new PageInfo(pageable, 500);
@@ -195,7 +185,7 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.NewestTrackInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -205,7 +195,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.HistoryTrackInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> getUserHistoryTrack(UserInfo.UsertokenInfo userInfo, Pageable pageable) {
         System.out.println("TrackServiceImpl :: getUserHistoryTrack");
         // 페이징
         var pageInfo = new PageInfo(pageable, 100);
@@ -216,7 +206,7 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.HistoryTrackInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
     /**

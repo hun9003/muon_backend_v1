@@ -26,18 +26,10 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
     Optional<Track> findTrackById(Long trackId);
 
     /**
-     * 좋아요 한 트랙 리스트 조회
+     * 좋아요 한 트랙 리스트 개수
      * @param userId
      * @return
      */
-    @Query(value = "SELECT t FROM Track t JOIN FETCH t.likeList l " +
-            "JOIN FETCH t.trackArtists ta " +
-            "LEFT JOIN FETCH ta.artist a " +
-            "LEFT JOIN FETCH a.bios " +
-            "LEFT JOIN FETCH t.lyrics " +
-            "WHERE l.userId = :userId")
-    Optional<List<Track>> findAllLikeList(Long userId);
-
     @Query(value = "SELECT COUNT(id) FROM (" +
             "SELECT t.id FROM tracks t " +
             "JOIN artist_track at on t.id = at.track_id " +
@@ -48,6 +40,13 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "GROUP BY t.id) AS track", nativeQuery = true)
     Optional<Integer> countLikeList(Long userId);
 
+    /**
+     * 좋아요 한 트랙 리스트
+     * @param userId
+     * @param start
+     * @param end
+     * @return
+     */
     @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
             "            t.description, t.image, t.adult, t.is_title, " +
             "            a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +

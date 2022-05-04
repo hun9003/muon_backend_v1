@@ -36,17 +36,11 @@ public class TrackFacade {
      * @param token 유저 토큰
      * @return 트랙 정보 리스트
      */
-    public List<TrackInfo.Main> retrieveLikeList(String token, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> retrieveLikeList(String token, Pageable pageable) {
         System.out.println("TrackFacade :: retrieveLikeList");
         // 유저 토큰 유효성 검사
         usertokenService.checkUsertoken(token);
         return trackService.getLikeList(token, pageable);
-    }
-    public List<TrackInfo.TrackListInfo> retrieveLikeList2(String token, Pageable pageable) {
-        System.out.println("TrackFacade :: retrieveLikeList");
-        // 유저 토큰 유효성 검사
-        usertokenService.checkUsertoken(token);
-        return trackService.getLikeList2(token, pageable);
     }
 
     /**
@@ -82,7 +76,7 @@ public class TrackFacade {
      * @param pageable 트랙 리스트 페이징 처리를 위한 데이터 객체
      * @return 트랙 정보 리스트
      */
-    public List<TrackInfo.NewestTrackInfo> retrieveNewTrack(Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> retrieveNewTrack(Pageable pageable) {
         System.out.println("TrackFacade :: retrieveNewTrack");
         return trackService.getNewTrack(pageable);
     }
@@ -92,7 +86,7 @@ public class TrackFacade {
      * @param pageable 트랙 리스트 페이징 처리를 위한 데이터 객체
      * @return 트랙 정보 리스트
      */
-    public List<TrackInfo.HistoryTrackInfo> retrieveUserHistoryTrack(String token, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> retrieveUserHistoryTrack(String token, Pageable pageable) {
         System.out.println("TrackFacade :: retrieveNewTrack");
         // 유저 토큰을 통해 유저토큰 정보 호출
         var usertokenInfo = usertokenService.findUsertokenInfo(token);

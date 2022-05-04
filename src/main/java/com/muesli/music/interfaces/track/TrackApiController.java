@@ -3,7 +3,6 @@ package com.muesli.music.interfaces.track;
 import com.muesli.music.application.track.TrackFacade;
 import com.muesli.music.common.response.CommonResponse;
 import com.muesli.music.common.response.ErrorCode;
-import com.muesli.music.common.util.Constant;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +43,7 @@ public class TrackApiController {
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("LikeApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var trackInfoList = trackFacade.retrieveLikeList2(usertoken, pageable);
+        var trackInfoList = trackFacade.retrieveLikeList(usertoken, pageable);
         var trackDtoList = trackInfoList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var response = new TrackDto.TrackInfoList(trackDtoList);
         return CommonResponse.success(response);
@@ -88,7 +87,7 @@ public class TrackApiController {
         System.out.println("TrackApiController :: retrieveNewTrack");
         var trackList = trackFacade.retrieveNewTrack(pageable);
         var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
-        var response = new TrackDto.NewestTrackList(Constant.Item.TRACK, trackDtoList);
+        var response = new TrackDto.TrackInfoList(trackDtoList);
         return CommonResponse.success(response);
     }
 
@@ -104,7 +103,7 @@ public class TrackApiController {
         usertoken = TokenGenerator.getHeaderToken(usertoken);
         var trackList = trackFacade.retrieveUserHistoryTrack(usertoken, pageable);
         var trackDtoList = trackList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
-        var response = new TrackDto.HistoryTrackList(Constant.Item.TRACK, trackDtoList);
+        var response = new TrackDto.TrackInfoList(trackDtoList);
         return CommonResponse.success(response);
     }
 

@@ -70,9 +70,9 @@ public class SearchDto {
         private final String keyword;
         private final String type;
         private final int count;
-        private final List<TrackDto.TrackSearchInfo> trackList;
+        private final List<TrackDto.TrackInfo> trackList;
 
-        public SearchTrackResult(String keyword, String type, int count, List<TrackDto.TrackSearchInfo> trackList) {
+        public SearchTrackResult(String keyword, String type, int count, List<TrackDto.TrackInfo> trackList) {
             this.keyword = keyword;
             this.type = type;
             this.count = count;
@@ -87,9 +87,9 @@ public class SearchDto {
         private final String keyword;
         private final String type;
         private final int count;
-        private final List<AlbumDto.AlbumSearchInfo> albumList;
+        private final List<AlbumDto.AlbumInfo> albumList;
 
-        public SearchAlbumResult(String keyword, String type, int count, List<AlbumDto.AlbumSearchInfo> albumList) {
+        public SearchAlbumResult(String keyword, String type, int count, List<AlbumDto.AlbumInfo> albumList) {
             this.keyword = keyword;
             this.type = type;
             this.count = count;

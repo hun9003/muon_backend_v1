@@ -60,7 +60,7 @@ public class SearchFacade {
      * @param pageable 검색 결과 페이징 처리를 위한 객체
      * @return 트랙 검색 결과 정보
      */
-    public List<TrackInfo.SearchInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> retrieveSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("SearchFacade :: retrieveSearchTrack");
         return trackService.getSearchTrack(command, pageable);
     }
@@ -71,7 +71,7 @@ public class SearchFacade {
      * @param pageable 검색 결과 페이징 처리를 위한 객체
      * @return 앨범 검색 결과 정보
      */
-    public List<AlbumInfo.SearchInfo> retrieveSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> retrieveSearchAlbum(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("SearchFacade :: retrieveSearchAlbum");
         return albumService.getSearchAlbum(command, pageable);
     }

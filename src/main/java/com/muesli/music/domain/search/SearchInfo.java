@@ -47,9 +47,9 @@ public class SearchInfo {
     public static class SearchAlbum {
         private final int count;
         private final String order;
-        private final List<AlbumInfo.SearchInfo> albumList;
+        private final List<AlbumInfo.AlbumListInfo> albumList;
 
-        public SearchAlbum(int count, String order, List<AlbumInfo.SearchInfo> albumList) {
+        public SearchAlbum(int count, String order, List<AlbumInfo.AlbumListInfo> albumList) {
             this.count = count;
             this.order = order;
             this.albumList = albumList;

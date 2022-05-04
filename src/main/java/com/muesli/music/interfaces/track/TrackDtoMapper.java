@@ -17,7 +17,7 @@ public interface TrackDtoMapper {
     // find
     TrackDto.Main of(TrackInfo.Main main);
 
-    TrackDto.TrackInfo ofItem(TrackInfo.Main main);
+    TrackDto.TrackInfo of(TrackInfo.TrackListInfo main);
 
     LikeDto.LikeInfo of(LikeInfo.Main like);
 
@@ -29,9 +29,5 @@ public interface TrackDtoMapper {
 
     TrackDto.HistoryTrackInfo of(TrackInfo.HistoryTrackInfo trackInfo);
 
-    TrackDto.TrackSearchInfo of(TrackInfo.SearchInfo trackInfo);
-
     TrackDto.LyricsSearchInfo of(TrackInfo.SearchLyricsInfo lyricsInfo);
-
-    TrackDto.GenreTrackInfo of(TrackInfo.GenreTrackInfo trackInfo);
 }

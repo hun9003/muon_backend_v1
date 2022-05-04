@@ -42,6 +42,12 @@ public class TrackFacade {
         usertokenService.checkUsertoken(token);
         return trackService.getLikeList(token, pageable);
     }
+    public List<TrackInfo.TrackListInfo> retrieveLikeList2(String token, Pageable pageable) {
+        System.out.println("TrackFacade :: retrieveLikeList");
+        // 유저 토큰 유효성 검사
+        usertokenService.checkUsertoken(token);
+        return trackService.getLikeList2(token, pageable);
+    }
 
     /**
      * 트랙 차트 가져오기

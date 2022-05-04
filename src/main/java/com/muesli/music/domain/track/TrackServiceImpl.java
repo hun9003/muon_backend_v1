@@ -2,6 +2,7 @@ package com.muesli.music.domain.track;
 
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
+import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.common.util.LyricsGenerator;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.search.SearchCommand;
@@ -60,6 +61,19 @@ public class TrackServiceImpl implements TrackService {
         // 페이징
         var pageInfo = new PageInfo(pageable, trackInfoList.size());
         return trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public List<TrackInfo.TrackListInfo> getLikeList2(String token, Pageable pageable) {
+        System.out.println("TrackServiceImpl :: getLikeTrackList");
+        var usertoken = usertokenReader.getUsertoken(token);
+        // 페이징
+        var pageInfo = new PageInfo(pageable, trackReader.getTrackLikeListCount(usertoken.getUser().getId()));
+
+        var trackList = trackReader.getTrackLikeList(usertoken.getUser().getId(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
+
+        return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -212,7 +226,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("TrackServiceImpl :: getSearchTrack");
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getTrackCount());
@@ -222,7 +236,7 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.SearchInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
     /**
@@ -275,7 +289,7 @@ public class TrackServiceImpl implements TrackService {
      * @return
      */
     @Override
-    public List<TrackInfo.GenreTrackInfo> getGenreTrackList(Long genreId, String type, Pageable pageable) {
+    public List<TrackInfo.TrackListInfo> getGenreTrackList(Long genreId, String type, Pageable pageable) {
         System.out.println("TrackSerciceImpl :: getGenreTrackList");
         var count = trackReader.getGenreTrackCount(genreId);
         // 페이징
@@ -286,7 +300,7 @@ public class TrackServiceImpl implements TrackService {
             var newTrackMap = new HashMap<>(stringObjectMap);
             newTrackList.add(newTrackMap);
         }
-        return newTrackList.stream().map(TrackInfo.GenreTrackInfo::new).collect(Collectors.toList());
+        return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
     /**

@@ -44,24 +44,6 @@ public class TrackDto {
     public static class TrackInfo {
         private final Long id;
         private final String name;
-        private final Long number;
-        private final Long duration;
-        private final String url;
-        private final String description;
-        private final String composer;
-        private final String lyricser;
-        private final String arranger;
-        private final Long adult;
-        private final Long isTitle;
-        private final ArtistDto.TrackArtistInfo artistInfo;
-        private final AlbumDto.TrackAlbumInfo albumInfo;
-    }
-    @Getter
-    @Builder
-    @ToString
-    public static class TrackInfo2 {
-        private final Long id;
-        private final String name;
         private final String albumImage;
         private final String description;
         private final Long adult;
@@ -72,6 +54,21 @@ public class TrackDto {
 
         private final Long albumId;
         private final String albumName;
+    }
+
+    /**
+     * 트랙 리스트
+     */
+    @Getter
+    @ToString
+    public static class TrackInfoList {
+        private final String type;
+        private final List<TrackInfo> list;
+
+        public TrackInfoList(List<TrackInfo> list) {
+            this.type = Constant.Item.TRACK;
+            this.list = list;
+        }
     }
 
     /**
@@ -95,20 +92,7 @@ public class TrackDto {
         private final String textPron;
     }
 
-        /**
-     * 트랙 리스트
-     */
-    @Getter
-    @ToString
-    public static class TrackList {
-        private final String type;
-        private final List<TrackInfo> list;
 
-        public TrackList(List<TrackInfo> list) {
-            this.type = Constant.Item.TRACK;
-            this.list = list;
-        }
-    }
 
     /**
      * 앨범에게 제공하는 트랙 정보
@@ -295,27 +279,6 @@ public class TrackDto {
     }
 
     /**
-     * 트랙 검색 결과
-     */
-    @Getter
-    @ToString
-    @Builder
-    public static class TrackSearchInfo {
-        private final Long id;
-        private final String name;
-        private final String albumImage;
-        private final String description;
-        private final Long adult;
-        private final Long isTitle;
-
-        private final Long artistId;
-        private final String artistName;
-
-        private final Long albumId;
-        private final String albumName;
-    }
-
-    /**
      * 가사 검색 결과
      */
     @Getter
@@ -339,45 +302,4 @@ public class TrackDto {
         private final String albumImage;
     }
 
-    /**
-     * 장르별 트랙 정보
-     */
-    @Getter
-    @ToString
-    @Builder
-    public static class GenreTrackInfo {
-        private final Long id;
-        private final String name;
-        private final String albumImage;
-        private final String description;
-        private final Long adult;
-        private final Long isTitle;
-
-        private final Long artistId;
-        private final String artistName;
-
-        private final Long albumId;
-        private final String albumName;
-    }
-
-    /**
-     * 채널별 트랙 정보
-     */
-    @Getter
-    @ToString
-    @Builder
-    public static class ChannelTrackInfo {
-        private final Long id;
-        private final String name;
-        private final String albumImage;
-        private final String description;
-        private final Long adult;
-        private final Long isTitle;
-
-        private final Long artistId;
-        private final String artistName;
-
-        private final Long albumId;
-        private final String albumName;
-    }
 }

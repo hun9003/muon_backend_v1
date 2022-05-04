@@ -11,6 +11,7 @@ public interface TrackService {
     TrackInfo.Main findTrackInfo(Long trackId);
 
     List<TrackInfo.Main> getLikeList(String token, Pageable pageable);
+    List<TrackInfo.TrackListInfo> getLikeList2(String token, Pageable pageable);
 
     List<TrackInfo.ChartInfo> getTrackRank(Pageable pageable, TrackCommand.SearchRankCommand command);
 
@@ -22,11 +23,11 @@ public interface TrackService {
 
     int getSearchTrackCount(SearchCommand.SearchRequest command);
 
-    List<TrackInfo.SearchInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable);
+    List<TrackInfo.TrackListInfo> getSearchTrack(SearchCommand.SearchRequest command, Pageable pageable);
 
     int getSearchLyricsCount(SearchCommand.SearchRequest command);
 
     List<TrackInfo.SearchLyricsInfo> getSearchLyrics(SearchCommand.SearchRequest command, Pageable pageable);
 
-    List<TrackInfo.GenreTrackInfo> getGenreTrackList(Long genreId, String type, Pageable pageable);
+    List<TrackInfo.TrackListInfo> getGenreTrackList(Long genreId, String type, Pageable pageable);
 }

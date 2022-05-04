@@ -79,6 +79,18 @@ public class TrackReaderImpl implements TrackReader {
     }
 
     @Override
+    public int getTrackLikeListCount(Long userId) {
+        System.out.println("TrackReaderImpl :: getTrackLikeListCount");
+        return trackRepository.countLikeList(userId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getTrackLikeList(Long userId, int start, int end) {
+        System.out.println("TrackReaderImpl :: getTrackLikeList");
+        return trackRepository.findLikeList(userId, start, end).orElse(Lists.newArrayList());
+    }
+
+    @Override
     public List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable) {
         System.out.println("TrackReaderImpl :: getTrackRank");
         return trackRepository.findTrackRank(begin, end, pageable.getPageSize()).orElseThrow(InvalidParamException::new);
@@ -138,6 +150,18 @@ public class TrackReaderImpl implements TrackReader {
             default: trackList = trackRepository.findGenreTrackOrderByPopularity(genreId, start, end).orElse(new ArrayList<>());
         }
         return trackList;
+    }
+
+    @Override
+    public int getPlaylistTrackCount(Long playlistId) {
+        System.out.println("TrackReaderImpl :: getPlaylistTrackCount");
+        return trackRepository.countTrackByPlaylist(playlistId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getPlaylistTrackList(Long playlistId, int start, int end) {
+        System.out.println("TrackReaderImpl :: getPlaylistTrackList");
+        return trackRepository.findTrackByPlaylist(playlistId, start, end).orElse(Lists.newArrayList());
     }
 }
 

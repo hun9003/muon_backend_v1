@@ -19,6 +19,8 @@ public interface TrackReader {
     List<Map<String, Object>> getTrackListByArtist(Long artistId, int startNum, int endNum);
 
     List<TrackInfo.Main> getTrackLikeList(Long userId);
+    int getTrackLikeListCount(Long userId);
+    List<Map<String, Object>> getTrackLikeList(Long userId, int start, int end);
 
     List<Map<String, Object>> getTrackRank(String begin, String end, Pageable pageable);
 
@@ -35,5 +37,9 @@ public interface TrackReader {
     int getGenreTrackCount(Long genreId);
 
     List<Map<String, Object>> getGenreTrackList(Long genreId, String type, int start, int end);
+
+    int getPlaylistTrackCount(Long playlistId);
+
+    List<Map<String, Object>> getPlaylistTrackList(Long playlistId, int start, int end);
 
 }

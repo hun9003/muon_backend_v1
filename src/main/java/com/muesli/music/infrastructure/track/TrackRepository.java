@@ -38,6 +38,30 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "WHERE l.userId = :userId")
     Optional<List<Track>> findAllLikeList(Long userId);
 
+    @Query(value = "SELECT COUNT(id) FROM (" +
+            "SELECT t.id FROM tracks t " +
+            "JOIN artist_track at on t.id = at.track_id " +
+            "JOIN artists a2 on at.artist_id = a2.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN likes l on l.likeable_id = t.id " +
+            "WHERE l.user_id = :userId AND l.likeable_type LIKE '%Track%' AND l.is_like = 1 " +
+            "GROUP BY t.id) AS track", nativeQuery = true)
+    Optional<Integer> countLikeList(Long userId);
+
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "            t.description, t.image, t.adult, t.is_title, " +
+            "            a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "            a2.id AS artistId, a2.name AS artistName  FROM tracks t " +
+            "JOIN artist_track at on t.id = at.track_id " +
+            "JOIN artists a2 on at.artist_id = a2.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN likes l on l.likeable_id = t.id " +
+            "WHERE l.user_id = :userId AND l.likeable_type LIKE '%Track%' AND l.is_like = 1 " +
+            "GROUP BY t.id " +
+            "ORDER BY l.updated_at DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findLikeList(Long userId, int start, int end);
+
     /**
      * 앨범 PK로 트랙 리스트 조회
      * @param albumId
@@ -365,5 +389,29 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findGenreTrackOrderByNewest(Long genreId, int start, int end);
 
+    @Query(value = "SELECT COUNT(id) FROM (" +
+            "SELECT t.id FROM tracks t " +
+            "JOIN artist_track at on t.id = at.track_id " +
+            "JOIN artists a2 on at.artist_id = a2.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN playlist_track pt on pt.track_id = t.id " +
+            "JOIN playlists p on p.id = pt.playlist_id " +
+            "WHERE p.id = :playlistId " +
+            "GROUP BY t.id) as track", nativeQuery = true)
+    Optional<Integer> countTrackByPlaylist(Long playlistId);
 
+    @Query(value = "SELECT t.id, t.name, t.number, t.duration, " +
+            "            t.description, t.image, t.adult, t.is_title, " +
+            "            a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
+            "            a2.id AS artistId, a2.name AS artistName  FROM tracks t " +
+            "JOIN artist_track at on t.id = at.track_id " +
+            "JOIN artists a2 on at.artist_id = a2.id " +
+            "JOIN albums a on t.album_id = a.id " +
+            "JOIN playlist_track pt on pt.track_id = t.id " +
+            "JOIN playlists p on p.id = pt.playlist_id " +
+            "WHERE p.id = :playlistId " +
+            "GROUP BY t.id " +
+            "ORDER BY pt.id DESC " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findTrackByPlaylist(Long playlistId, int start, int end);
 }

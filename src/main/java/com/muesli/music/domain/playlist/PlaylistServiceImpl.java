@@ -3,7 +3,6 @@ package com.muesli.music.domain.playlist;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.ItemGenerator;
-import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.playlist.track.PlaylistTrack;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
@@ -17,7 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,39 +38,7 @@ public class PlaylistServiceImpl implements PlaylistService{
      * @return 플레이리스트 정보
      */
     @Override
-    @Transactional
     public PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, UserInfo.Main userInfo) {
-        System.out.println("PlaylistServiceImpl :: findPlaylistInfo");
-        var playlist = playlistReader.getPlaylistBy(playlistId);
-
-        if (playlist.getIsPublic() == 0) {
-            if (!Objects.equals(playlist.getUserId(), userInfo.getId())) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
-        }
-
-        playlist.setViews(playlist.getViews());
-        var trackInfoList = playlist.playlistTrackList.stream().map(
-                playlistTrack -> {
-                    var track = playlistTrack.getTrack();
-                    if (track.getTrackArtists().iterator().next().getArtist() == null) return null;
-                    var artistInfo = new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist());
-                    return new TrackInfo.Main(track, artistInfo);
-                }
-        ).filter(Objects::nonNull).collect(Collectors.toList());
-
-        var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
-
-        // 페이징
-        var trackCount = trackInfoList.size();
-        var pageInfo = new PageInfo(pageable, trackCount);
-        trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-
-        var playlistInfo = new PlaylistInfo.Main(playlist, playlistUserInfo, trackInfoList);
-        playlistInfo.setTrackCount(trackCount);
-        return playlistInfo;
-    }
-
-    @Override
-    public PlaylistInfo.Main2 findPlaylistInfo2(Long playlistId, Pageable pageable, UserInfo.Main userInfo) {
         var playlist = playlistReader.getPlaylistBy2(playlistId);
         if (playlist.getIsPublic() == 0) {
             if (!Objects.equals(playlist.getUserId(), userInfo.getId())) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
@@ -84,7 +52,7 @@ public class PlaylistServiceImpl implements PlaylistService{
         var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
 
         var playlistUserInfo = new UserInfo.Main(userReader.getUser(playlist.getUserId()));
-        var playlistInfo = new PlaylistInfo.Main2(playlist, playlistUserInfo, trackListInfo);
+        var playlistInfo = new PlaylistInfo.Main(playlist, playlistUserInfo, trackListInfo);
         playlistInfo.setTrackCount(trackCount);
         return playlistInfo;
     }
@@ -96,17 +64,7 @@ public class PlaylistServiceImpl implements PlaylistService{
      * @return 플레이리스트 정보 리스트
      */
     @Override
-    @Transactional
-    public List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable) {
-        System.out.println("PlaylistServiceImpl :: findPlaylistInfoMyList");
-        var playlistInfoList = playlistReader.getPlaylistList(userInfo);
-
-        // 페이징
-        var pageInfo = new PageInfo(pageable, playlistInfoList.size());
-        return playlistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-    }
-    @Override
-    public List<PlaylistInfo.PlayListInfo> findPlaylistInfoMyList2(UserInfo.Main userInfo, Pageable pageable) {
+    public List<PlaylistInfo.PlayListInfo> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable) {
         System.out.println("PlaylistServiceImpl :: findPlaylistInfoMyList");
         var pageInfo = new PageInfo(pageable, playlistReader.getPlaylistListCount(userInfo.getId()));
         var playlistList = playlistReader.getPlaylistList(userInfo.getId(), pageInfo.getStartNum(), pageInfo.getEndNum());
@@ -169,24 +127,12 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     /**
      * 좋아하는 플레이리스트
-     * @param token 유저 토큰
+     * @param userInfo 유저 정보
      * @param pageable 페이징 처리를 위한 객체
      * @return 플레이리스트 정보 리스트
      */
     @Override
-    @Transactional
-    public List<PlaylistInfo.Main> getLikeList(String token, Pageable pageable) {
-        System.out.println("PlaylistServiceImpl :: getLikeList");
-        var usertoken = usertokenReader.getUsertoken(token);
-        if(usertoken.getUser() == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
-        var userInfo = new UserInfo.Main(usertoken.getUser());
-        var playlistInfoList =  playlistReader.getPlaylistLikeList(userInfo);
-        // 페이징
-        var pageInfo = new PageInfo(pageable, playlistInfoList.size());
-        return playlistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-    }
-    @Override
-    public List<PlaylistInfo.PlayListInfo> getLikeList2(UserInfo.Main userInfo, Pageable pageable) {
+    public List<PlaylistInfo.PlayListInfo> getLikeList(UserInfo.Main userInfo, Pageable pageable) {
         System.out.println("PlaylistServiceImpl :: getLikeList");
         if(userInfo == null) throw new BaseException(ErrorCode.USER_PERMISSION_FALE);
         var pageInfo = new PageInfo(pageable, playlistReader.getPlaylistLikeListCount(userInfo.getId()));

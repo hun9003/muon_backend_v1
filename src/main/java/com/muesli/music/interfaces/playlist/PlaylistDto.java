@@ -22,23 +22,7 @@ public class PlaylistDto {
     @Getter
     @Builder
     @ToString
-    public static class PlaylistInfo {
-        private final Long id;
-        private final String name;
-        private final Long isPublic;
-        private final String image;
-        private final int views;
-        private final String description;
-        private final ZonedDateTime createAt;
-        private final int trackCount;
-        private final UserDto.PlaylistUserInfo userInfo;
-        private final List<TrackDto.PlaylistTrackInfo> trackInfoList;
-    }
-
-    @Getter
-    @Builder
-    @ToString
-    public static class PlaylistInfo2 {
+    public static class Main {
         private final Long id;
         private final String name;
         private final Long isPublic;
@@ -54,7 +38,7 @@ public class PlaylistDto {
     @Getter
     @Builder
     @ToString
-    public static class PlaylistList {
+    public static class PlaylistInfo {
         private final Long id;
         private final String name;
         private final Long isPublic;
@@ -69,11 +53,11 @@ public class PlaylistDto {
 
     @Getter
     @ToString
-    public static class PlaylistInfoList {
+    public static class PlaylistListInfo {
         private final String type;
         private final List<PlaylistInfo> list;
 
-        public PlaylistInfoList(List<PlaylistInfo> list) {
+        public PlaylistListInfo(List<PlaylistInfo> list) {
             this.type = Constant.Item.PLAYLIST;
             this.list = list;
         }

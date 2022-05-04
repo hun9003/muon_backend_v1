@@ -9,11 +9,9 @@ import java.util.List;
 public interface PlaylistService {
     // 플레이리스트 조회
     PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, UserInfo.Main userInfo);
-    PlaylistInfo.Main2 findPlaylistInfo2(Long playlistId, Pageable pageable, UserInfo.Main userInfo);
 
     // 플레이리스트 목록
-    List<PlaylistInfo.Main> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable);
-    List<PlaylistInfo.PlayListInfo> findPlaylistInfoMyList2(UserInfo.Main userInfo, Pageable pageable);
+    List<PlaylistInfo.PlayListInfo> findPlaylistInfoMyList(UserInfo.Main userInfo, Pageable pageable);
 
     // 플레이리스트 추가
     PlaylistInfo.Main registerPlaylist(PlaylistCommand.RegisterPlaylistRequest command, UserInfo.Main userInfo);
@@ -25,8 +23,7 @@ public interface PlaylistService {
     void removePlaylist(Long playlistId, UserInfo.Main userInfo);
 
     // 플레이리스트 좋아요 목록
-    List<PlaylistInfo.Main> getLikeList(String token, Pageable pageable);
-    List<PlaylistInfo.PlayListInfo> getLikeList2(UserInfo.Main userInfo, Pageable pageable);
+    List<PlaylistInfo.PlayListInfo> getLikeList(UserInfo.Main userInfo, Pageable pageable);
 
     // 플레이리스트에 트랙 추가
     void addTrackToPlaylist(PlaylistCommand.TrackToPlaylistRequest command, UserInfo.Main userInfo);

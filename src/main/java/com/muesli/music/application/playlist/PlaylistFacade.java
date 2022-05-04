@@ -28,11 +28,11 @@ public class PlaylistFacade {
      * @param token 유저 토큰
      * @return 플레이 리스트 정보
      */
-    public PlaylistInfo.Main2 findPlaylistInfo(Long playlistId, Pageable pageable, String token) {
+    public PlaylistInfo.Main findPlaylistInfo(Long playlistId, Pageable pageable, String token) {
         System.out.println("PlaylistFacade :: findPlaylistInfo2");
         // 유저토큰을 통해 유저 토큰 정보 호출
         var usertoken = usertokenService.findUsertokenInfo(token);
-        return playlistService.findPlaylistInfo2(playlistId,  pageable, usertoken.getUserInfo());
+        return playlistService.findPlaylistInfo(playlistId,  pageable, usertoken.getUserInfo());
     }
 
     /**
@@ -41,15 +41,6 @@ public class PlaylistFacade {
      * @param pageable 플레이리스트 트랙 리스트 페이징을 위한 객체
      * @return 플레이리스트 정보 리스트
      */
-    public List<PlaylistInfo.Main> retrieveMyPlaylist(String token, Pageable pageable) {
-        System.out.println("PlaylistFacade :: retrieveMyPlaylist");
-        // 유저 토큰 유효성 검사
-        usertokenService.checkUsertoken(token);
-
-        // 유저 토큰을 통해 유저토큰 정보 호출
-        var usertokenInfo = usertokenService.findUsertokenInfo(token);
-        return playlistService.findPlaylistInfoMyList(usertokenInfo.getUserInfo(), pageable);
-    }
     public List<PlaylistInfo.PlayListInfo> retrieveMyPlaylist2(String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: retrieveMyPlaylist");
         // 유저 토큰 유효성 검사
@@ -57,7 +48,7 @@ public class PlaylistFacade {
 
         // 유저 토큰을 통해 유저토큰 정보 호출
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
-        return playlistService.findPlaylistInfoMyList2(usertokenInfo.getUserInfo(), pageable);
+        return playlistService.findPlaylistInfoMyList(usertokenInfo.getUserInfo(), pageable);
     }
 
 
@@ -67,12 +58,6 @@ public class PlaylistFacade {
      * @param pageable 플레이 리스트 페이징을 위한 객체
      * @return
      */
-    public List<PlaylistInfo.Main> retrieveLikeList(String token, Pageable pageable) {
-        System.out.println("PlaylistFacade :: retrieveLikeList");
-        // 유저 토큰 유효성 검사
-        usertokenService.checkUsertoken(token);
-        return playlistService.getLikeList(token, pageable);
-    }
     public List<PlaylistInfo.PlayListInfo> retrieveLikeList2(String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: retrieveLikeList");
         // 유저 토큰 유효성 검사
@@ -80,7 +65,7 @@ public class PlaylistFacade {
 
         // 유저 토큰을 통해 유저토큰 정보 호출
         var usertokenInfo = usertokenService.findUsertokenInfo(token);
-        return playlistService.getLikeList2(usertokenInfo.getUserInfo(), pageable);
+        return playlistService.getLikeList(usertokenInfo.getUserInfo(), pageable);
     }
 
     /**

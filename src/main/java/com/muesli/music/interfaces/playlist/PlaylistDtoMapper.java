@@ -19,8 +19,8 @@ public interface PlaylistDtoMapper {
     PlaylistCommand.TrackToPlaylistRequest of(PlaylistDto.PlaylistTracksRequest request);
 
     // find
-    PlaylistDto.PlaylistInfo of(PlaylistInfo.Main playlist);
-    PlaylistDto.PlaylistInfo2 of(PlaylistInfo.Main2 playlist);
-    PlaylistDto.PlaylistList of(PlaylistInfo.PlayListInfo playListInfo);
+    PlaylistDto.Main of(PlaylistInfo.Main playlist);
+
+    PlaylistDto.PlaylistInfo of(PlaylistInfo.PlayListInfo playListInfo);
 
 }

@@ -12,6 +12,49 @@ import java.util.Map;
 
 public class PlaylistInfo {
 
+//    @Getter
+//    @ToString
+//    public static class Main {
+//        private final Long id;
+//        private final String name;
+//        private final Long isPublic;
+//        private final String image;
+//        private final int views;
+//        private final String description;
+//        private final ZonedDateTime createAt;
+//        private int trackCount;
+//        private final UserInfo.Main userInfo;
+//        private final List<TrackInfo.Main> trackInfoList;
+//
+//        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.Main> trackInfoList) {
+//            this.id = playlist.getId();
+//            this.name = playlist.getName();
+//            this.isPublic = playlist.getIsPublic();
+//            this.image = playlist.getImage();
+//            this.views = playlist.getViews();
+//            this.description = playlist.getDescription();
+//            this.userInfo = userInfo;
+//            this.createAt = playlist.getCreatedAt();
+//            this.trackInfoList = trackInfoList;
+//        }
+//
+//        public Main(Playlist playlist, UserInfo.Main userInfo) {
+//            this.id = playlist.getId();
+//            this.name = playlist.getName();
+//            this.isPublic = playlist.getIsPublic();
+//            this.image = playlist.getImage();
+//            this.views = playlist.getViews();
+//            this.description = playlist.getDescription();
+//            this.userInfo = userInfo;
+//            this.createAt = playlist.getCreatedAt();
+//            this.trackInfoList = null;
+//        }
+//
+//        public void setTrackCount(int trackCount) {
+//            this.trackCount = trackCount;
+//        }
+//    }
+
     @Getter
     @ToString
     public static class Main {
@@ -24,9 +67,9 @@ public class PlaylistInfo {
         private final ZonedDateTime createAt;
         private int trackCount;
         private final UserInfo.Main userInfo;
-        private final List<TrackInfo.Main> trackInfoList;
+        private final List<TrackInfo.TrackListInfo> trackInfoList;
 
-        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.Main> trackInfoList) {
+        public Main(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.TrackListInfo> trackInfoList) {
             this.id = playlist.getId();
             this.name = playlist.getName();
             this.isPublic = playlist.getIsPublic();
@@ -39,49 +82,6 @@ public class PlaylistInfo {
         }
 
         public Main(Playlist playlist, UserInfo.Main userInfo) {
-            this.id = playlist.getId();
-            this.name = playlist.getName();
-            this.isPublic = playlist.getIsPublic();
-            this.image = playlist.getImage();
-            this.views = playlist.getViews();
-            this.description = playlist.getDescription();
-            this.userInfo = userInfo;
-            this.createAt = playlist.getCreatedAt();
-            this.trackInfoList = null;
-        }
-
-        public void setTrackCount(int trackCount) {
-            this.trackCount = trackCount;
-        }
-    }
-
-    @Getter
-    @ToString
-    public static class Main2 {
-        private final Long id;
-        private final String name;
-        private final Long isPublic;
-        private final String image;
-        private final int views;
-        private final String description;
-        private final ZonedDateTime createAt;
-        private int trackCount;
-        private final UserInfo.Main userInfo;
-        private final List<TrackInfo.TrackListInfo> trackInfoList;
-
-        public Main2(Playlist playlist, UserInfo.Main userInfo, List<TrackInfo.TrackListInfo> trackInfoList) {
-            this.id = playlist.getId();
-            this.name = playlist.getName();
-            this.isPublic = playlist.getIsPublic();
-            this.image = playlist.getImage();
-            this.views = playlist.getViews();
-            this.description = playlist.getDescription();
-            this.userInfo = userInfo;
-            this.createAt = playlist.getCreatedAt();
-            this.trackInfoList = trackInfoList;
-        }
-
-        public Main2(Playlist playlist, UserInfo.Main userInfo) {
             this.id = playlist.getId();
             this.name = playlist.getName();
             this.isPublic = playlist.getIsPublic();

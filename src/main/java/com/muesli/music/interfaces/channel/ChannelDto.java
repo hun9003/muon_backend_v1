@@ -17,9 +17,9 @@ public class ChannelDto {
     public static class CuratingInfoInTrack {
         private final ChannelInfo channelInfo;
         private final String type = Constant.Item.TRACK;
-        private final List<TrackDto.ChannelTrackInfo> list;
+        private final List<TrackDto.TrackInfo> list;
 
-        public CuratingInfoInTrack(ChannelInfo channelInfo, List<TrackDto.ChannelTrackInfo> list) {
+        public CuratingInfoInTrack(ChannelInfo channelInfo, List<TrackDto.TrackInfo> list) {
             this.channelInfo = channelInfo;
             this.list = list;
         }
@@ -30,9 +30,9 @@ public class ChannelDto {
     public static class CuratingInfoInAlbum {
         private final ChannelInfo channelInfo;
         private final String type = Constant.Item.ALBUM;
-        private final List<AlbumDto.ChannelAlbumInfo> list;
+        private final List<AlbumDto.AlbumInfo> list;
 
-        public CuratingInfoInAlbum(ChannelInfo channelInfo, List<AlbumDto.ChannelAlbumInfo> list) {
+        public CuratingInfoInAlbum(ChannelInfo channelInfo, List<AlbumDto.AlbumInfo> list) {
             this.channelInfo = channelInfo;
             this.list = list;
         }

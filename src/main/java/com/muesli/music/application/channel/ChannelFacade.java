@@ -37,7 +37,7 @@ public class ChannelFacade {
      * @param pageable 앨범 리스트 페이징 처리를 위한 객체
      * @return 채널별 앨범 정보 리스트
      */
-    public List<AlbumInfo.ChannelAlbumInfo> retrieveChannelAlbum(Long channelId, Pageable pageable) {
+    public List<AlbumInfo.AlbumListInfo> retrieveChannelAlbum(Long channelId, Pageable pageable) {
         System.out.println("ChannelFacade :: retrieveChannelAlbum");
         return albumService.getChannelAlbum(channelId, pageable);
     }

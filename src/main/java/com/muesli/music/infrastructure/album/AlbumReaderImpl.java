@@ -28,7 +28,6 @@ public class AlbumReaderImpl implements AlbumReader {
                 .orElseThrow(EntityNotFoundException::new);
     }
 
-
     @Override
     public int getAlbumListByArtistCount(Long artistId) {
         System.out.println("AlbumReaderImpl :: getAlbumListByArtistCount");

@@ -31,26 +31,6 @@ public class ArtistDto {
         private final int views;
         private final String imageSmall;
         private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
-        private final List<AlbumDto.ArtistAlbumInfo> albumList;
-        private final List<TrackDto.ArtistTrackInfo> trackList;
-    }
-    @Getter
-    @Builder
-    @ToString
-    public static class Main2 {
-        private final Long id;
-        private final String name;
-        private final String originalName;
-        private final String englishName;
-        private final String image;
-        private final String birthday;
-        private final String country;
-        private final Long debut;
-        private final String agency;
-        private final String label;
-        private final int views;
-        private final String imageSmall;
-        private final com.muesli.music.domain.artist.ArtistInfo.BiosInfo biosInfo;
         private final List<AlbumDto.AlbumInfo> albumList;
         private final List<TrackDto.TrackInfo> trackList;
     }
@@ -70,10 +50,6 @@ public class ArtistDto {
         private final String birthday;
         private final String country;
         private final Long debut;
-        private final String agency;
-        private final String label;
-        private final int views;
-        private final String imageSmall;
     }
 
     /**
@@ -81,28 +57,11 @@ public class ArtistDto {
      */
     @Getter
     @ToString
-    @Builder
     public static class ArtistListInfo {
-        private final Long id;
-        private final String name;
-        private final String originalName;
-        private final String englishName;
-        private final String image;
-        private final String birthday;
-        private final String country;
-        private final Long debut;
-    }
-
-    /**
-     * 아티스트 리스트
-     */
-    @Getter
-    @ToString
-    public static class ArtistList {
         private final String type;
         private final List<ArtistInfo> list;
 
-        public ArtistList(List<ArtistInfo> list) {
+        public ArtistListInfo(List<ArtistInfo> list) {
             this.type = Constant.Item.ARTIST;
             this.list = list;
         }
@@ -134,21 +93,5 @@ public class ArtistDto {
         private final String englishName;
     }
 
-    /**
-     * 아티스트 검색 결과 정보
-     */
-    @Getter
-    @ToString
-    @Builder
-    public static class ArtistSearchInfo {
-        private final Long id;
-        private final String name;
-        private final String originalName;
-        private final String englishName;
-        private final String image;
-        private final String birthday;
-        private final String country;
-        private final Long debut;
-    }
 
 }

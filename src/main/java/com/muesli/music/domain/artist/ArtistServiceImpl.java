@@ -3,7 +3,6 @@ package com.muesli.music.domain.artist;
 import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
-import com.muesli.music.domain.artist.bios.Bios;
 import com.muesli.music.domain.search.SearchCommand;
 import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.domain.track.TrackReader;
@@ -37,42 +36,7 @@ public class ArtistServiceImpl implements ArtistService{
      * @return 아티스트 정보 호출
      */
     @Override
-    @Transactional(readOnly = true)
     public ArtistInfo.Main findArtistInfo(Long artistId, Pageable pageable) {
-        System.out.println("ArtistServiceImpl :: findArtistInfo");
-        var artist = artistReader.getArtistBy(artistId);
-        var albumList = artistReader.getAlbumList(artist);
-        
-        // 아티스트 설명이 존재할 시 객체 생성
-        var bios = artist.getBios().size() > 0 ? artist.getBios().iterator().next() : new Bios();
-        var biosInfo = new ArtistInfo.BiosInfo(bios);
-
-        artist.setViews(artist.getViews());
-
-        var albumBasicList = albumList.stream().map(AlbumInfo.AlbumBasicInfo::new).collect(Collectors.toList());
-
-        // 페이징
-        var pageInfo = new PageInfo(pageable, albumBasicList.size());
-        albumBasicList = albumBasicList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-
-        List<TrackInfo.TrackBasicInfo> trackInfoList = new ArrayList<>();
-        for (var album : albumList) {
-            var trackList = album.getTrackList();
-            for (var track : trackList) {
-                var trackInfo = new TrackInfo.TrackBasicInfo(track, new AlbumInfo.AlbumBasicInfo(album), new ArtistInfo.Main(artist));
-                trackInfoList.add(trackInfo);
-            }
-        }
-
-        // 페이징
-        pageInfo = new PageInfo(pageable, trackInfoList.size());
-        trackInfoList = trackInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-
-        return new ArtistInfo.Main(artist, biosInfo, albumBasicList, trackInfoList);
-    }
-
-    @Override
-    public ArtistInfo.Main2 findArtistInfo2(Long artistId, Pageable pageable) {
         System.out.println("ArtistServiceImpl :: findArtistInfo");
         var artist = artistReader.getArtistBy2(artistId);
         artist.setViews(artist.getViews());
@@ -103,7 +67,7 @@ public class ArtistServiceImpl implements ArtistService{
         }
         var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
 
-        return new ArtistInfo.Main2(artist, biosInfo, albumListInfo, trackListInfo);
+        return new ArtistInfo.Main(artist, biosInfo, albumListInfo, trackListInfo);
     }
 
     /**
@@ -114,17 +78,7 @@ public class ArtistServiceImpl implements ArtistService{
      */
     @Override
     @Transactional(readOnly = true)
-    public List<ArtistInfo.Main> getLikeList(String token, Pageable pageable) {
-        System.out.println("LikeServiceImpl :: getLikeArtistList");
-        var usertoken = usertokenReader.getUsertoken(token);
-        var artistInfoList = artistReader.getArtistLikeList(usertoken.getUser().getId());
-        // 페이징
-        var pageInfo = new PageInfo(pageable, artistInfoList.size());
-        return artistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
-    }
-    @Override
-    @Transactional(readOnly = true)
-    public List<ArtistInfo.ArtistListInfo> getLikeList2(String token, Pageable pageable) {
+    public List<ArtistInfo.ArtistListInfo> getLikeList(String token, Pageable pageable) {
         System.out.println("LikeServiceImpl :: getLikeArtistList");
         var usertoken = usertokenReader.getUsertoken(token);
         var pageInfo = new PageInfo(pageable, artistReader.getArtistLikeListCount(usertoken.getUser().getId()));
@@ -140,7 +94,7 @@ public class ArtistServiceImpl implements ArtistService{
      * @return 아티스트 검색 결과 리스트
      */
     @Override
-    public List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
+    public List<ArtistInfo.ArtistListInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable) {
         System.out.println("ArtistServiceImpl :: getSearchArtist");
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getArtistCount());
@@ -150,7 +104,7 @@ public class ArtistServiceImpl implements ArtistService{
             var newArtistMap = new HashMap<>(stringObjectMap);
             newArtistList.add(newArtistMap);
         }
-        return newArtistList.stream().map(ArtistInfo.SearchInfo::new).collect(Collectors.toList());
+        return newArtistList.stream().map(ArtistInfo.ArtistListInfo::new).collect(Collectors.toList());
     }
 
     /**

@@ -18,9 +18,9 @@ public interface AlbumReader {
 
    // 좋아요 된 앨범 리스트 개수
     int getAlbumLikeListCount(Long userId);
+
     // 좋아요 된 앨범 리스트 호출
     List<Map<String, Object>> getAlbumLikeList(Long userId, int start, int end);
-
 
     // 최신 앨범 리스트 호출
     List<Map<String, Object>> getNewAlbum(int start, int end);

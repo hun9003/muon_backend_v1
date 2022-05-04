@@ -11,6 +11,62 @@ import java.util.Map;
 
 public class ArtistInfo {
 
+//    @Getter
+//    @ToString
+//    public static class Main {
+//        private final Long id;
+//        private final String name;
+//        private final String originalName;
+//        private final String englishName;
+//        private final String image;
+//        private final String birthday;
+//        private final String country;
+//        private final Long debut;
+//        private final String agency;
+//        private final String label;
+//        private final int views;
+//        private final String imageSmall;
+//        private final List<AlbumInfo.AlbumBasicInfo> albumList;
+//        private final List<TrackInfo.TrackBasicInfo> trackList;
+//        private final BiosInfo biosInfo;
+//
+//        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumBasicInfo> albumList, List<TrackInfo.TrackBasicInfo> trackList) {
+//            this.id = artist.getId();
+//            this.name = artist.getName();
+//            this.originalName = artist.getOriginalName();
+//            this.englishName = artist.getEnglishName();
+//            this.image = artist.getImage();
+//            this.birthday = artist.getBirthday();
+//            this.country = artist.getCountry();
+//            this.debut = artist.getDebut();
+//            this.agency = artist.getAgency();
+//            this.label = artist.getLabel();
+//            this.views = artist.getViews();
+//            this.imageSmall = artist.getImageSmall();
+//            this.albumList = albumList;
+//            this.trackList = trackList;
+//            this.biosInfo = biosInfo;
+//        }
+//
+//        public Main(Artist artist) {
+//            this.id = artist.getId();
+//            this.name = artist.getName();
+//            this.originalName = artist.getOriginalName();
+//            this.englishName = artist.getEnglishName();
+//            this.image = artist.getImage();
+//            this.birthday = artist.getBirthday();
+//            this.country = artist.getCountry();
+//            this.debut = artist.getDebut();
+//            this.agency = artist.getAgency();
+//            this.label = artist.getLabel();
+//            this.views = artist.getViews();
+//            this.imageSmall = artist.getImageSmall();
+//            this.albumList = null;
+//            this.biosInfo = null;
+//            this.trackList = null;
+//        }
+//    }
+
     @Getter
     @ToString
     public static class Main {
@@ -26,11 +82,11 @@ public class ArtistInfo {
         private final String label;
         private final int views;
         private final String imageSmall;
-        private final List<AlbumInfo.AlbumBasicInfo> albumList;
-        private final List<TrackInfo.TrackBasicInfo> trackList;
+        private final List<AlbumInfo.AlbumListInfo> albumList;
+        private final List<TrackInfo.TrackListInfo> trackList;
         private final BiosInfo biosInfo;
 
-        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumBasicInfo> albumList, List<TrackInfo.TrackBasicInfo> trackList) {
+        public Main(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumListInfo> albumList, List<TrackInfo.TrackListInfo> trackList) {
             this.id = artist.getId();
             this.name = artist.getName();
             this.originalName = artist.getOriginalName();
@@ -49,62 +105,6 @@ public class ArtistInfo {
         }
 
         public Main(Artist artist) {
-            this.id = artist.getId();
-            this.name = artist.getName();
-            this.originalName = artist.getOriginalName();
-            this.englishName = artist.getEnglishName();
-            this.image = artist.getImage();
-            this.birthday = artist.getBirthday();
-            this.country = artist.getCountry();
-            this.debut = artist.getDebut();
-            this.agency = artist.getAgency();
-            this.label = artist.getLabel();
-            this.views = artist.getViews();
-            this.imageSmall = artist.getImageSmall();
-            this.albumList = null;
-            this.biosInfo = null;
-            this.trackList = null;
-        }
-    }
-
-    @Getter
-    @ToString
-    public static class Main2 {
-        private final Long id;
-        private final String name;
-        private final String originalName;
-        private final String englishName;
-        private final String image;
-        private final String birthday;
-        private final String country;
-        private final Long debut;
-        private final String agency;
-        private final String label;
-        private final int views;
-        private final String imageSmall;
-        private final List<AlbumInfo.AlbumListInfo> albumList;
-        private final List<TrackInfo.TrackListInfo> trackList;
-        private final BiosInfo biosInfo;
-
-        public Main2(Artist artist, BiosInfo biosInfo, List<AlbumInfo.AlbumListInfo> albumList, List<TrackInfo.TrackListInfo> trackList) {
-            this.id = artist.getId();
-            this.name = artist.getName();
-            this.originalName = artist.getOriginalName();
-            this.englishName = artist.getEnglishName();
-            this.image = artist.getImage();
-            this.birthday = artist.getBirthday();
-            this.country = artist.getCountry();
-            this.debut = artist.getDebut();
-            this.agency = artist.getAgency();
-            this.label = artist.getLabel();
-            this.views = artist.getViews();
-            this.imageSmall = artist.getImageSmall();
-            this.albumList = albumList;
-            this.trackList = trackList;
-            this.biosInfo = biosInfo;
-        }
-
-        public Main2(Artist artist) {
             this.id = artist.getId();
             this.name = artist.getName();
             this.originalName = artist.getOriginalName();

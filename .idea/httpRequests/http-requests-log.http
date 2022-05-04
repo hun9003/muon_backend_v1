@@ -1,3 +1,122 @@
+GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-05-04T173027.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/90?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-05-04T173015.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlist/track/90
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "trackList" : [42860,42861,42862,42863,42865,42866]
+}
+
+<> 2022-05-04T173010.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/90?page=1&size=100
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-05-04T172951.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/playlist/90
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트12!!!!!!",
+  "description": "테스트 설명글!!",
+  "isPublic": 1,
+  "trackList" : [42859, 42863, 42865, 42866, 42861, 42870]
+}
+
+<> 2022-05-04T172941.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlist
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트12!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-05-04T172912.200.json
+
+###
+
+POST http://localhost:8080/api/v1/playlist
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+{
+  "name": "실험용플레이리스트12!!",
+  "description": "테스트 설명글",
+  "isPublic": 1
+}
+
+<> 2022-05-04T172320.500.json
+
+###
+
+GET http://localhost:8080/api/v1/track/likeables
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-05-04T165312.200.json
+
+###
+
+GET http://localhost:8080/api/v1/track/rank/layout
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-05-04T165303.200.json
+
+###
+
+GET http://localhost:8080/api/v1/track/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-05-04T165258.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/all?keyword=아&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-05-04T165249.200.json
+
+###
+
+GET http://localhost:8080/api/v1/genre/1/track
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-05-04T165234.200.json
+
+###
+
 GET http://localhost:8080/api/v1/genre
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -347,102 +466,6 @@ Content-Type: application/json
 }
 
 <> 2022-05-04T142328.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T142258.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T142200.500.json
-
-###
-
-GET http://localhost:8080/api/v1/track/rank/now
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T142158.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-04T142149.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/63?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T140210.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/63?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T140110.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T140058.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T135929.500.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T135342.500.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T135026.500.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/87?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T135015.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/87?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T132829.200.json
 
 ###
 

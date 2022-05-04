@@ -16,13 +16,8 @@ public interface ArtistDtoMapper {
     // find
     ArtistDto.Main of(ArtistInfo.Main main);
 
-    ArtistDto.Main2 of(ArtistInfo.Main2 main);
-
-    ArtistDto.ArtistListInfo of(ArtistInfo.ArtistListInfo artistInfo);
-
-    ArtistDto.ArtistInfo ofItem(ArtistInfo.Main main);
+    ArtistDto.ArtistInfo of(ArtistInfo.ArtistListInfo artistInfo);
 
     LikeDto.LikeInfo of(LikeDto.LikeInfo like);
 
-    ArtistDto.ArtistSearchInfo of(ArtistInfo.SearchInfo artistInfo);
 }

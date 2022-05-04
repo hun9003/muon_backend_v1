@@ -1,5 +1,6 @@
 package com.muesli.music.domain.artist;
 
+import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.domain.album.AlbumInfo;
 import com.muesli.music.domain.album.AlbumReader;
 import com.muesli.music.domain.artist.bios.Bios;
@@ -120,6 +121,16 @@ public class ArtistServiceImpl implements ArtistService{
         // 페이징
         var pageInfo = new PageInfo(pageable, artistInfoList.size());
         return artistInfoList.subList(pageInfo.getStartNum(), pageInfo.getEndNum());
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public List<ArtistInfo.ArtistListInfo> getLikeList2(String token, Pageable pageable) {
+        System.out.println("LikeServiceImpl :: getLikeArtistList");
+        var usertoken = usertokenReader.getUsertoken(token);
+        var pageInfo = new PageInfo(pageable, artistReader.getArtistLikeListCount(usertoken.getUser().getId()));
+        var artistList = artistReader.getArtistLikeList(usertoken.getUser().getId(), pageInfo.getStartNum(), pageInfo.getEndNum());
+        var newArtistList = ItemGenerator.makeItemListMap(artistList);
+        return newArtistList.stream().map(ArtistInfo.ArtistListInfo::new).collect(Collectors.toList());
     }
 
     /**

@@ -17,6 +17,8 @@ public interface ArtistReader {
 
     // 좋아하는 아티스트 리스트 호출
     List<ArtistInfo.Main> getArtistLikeList(Long userId);
+    int getArtistLikeListCount(Long userId);
+    List<Map<String, Object>> getArtistLikeList(Long userId, int start, int end);
 
     // 아티스트 검색 결과 개수 호출
     int getSearchArtistCount(String keyword);
@@ -26,4 +28,5 @@ public interface ArtistReader {
 
     // 아티스트 설명 호출
     Bios getBiosByArtist(Long artistId);
+
 }

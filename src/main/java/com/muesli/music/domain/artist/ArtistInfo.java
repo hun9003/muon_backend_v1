@@ -123,6 +123,33 @@ public class ArtistInfo {
         }
     }
 
+    /*
+        아티스트 리스트 조회를 위한 클래스 입니다.
+     */
+    @Getter
+    @ToString
+    public static class ArtistListInfo {
+        private final Long id;
+        private final String name;
+        private final String originalName;
+        private final String englishName;
+        private final String image;
+        private final String birthday;
+        private final String country;
+        private final Long debut;
+
+        public ArtistListInfo(Map<String, Object> artist) {
+            this.id = Long.parseLong(String.valueOf(artist.get("id")));
+            this.name = (String) artist.get("name");
+            this.originalName = (String) artist.get("originalName");
+            this.englishName = (String) artist.get("englishName");
+            this.image = (String) artist.get("image");
+            this.birthday = artist.get("birthday") != null ? String.valueOf(artist.get("birthday")) : null;
+            this.country = (String) artist.get("country");
+            this.debut = Long.parseLong(String.valueOf(artist.get("debut")));
+        }
+    }
+
     @Getter
     @ToString
     public static class BiosInfo {

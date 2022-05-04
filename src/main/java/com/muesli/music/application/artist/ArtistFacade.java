@@ -43,4 +43,10 @@ public class ArtistFacade {
         usertokenService.checkUsertoken(token);
         return artistService.getLikeList(token, pageable);
     }
+    public List<ArtistInfo.ArtistListInfo> retrieveLikeList2(String token, Pageable pageable) {
+        System.out.println("ArtistFacade :: retrieveLikeList");
+        // 유저 토큰 유효성 검사
+        usertokenService.checkUsertoken(token);
+        return artistService.getLikeList2(token, pageable);
+    }
 }

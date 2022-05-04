@@ -1,5 +1,6 @@
 package com.muesli.music.infrastructure.artist;
 
+import com.google.common.collect.Lists;
 import com.muesli.music.common.exception.EntityNotFoundException;
 import com.muesli.music.common.util.Constant;
 import com.muesli.music.domain.album.Album;
@@ -48,6 +49,18 @@ public class ArtistReaderImpl implements ArtistReader {
         var artistList = artistRepository.findAllLikeList(userId)
                 .orElseThrow(EntityNotFoundException::new);
         return artistList.stream().map(ArtistInfo.Main::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public int getArtistLikeListCount(Long userId) {
+        System.out.println("ArtistReaderImpl :: getArtistLikeList");
+        return artistRepository.countLikeList(userId).orElse(0);
+    }
+
+    @Override
+    public List<Map<String, Object>> getArtistLikeList(Long userId, int start, int end) {
+        System.out.println("ArtistReaderImpl :: getArtistLikeList");
+        return artistRepository.findLikeList(userId, start, end).orElse(Lists.newArrayList());
     }
 
     @Override

@@ -18,6 +18,8 @@ public interface ArtistDtoMapper {
 
     ArtistDto.Main2 of(ArtistInfo.Main2 main);
 
+    ArtistDto.ArtistListInfo of(ArtistInfo.ArtistListInfo artistInfo);
+
     ArtistDto.ArtistInfo ofItem(ArtistInfo.Main main);
 
     LikeDto.LikeInfo of(LikeDto.LikeInfo like);

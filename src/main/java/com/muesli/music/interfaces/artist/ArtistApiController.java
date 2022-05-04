@@ -43,9 +43,9 @@ public class ArtistApiController {
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("LikeApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var artistInfoList = artistFacade.retrieveLikeList(usertoken, pageable);
-        var artistInfoDtoList = artistInfoList.stream().map(artistDtoMapper::ofItem).collect(Collectors.toList());
-        var response = new ArtistDto.ArtistList(artistInfoDtoList);
+        var artistInfoList = artistFacade.retrieveLikeList2(usertoken, pageable);
+        var response = artistInfoList.stream().map(artistDtoMapper::of).collect(Collectors.toList());
+//        var response = new ArtistDto.ArtistList(artistInfoDtoList);
         return CommonResponse.success(response);
     }
 }

@@ -13,6 +13,7 @@ public interface ArtistService {
 
     // 좋아하는 아티스트 리스트 호출
     List<ArtistInfo.Main> getLikeList(String token, Pageable pageable);
+    List<ArtistInfo.ArtistListInfo> getLikeList2(String token, Pageable pageable);
 
     // 아티스트 검색 결과 호출
     List<ArtistInfo.SearchInfo> getSearchArtist(SearchCommand.SearchRequest command, Pageable pageable);

@@ -25,6 +25,19 @@ public interface ArtistRepository  extends JpaRepository<Artist, Long> {
     @Query(value = "SELECT a FROM Artist a JOIN FETCH a.likeList l LEFT JOIN FETCH a.bios b WHERE l.userId = :userId")
     Optional<List<Artist>> findAllLikeList(Long userId);
 
+    @Query(value = "SELECT COUNT(a.id) " +
+            "FROM artists a JOIN likes l on a.id = l.likeable_id " +
+            "WHERE l.user_id = :userId AND l.likeable_type LIKE '%Artist%' AND l.is_like = 1", nativeQuery = true)
+    Optional<Integer> countLikeList(Long userId);
+
+    @Query(value = "SELECT a.id, a.name, a.original_name AS originalName, " +
+            "a.english_name AS englishName, a.image, a.birthday, a.country, a.debut " +
+            "FROM artists a JOIN likes l on a.id = l.likeable_id " +
+            "WHERE l.user_id = :userId AND l.likeable_type LIKE '%Artist%' AND l.is_like = 1 " +
+            "ORDER BY l.updated_at DESC  " +
+            "LIMIT :start, :end", nativeQuery = true)
+    Optional<List<Map<String, Object>>> findLikeList(Long userId, int start, int end);
+
     @Query(value = "SELECT COUNT(a.id) FROM artists a JOIN artist_bios b on a.id = b.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "    OR REPLACE(a.original_name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +

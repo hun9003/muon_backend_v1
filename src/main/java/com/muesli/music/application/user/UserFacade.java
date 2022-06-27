@@ -3,7 +3,6 @@ package com.muesli.music.application.user;
 import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.exception.IllegalStatusException;
 import com.muesli.music.common.response.ErrorCode;
-import com.muesli.music.common.util.MailController;
 import com.muesli.music.domain.user.UserCommand;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.UserService;
@@ -43,11 +42,11 @@ public class UserFacade {
 
         // 5. 이메일 인증 메일 보내기
         // 가입 축하 메일 보내기
-        try {
-            MailController.sendMail(user.getEmail(), user.getUsername(), MailController.REGISTER);
-        } catch (Exception e) {
-            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
-        }
+//        try {
+//            MailController.sendMail(user.getEmail(), user.getUsername(), MailController.REGISTER);
+//        } catch (Exception e) {
+//            throw new BaseException(ErrorCode.COMMON_SYSTEM_ERROR);
+//        }
         
 
         return user;

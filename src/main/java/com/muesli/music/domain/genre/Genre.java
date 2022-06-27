@@ -36,7 +36,7 @@ public class Genre {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "order")
+    @Column(name = "orders")
     private int order;
 
     @Column(name = "views")

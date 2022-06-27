@@ -59,6 +59,7 @@ public class User extends AbstractEntity {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.birthday = birthday;
+        this.confirmed = 1;
     }
 
     public void changeConfirmed() {

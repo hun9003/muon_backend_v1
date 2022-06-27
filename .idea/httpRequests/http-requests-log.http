@@ -1,3 +1,107 @@
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "hun9003@naver.com",
+  "password": "12345678"
+}
+
+<> 2022-06-27T230008.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "hun9003@naver.com",
+  "password": "12345678"
+}
+
+<> 2022-06-27T225748.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "coby1997@naver.com",
+  "password": "12345678",
+  "username": "재욱",
+  "phoneNumber": "010-8483-7522",
+  "gender" : "M",
+  "birthday" : "1997-07-14"
+}
+
+<> 2022-06-27T225736.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "hun9003@naver.com",
+  "password": "12345678",
+  "username": "찌눈",
+  "phoneNumber": "010-4003-3892",
+  "gender" : "M",
+  "birthday" : "1995-07-04"
+}
+
+<> 2022-06-27T225654.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=콘
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-05-05T044123.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=코
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-05-05T044116.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search?keyword=명탐정코난
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-05-05T044109.200.json
+
+###
+
+GET http://localhost:8080/api/v1/search/all?keyword=아&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-05-05T044034.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-05-05T043345.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-05-05T043342.200.json
+
+###
+
 GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -351,121 +455,6 @@ Content-Type: application/json
 authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
 
 <> 2022-05-04T142551.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-05-04T142545.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T142503.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T142405.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 66,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142351.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 67,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142348.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 68,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142346.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 69,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142343.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 70,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142339.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 87,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142335.200.json
-
-###
-
-POST http://localhost:8080/api/v1/like
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "likeableId" : 86,
-  "likeableType" : "Playlist"
-}
-
-<> 2022-05-04T142328.200.json
 
 ###
 

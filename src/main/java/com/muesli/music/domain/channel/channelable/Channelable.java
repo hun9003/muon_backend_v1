@@ -25,7 +25,7 @@ public class Channelable extends AbstractEntity {
     @Column(name = "channelable_type")
     private String channelableType;
 
-    @Column(name = "order")
+    @Column(name = "orders")
     private Long order;
 
 }

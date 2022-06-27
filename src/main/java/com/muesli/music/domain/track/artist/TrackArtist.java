@@ -28,7 +28,4 @@ public class TrackArtist {
     @Column(name = "artist_type")
     private String artistType;
 
-    @Column(name = "primary")
-    private int primary;
-
 }

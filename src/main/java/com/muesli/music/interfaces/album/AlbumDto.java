@@ -1,6 +1,7 @@
 package com.muesli.music.interfaces.album;
 
 import com.muesli.music.common.util.Constant;
+import com.muesli.music.domain.track.TrackInfo;
 import com.muesli.music.interfaces.artist.ArtistDto;
 import com.muesli.music.interfaces.track.TrackDto;
 import lombok.Builder;
@@ -43,6 +44,8 @@ public class AlbumDto {
 
         private final Long artistId;
         private final String artistName;
+
+        private final List<TrackInfo.TrackListInfo> trackList;
     }
 
     /**

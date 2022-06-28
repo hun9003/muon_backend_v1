@@ -55,7 +55,20 @@ public class ArtistServiceImpl implements ArtistService{
             var newAlbumMap = new HashMap<>(stringObjectMap);
             newAlbumList.add(newAlbumMap);
         }
-        var albumListInfo = newAlbumList.stream().map(AlbumInfo.AlbumListInfo::new).collect(Collectors.toList());
+
+        var albumListInfo = newAlbumList.stream().map(stringObjectMap -> {
+            var albumId = Long.parseLong(String.valueOf(stringObjectMap.get("id")));;
+            var trackCount = trackReader.getTrackByAlbumCount(albumId);
+
+            var trackList = trackReader.getTrackListByAlbum(albumId, 0, trackCount);
+            var newTrackList = new ArrayList<Map<String, Object>>();
+            for (Map<String, Object> track : trackList) {
+                var newAlbumMap = new HashMap<>(track);
+                newTrackList.add(newAlbumMap);
+            }
+            var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
+            return new AlbumInfo.AlbumListInfo(stringObjectMap, trackListInfo);
+        }).collect(Collectors.toList());
 
         // 트랙 리스트 호출
         pageInfo = new PageInfo(pageable, trackReader.getTrackListByArtistCount(artistId));

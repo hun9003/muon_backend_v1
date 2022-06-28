@@ -87,7 +87,9 @@ public class AlbumInfo {
         private final Long artistId;
         private final String artistName;
 
-        public AlbumListInfo(Map<String, Object> album) {
+        private final List<TrackInfo.TrackListInfo> trackList;
+
+        public AlbumListInfo(Map<String, Object> album, List<TrackInfo.TrackListInfo> trackList) {
 
             this.id = Long.parseLong(String.valueOf(album.get("id")));
             this.name = (String) album.get("name");
@@ -97,6 +99,7 @@ public class AlbumInfo {
 
             this.artistId = Long.parseLong(String.valueOf(album.get("artistId")));
             this.artistName = (String) album.get("artistName");
+            this.trackList = trackList;
         }
     }
 

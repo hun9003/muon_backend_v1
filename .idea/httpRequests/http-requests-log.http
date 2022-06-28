@@ -1,3 +1,19 @@
+GET http://localhost:8080/api/v1/search/album?keyword=ad&page=1&size=10
+authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
+Content-Type: application/json
+
+<> 2022-06-28T175748.200.json
+
+###
+
+GET http://localhost:8080/api/v1/album/new?page=1
+authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
+Content-Type: application/json
+
+<> 2022-06-28T175518.200.json
+
+###
+
 GET http://localhost:8080/api/v1/playlist/my
 authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP
 Content-Type: application/json
@@ -421,22 +437,6 @@ authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 <> 2022-05-05T044123.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search?keyword=코
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-05-05T044116.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search?keyword=명탐정코난
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-05-05T044109.200.json
 
 ###
 

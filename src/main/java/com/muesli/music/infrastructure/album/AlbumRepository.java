@@ -95,7 +95,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
      */
     @Query(value = "SELECT COUNT(id) FROM (" +
             "SELECT a.id as id " +
-            "FROM albums a LEFT JOIN play_log p ON p.album_id = a.id " +
+            "FROM albums a " +
             "JOIN tracks t ON a.id = t.album_id " +
             "JOIN artists a2 on a2.id = a.artist_id " +
             "WHERE REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
@@ -123,7 +123,7 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "OR REPLACE(a2.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(a.description, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "GROUP BY a.id " +
-            "ORDER By COUNT(p.idx) DESC " +
+            "ORDER By COUNT(p.id) DESC " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findSearchAlbumOrderByPopularity(String keyword, int start, int end);
 

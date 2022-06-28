@@ -311,7 +311,6 @@ public class TrackServiceImpl implements TrackService {
                 // TODO 임시 DATE
 //                searchDate = LocalDate.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA);
-                searchDate = LocalDate.parse("2022-03-26", formatter);
                 beforeBegin = searchDate.minusDays(2 + nowMinusCount).atTime(0, 0);
                 beforeEnd = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);
                 afterBegin = searchDate.minusDays(1 + nowMinusCount).atTime(0, 0);

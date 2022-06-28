@@ -233,7 +233,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
      */
     @Query(value = "SELECT COUNT(id) FROM (" +
             "SELECT t.id as id " +
-            "FROM tracks t JOIN play_log p ON p.track_id = t.id " +
+            "FROM tracks t " +
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
             "JOIN artists a2 on at2.artist_id = a2.id " +
@@ -266,7 +266,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "OR REPLACE(a.name, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "OR REPLACE(t.description, ' ', '') LIKE REPLACE(CONCAT('%',:keyword,'%'), ' ', '') " +
             "GROUP BY t.id " +
-            "ORDER By COUNT(p.idx) DESC " +
+            "ORDER By COUNT(p.id) DESC " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findSearchTrackOrderByPopularity(String keyword, int start, int end);
 
@@ -362,7 +362,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "JOIN artists a2 on at2.artist_id = a2.id " +
             "WHERE g.id = :genreId AND g2.genreable_type LIKE CONCAT('%','Track') " +
             "GROUP BY t.id " +
-            "ORDER By COUNT(p.idx) DESC " +
+            "ORDER By COUNT(p.id) DESC " +
             "LIMIT :start, :end", nativeQuery = true)
     Optional<List<Map<String, Object>>> findGenreTrackOrderByPopularity(Long genreId, int start, int end);
 

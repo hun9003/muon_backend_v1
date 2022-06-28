@@ -117,7 +117,7 @@ public class PlaylistInfo {
             this.name = (String) playlist.get("name");
             this.image = (String) playlist.get("image");
             this.views = Integer.parseInt(String.valueOf(playlist.get("views")));
-            this.isPublic = (Boolean)playlist.get("isPublic") ? 1L : 0L;
+            this.isPublic = Long.parseLong(String.valueOf(playlist.get("isPublic")));
             this.description = (String) playlist.get("description");
             this.userId = Long.parseLong(String.valueOf(playlist.get("userId")));
             this.userName = (String) playlist.get("userName");

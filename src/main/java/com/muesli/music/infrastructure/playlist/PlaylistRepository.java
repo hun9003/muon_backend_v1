@@ -40,14 +40,13 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
     @Query(value = "SELECT COUNT(id) FROM (" +
             "SELECT p.id FROM playlists p " +
             "JOIN `users` u on p.user_id = u.id " +
-            "JOIN playlist_track pt on p.id = pt.playlist_id " +
             "WHERE u.id = :userId ) playlist", nativeQuery = true)
     Optional<Integer> countPlaylistByUserId(Long userId);
 
     @Query(value = "SELECT p.id, p.name, p.image, p.views, p.description, p.created_at AS createAt, p.public AS isPublic ," +
             "u.id AS userId, u.username AS userName, count(pt.id) AS trackCount  FROM playlists p " +
             "JOIN `users` u on p.user_id = u.id " +
-            "JOIN playlist_track pt on p.id = pt.playlist_id " +
+            "LEFT JOIN playlist_track pt on p.id = pt.playlist_id " +
             "WHERE u.id = :userId " +
             "GROUP BY p.id " +
             "ORDER BY p.created_at DESC " +

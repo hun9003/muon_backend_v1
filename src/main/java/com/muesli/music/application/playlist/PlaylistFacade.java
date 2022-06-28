@@ -41,7 +41,7 @@ public class PlaylistFacade {
      * @param pageable 플레이리스트 트랙 리스트 페이징을 위한 객체
      * @return 플레이리스트 정보 리스트
      */
-    public List<PlaylistInfo.PlayListInfo> retrieveMyPlaylist2(String token, Pageable pageable) {
+    public List<PlaylistInfo.PlayListInfo> retrieveMyPlaylist(String token, Pageable pageable) {
         System.out.println("PlaylistFacade :: retrieveMyPlaylist");
         // 유저 토큰 유효성 검사
         usertokenService.checkUsertoken(token);

@@ -27,7 +27,7 @@ public class ArtistApiController {
     @GetMapping("/{id}")
     public CommonResponse retrieveArtist(@PathVariable("id") Long artistId,
                                             @PageableDefault(size = 100, page = 1) Pageable pageable) {
-        var artistInfo = artistFacade.findArtistInfo2(artistId, pageable);
+        var artistInfo = artistFacade.findArtistInfo(artistId, pageable);
         var response = artistDtoMapper.of(artistInfo);
         return CommonResponse.success(response);
     }
@@ -43,7 +43,7 @@ public class ArtistApiController {
                                                 @PageableDefault(size = 100, page = 1) Pageable pageable) {
         System.out.println("LikeApiController :: retrieveLikeTrackList");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var artistInfoList = artistFacade.retrieveLikeList2(usertoken, pageable);
+        var artistInfoList = artistFacade.retrieveLikeList(usertoken, pageable);
         var response = artistInfoList.stream().map(artistDtoMapper::of).collect(Collectors.toList());
 //        var response = new ArtistDto.ArtistList(artistInfoDtoList);
         return CommonResponse.success(response);

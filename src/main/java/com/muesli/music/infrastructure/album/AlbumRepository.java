@@ -186,9 +186,8 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
             "    JOIN tracks t ON t.id = g2.genreable_id " +
             "    JOIN albums a on a.id = t.album_id " +
             "    JOIN artists a2 on a.artist_id = a2.id " +
-            "    JOIN play_log pl on t.id = pl.track_id " +
             "WHERE g.id = :genreId " +
-            "GROUP BY a.id ORDER BY g.id, COUNT(pl.idx) DESC " +
+            "GROUP BY a.id ORDER BY g.id DESC " +
             "LIMIT :limit", nativeQuery = true)
     Optional<List<Map<String, Object>>> findGenreAlbumList(Long genreId, int limit);
 

@@ -23,7 +23,7 @@ public class TrackDto {
         private final String name;
         private final Long number;
         private final Long duration;
-        private final String url;
+        private final String musicUrl;
         private final String description;
         private final String composer;
         private final String lyricser;
@@ -48,6 +48,7 @@ public class TrackDto {
         private final String description;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
 
         private final Long artistId;
         private final String artistName;
@@ -107,6 +108,7 @@ public class TrackDto {
         private final String description;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
         private final Long number;
         private final Long duration;
 
@@ -132,6 +134,7 @@ public class TrackDto {
         private final String description;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -148,6 +151,7 @@ public class TrackDto {
         private final Long duration;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
         private final ArtistDto.TrackArtistInfo artistInfo;
         private final AlbumDto.TrackAlbumInfo albumInfo;
     }
@@ -167,6 +171,7 @@ public class TrackDto {
         private final String description;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
         private final Long number;
         private final Long duration;
 
@@ -217,6 +222,7 @@ public class TrackDto {
         private final String name;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
 
         private final String lyricsText;
         private final String lyricsTextPron;

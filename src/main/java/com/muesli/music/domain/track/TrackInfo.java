@@ -19,7 +19,7 @@ public class TrackInfo {
         private final String name;
         private final Long number;
         private final Long duration;
-        private final String url;
+        private final String musicUrl;
         private final String description;
         private final String composer;
         private final String lyricser;
@@ -35,7 +35,7 @@ public class TrackInfo {
             this.name = track.getName();
             this.number = track.getNumber();
             this.duration = track.getDuration();
-            this.url = track.getUrl();
+            this.musicUrl = track.getUrl();
             this.description = track.getDescription();
             this.composer = track.getComposer();
             this.lyricser = track.getLyricser();
@@ -52,7 +52,7 @@ public class TrackInfo {
             this.name = track.getName();
             this.number = track.getNumber();
             this.duration = track.getDuration();
-            this.url = track.getUrl();
+            this.musicUrl = track.getUrl();
             this.description = track.getDescription();
             this.composer = track.getComposer();
             this.lyricser = track.getLyricser();
@@ -81,6 +81,7 @@ public class TrackInfo {
         private final String arranger;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
         private final ArtistInfo.Main artistInfo;
         private final AlbumInfo.AlbumBasicInfo albumInfo;
 
@@ -95,6 +96,7 @@ public class TrackInfo {
             this.arranger = track.getArranger();
             this.adult = track.getAdult();
             this.isTitle = track.getIsTitle();
+            this.musicUrl = track.getUrl();
             this.albumInfo = albumBasicInfo;
             this.artistInfo = artistInfo;
         }
@@ -115,6 +117,7 @@ public class TrackInfo {
         private final String image;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
 
         private final Long artistId;
         private final String artistName;
@@ -137,6 +140,7 @@ public class TrackInfo {
             this.image = (String) track.get("image");
             this.adult = adult;
             this.isTitle = isTitle;
+            this.musicUrl = (String) track.get("url");
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -189,6 +193,7 @@ public class TrackInfo {
         private final String image;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
 
         private final Long artistId;
         private final String artistName;
@@ -217,6 +222,7 @@ public class TrackInfo {
             this.image = (String) track.get("image");
             this.adult = adult;
             this.isTitle = isTitle;
+            this.musicUrl = (String) track.get("url");
 
             this.artistId = Long.parseLong(String.valueOf(track.get("artistId")));
             this.artistName = (String) track.get("artistName");
@@ -253,6 +259,7 @@ public class TrackInfo {
         private final String name;
         private final Long adult;
         private final Long isTitle;
+        private final String musicUrl;
 
         private final String lyricsText;
         private final String lyricsTextPron;
@@ -280,6 +287,7 @@ public class TrackInfo {
 
             this.adult = adult;
             this.isTitle = isTitle;
+            this.musicUrl = (String) lyrics.get("url");
 
             this.artistId = Long.parseLong(String.valueOf(lyrics.get("artistId")));
             this.artistName = (String) lyrics.get("artistName");

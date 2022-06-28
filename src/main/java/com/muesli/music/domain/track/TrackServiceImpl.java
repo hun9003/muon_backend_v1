@@ -6,6 +6,7 @@ import com.muesli.music.common.util.ItemGenerator;
 import com.muesli.music.common.util.LyricsGenerator;
 import com.muesli.music.domain.artist.ArtistInfo;
 import com.muesli.music.domain.search.SearchCommand;
+import com.muesli.music.domain.track.lyrics.Lyrics;
 import com.muesli.music.domain.track.lyrics.LyricsReader;
 import com.muesli.music.domain.user.UserInfo;
 import com.muesli.music.domain.user.token.UsertokenReader;
@@ -41,7 +42,7 @@ public class TrackServiceImpl implements TrackService {
     public TrackInfo.Main findTrackInfo(Long trackId) {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
-        var lyrics = track.getLyrics().iterator().next();
+        var lyrics = track.getLyrics().iterator().next() != null ? track.getLyrics().iterator().next() : new Lyrics();
         var lyricsInfolist = LyricsGenerator.makeLyrics(lyrics);
         return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics.getId() ,lyricsInfolist));
     }

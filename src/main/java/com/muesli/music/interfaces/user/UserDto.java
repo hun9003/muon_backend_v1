@@ -43,7 +43,10 @@ public class UserDto {
 
         private LocalDate birthday;
 
+        private String authType;
+
         public UserCommand.RegisterUserRequest toCommand() {
+            String authType = this.authType != null ? this.authType : "local";
             return UserCommand.RegisterUserRequest.builder()
                     .username(username)
                     .email(email)
@@ -51,6 +54,7 @@ public class UserDto {
                     .phoneNumber(phoneNumber)
                     .gender(gender)
                     .birthday(birthday)
+                    .authType(authType)
                     .build();
         }
     }

@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class MailController {
 
-    public static void main(String[] args) throws Exception {
-        sendMail("hun9003@naver.com", "찌눈", REGISTER);
-    }
+//    public static void main(String[] args) throws Exception {
+//        sendMail("hun9003@naver.com", "찌눈", REGISTER);
+//    }
 
     public static final String REGISTER = "회원가입";
     public static final String FIND_PASSWORD = "비밀번호 찾기";

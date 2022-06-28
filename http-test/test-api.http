@@ -9,7 +9,7 @@ Content-Type: application/json
 authorization:Bearer d4243743538e9b86c862aee116f5dd411fbd300d
 
 ###  Track 조회
-GET http://localhost:8080/api/v1/track/42860
+GET http://localhost:8080/api/v1/track/2
 Content-Type: application/json
 Authorization:Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
 
@@ -95,7 +95,7 @@ Content-Type: application/json
 
 ### 플레이 리스트 조회
 GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
-authorization:Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
+authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e
 Content-Type: application/json
 
 ### 플레이 리스트 트랙 추가
@@ -119,7 +119,7 @@ Content-Type: application/json
 
 ### 내 플레이리스트 조회
 GET http://localhost:8080/api/v1/playlist/my
-authorization:Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
+authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP
 Content-Type: application/json
 
 ### 좋아요 리스트(플레이 리스트)
@@ -203,7 +203,7 @@ authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 ### 장르별 곡 리스트 조회
-GET http://localhost:8080/api/v1/genre/1/track
+GET http://localhost:8080/api/v1/genre/2/track
 authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 

@@ -1,3 +1,167 @@
+GET http://localhost:8080/api/v1/playlist/my
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP
+Content-Type: application/json
+
+<> 2022-06-28T164049.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/my
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP8
+Content-Type: application/json
+
+<> 2022-06-28T164046.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e
+Content-Type: application/json
+
+<> 2022-06-28T164034.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP
+Content-Type: application/json
+
+<> 2022-06-28T164026.200.json
+
+###
+
+GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzAwNjc3Nn0.GGBYjianLD_1o-roUpi0e_P1Nb-ujSbpaxguwOhhtP8
+Content-Type: application/json
+
+<> 2022-06-28T164021.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "hun9003@naver.com",
+  "password": "12345678"
+}
+
+<> 2022-06-28T163936.200.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "hun9003@naver.com",
+  "password": "12345678"
+}
+
+<> 2022-06-28T163801.500.json
+
+###
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email" : "hun9003@naver.com",
+  "password": "12345678"
+}
+
+<> 2022-06-28T163357.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre/2/track
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T144249.200.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T144227.200.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T144055.200.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T143946.200.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T143810.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T143801.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T141248.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T141244.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T141212.500.json
+
+###
+
+GET http://localhost:8080/api/v1/genre
+authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+Content-Type: application/json
+
+<> 2022-06-28T141131.200.json
+
+###
+
+GET http://localhost:8080/api/v1/track/2
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-06-28T135025.500.json
+
+###
+
 GET http://localhost:8080/api/v1/track/rank/day
 authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
@@ -273,181 +437,6 @@ authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 <> 2022-05-05T044109.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-05-05T044034.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/new?page=1
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-05T043345.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/new?page=1
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-05T043342.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/likeables?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T173027.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/90?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T173015.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlist/track/90
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "trackList" : [42860,42861,42862,42863,42865,42866]
-}
-
-<> 2022-05-04T173010.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/90?page=1&size=100
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T172951.200.json
-
-###
-
-PUT http://localhost:8080/api/v1/playlist/90
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트12!!!!!!",
-  "description": "테스트 설명글!!",
-  "isPublic": 1,
-  "trackList" : [42859, 42863, 42865, 42866, 42861, 42870]
-}
-
-<> 2022-05-04T172941.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlist
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트12!!",
-  "description": "테스트 설명글",
-  "isPublic": 1
-}
-
-<> 2022-05-04T172912.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlist
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트12!!",
-  "description": "테스트 설명글",
-  "isPublic": 1
-}
-
-<> 2022-05-04T172320.500.json
-
-###
-
-GET http://localhost:8080/api/v1/track/likeables
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T165312.200.json
-
-###
-
-GET http://localhost:8080/api/v1/track/rank/layout
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-04T165303.200.json
-
-###
-
-GET http://localhost:8080/api/v1/track/new?page=1
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-04T165258.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=아&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-05-04T165249.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre/1/track
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T165234.200.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T161708.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/new?page=1
-authorization: Bearer WcXJlhpnSZUKjhhg0sEAqY3JxW6mnqsIRNwJb91n
-Content-Type: application/json
-
-<> 2022-05-04T161054.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/album?keyword=명탐정코난&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-05-04T160918.200.json
-
-###
-
-GET http://localhost:8080/api/v1/channel
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-05-04T160543.200.json
 
 ###
 

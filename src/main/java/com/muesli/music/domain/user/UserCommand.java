@@ -19,6 +19,7 @@ public class UserCommand {
         private final String phoneNumber;
         private final String gender;
         private final LocalDate birthday;
+        private final String authType;
 
         public User toEntity() {
             System.out.println("UserCommand.RegisterUserRequest :: toEntity");
@@ -29,6 +30,7 @@ public class UserCommand {
                     .phoneNumber(phoneNumber)
                     .gender(gender)
                     .birthday(birthday)
+                    .authType(authType)
                     .build();
         }
     }

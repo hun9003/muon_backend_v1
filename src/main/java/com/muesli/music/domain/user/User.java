@@ -48,7 +48,7 @@ public class User extends AbstractEntity {
 
 
     @Builder
-    public User(String username, String email, String password, String phoneNumber, String gender, LocalDate birthday) {
+    public User(String username, String email, String password, String phoneNumber, String gender, LocalDate birthday, String authType) {
         if (StringUtils.isEmpty(username)) throw new InvalidParamException("empty username");
         if (StringUtils.isEmpty(email)) throw new InvalidParamException("empty email");
         if (StringUtils.isEmpty(password)) throw new InvalidParamException("empty password");
@@ -60,6 +60,7 @@ public class User extends AbstractEntity {
         this.gender = gender;
         this.birthday = birthday;
         this.confirmed = 1;
+        this.authType = authType;
     }
 
     public void changeConfirmed() {

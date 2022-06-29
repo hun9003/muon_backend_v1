@@ -149,7 +149,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "t.description, t.image, t.adult, t.is_title, t.url, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
-            "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
+            "FROM (SELECT * FROM play_log WHERE created_at > :beginDate AND created_at < :endDate) p JOIN tracks t ON p.track_id = t.id " +
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
             "JOIN artists a2 on at2.artist_id = a2.id " +
@@ -173,7 +173,7 @@ public interface TrackRepository  extends JpaRepository<Track, Long> {
             "t.description, t.image, t.adult, t.is_title, t.url, " +
             "a.id AS albumId, a.name AS albumName, a.image AS albumImage, " +
             "a2.id AS artistId, a2.name AS artistName " +
-            "FROM play_log p JOIN tracks t ON p.track_id = t.id " +
+            "FROM (SELECT * FROM play_log WHERE created_at > :beginDate AND created_at < :endDate) p JOIN tracks t ON p.track_id = t.id " +
             "JOIN albums a on t.album_id = a.id " +
             "JOIN artist_track at2 on t.id = at2.track_id " +
             "JOIN artists a2 on at2.artist_id = a2.id " +

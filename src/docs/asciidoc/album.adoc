@@ -1,0 +1,27 @@
+= RESTful ALBUM API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[resources-album]]
+== 앨범 관련
+
+[[resources-album-get]]
+=== 앨범 호출
+//include::{snippets}/test-example/curl-request.adoc[]
+
+==== HTTP request
+include::{snippets}/album/retrieve-album/http-request.adoc[]
+==== HTTP response
+include::{snippets}/album/retrieve-album/http-response.adoc[]
+
+//include::{snippets}/album/retrieve-album/httpie-request.adoc[]
+
+include::{snippets}/album/retrieve-album/request-body.adoc[]
+
+include::{snippets}/album/retrieve-album/response-body.adoc[]
+
+include::{snippets}/album/retrieve-album/response-fields.adoc[]

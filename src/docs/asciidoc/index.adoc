@@ -1,0 +1,44 @@
+= RESTful API 안내
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks: /build/docs/asciidoc
+
+[[common]]
+== 공통사항
+|====
+| Header name | Description
+| token | 유저 토큰
+|====
+
+[[album]]
+== 앨범 관련
+
+[[retrieve-album]]
+=== 앨범 호출
+:api-type: album
+:controller-name: retrieve-album
+:req-param-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+
+[[retrieve-new-album]]
+=== 최신 앨범 호출
+:api-type: album
+:controller-name: retrieve-new-album
+:req-param-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+
+[[retrieve-like-album-list]]
+=== 좋아하는 앨범 호출
+:api-type: album
+:controller-name: retrieve-like-album-list
+:req-param-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+include::{docdir}/src/docs/asciidoc/api-template.adoc[]

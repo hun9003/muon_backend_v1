@@ -1,0 +1,31 @@
+:snippets_path: {snippets}/{api-type}/{controller-name}
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks: /build/docs/asciidoc
+
+==== HTTP request
+
+include::{snippets_path}/http-request.adoc[]
+
+ifeval::[{req-path-param-exists} == 1]
+include::{snippets_path}/path-parameters.adoc[]
+endif::[]
+
+ifeval::[{req-param-exists} == 1]
+include::{snippets_path}/request-body.adoc[]
+
+include::{snippets_path}/request-fields.adoc[]
+endif::[]
+
+==== HTTP response
+
+include::{snippets_path}/http-response.adoc[]
+
+ifeval::[{res-param-exists} == 1]
+//include::{snippets_path}/response-body.adoc[]
+
+include::{snippets_path}/response-fields.adoc[]
+endif::[]

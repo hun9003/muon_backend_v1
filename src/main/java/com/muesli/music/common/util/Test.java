@@ -1,82 +1,79 @@
 package com.muesli.music.common.util;
 
 
-import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
 
-//        Collection<Integer> olds = new ArrayList<>(Arrays.asList(7,2,6,5,3,1));
-//        Collection<Integer> news = new ArrayList<>(Arrays.asList(2,3,4,7,8));
-//        List<Integer> olds2 = new ArrayList<>(olds);
-//        List<Integer> news2 = new ArrayList<>(news);
-//
-//        olds2.removeAll(news);
-//        news2.removeAll(olds);
-//
-//        System.out.println("삭제되어야 하는것 : " + olds2);
-//        System.out.println("생성되어야 하는것 : " + news2);
+        URL url = null;
+        String readLine = null;
+        StringBuilder buffer = null;
+        BufferedReader bufferedReader = null;
+        BufferedWriter bufferedWriter = null;
+        HttpURLConnection urlConnection = null;
+
+        int connTimeout = 5000;
+        int readTimeout = 3000;
+
+        String apiUrl = "https://www.googleapis.com/oauth2/v2/userinfo?access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163";	// 각자 상황에 맞는 IP & url 사용
+
+        try
+        {
+            url = new URL(apiUrl);
+            urlConnection = (HttpURLConnection)url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setConnectTimeout(connTimeout);
+            urlConnection.setReadTimeout(readTimeout);
+            urlConnection.setRequestProperty("Accept", "application/json;");
+
+            buffer = new StringBuilder();
+            if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK)
+            {
+                bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
+                while((readLine = bufferedReader.readLine()) != null)
+                {
+                    buffer.append(readLine).append("\n");
+                }
+            }
+            else
+            {
+                buffer.append("code : ");
+                buffer.append(urlConnection.getResponseCode()).append("\n");
+                buffer.append("message : ");
+                buffer.append(urlConnection.getResponseMessage()).append("\n");
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                if (bufferedWriter != null) { bufferedWriter.close(); }
+                if (bufferedReader != null) { bufferedReader.close(); }
+            }
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
 
 
-        // 가사 가공 테스트
-//        String lyrics = "0.0|전주 중~♬#\n" +
-//                "12.0|오늘도 어제도 똑같은 비디오를 틀고#\n" +
-//                "19.6|인생이란 게임을 재시작해#\n" +
-//                "24.0|나의 마음이 받아들일 수 있는 것보다#\n" +
-//                "30.0|끔찍한 인간이야 라는 말을 들었어#\n" +
-//                "36.0|(내 옆에 있자 살자)#\n" +
-//                "40.6|간주 중~♬#\n" +
-//                "46.4|아직까지도 우리의 향수 냄새를#\n" +
-//                "50.4|기억한다면 이걸 열어봐#\n" +
-//                "54.8|내가 준비한 추억의 향기야#\n" +
-//                "60.4|싫다고? 그래 알겠어#\n" +
-//                "63.6|하지만 난 너를 좋아해 애정 어린 눈물#\n" +
-//                "70.8|(내 옆에 있자 살자)#\n" +
-//                "75.0|간주 중~♬#\n" +
-//                "82.8|조그만 디딤돌을 밟고 올라가 연 창문#\n" +
-//                "90.0|악몽이란 하루를 재시작해#\n" +
-//                "94.0|나의 마음이 받아들이지 못하는 걸#\n" +
-//                "99.6|알려준 당신들이 무서워#\n" +
-//                "105.0|(내 옆에 있자 살자)#\n" +
-//                "110.5|간주 중~♬#\n" +
-//                "116.8|아직까지도 우리의 향수 냄새를#\n" +
-//                "120.4|기억한다면 이걸 열어봐#\n" +
-//                "125.2|내가 준비한 추억의 향기야#\n" +
-//                "130.4|싫다고? 그래 알겠어#\n" +
-//                "133.6|하지만 난 너를 좋아해 애정 어린 눈물#\n" +
-//                "141.2|간주 중~♬#\n" +
-//                "175.0|아직까지도 우리의 향수 냄새를#\n" +
-//                "179.0|기억한다면 이걸 열어봐#\n" +
-//                "184.0|내가 준비한 추억의 향기야#\n" +
-//                "189.0|싫다고? 그래 알겠어#\n" +
-//                "192.0|하지만 난 너를 좋아해 (싫어해)#\n" +
-//                "196.5|눈물 어린 애정#\n" +
-//                "199.0|내 옆에 있자 살자 내 옆에#";
-//
-//        System.out.println(makeLyrics(lyrics));
-//        String ssr = "おねがいぎゅっと抱きしめて\\n(오네가이 큣토 다키시메테)/夢見ているの Charming Do！\\n(유메미테 이루노 Charming Do！)/もっとちゃんと近づいて\\n(못토 찬토 치카즈이테)/ねえドキドキしようよ\\n(네에 도키도키시요오요)/간주 중~♬/ジタバタしてるキモチ\\n(지타바타 시테루 키모치)/気づいてほしいだから\\n(키즈이테 호시이 다카라)/勇気のかけら集め\\n(유우키노 카케라 아츠메)/フルスロットルでいこ！\\n(후루스롯토루데 이코！)/想像以上過剰？/乙女のホンキモード/ハートのゲージ上げて/あの雲のかなたまで\n";
-//        System.out.println(Arrays.toString(ssr.split("/")));
-//
-//        var lyricsArr = List.of(ssr.split("/"));
-//        var lyricsArr1 = lyricsArr.stream().map(
-//                s -> {
-//                    if(s.contains("\\n")){
-//                        s = s.substring(s.indexOf("\\n")+2);
-//                        if(s.contains("(")) {
-//                            s = s.substring(s.indexOf("(")+1, s.indexOf(")"));
-//                        }
-//                    }
-//                    return s;
-//                }
-//        ).collect(Collectors.toList());
-//        System.out.println(String.join("/", lyricsArr1));
-//        makeAlbumName("チントン
-//        シャン (친톤샨) off vocal");
-//        getKeyword();
-
-        getInitialSound("명탐정 코난");
-
+//        System.out.println("결과 : " + buffer.toString());
+        var result = JSONValue.parse(buffer.toString());
+        JSONObject js = (JSONObject) result;
+        System.out.println(buffer.toString());
     }
 
     public static String makeLyrics(String lyrics) {

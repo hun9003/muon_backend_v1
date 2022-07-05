@@ -59,8 +59,9 @@ public class UsertokenServiceImpl implements UsertokenService {
     @Override
     public void checkUsertoken(String token) {
         System.out.println("UsertokenServiceImpl :: checkUsertoken");
+        System.out.println(token);
         var usertoken = usertokenReader.getUsertoken(token);
         if (usertoken.getUploadAt() == null || usertoken.getUploadAt().before(new Timestamp(System.currentTimeMillis())))
-            throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
+            throw new BaseException(ErrorCode.USER_EXPIRY_USERTOKEN);
     }
 }

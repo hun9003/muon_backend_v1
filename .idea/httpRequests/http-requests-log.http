@@ -1,3 +1,68 @@
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
+Content-Type: application/json
+
+<> 2022-07-05T181837.200.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
+
+<> 2022-07-05T181423.200.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
+
+<> 2022-07-05T181358.200.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
+
+<> 2022-07-05T181245.200.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T181056.500.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T181012.500.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T180930.500.json
+
+###
+
+GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T180813.500.json
+
+###
+
+GET https://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+###
+
+GET https://www.googleapis.com/oauth2/v2/userinfo?access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T165654.200.json
+
+###
+
+GET https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=ya29.A0AVA9y1uiB1GySFz5Lmn8RlAl2llgBaMPZNIO3u6e-uZE-bShek4BH1H6jWg7uhr-M9bV9XLpdjUw59YICMriyEBzmgbA7PxPxroBwcQBD71TZvMfWRaJuQPBkmjBH_QLppCqMucO8egfQyi1aeCfiUkEU0fLYUNnWUtBVEFTQVRBU0ZRRl91NjFWeWZMb1lQaVAyX3BEdjhfZEhRQUQxZw0163
+
+<> 2022-07-05T165512.200.json
+
+###
+
 GET http://localhost:8080/api/v1/album/55
 Content-Type: application/json
 Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
@@ -319,100 +384,6 @@ authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
 Content-Type: application/json
 
 <> 2022-06-28T111511.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my?page=1&size=100
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111457.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111404.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/90?page=1&size=100
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111358.200.json
-
-###
-
-POST http://localhost:8080/api/v1/playlist
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-{
-  "name": "실험용플레이리스트12!!",
-  "description": "테스트 설명글",
-  "isPublic": 1
-}
-
-<> 2022-06-28T111347.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artist/20
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-06-28T111228.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=head&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-06-28T104620.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artist/20
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-06-28T104606.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/40
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-06-28T104555.200.json
-
-###
-
-GET http://localhost:8080/api/v1/album/1809
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-06-28T104547.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=head&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-06-28T103954.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/all?keyword=head&page=1&size=10
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-06-28T103820.200.json
 
 ###
 

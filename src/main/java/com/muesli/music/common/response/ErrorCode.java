@@ -17,6 +17,7 @@ public enum ErrorCode {
     USER_LOGIN_FALE("아이디 또는 비밀번호가 일치하지 않습니다."),
     USER_PERMISSION_FALE("권한이 없습니다"),
     USER_BAD_USERTOKEN("토큰이 유효하지 않습니다."),
+    USER_EXPIRY_USERTOKEN("만료된 토큰 입니다."),
     USER_BAD_PASSWORD("비밀번호가 일치하지 않습니다"),
 
     // EMPTY 관련

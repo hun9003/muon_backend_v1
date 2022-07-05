@@ -7,6 +7,7 @@ import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.HashGenerator;
 import com.muesli.music.common.util.MailController;
 import com.muesli.music.common.util.TokenGenerator;
+import com.muesli.music.domain.user.UserCommand;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -103,6 +104,21 @@ public class UserApiController {
         userFacade.changeUserPassword(command, usertoken);
         var message = makeResponseSuccessMessage(Developer.SUCCESS_CHANGE_PASSWORD, User.SUCCESS_CHANGE_PASSWORD);
         return CommonResponse.success(null, message);
+    }
+
+    /**
+     * 소셜 로그인 GET
+     * @param accessToken 엑세스 토큰
+     * @return
+     */
+    @GetMapping("/login/social")
+    public CommonResponse socialLoginUser(@RequestParam(name="access_token") String accessToken, @RequestParam(name="auth_type") String authType) {
+        System.out.println("UserApiController :: socialLoginUser");
+        var socialLoginCommand = new UserCommand.SocialLoginRequest(accessToken, authType);
+        var usertokenInfo = userFacade.socialLoginUser(socialLoginCommand);
+        var response = new UserDto.LoginResponse(usertokenInfo);
+        var message = makeResponseMessage(Developer.SUCCESS_SIGNIN);
+        return CommonResponse.success(response, message);
     }
 
 }

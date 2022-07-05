@@ -1,5 +1,6 @@
 package com.muesli.music.domain.user;
 
+import com.muesli.music.common.util.TokenGenerator;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -33,6 +34,15 @@ public class UserCommand {
                     .authType(authType)
                     .build();
         }
+
+        public User toSocialEntity(String email, String username, String authType) {
+            return User.builder()
+                    .email(email)
+                    .username(username)
+                    .password(TokenGenerator.randomCharacter(32))
+                    .authType(authType)
+                    .build();
+        }
     }
 
     @Getter
@@ -41,7 +51,6 @@ public class UserCommand {
     public static class LoginUserRequest {
         private final String email;
         private final String password;
-
         public User toEntity() {
             System.out.println("UserCommand.LoginUserRequest :: toEntity");
             return User.builder()
@@ -58,5 +67,18 @@ public class UserCommand {
         private final String password;
         private final String newPassword;
 
+    }
+
+    @Getter
+    @Builder
+    @ToString
+    public static class SocialLoginRequest {
+        private final String accessToken;
+        private final String authType;
+
+        public SocialLoginRequest(String accessToken, String authType) {
+            this.accessToken = accessToken;
+            this.authType = authType;
+        }
     }
 }

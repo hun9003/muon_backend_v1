@@ -5,6 +5,7 @@ import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.HashGenerator;
 import com.muesli.music.domain.user.token.UsertokenCommand;
 import com.muesli.music.domain.user.token.UsertokenStore;
+import com.muesli.music.infrastructure.user.social.GoogleLoginApiCaller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserStore userStore;
     private final UserReader userReader;
     private final UsertokenStore usertokenStore;
-
+    private final GoogleLoginApiCaller googleLoginApiCaller;
 
     /**
      * 유저 정보 저장
@@ -112,5 +113,36 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new BaseException(ErrorCode.USER_BAD_PASSWORD);
         }
+    }
+
+    @Override
+    public User getSocialUserInfo(UserCommand.SocialLoginRequest socialLoginCommand) {
+        System.out.println("UserServiceImpl :: getSocialUserInfo");
+        switch (socialLoginCommand.getAuthType()) {
+            case "google":
+                return googleLoginApiCaller.getSocialUserInfo(socialLoginCommand);
+            default: break;
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public UserInfo.UsertokenInfo socialLoginUser(UserInfo.Main userInfo) {
+        System.out.println("UserServiceImpl :: socialLoginUser");
+        if (userInfo.getId() == null) throw new BaseException(ErrorCode.USER_LOGIN_FALE);
+        var user = userReader.getUser(userInfo.getId());
+        var initUsertoken = UsertokenCommand.makeToken(user);
+        var usertoken = usertokenStore.store(initUsertoken);
+        return new UserInfo.UsertokenInfo(usertoken, new UserInfo.Main(user));
+    }
+
+
+    @Override
+    @Transactional
+    public UserInfo.Main registerSocialUser(User initUser) {
+        System.out.println("UserServiceImpl :: registerUser");
+        var user = userStore.store(initUser);
+        return new UserInfo.Main(user);
     }
 }

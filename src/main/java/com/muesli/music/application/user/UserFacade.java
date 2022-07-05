@@ -35,7 +35,7 @@ public class UserFacade {
         if (userinfo.getId() != null) throw new BaseException(ErrorCode.USER_DUPLICATION_EMAIL);
 
         // 3. 닉네임이 중복 되는지 검색
-        if (userService.isDuplicateUsername(command.getUsername())) throw new BaseException(ErrorCode.USER_DUPLICATION_USERNAME);
+//        if (userService.isDuplicateUsername(command.getUsername())) throw new BaseException(ErrorCode.USER_DUPLICATION_USERNAME);
 
         //  4. 가입 처리
         var user = userService.registerUser(command);
@@ -113,4 +113,24 @@ public class UserFacade {
         return userService.findUserInfo(email);
     }
 
+    public UserInfo.UsertokenInfo socialLoginUser(UserCommand.SocialLoginRequest socialLoginCommand) {
+        System.out.println("UserFacade :: socialLoginUser");
+        // 소셜 로그인 회원정보 가져오기
+        var user = userService.getSocialUserInfo(socialLoginCommand);
+
+        // 회원가입이 되어있지 않다면 회원가입 시키기
+        if(userService.findUserInfo(user.getEmail()).getId() == null) {
+            userService.registerSocialUser(user);
+        }
+
+        var userInfo = userService.findUserInfo(user.getEmail());
+
+        // 토큰 생성
+        var usertokenInfo = userService.socialLoginUser(userInfo);
+
+        // uuid 세팅이 되어있지 않다면 세팅하기
+        if (usertokenInfo.getUserInfo().getUuid() == null) userService.registerUserUuid(usertokenInfo.getUserInfo().getEmail());
+
+        return usertokenInfo;
+    }
 }

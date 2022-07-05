@@ -52,6 +52,6 @@ public class TokenGenerator {
     }
 
     public static String getHeaderToken(String authorization) {
-        return authorization.replace("Bearer ", "");
+        return authorization.replace("Bearer ", "").trim();
     }
 }

@@ -17,6 +17,14 @@ public interface UserService {
     // 비밀번호 변경
     void changePassword(UserCommand.ChangeUserPassword command, String email);
 
+    // 소셜 로그인 정보
+    User getSocialUserInfo(UserCommand.SocialLoginRequest socialLoginCommand);
+
+    // 소셜 로그인 처리
+    UserInfo.UsertokenInfo socialLoginUser(UserInfo.Main userInfo);
+
+    UserInfo.Main registerSocialUser(User user);
+
     // 프로필 사진 업로드
     // 사용자 선호 취향 리스트
 

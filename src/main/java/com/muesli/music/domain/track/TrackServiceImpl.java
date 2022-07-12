@@ -42,7 +42,8 @@ public class TrackServiceImpl implements TrackService {
     public TrackInfo.Main findTrackInfo(Long trackId) {
         System.out.println("TrackServiceImpl :: findTrackInfo");
         var track = trackReader.getTrackBy(trackId);
-        var lyrics = track.getLyrics().iterator().next() != null ? track.getLyrics().iterator().next() : new Lyrics();
+//        var lyrics = track.getLyrics().iterator().next() != null ? track.getLyrics().iterator().next() : new Lyrics();
+        var lyrics = new Lyrics();
         var lyricsInfolist = LyricsGenerator.makeLyrics(lyrics);
         return new TrackInfo.Main(track, new ArtistInfo.Main(track.getTrackArtists().iterator().next().getArtist()), new TrackInfo.LyricsInfo(lyrics.getId() ,lyricsInfolist));
     }

@@ -1,3 +1,143 @@
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T162056.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "likeId": 840
+}
+
+<> 2022-07-12T162045.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "likeId": 840
+}
+
+<> 2022-07-12T161903.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "likeId": 840
+}
+
+<> 2022-07-12T161821.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T161719.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like?id=840
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T161711.200.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T161350.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T161208.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T161043.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T160646.500.json
+
+###
+
+PUT http://localhost:8080/api/v1/like
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+Content-Type: application/json
+
+{
+  "id": 840
+}
+
+<> 2022-07-12T160415.500.json
+
+###
+
+GET http://localhost:8080/api/v1/album/20
+Content-Type: application/json
+Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
+
+<> 2022-07-11T235736.200.json
+
+###
+
 GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
 Content-Type: application/json
 
@@ -288,102 +428,6 @@ authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 <> 2022-06-28T141248.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-06-28T141244.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-06-28T141212.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-06-28T141131.200.json
-
-###
-
-GET http://localhost:8080/api/v1/track/2
-Content-Type: application/json
-Authorization: Bearer 268a1d75422c1bb841821806557a03a2ac55a4f9
-
-<> 2022-06-28T135025.500.json
-
-###
-
-GET http://localhost:8080/api/v1/track/rank/day
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-06-28T113230.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T112743.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T112235.500.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T112037.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111851.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111728.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/1?page=1&size=100
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111520.200.json
-
-###
-
-GET http://localhost:8080/api/v1/playlist/my
-authorization: Bearer nqgHmPDyXTcwia2PlL94pnEtZcxP15QQwKIb3mjG
-Content-Type: application/json
-
-<> 2022-06-28T111511.200.json
 
 ###
 

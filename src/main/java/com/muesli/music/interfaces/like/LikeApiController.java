@@ -1,7 +1,9 @@
 package com.muesli.music.interfaces.like;
 
 import com.muesli.music.application.like.LikeFacade;
+import com.muesli.music.common.exception.BaseException;
 import com.muesli.music.common.response.CommonResponse;
+import com.muesli.music.common.response.ErrorCode;
 import com.muesli.music.common.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +26,7 @@ public class LikeApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("")
+    @PostMapping
     public CommonResponse doLike(@RequestBody @Valid LikeDto.RegisterLike request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("LikeApiController :: doLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
@@ -35,16 +37,17 @@ public class LikeApiController {
     }
 
     /**
-     * 좋아요 취소
-     * @param likeId
+     * 좋아요 상태변경
+     * @param request
      * @return
      */
-    @PutMapping("/{id}")
-    public CommonResponse doDisLike(@PathVariable("id") Long likeId, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
+    @PutMapping
+    public CommonResponse doChangeLike(@RequestBody LikeDto.LikeInfo request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken)
     {
-        System.out.println("LikeApiController :: doDisLike");
+        System.out.println("LikeApiController :: doChangeLike");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
-        var likeInfo = likeFacade.changeLike(likeId, usertoken);
+        if(request.getId() == null) throw new BaseException(ErrorCode.COMMON_INVALID_PARAMETER);
+        var likeInfo = likeFacade.changeLike(request.getId(), usertoken);
         var response = likeDtoMapper.of(likeInfo);
         return CommonResponse.success(response);
     }

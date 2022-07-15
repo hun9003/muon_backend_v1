@@ -230,3 +230,8 @@ Content-Type: application/json
 ### 구글 엑세스 검증
 GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
 Content-Type: application/json
+
+### 곡 재생
+POST http://localhost:8080/api/v1/player/1
+authorization:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1ODQ3OTE2N30.MnfMneHXHV6e0sR5VcU7M4CHx8W2MT4uJRPDAQCOR0o
+Content-Type: application/json

@@ -1,3 +1,11 @@
+POST http://localhost:8080/api/v1/player/1
+authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1ODQ3OTE2N30.MnfMneHXHV6e0sR5VcU7M4CHx8W2MT4uJRPDAQCOR0o
+Content-Type: application/json
+
+<> 2022-07-15T182513.200.json
+
+###
+
 PUT http://localhost:8080/api/v1/like
 authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
 Content-Type: application/json
@@ -420,14 +428,6 @@ authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
 Content-Type: application/json
 
 <> 2022-06-28T143801.500.json
-
-###
-
-GET http://localhost:8080/api/v1/genre
-authorization: Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
-Content-Type: application/json
-
-<> 2022-06-28T141248.500.json
 
 ###
 

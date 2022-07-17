@@ -44,7 +44,7 @@ public class SearchApiController {
     public CommonResponse retrieveAllSearch(@RequestHeader(value="Authorization", defaultValue = "") String usertoken,
                                             HttpServletRequest request,
                                             @RequestParam(name = "keyword", required = false) String keyword,
-                                            @RequestParam(name = "type", defaultValue = "all") String type,
+                                            @RequestParam(name = "type", defaultValue = Constant.Order.SIMILAR) String type,
                                             @PageableDefault(size = 10, page = 1) Pageable pageable) {
         System.out.println("SearchApiController :: retrieveAllSearch");
         usertoken = TokenGenerator.getHeaderToken(usertoken);

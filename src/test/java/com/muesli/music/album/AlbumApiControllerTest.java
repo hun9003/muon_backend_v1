@@ -1,5 +1,7 @@
-package com.muesli.music;
+package com.muesli.music.album;
 
+import com.muesli.music.JwtToken;
+import com.muesli.music.MuonBackendV1Application;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith({ RestDocumentationExtension.class, SpringExtension.class })
 class AlbumApiControllerTest {
     private MockMvc mockMvc;
-    private final String JWT_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzE3OTQxMX0.SxHy99ewM9CqFoYfCV5guYgIzxG-pgQ1QYw2UiMlTXM";
+    private final String JWT_TOKEN = JwtToken.JWT_TOKEN;
 
     @BeforeEach
     public void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {

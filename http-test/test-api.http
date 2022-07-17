@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ### 좋아요
 POST http://localhost:8080/api/v1/like
-authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1ODY0NjgzMn0.Kdweujj696PJQmgbGUrgbD1psIe6wLTcQVQecEPCAVc
 Content-Type: application/json
 
 {
@@ -47,11 +47,11 @@ Content-Type: application/json
 
 ### 좋아요 상태변경
 PUT http://localhost:8080/api/v1/like
-authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1NzcwMzI2OX0.7euBqSP_yAg9KwOO9dlHYkXocBz9-ABwYaQid8QaXEk
+authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1ODY0NjgzMn0.Kdweujj696PJQmgbGUrgbD1psIe6wLTcQVQecEPCAVc
 Content-Type: application/json
 
 {
-  "id": 840
+  "id": 136481
 }
 
 
@@ -62,7 +62,7 @@ Content-Type: application/json
 
 ### 좋아요 리스트(아티스트)
 GET http://localhost:8080/api/v1/artist/likeables
-authorization:Bearer jikdN1Eb4PrBpgZmDAJ3JuM8aScRl2CiKSENpVzo
+authorization:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodW45MDAzQG5hdmVyLmNvbSIsImV4cCI6MTY1ODY0NjgzMn0.Kdweujj696PJQmgbGUrgbD1psIe6wLTcQVQecEPCAVc
 Content-Type: application/json
 
 ### 좋아요 리스트(앨범)
@@ -162,7 +162,7 @@ authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 ### 트랙 검색 결과 페이지
-GET http://localhost:8080/api/v1/search/track?keyword=명탐정코난&page=1&size=10
+GET http://localhost:8080/api/v1/search/track?keyword=sf&page=1&size=10&type=similar
 authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
@@ -182,7 +182,7 @@ authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 
 ### 전체 검색 결과 페이지
-GET http://localhost:8080/api/v1/search/all?keyword=head&page=1&size=10
+GET http://localhost:8080/api/v1/search/all?keyword=sf&page=1&size=10&type=similar
 authorization:Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
 Content-Type: application/json
 

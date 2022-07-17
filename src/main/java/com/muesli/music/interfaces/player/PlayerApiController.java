@@ -53,6 +53,7 @@ public class PlayerApiController {
                                             @RequestHeader(value="Authorization", defaultValue = "") String usertoken, HttpServletRequest request) {
         System.out.println("PlayerApiController :: createPlayerLog");
         usertoken = TokenGenerator.getHeaderToken(usertoken);
+        System.out.println(usertoken);
         var userAgent = request.getHeader("User-Agent");
         var ip = ClientUtils.getRemoteIP(request);
         var playLogDtoRequest = new PlayerDto.RegisterPlayLog(trackId, userAgent, ip);

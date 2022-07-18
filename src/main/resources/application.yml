@@ -1,6 +1,7 @@
 server:
   shutdown: graceful
 
+
 spring:
   lifecycle:
     timeout-per-shutdown-phase: 20s
@@ -30,6 +31,8 @@ spring:
     url: jdbc:mysql://db.hun9003.gabia.io:3306/dbhun9003?serverTimezone=UTC&characterEncoding=UTF-8
     enabled: true
     baseline-on-migrate: true
+  mvc:
+    static-path-pattern: /static/**
 
 #  h2:
 #    console:

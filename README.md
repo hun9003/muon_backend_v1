@@ -18,7 +18,7 @@ https://music-web-tau.vercel.app/
 --------------
 
 ### :runner:Developer
-- **Front-end : 류재강**
+- **Front-end : 류재강** https://github.com/Ryujaekang
 - **Back-end : 박진훈** https://github.com/hun9003
 
 --------------

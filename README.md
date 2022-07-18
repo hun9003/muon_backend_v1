@@ -34,7 +34,7 @@ https://music-web-tau.vercel.app/
 
 --------------
 
-### 주요 기술
+### 
 - Java 11
 - MSA(microservice architecture) 기반 설계
 - Spring Boot (API Server)

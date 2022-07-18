@@ -75,7 +75,7 @@ public class PlaylistApiController {
      * @param usertoken
      * @return
      */
-    @PostMapping("")
+    @PostMapping
     public CommonResponse registerPlaylist(@RequestBody @Valid PlaylistDto.RegisterPlaylist request, @RequestHeader(value="Authorization", defaultValue = "") String usertoken) {
         System.out.println("PlaylistApiController :: registerPlaylist");
         usertoken = TokenGenerator.getHeaderToken(usertoken);

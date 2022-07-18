@@ -92,7 +92,7 @@ public class TrackServiceImpl implements TrackService {
         String type = command.getType();
         while (trackList2.size() < pageable.getPageSize() || trackList1.size() < pageable.getPageSize()) {
             var searchDateMap = makeDateMap(searchDate, type, minusCount);
-            if (command.getGenre() == null) {
+            if (command.getGenre() == null || command.getGenre() == 0) {
                 trackList1 = trackReader.getTrackRank(searchDateMap.get("beforeBeginFormat"), searchDateMap.get("beforeEndFormat"), pageable);
                 trackList2 = trackReader.getTrackRank(searchDateMap.get("afterBeginFormat"), searchDateMap.get("afterEndFormat"), pageable);
             } else {

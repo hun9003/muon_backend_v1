@@ -15,10 +15,14 @@ include::{snippets_path}/path-parameters.adoc[]
 endif::[]
 
 ifeval::[{req-param-exists} == 1]
-include::{snippets_path}/request-body.adoc[]
+include::{snippets_path}/request-parameters.adoc[]
+endif::[]
 
+ifeval::[{req-param-body-exists} == 1 ]
+include::{snippets_path}/request-body.adoc[]
 include::{snippets_path}/request-fields.adoc[]
 endif::[]
+
 
 ==== HTTP response
 

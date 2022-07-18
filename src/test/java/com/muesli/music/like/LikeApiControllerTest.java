@@ -20,10 +20,11 @@ import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = MuonBackendV1Application.class)
@@ -36,7 +37,7 @@ public class LikeApiControllerTest {
     public void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .apply(documentationConfiguration(restDocumentation))
-                .alwaysDo(document("album/{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
+                .alwaysDo(document("like/{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
                 .build();
     }
 
@@ -106,6 +107,35 @@ public class LikeApiControllerTest {
                                 fieldWithPath("data.isLike").type(JsonFieldType.NUMBER).description("좋아요 상태").optional(),
                                 fieldWithPath("data.createdAt").type(JsonFieldType.STRING).description("좋아요한 날짜").optional(),
                                 fieldWithPath("data.likeCount").type(JsonFieldType.NUMBER).description("컨텐츠 좋아요 개수").optional()
+                        )
+                ));
+    }
+
+    @Test
+    @DisplayName("컨텐츠 리스트 좋아요 여부 조회 TEST")
+    public void showLikeItem() throws Exception {
+        this.mockMvc.perform(get("/api/v1/like/show")
+                        .header("content-type", "application/json")
+                        .param("ids", "1,2,3,4")
+                        .param("type", "track")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(document("like/{method-name}",
+                        requestParameters(
+                                parameterWithName("ids").description("컨텐츠 IDX 리스트"),
+                                parameterWithName("type").description("컨텐츠 타입")
+                        ),
+                        responseFields(
+                                fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
+                                fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),
+                                fieldWithPath("errorCode").type(JsonFieldType.STRING).description("결과 코드").optional(),
+                                fieldWithPath("data.type").type(JsonFieldType.STRING).description("컨텐츠 타입"),
+                                fieldWithPath("data.likeInfoList[].id").type(JsonFieldType.NUMBER).description("좋아요 IDX").optional(),
+                                fieldWithPath("data.likeInfoList[].likeableId").type(JsonFieldType.NUMBER).description("좋아요 컨텐츠 IDX"),
+                                fieldWithPath("data.likeInfoList[].likeableType").type(JsonFieldType.STRING).description("좋아요 컨텐츠 타입").optional(),
+                                fieldWithPath("data.likeInfoList[].isLike").type(JsonFieldType.NUMBER).description("좋아요 상태").optional(),
+                                fieldWithPath("data.likeInfoList[].createdAt").type(JsonFieldType.STRING).description("좋아요한 날짜").optional(),
+                                fieldWithPath("data.likeInfoList[].likeCount").type(JsonFieldType.NUMBER).description("컨텐츠 좋아요 개수").optional()
                         )
                 ));
     }

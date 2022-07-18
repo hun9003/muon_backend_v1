@@ -51,15 +51,16 @@ public class SearchDto {
         private final SearchTrackResult track;
         private final SearchAlbumResult album;
         private final SearchArtistResult artist;
-        private final SearchLyricsResult lyrics;
+//        private final SearchLyricsResult lyrics;
 
-        public SearchAllResult(String keyword, String type, SearchTrackResult track, SearchAlbumResult album, SearchArtistResult artist, SearchLyricsResult lyrics) {
+//        public SearchAllResult(String keyword, String type, SearchTrackResult track, SearchAlbumResult album, SearchArtistResult artist, SearchLyricsResult lyrics) {
+        public SearchAllResult(String keyword, String type, SearchTrackResult track, SearchAlbumResult album, SearchArtistResult artist) {
             this.keyword = keyword;
             this.type = type;
             this.track = track;
             this.album = album;
             this.artist = artist;
-            this.lyrics = lyrics;
+//            this.lyrics = lyrics;
         }
     }
 
@@ -113,23 +114,23 @@ public class SearchDto {
             this.artistList = artistList;
         }
     }
-
-    @Getter
-    @Builder
-    @ToString
-    public static class SearchLyricsResult {
-        private final String keyword;
-        private final String type;
-        private final int count;
-        private final List<TrackDto.LyricsSearchInfo> lyricsList;
-
-        public SearchLyricsResult(String keyword, String type, int count, List<TrackDto.LyricsSearchInfo> lyricsList) {
-            this.keyword = keyword;
-            this.type = type;
-            this.count = count;
-            this.lyricsList = lyricsList;
-        }
-    }
+//
+//    @Getter
+//    @Builder
+//    @ToString
+//    public static class SearchLyricsResult {
+//        private final String keyword;
+//        private final String type;
+//        private final int count;
+//        private final List<TrackDto.LyricsSearchInfo> lyricsList;
+//
+//        public SearchLyricsResult(String keyword, String type, int count, List<TrackDto.LyricsSearchInfo> lyricsList) {
+//            this.keyword = keyword;
+//            this.type = type;
+//            this.count = count;
+//            this.lyricsList = lyricsList;
+//        }
+//    }
 
     public static class SearchHistory {
         private final String keyword;

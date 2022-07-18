@@ -55,22 +55,23 @@ public class SearchApiController {
         command.setTrackCount(searchFacade.getSearchCount(command, Constant.Item.TRACK));
         command.setAlbumCount(searchFacade.getSearchCount(command, Constant.Item.ALBUM));
         command.setArtistCount(searchFacade.getSearchCount(command, Constant.Item.ARTIST));
-        command.setLyricsCount(searchFacade.getSearchCount(command, Constant.Item.LYRICS));
+//        command.setLyricsCount(searchFacade.getSearchCount(command, Constant.Item.LYRICS));
 
         var searchMap = searchFacade.retrieveSearchAll(command, pageable);
 
         var trackDtoList = ((List<TrackInfo.TrackListInfo>) searchMap.get("trackList")).stream().map(trackDtoMapper::of).collect(Collectors.toList());
         var albumDtoList = ((List<AlbumInfo.AlbumListInfo>) searchMap.get("albumList")).stream().map(albumDtoMapper::of).collect(Collectors.toList());
         var artistDtoList = ((List<ArtistInfo.ArtistListInfo>) searchMap.get("artistList")).stream().map(artistDtoMapper::of).collect(Collectors.toList());
-        var lyricsDtoList = ((List<TrackInfo.SearchLyricsInfo>) searchMap.get("lyricsList")).stream().map(trackDtoMapper::of).collect(Collectors.toList());
+//        var lyricsDtoList = ((List<TrackInfo.SearchLyricsInfo>) searchMap.get("lyricsList")).stream().map(trackDtoMapper::of).collect(Collectors.toList());
 
         var trackSearchList = new SearchDto.SearchTrackResult(keyword, type, command.getTrackCount(), trackDtoList);
         var albumSearchList = new SearchDto.SearchAlbumResult(keyword, type, command.getAlbumCount(), albumDtoList);
         var artistSearchList = new SearchDto.SearchArtistResult(keyword, type, command.getArtistCount(), artistDtoList);
-        var lyricsSearchList = new SearchDto.SearchLyricsResult(keyword, type, command.getLyricsCount(), lyricsDtoList);
+//        var lyricsSearchList = new SearchDto.SearchLyricsResult(keyword, type, command.getLyricsCount(), lyricsDtoList);
 
         int resultCount = 0;
-        if (trackSearchList.getTrackList().size() > 0 || albumSearchList.getAlbumList().size() > 0 || artistSearchList.getArtistList().size() > 0 || lyricsSearchList.getLyricsList().size() > 0) {
+//        if (trackSearchList.getTrackList().size() > 0 || albumSearchList.getAlbumList().size() > 0 || artistSearchList.getArtistList().size() > 0 || lyricsSearchList.getLyricsList().size() > 0) {
+        if (trackSearchList.getTrackList().size() > 0 || albumSearchList.getAlbumList().size() > 0 || artistSearchList.getArtistList().size() > 0) {
             resultCount = 1;
         }
 
@@ -80,7 +81,8 @@ public class SearchApiController {
         searchFacade.saveSearchHistory(historyDto.toCommand(), usertoken);
 
 
-        var response = new SearchDto.SearchAllResult(keyword, type, trackSearchList, albumSearchList, artistSearchList, lyricsSearchList);
+        var response = new SearchDto.SearchAllResult(keyword, type, trackSearchList, albumSearchList, artistSearchList);
+//        var response = new SearchDto.SearchAllResult(keyword, type, trackSearchList, albumSearchList, artistSearchList, lyricsSearchList);
         return CommonResponse.success(response);
     }
 
@@ -151,27 +153,27 @@ public class SearchApiController {
         return CommonResponse.success(response);
     }
 
-    /**
-     * 가사 검색 결과 페이지
-     * @param keyword
-     * @param type
-     * @param pageable
-     * @return
-     */
-    @GetMapping("/lyrics")
-    public CommonResponse retrieveLyricsSearch(@RequestParam(name = "keyword", required = false) String keyword,
-                                               @RequestParam(name = "type", defaultValue = Constant.Order.SIMILAR) String type,
-                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
-        System.out.println("SearchApiController :: retrieveLyricsSearch");
-        var request = new SearchDto.SearchRequest(keyword, type);
-        var command = request.toCommand();
-        var count = searchFacade.getSearchCount(command, "lyrics");
-        command.setLyricsCount(count);
-        var LyricsList = searchFacade.retrieveSearchLyrics(command, pageable);
-        var LyricsDtoList = LyricsList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
-        var response = new SearchDto.SearchLyricsResult(keyword, type, count, LyricsDtoList);
-        return CommonResponse.success(response);
-    }
+//    /**
+//     * 가사 검색 결과 페이지
+//     * @param keyword
+//     * @param type
+//     * @param pageable
+//     * @return
+//     */
+//    @GetMapping("/lyrics")
+//    public CommonResponse retrieveLyricsSearch(@RequestParam(name = "keyword", required = false) String keyword,
+//                                               @RequestParam(name = "type", defaultValue = Constant.Order.SIMILAR) String type,
+//                                               @PageableDefault(size = 100, page = 1) Pageable pageable) {
+//        System.out.println("SearchApiController :: retrieveLyricsSearch");
+//        var request = new SearchDto.SearchRequest(keyword, type);
+//        var command = request.toCommand();
+//        var count = searchFacade.getSearchCount(command, "lyrics");
+//        command.setLyricsCount(count);
+//        var LyricsList = searchFacade.retrieveSearchLyrics(command, pageable);
+//        var LyricsDtoList = LyricsList.stream().map(trackDtoMapper::of).collect(Collectors.toList());
+//        var response = new SearchDto.SearchLyricsResult(keyword, type, count, LyricsDtoList);
+//        return CommonResponse.success(response);
+//    }
 
     /**
      * 검색 자동완성 리스트

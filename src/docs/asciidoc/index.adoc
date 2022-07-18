@@ -21,24 +21,364 @@
 :api-type: album
 :controller-name: retrieve-album
 :req-param-exists: 0
+:req-param-body-exists: 0
 :req-path-param-exists: 1
 :res-param-exists: 1
-include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
 
 [[retrieve-new-album]]
 === 최신 앨범 호출
 :api-type: album
 :controller-name: retrieve-new-album
-:req-param-exists: 0
+:req-param-exists: 1
+:req-param-body-exists: 0
 :req-path-param-exists: 0
 :res-param-exists: 1
-include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
 
 [[retrieve-like-album-list]]
 === 좋아하는 앨범 호출
 :api-type: album
 :controller-name: retrieve-like-album-list
 :req-param-exists: 0
+:req-param-body-exists: 0
 :req-path-param-exists: 0
 :res-param-exists: 1
-include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[artist]]
+== 아티스트 관련
+
+[[retrieve-artist]]
+=== 아티스트 호출
+:api-type: artist
+:controller-name: retrieve-artist
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-like-artist-list]]
+=== 좋아하는 아티스트 호출
+:api-type: artist
+:controller-name: retrieve-like-artist-list
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[track]]
+== 트랙 관련
+
+[[retrieve-track]]
+=== 트랙 호출
+:api-type: track
+:controller-name: retrieve-track
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-like-track-list]]
+=== 좋아하는 트랙 호출
+:api-type: track
+:controller-name: retrieve-like-track-list
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-new-track]]
+=== 최신 트랙 호출
+:api-type: track
+:controller-name: retrieve-new-track
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-user-history-track]]
+=== 최근 들은 트랙 호출
+:api-type: track
+:controller-name: retrieve-user-history-track
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-track-rank]]
+=== 트랙 순위 호출
+:api-type: track
+:controller-name: retrieve-track-rank
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[playlist]]
+== 플레이리스트 관련
+
+[[retrieve-playlist]]
+=== 플레이리스트 정보 호출
+:api-type: playlist
+:controller-name: retrieve-playlist
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-my-playlist]]
+=== 내 플레이리스트 정보 호출
+:api-type: playlist
+:controller-name: retrieve-my-playlist
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-like-playlist-list]]
+=== 좋아하는 플레이리스트 정보 호출
+:api-type: playlist
+:controller-name: retrieve-like-playlist-list
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[register-playlist]]
+=== 플레이리스트 생성
+:api-type: playlist
+:controller-name: register-playlist
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[update-playlist]]
+=== 플레이리스트 수정
+:api-type: playlist
+:controller-name: update-playlist
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[remove-playlist]]
+=== 플레이리스트 삭제
+:api-type: playlist
+:controller-name: remove-playlist
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[genre]]
+== 장르 관련
+
+[[retrieve-genre-list]]
+=== 장르 전체 호출
+:api-type: genre
+:controller-name: retrieve-genre-list
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-genre]]
+=== 장르 개별 호출
+:api-type: genre
+:controller-name: retrieve-genre
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-genre-tracklist]]
+=== 장르 개별 트랙 리스트 호출
+:api-type: genre
+:controller-name: retrieve-genre-tracklist
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[like]]
+== 좋아요 관련
+
+[[do-like]]
+=== 컨텐츠 좋아요
+:api-type: like
+:controller-name: do-like
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[do-change-like]]
+=== 컨텐츠 좋아요 상태 변경
+:api-type: like
+:controller-name: do-change-like
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[show-like-item]]
+=== 컨텐츠 리스트 좋아요 여부 호출
+:api-type: like
+:controller-name: show-like-item
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[search]]
+== 검색 관련
+
+[[retrieve-all-search]]
+=== 전체 검색 결과 호출
+:api-type: search
+:controller-name: retrieve-all-search
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-track-search]]
+=== 트랙 검색 결과 호출
+:api-type: search
+:controller-name: retrieve-track-search
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-album-search]]
+=== 앨범 검색 결과 호출
+:api-type: search
+:controller-name: retrieve-album-search
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[retrieve-artist-search]]
+=== 트랙 아티스트 결과 호출
+:api-type: search
+:controller-name: retrieve-artist-search
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[search-keyword-list]]
+=== 키워드 자동 완성
+:api-type: search
+:controller-name: search-keyword-list
+:req-param-exists: 1
+:req-param-body-exists: 0
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[player]]
+== 플레이어 관련
+
+[[create-player-log]]
+=== 플레이 로그 생성
+:api-type: player
+:controller-name: create-player-log
+:req-param-exists: 0
+:req-param-body-exists: 0
+:req-path-param-exists: 1
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[user]]
+== 유저 관련
+
+[[register-user]]
+=== 회원가입
+:api-type: user
+:controller-name: register-user
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+[[login-user]]
+=== 로그인
+:api-type: user
+:controller-name: login-user
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+
+
+[[change-user-password]]
+=== 비밀번호 변경
+:api-type: user
+:controller-name: change-user-password
+:req-param-exists: 0
+:req-param-body-exists: 1
+:req-path-param-exists: 0
+:res-param-exists: 1
+//include::{docdir}/src/docs/asciidoc/api-template.adoc[]
+include::api-template.adoc[]
+

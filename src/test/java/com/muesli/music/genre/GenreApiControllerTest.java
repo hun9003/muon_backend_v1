@@ -22,6 +22,8 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = MuonBackendV1Application.class)
@@ -88,6 +90,9 @@ public class GenreApiControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document("genre/{method-name}",
+                        pathParameters(
+                                parameterWithName("id").description("장르 IDX")
+                        ),
                         responseFields(
                                 fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
                                 fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),
@@ -126,6 +131,9 @@ public class GenreApiControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document("genre/{method-name}",
+                        pathParameters(
+                                parameterWithName("id").description("장르 IDX")
+                        ),
                         responseFields(
                                 fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
                                 fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),

@@ -17,37 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 public class PlayerApiController {
     private final PlayerFacade playerFacade;
 
-//    /**
-//     * 플레이어 재생 키 호출
-//     * @param trackId
-//     * @param usertoken
-//     * @param request
-//     * @return
-//     */
-//    @GetMapping("/{id}")
-//    public CommonResponse retrievePlayerKey(@PathVariable("id") Long trackId,
-//                                            @RequestHeader(value="Authorization", defaultValue = "") String usertoken,
-//                                            HttpServletRequest request) {
-//        System.out.println("PlayerApiController :: retrievePlayerKey");
-//        usertoken = TokenGenerator.getHeaderToken(usertoken);
-//        System.out.println(usertoken);
-//        var userAgent = request.getHeader("User-Agent");
-//
-//        var metadatas = new HashMap<String, Object>();
-//        // TODO. 멤버십 인증 로직 생성 필요
-//        metadatas.put("t", trackId);
-//        metadatas.put("u", 0);
-//        metadatas.put("e", (int) (System.currentTimeMillis() / 1000) + 1200);
-//        metadatas.put("m", false);
-//        metadatas.put("a", userAgent);
-//
-//        var response = new HashMap<String, Object>();
-//        response.put("id", trackId);
-//        response.put("url", playerFacade.getPlayerKey(metadatas, usertoken));
-//
-//        return CommonResponse.success(response);
-//    }
-
+    /**
+     * 플레이 로그 생성
+     * @param trackId
+     * @param usertoken
+     * @param request
+     * @return
+     */
     @PostMapping("/{id}")
     public CommonResponse createPlayerLog(@PathVariable("id") Long trackId,
                                             @RequestHeader(value="Authorization", defaultValue = "") String usertoken, HttpServletRequest request) {

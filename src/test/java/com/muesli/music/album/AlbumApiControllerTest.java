@@ -22,8 +22,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = MuonBackendV1Application.class)
@@ -85,9 +84,15 @@ class AlbumApiControllerTest {
     @DisplayName("최신 앨범 조회 TEST")
     public void retrieveNewAlbum() throws Exception {
         this.mockMvc.perform(get("/api/v1/album/new")
+                        .param("size", "50")
+                        .param("page", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document("album/{method-name}",
+                        requestParameters(
+                                parameterWithName("size").description("표시 개수"),
+                                parameterWithName("page").description("페이지")
+                        ),
                         responseFields(
                                 fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
                                 fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),

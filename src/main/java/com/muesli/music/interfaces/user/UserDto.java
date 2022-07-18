@@ -20,6 +20,7 @@ public class UserDto {
     @Getter
     @Setter
     @ToString
+    @Builder
     public static class RegisterUser {
 
         @NotBlank(message = Message.User.EMPTY_USERNAME)
@@ -69,6 +70,7 @@ public class UserDto {
     @Getter
     @Setter
     @ToString
+    @Builder
     public static class LoginUser {
         @Email(message = "email 형식에 맞아야 합니다")
         @NotEmpty(message = "이메일(email)은 필수값입니다.")

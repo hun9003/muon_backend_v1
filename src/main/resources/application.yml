@@ -32,7 +32,10 @@ spring:
     enabled: true
     baseline-on-migrate: true
   mvc:
-    static-path-pattern: /static/**
+#    static-path-pattern: /static/**
+    view:
+      suffix: .html
+      prefix: classpath:/static/
 
 #  h2:
 #    console:

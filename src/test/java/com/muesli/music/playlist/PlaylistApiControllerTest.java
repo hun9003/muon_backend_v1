@@ -235,24 +235,24 @@ public class PlaylistApiControllerTest {
                 ));
     }
 
-    @Test
-    @DisplayName("플레이 리스트 삭제 TEST")
-    public void removePlaylist() throws Exception {
-        this.mockMvc.perform(delete("/api/v1/playlist/{id}", 2L)
-                        .header("Authorization", JWT_TOKEN)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(document("playlist/{method-name}",
-                        pathParameters(
-                                parameterWithName("id").description("플레이리스트 IDX")
-                        ),
-                        responseFields(
-                                fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
-                                fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),
-                                fieldWithPath("errorCode").type(JsonFieldType.STRING).description("결과 코드").optional(),
-                                fieldWithPath("data").type(JsonFieldType.STRING).description("상태")
-                        )
-                ));
-    }
+//    @Test
+//    @DisplayName("플레이 리스트 삭제 TEST")
+//    public void removePlaylist() throws Exception {
+//        this.mockMvc.perform(delete("/api/v1/playlist/{id}", 2L)
+//                        .header("Authorization", JWT_TOKEN)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andDo(document("playlist/{method-name}",
+//                        pathParameters(
+//                                parameterWithName("id").description("플레이리스트 IDX")
+//                        ),
+//                        responseFields(
+//                                fieldWithPath("result").type(JsonFieldType.STRING).description("응답 상태"),
+//                                fieldWithPath("message").type(JsonFieldType.STRING).description("결과 메세지").optional(),
+//                                fieldWithPath("errorCode").type(JsonFieldType.STRING).description("결과 코드").optional(),
+//                                fieldWithPath("data").type(JsonFieldType.STRING).description("상태")
+//                        )
+//                ));
+//    }
 
 }

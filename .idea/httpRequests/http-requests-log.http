@@ -1,3 +1,27 @@
+GET http://localhost:8080/api/v1/artist/1
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-07-21T131632.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/20
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-07-21T131610.200.json
+
+###
+
+GET http://localhost:8080/api/v1/artist/20
+Content-Type: application/json
+authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
+
+<> 2022-07-19T234826.200.json
+
+###
+
 GET http://localhost:8080/api/v1/user/login/social?auth_type=google&access_token=ya29.a0ARrdaM8v0tMwdnDcF565cYYJexvtqHjfusuccRmlppo9DBnaDkRYMDzHneLGk3zXhj96avpZOLv8mORsOnmkL3vAAOTiA9_P4Vd1hFIgWaqYU_4M-iMvwtiIEADR4r4Mpfot9QlO4xGK_JuLHFLnXTsS0OQR
 Content-Type: application/json
 
@@ -483,30 +507,6 @@ Content-Type: application/json
 }
 
 <> 2022-07-17T161352.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artist/likeables
-authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b3JrZDE4NzJAbmF2ZXIuY29tIiwiZXhwIjoxNjU4NDgyODgzfQ.CjQ6HR-ZUGK1LnmpIaKRzJEkyb7BcBc1vnKp2EOjoHE
-Content-Type: application/json
-
-<> 2022-07-17T161342.200.json
-
-###
-
-GET http://localhost:8080/api/v1/artist/20
-Content-Type: application/json
-authorization: Bearer d4243743538e9b86c862aee116f5dd411fbd300d
-
-<> 2022-07-17T151211.200.json
-
-###
-
-GET http://localhost:8080/api/v1/search/track?keyword=sf&page=1&size=10&type=similar
-authorization: Bearer VFLZuEcx1BQVn5F5LlHPSryAfr7KT4wwgdvq9HLw
-Content-Type: application/json
-
-<> 2022-07-15T191925.200.json
 
 ###
 

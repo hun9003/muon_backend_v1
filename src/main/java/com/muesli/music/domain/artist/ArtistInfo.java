@@ -154,11 +154,13 @@ public class ArtistInfo {
     @ToString
     public static class BiosInfo {
         private final Long id;
-        private final String content;
+        private final String[] content;
 
         public BiosInfo(Bios bios) {
+            String[] biosArray = bios.getContent().split("\n");
+
             this.id = bios.getId();
-            this.content = bios.getContent();
+            this.content = biosArray;
         }
     }
 

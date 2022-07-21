@@ -68,7 +68,7 @@ public class ArtistApiControllerTest {
                                 fieldWithPath("data.views").type(JsonFieldType.NUMBER).description("아티스트 조회수"),
                                 fieldWithPath("data.imageSmall").type(JsonFieldType.STRING).description("아티스트 이미지(작은 사이즈)").optional(),
                                 fieldWithPath("data.biosInfo.id").type(JsonFieldType.NUMBER).description("아티스트 설명 IDX"),
-                                fieldWithPath("data.biosInfo.content").type(JsonFieldType.STRING).description("아티스트 설명"),
+                                fieldWithPath("data.biosInfo.content[]").type(JsonFieldType.ARRAY).description("아티스트 설명"),
                                 fieldWithPath("data.albumList[].id").type(JsonFieldType.NUMBER).description("앨범 IDX"),
                                 fieldWithPath("data.albumList[].name").type(JsonFieldType.STRING).description("앨범 이름"),
                                 fieldWithPath("data.albumList[].releaseDate").type(JsonFieldType.STRING).description("앨범 발매일"),

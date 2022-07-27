@@ -182,11 +182,7 @@ public class TrackServiceImpl implements TrackService {
         // 페이징
         var pageInfo = new PageInfo(pageable, 500);
         var trackList = trackReader.getNewTrack(pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newTrackList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : trackList) {
-            var newTrackMap = new HashMap<>(stringObjectMap);
-            newTrackList.add(newTrackMap);
-        }
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
         return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
@@ -203,11 +199,7 @@ public class TrackServiceImpl implements TrackService {
         var pageInfo = new PageInfo(pageable, 100);
         if(userInfo.getUserInfo().getId() == null) throw new BaseException(ErrorCode.USER_BAD_USERTOKEN);
         var trackList = trackReader.getUserHistoryTrack(userInfo.getUserInfo().getId(),pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newTrackList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : trackList) {
-            var newTrackMap = new HashMap<>(stringObjectMap);
-            newTrackList.add(newTrackMap);
-        }
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
         return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
@@ -223,11 +215,7 @@ public class TrackServiceImpl implements TrackService {
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getTrackCount());
         var trackList = trackReader.getSearchTrack(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newTrackList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : trackList) {
-            var newTrackMap = new HashMap<>(stringObjectMap);
-            newTrackList.add(newTrackMap);
-        }
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
         return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 
@@ -243,11 +231,7 @@ public class TrackServiceImpl implements TrackService {
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getLyricsCount());
         var lyricsList = lyricsReader.getSearchLyrics(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newLyricsList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : lyricsList) {
-            var newLyricsMap = new HashMap<>(stringObjectMap);
-            newLyricsList.add(newLyricsMap);
-        }
+        var newLyricsList = ItemGenerator.makeItemListMap(lyricsList);
         return newLyricsList.stream().map(TrackInfo.SearchLyricsInfo::new).collect(Collectors.toList());
     }
 
@@ -287,11 +271,7 @@ public class TrackServiceImpl implements TrackService {
         // 페이징
         var pageInfo = new PageInfo(pageable, count);
         var trackList = trackReader.getGenreTrackList(genreId, type, pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newTrackList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : trackList) {
-            var newTrackMap = new HashMap<>(stringObjectMap);
-            newTrackList.add(newTrackMap);
-        }
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
         return newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
     }
 

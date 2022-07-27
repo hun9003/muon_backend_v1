@@ -45,9 +45,6 @@ public class GenreServiceImpl implements GenreService {
             var genreInfoList = genreList.stream().map(GenreInfo.Main::new).collect(Collectors.toList());
             itemList.addAll(genreInfoList);
         }
-        for(var item : itemList) {
-            System.out.println(item);
-        }
         return itemList;
     }
 }

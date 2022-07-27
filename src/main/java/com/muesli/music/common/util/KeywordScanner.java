@@ -36,7 +36,6 @@ public class KeywordScanner {
                 }
             }
         }
-        System.out.println();
         return keyword.substring(0, keyword.length() - 1) + endChar;
     }
 

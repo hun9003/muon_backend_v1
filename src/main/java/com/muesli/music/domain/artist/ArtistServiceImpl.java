@@ -14,10 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -50,22 +47,12 @@ public class ArtistServiceImpl implements ArtistService{
 
         // 앨범 리스트 호출
         var albumList = albumReader.getAlbumListByArtist(artistId, pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newAlbumList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : albumList) {
-            var newAlbumMap = new HashMap<>(stringObjectMap);
-            newAlbumList.add(newAlbumMap);
-        }
-
+        var newAlbumList = ItemGenerator.makeItemListMap(albumList);
         var albumListInfo = newAlbumList.stream().map(stringObjectMap -> {
             var albumId = Long.parseLong(String.valueOf(stringObjectMap.get("id")));;
             var trackCount = trackReader.getTrackByAlbumCount(albumId);
-
             var trackList = trackReader.getTrackListByAlbum(albumId, 0, trackCount);
-            var newTrackList = new ArrayList<Map<String, Object>>();
-            for (Map<String, Object> track : trackList) {
-                var newAlbumMap = new HashMap<>(track);
-                newTrackList.add(newAlbumMap);
-            }
+            var newTrackList = ItemGenerator.makeItemListMap(trackList);
             var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
             return new AlbumInfo.AlbumListInfo(stringObjectMap, trackListInfo);
         }).collect(Collectors.toList());
@@ -73,11 +60,7 @@ public class ArtistServiceImpl implements ArtistService{
         // 트랙 리스트 호출
         pageInfo = new PageInfo(pageable, trackReader.getTrackListByArtistCount(artistId));
         var trackList = trackReader.getTrackListByArtist(artistId, pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newTrackList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : trackList) {
-            var newTrackMap = new HashMap<>(stringObjectMap);
-            newTrackList.add(newTrackMap);
-        }
+        var newTrackList = ItemGenerator.makeItemListMap(trackList);
         var trackListInfo = newTrackList.stream().map(TrackInfo.TrackListInfo::new).collect(Collectors.toList());
 
         return new ArtistInfo.Main(artist, biosInfo, albumListInfo, trackListInfo);
@@ -112,11 +95,7 @@ public class ArtistServiceImpl implements ArtistService{
         // 페이징
         var pageInfo = new PageInfo(pageable, command.getArtistCount());
         var artistList = artistReader.getSearchArtist(command.getKeyword(), command.getType(), pageInfo.getStartNum(), pageInfo.getEndNum());
-        var newArtistList = new ArrayList<Map<String, Object>>();
-        for (Map<String, Object> stringObjectMap : artistList) {
-            var newArtistMap = new HashMap<>(stringObjectMap);
-            newArtistList.add(newArtistMap);
-        }
+        var newArtistList = ItemGenerator.makeItemListMap(artistList);
         return newArtistList.stream().map(ArtistInfo.ArtistListInfo::new).collect(Collectors.toList());
     }
 

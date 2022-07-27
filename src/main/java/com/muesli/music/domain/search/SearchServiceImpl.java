@@ -32,7 +32,6 @@ public class SearchServiceImpl implements SearchService {
     public void saveSearchHistory(SearchCommand.saveSearchHistory command, UserInfo.Main userInfo) {
         System.out.println("SearchServiceImpl :: saveSearchHistory");
         Long userId = userInfo.getId() != null ? userInfo.getId() : null;
-
         var history = searchReader.getSearchHistory(command);
         if(history.getId() == null) {
             var initHistory = command.toEntity(userId);
@@ -50,7 +49,6 @@ public class SearchServiceImpl implements SearchService {
     @Transactional
     public void saveSearchKeyword() {
         System.out.println("SearchServiceImpl :: saveSearchKeyword");
-
         var historyList = searchReader.getSearchHistoryList();
         for (var history : historyList) {
             var keyword = searchReader.getSearchKeyword(history.getKeyword());
@@ -73,11 +71,14 @@ public class SearchServiceImpl implements SearchService {
 
         Pattern p = Pattern.compile("[a-zA-Z0-9]");
         Matcher m = p.matcher(keyword);
+        // 영문을 한글로 변환
         var keywordKo = KeywordScanner.getEnToKo(keyword);
 
+        // 끝 문자 생성
         var endKeyword = KeywordScanner.makeSearchKeyword(keywordKo);
         var keywordList = searchReader.getSearchKeywordList(keywordKo, endKeyword);
 
+        // 종성이 완성되지 않은 문자로 예상 완성 문자 추출
         try {
             var keyword2 = KeywordScanner.makeSearchKeywordJong(keywordKo.substring(keywordKo.length()-1));
             keyword2 = keywordKo.substring(0, keywordKo.length()-1) + keyword2;
@@ -88,6 +89,7 @@ public class SearchServiceImpl implements SearchService {
 
         }
 
+        // 영어 추출
         if(m.find()) {
             var keywordList3 = searchReader.getSearchKeywordList(keyword);
             keywordList.addAll(keywordList3);

@@ -37,10 +37,10 @@ spring:
       suffix: .html
       prefix: classpath:/static/
 
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
 logging:
   config: classpath:logback-local.xml

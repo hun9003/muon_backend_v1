@@ -36,13 +36,9 @@ https://music-web-tau.vercel.app/
 
 ### 
 - Java 11
-- MSA(microservice architecture) 기반 설계
 - Spring Boot (API Server)
-- Spring Security (Security)
 - MysqlDB (RDB)
 - JPA (ORM)
-- OAuth2.0 + JWT (Login)
-- JUnit (Test)
 - Spring REST Docs (Api Document)
 
 ### Contact

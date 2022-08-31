@@ -36,10 +36,11 @@ https://music-web-tau.vercel.app/
 
 ### 
 - Java 11
-- Spring Boot (API Server)
-- MysqlDB (RDB)
-- JPA (ORM)
-- Spring REST Docs (Api Document)
+- Spring Boot
+- Restful API
+- MysqlDB
+- JPA
+- Spring REST Docs
 
 ### Contact
 - **Email : jinhun3892@gmail.com**
